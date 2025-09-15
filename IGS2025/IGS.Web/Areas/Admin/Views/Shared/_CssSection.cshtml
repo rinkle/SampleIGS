@@ -1,0 +1,37 @@
+﻿@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@{
+
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+<!-- Bootstrap -->
+<link href='@(baseUrl+"vendors/bootstrap/dist/css/bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<!-- Font Awesome -->
+<link href='@(baseUrl+"vendors/font-awesome/css/font-awesome.min.css")' rel="stylesheet" asp-append-version="true" />
+<!-- NProgress -->
+<link href='@(baseUrl+"vendors/nprogress/nprogress.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/normalize-css/normalize.css")' rel="stylesheet" asp-append-version="true">
+<!-- iCheck -->
+<link href='@(baseUrl+"vendors/iCheck/skins/flat/green.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/google-code-prettify/bin_p/prettify.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/select2/dist/css/select2.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/ion.rangeSlider/css/ion.rangeSlider.css")' rel="stylesheet" asp-append-version="true">
+<link href='@(baseUrl+"vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css")' rel="stylesheet" asp-append-version="true">
+<link href='@(baseUrl+"vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css")' rel="stylesheet" asp-append-version="true">
+<link href='@(baseUrl+"vendors/switchery/dist/switchery.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/starrr/dist/starrr.css")' rel="stylesheet" asp-append-version="true" />
+<!-- Datatables -->
+<link href='@(baseUrl+"vendors/datatables.net-bs/css/dataTables.bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"vendors/bootstrap-daterangepicker/daterangepicker.css")' rel="stylesheet" asp-append-version="true" />
+
+<!-- Custom Theme Style -->
+<link href='@(baseUrl+"build/css/custom.css")' rel="stylesheet" asp-append-version="true" />
+<link href='@(baseUrl+"Content/loader-1.css")' rel="stylesheet" asp-append-version="true" />
+
+<!-- Bootstrap Colorpicker -->
+<link href='@(baseUrl+"vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css")' rel="stylesheet" asp-append-version="true">
+

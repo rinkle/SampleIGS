@@ -1,0 +1,20 @@
+﻿@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@{
+    ViewBag.Title = "Home Page Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <partial name="_Notification" />
+
+            </div>
+        </div>
+        <div class="row">
+            asasdasdasd
+        </div>
+    </div>
+</div>

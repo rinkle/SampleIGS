@@ -1,0 +1,12 @@
+E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.deps.json
+E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.dll
+E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.pdb
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.csproj.AssemblyReference.cache
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.AssemblyInfoInputs.cache
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.AssemblyInfo.cs
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.csproj.CoreCompileInputs.cache
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.dll
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\refint\Globalsetting.dll
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.pdb
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\ref\Globalsetting.dll

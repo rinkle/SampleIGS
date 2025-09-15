@@ -1,0 +1,192 @@
+﻿@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    var CarouselId = ViewBag.CarouselId ?? 0;
+    var teamid = ViewBag.teamId ?? 0;
+    var PortfolioId = ViewBag.PortfolioId ?? 0;
+    var caseStudyId = ViewBag.caseStudyId ?? 0;
+    var TransactionId = ViewBag.TransactionId ?? 0;
+    var pageId = ViewBag.pageId;
+    var newsid = ViewBag.newsid ?? 0;
+    var TeamTitleId = ViewBag.TeamTitleId ?? 0;
+    decimal TermAndConditionId = ViewBag.TermAndConditionId ?? 0;
+    decimal PrivacyPolicyId = ViewBag.PrivacyPolicyId ?? 0;
+}
+
+<style>
+    .profile_pic {
+        float: left;
+        width: 100% !important;
+    }
+</style>
+
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <a href='@(baseUrl+"admin/home/")' class="site_title"><i class="fa fa-align-justify"></i> <span>CMS Admin </span></a>
+        </div>
+        <div class="clearfix"></div>
+
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section">
+                <ul class="nav side-menu">
+                    <li>
+                        <a>
+                            <i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li><a href='@string.Concat(baseUrl,"admin/home/")' title="Manage Home"> Home</a></li>
+                            <li><a title="Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/1")'> Page Header</a></li>
+                            <li class="dnone"><a href='@(baseUrl+"admin/portfolio/InvestmentSector/")' title="Investment Sectors">Investment Sectors/Industry</a></li>
+
+                        </ul>
+                    </li>
+                    @*<li>
+                        <a><i class="fa fa-comments-o"></i>About<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href='@string.Concat(baseUrl,"admin/about/")'>About</a></li>
+                            <li><a title="About Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/2")'>Page Header</a></li>
+                        </ul>
+                    </li>*@
+
+
+                    <li>
+                        <a title="Team Management"><i class="fa fa-users"></i> Team <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a title="Team List" href='@string.Concat(baseUrl,"admin/team/")'>Team</a></li>
+                            <li style="display:none;"><a title="update team member" href='@(baseUrl+"admin/team/manageteam/"+teamid)'>update team member</a></li>
+                            <li><a title="Team Title List" href='@string.Concat(baseUrl,"admin/team/teamtitles/")'>Title List</a></li>
+                            <li style="display:none;"><a title="Team Title List" href='@(baseUrl+"admin/team/manageteamtitle/"+@TeamTitleId)'>update Title</a></li>
+                            <li><a title="Team Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/5")'>Page Header</a></li>
+                            @*<li><a class="dnone" title="Team Detail Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/5")'>Bio Page Header</a></li>*@
+                            @*<li><a title="update team member" href='@(baseUrl+"admin/team/manageteamcategory")'>Team Category</a></li>*@
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-life-buoy"></i> Strategies <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li><a href='@string.Concat(baseUrl,"admin/strategies/")' title="Strategies Home"> Strategies</a></li>
+                            <li><a title="Strategies Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/16")'>Strategies Page Header</a></li>
+                        </ul>
+                    </li>
+                    <!--<li>
+                        <a title="portfolio Management"><i class="fa fa-th-large"></i> Portfolio <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href='@(baseUrl+"admin/portfolio/")' title="Portfolio">Portfolio</a></li>
+                            <li><a title="Portfolio Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/3")'>Portfolio Page Header </a></li>
+                            <li style="display:none;"><a href='@(baseUrl+"admin/portfolio/manageportfolio/"+PortfolioId)' title="update Portfolio">Update Portfolio </a></li>-->
+                            @*<li><a href='@(baseUrl+"admin/portfolio/investmentsector")' title="Portfolio">Industry/Sector</a></li>*@
+
+                        <!--</ul>
+                    </li>-->
+
+                    <li>
+                        <a><i class="fa fa-comments-o"></i>Impact<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href='@string.Concat(baseUrl,"admin/impact/")'>Impact</a></li>
+                            <li><a title="About Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/7")'>Page Header</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a title="Media Management"><i class="fa fa-newspaper-o"></i> News <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href='@string.Concat(baseUrl,"admin/news/")' title="News listing">News List</a></li>
+                            <li><a href='@string.Concat(baseUrl,"admin/news/managenews/0")' onclick="newnews();" title="Add new news">Add News </a></li>
+                            <li style="display:none;"><a href='@string.Concat(baseUrl,"admin/news/managenews/"+newsid)' title="update news">Update News </a></li>
+                            <li><a title="News Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/8")'>Page Header</a></li>
+                            @*<li><a title="News  Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/11")'>News Info Page Header</a></li>*@
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a title="Contact"><i class="fa fa-phone"></i> Contact <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href='@string.Concat(baseUrl,"admin/contact/")'> Contact </a>
+                            </li>
+                            <li class=""><a title="Contatct Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/10")'>Page Header</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a title="Legal Disclaimer.">
+                            <i class="fa  fa-anchor"></i>  Privacy Policy <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a title="Privacy Policy" href='@(baseUrl+"admin/privacypolicy/")' onclick="showLoader();">Privacy Policy</a>
+                            </li>
+                            <li><a title="Page Header" href='@(baseUrl +"admin/common/pageheader/12")' onclick="showLoader();"> Page Header</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a title="Legal Disclaimer.">
+                            <i class="fa fa-bullseye"></i>  Accessibility <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a title="Privacy Policy" href='@(baseUrl+"admin/accessibility/")' onclick="showLoader();">Accessibility</a>
+                            </li>
+                            <li><a title="Page Header" href='@(baseUrl +"admin/common/pageheader/12")' onclick="showLoader();"> Page Header</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a title="Partner Perks">
+                            <i class="fa fa-exchange"></i>  Partner Perks <span class="fa fa-chevron-down"></span>
+                        </a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a title="Partner Perks" href='@(baseUrl+"admin/partnerperk/")' onclick="showLoader();">Partner Perks</a>
+                            </li>
+                            <li><a title="Page Header" href='@(baseUrl +"admin/common/pageheader/15")' onclick="showLoader();"> Page Header</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <!-- /sidebar menu -->
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+
+            <a style="width:100%;" data-toggle="tooltip" id="btnlogout" data-placement="top" title="Logout" href="javascript:void(0);">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+
+        </div>
+        <!-- /menu footer buttons -->
+    </div>
+</div>
+<script type="text/javascript">
+
+    function newteam() {
+        window.location.href ='@baseUrl'+ "admin/team/manageteam/0"
+    }
+    function updateTeamHeader() {
+        $(".loader").modal('show');
+        setTimeout(function () {
+            window.location.href = '@baseUrl' + "admin/team/teamheader/";
+        }, 1000);
+
+    }
+
+    function listSlider() {
+        $(".loader").modal('show');
+        setTimeout(function () {
+            window.location.href = '@baseUrl' + "admin/home/Slider/";
+        }, 1000);
+    }
+
+
+    function showLoader() {
+        $(".loader").modal('show');
+    }
+
+
+</script>

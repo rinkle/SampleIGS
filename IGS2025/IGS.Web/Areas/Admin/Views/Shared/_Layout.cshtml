@@ -1,0 +1,455 @@
+﻿@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@inject Globalsetting.GlobalCookies Cookies
+@using System.Text.Json
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    string LeftMenuCss = (Cookies.CheckDesktop == "Mobile") ? "nav-sm" : "nav-md";
+    string Title = GlobalEnvironmentSetting.AppSettingValue("AppSettings:adminTitle");
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Title  @(ViewBag.title != null ? " | " + ViewBag.title : "") </title>
+    <link rel="apple-touch-icon" sizes="57x57" href='@(baseUrl+"images/favicon/favicon.ico")'>
+    <link rel="apple-touch-icon" sizes="192x19" href='@(baseUrl+"images/favicon/android-chrome-192x192.png")'>
+    <link rel="apple-touch-icon" sizes="512x512" href='@(baseUrl+"images/favicon/android-chrome-512x512.png")'>
+    <link rel="apple-touch-icon" sizes="72x72" href='@(baseUrl+"images/favicon/apple-touch-icon.png")'>
+    <link rel="apple-touch-icon" sizes="76x76" href='@(baseUrl+"images/favicon/favicon-16x16.png")'>
+    <link rel="apple-touch-icon" sizes="32x32" href='@(baseUrl+"images/favicon/favicon-32x32.png")'>
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Bootstrap -->
+    <meta name="theme-color" content="#ffffff">
+    @await Html.PartialAsync("_CssSection")
+    <style>
+        .port .thumbnail {
+            height: 215px;
+            overflow: hidden;
+        }
+
+        .img-circle {
+            border-radius: 0% !important;
+        }
+    </style>
+    @RenderSection("scripttop", false)
+    <script type="text/javascript">
+        function imgErrorNormal(image) {
+            image.onerror = ""
+            image.src = '@baseUrl' + "content/images/noimage.png";
+            return true;
+        }
+        function imgErrorSmall(image) {
+            image.onerror = ""
+            image.src = '@baseUrl' + "content/images/noimage_team.png";
+            return true;
+        }
+
+    </script>
+
+</head>
+<body class="@LeftMenuCss">
+  
+    <div class="modal fade loader">
+        <div class="modal-content">
+            <div class="loader-wrapper" id="loader-1">
+                <div id="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body">
+        <div class="main_container">
+            @await Html.PartialAsync("_LeftMenu")
+            <!-- top navigation -->
+            @await Html.PartialAsync("_TopNavigation")
+            <!-- page content -->
+            @RenderBody()
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    @GlobalEnvironmentSetting.AppSettingValue("AppSettings:adminTitle") admin :  Content management system
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_Scripts")
+
+    @RenderSection("script", false)
+
+    <script type="text/javascript">
+        var currentView = @Html.Raw(JsonSerializer.Serialize(
+             string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+         ));
+            function readimage(input, imgid) {
+                if (checkImage(input, imgid)) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#' + imgid)
+                                .attr('src', e.target.result);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+
+            function checkImage(input, imgid) {
+                var imageValid = true;
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg', 'webp'];
+                if ($.inArray($(input).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    $('#' + imgid).val("");
+                    imageValid = false;
+                    bootbox.alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp', 'svg', '.webp' formats are allowed.")
+                }
+                var f = input.files[0]
+
+                if (f.size > 21000000 || f.fileSize > 21000000) {
+                    imageValid = false;
+                    bootbox.alert("Allowed file size exceeded. (Max. 20 MB)")
+                    this.value = null;
+                }
+                return imageValid;
+            }
+
+            loaders = document.getElementsByClassName('loader-wrapper');
+            loaders[0].style.display = "inherit";
+            function change(self) {
+                for (var i = loaders.length - 1; i >= 0; i--) {
+                    loaders[i].style.display = "none";
+                }
+                id = self.id;
+                loaders[id - 1].style.display = "inherit";
+            };
+
+
+            $(function () {
+                $(".dropdown-menu a").click(function () {
+                    $(".loader").modal('show');
+                    bootbox.dialog({ message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> You are about to logout....</div>' });
+                    setTimeout(function () {
+                        window.location.href = '@baseUrl' + "identity/account/logout";
+                    }, 2000);
+                });
+
+                $("#btnlogout").click(function () {
+                    $(".loader").modal('show');
+                    bootbox.dialog({ message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> You are about to logout....</div>' });
+                    setTimeout(function () {
+                        window.location.href = '@baseUrl' + "identity/account/logout";
+                    }, 2000);
+
+                });
+                $(document).ajaxComplete(function (event, request, settings) {
+                    $(".loader").modal('hide');
+                });
+                $(document).ajaxSend(function (event, request, settings) {
+                    $(".loader").modal('show');
+
+                });
+                $(document).ajaxStart(function () {
+                    $(".loader").modal('show');
+                });
+                $('form').submit(function () {
+                    $(".loader").modal('show');
+                    if ($(this).valid()) {
+                        $(".loader").modal('show');
+                    }
+                    else {
+                        $(".loader").modal('hide');
+                    }
+                });
+
+                $("#menu_toggle").click(function () {
+                     
+                    $.ajax({
+                        type: "POST",
+                        async: true,
+                       // contentType: "application/json; charset=utf-8",
+                       data: { currentView: currentView }, // no JSON.stringify
+                        url: "@Url.Action("UpdateSetting", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            currentView = data.currentView;
+                            if (currentView == "Mobile") {
+                                $('.side-menu li .child_menu').hide();
+                                $('body').removeClass('nav-md').addClass('nav-sm');
+                                $('.side-menu li.active').removeClass('active').addClass('active-sm');
+                            }
+                            else {
+                                $('body').removeClass('nav-sm').addClass('nav-md');
+                                //$('.side-menu li .child_menu').show();
+                                $('.side-menu li.active-sm').removeClass('active-sm').addClass('active');
+                            }
+
+                            $(".loader").modal('hide');
+                        }
+                    });
+                });
+                $(".alert").fadeOut(6000);
+                if (currentView == "Mobile") {
+                    $('.side-menu li .child_menu').hide();
+                    $('body').removeClass('nav-md').addClass('nav-sm');
+                    $('.side-menu li.active').removeClass('active').addClass('active-sm');
+                }
+                else {
+                    $('body').removeClass('nav-sm').addClass('nav-md');
+                }
+                $(".loader").modal('hide');
+
+                // left menu end setting
+                $('.txtsearch').keyup(function () {
+                    var seachkey = $(this).val();
+                    var matcher = new RegExp($(this).val(), 'gi');
+                    $('.searchdiv').show().not(function () {
+                        return matcher.test($(this).find('.caption').text())
+                    }).hide();
+                });
+
+                //allow numeric start
+                $(".numericval").keydown(function (event) {
+
+                    if (event.shiftKey == true) {
+                        event.preventDefault();
+                    }
+
+                    if ((event.keyCode >= 48 && event.keyCode <= 57) ||
+                        (event.keyCode >= 96 && event.keyCode <= 105) ||
+                        event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
+                        event.keyCode == 39 || event.keyCode == 46 || event.keyCode == 190) {
+
+                    } else {
+                        event.preventDefault();
+                    }
+
+                    if ($(this).val().indexOf('.') !== -1 && event.keyCode == 190)
+                        event.preventDefault();
+                    //if a decimal has been added, disable the "."-button
+
+                });
+                //allow numeric end
+
+                $('.donotchange').keyup(function () {
+                    return false;
+                });
+                $('.donotchange').keydown(function () {
+                    return false;
+                });
+            });
+
+            function processImage(ctrl, imagepreview, hdnImageName, imagePath, thumbWidth, ThumbHeight, ThumbPath) {
+                if (checkImageWithClass(ctrl)) {
+                    var data = new FormData();
+                    var files = $('#' + $(ctrl).attr("id")).get(0).files;
+                    data.append('Filepath', imagePath);
+                    data.append('thumbWidth', thumbWidth);
+                    data.append('ThumbHeight', ThumbHeight);
+                    data.append('ThumbPath', ThumbPath);
+                    if (files.length > 0) {
+                        data.append("UploadedImage", files[0]);
+                    }
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        url: '@baseUrl' + 'CommonItem/UploadFiles',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (d) {
+                            $('.' + hdnImageName).val(d.name);
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('.' + imagepreview)
+                                .attr('src', e.target.result);
+                            };
+                            reader.readAsDataURL(ctrl.files[0]);
+                            $(ctrl).val("");
+                        },
+                    });
+                    ajaxRequest.done(function (xhr, textStatus) {
+                    });
+                }
+            }
+            function checkImageWithClass(ctrl) {
+                var imageValid = true;
+                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg','webp'];
+                if ($.inArray($(ctrl).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    imageValid = false;
+                    bootbox.alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp', 'svg','.webp' formats are allowed.")
+                    $(ctrl).val("");
+                }
+                var f = ctrl.files[0]
+                if (f.size > 21000000 || f.fileSize > 21000000) {
+                    imageValid = false;
+                    bootbox.alert("Allowed file size exceeded. (Max. 20 MB)")
+                    $(ctrl).val("");
+                }
+                return imageValid;
+            }
+             function fnDeleteCommonIcon(id, ctrl) {
+                bootbox.confirm("Are you sure to delete this record?", function (result) {
+                    if (result) {
+                        var StringFystring = JSON.stringify({ id: id });
+                        $.ajax({
+                            type: "POST",
+                            async: false,
+                            contentType: "application/json; charset=utf-8",
+                            data: StringFystring,
+                            url: "@Url.Action("DeleteCommonListing", "Common")",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.IsSuccess) {
+                                    $(ctrl).closest('tr').remove();
+                                    bootbox.alert({
+                                        message: data.Message,
+                                        callback: function () {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                                else {
+                                    bootbox.alert(data.Message);
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+
+             function fnDeleteCommonimage(id, ctrl) {
+                bootbox.confirm("Are you sure to delete this icon?", function (result) {
+                    if (result) {
+                        var StringFystring = JSON.stringify({ id: id });
+                        $.ajax({
+                            type: "POST",
+                            async: false,
+                            contentType: "application/json; charset=utf-8",
+                            data: StringFystring,
+                            url: "@Url.Action("DeleteCommonImageListing", "Common")",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.IsSuccess) {
+                                    $(ctrl).closest('tr').remove();
+                                    bootbox.alert({
+                                        message: data.Message,
+                                        callback: function () {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                                else {
+                                    bootbox.alert(data.Message);
+                                }
+                            }
+                        })
+                    }
+                })
+        }
+
+            function readVideo(input, imgid) {
+                if (checkVideo(input, imgid)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            function checkVideo(input) {
+                var VideoValid = true;
+                vid = '#' + $(this).attr("id");
+                var fileExtension = ['mp4', 'avi', 'flv', 'wmv', 'wmv','mov'];
+                if ($.inArray($(input).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                    $('#' + vid).val("");
+                    VideoValid = false;
+                    bootbox.alert("Only '.mp4', '.avi', '.flv', '.wmv', '.wmv' formats are allowed.")
+                }
+                var f = input.files[0]
+
+                //if (f.size > 15750000 || f.fileSize > 15750000) {
+                //    VideoValid = false;
+                //    bootbox.alert("Allowed file size exceeded. (Max. 15 MB)")
+                //    $(vid).val('');
+                //}
+                return VideoValid;
+            }
+
+            function processVideo(ctrl,videoPreview, hdnVideoName, VideoPath) {
+                if (readVideo(ctrl)) {
+                    var data = new FormData();
+                    var files = $('#' + $(ctrl).attr("id")).get(0).files;
+                    data.append('Filepath', VideoPath);
+                    if (files.length > 0) {
+                        data.append("UploadedImage", files[0]);
+                    }
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        url: '@baseUrl' + 'CommonItem/UploadVideoFiles',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (d) {
+                            $('.' + hdnVideoName).val(d.name);
+                            $('.' + videoPreview).attr("href", '@baseUrl' + VideoPath + d.name);
+                            $('.' + videoPreview).removeClass('dnone');
+                        },
+                    });
+                    ajaxRequest.done(function (xhr, textStatus) {
+                    });
+                }
+            }
+    </script>
+</body>
+</html>
+<style>
+    .picsize {
+        color: red !important;
+        font-size: 12px;
+    }
+
+    .dnone {
+        display: none !important;
+    }
+
+    .areaHeight {
+        height: 200px !important;
+    }
+
+    .txtareaheight {
+        height: 150px !important;
+    }
+
+    .newrow {
+        background-color: #d7eaf5;
+    }
+
+    .newrowtext {
+        color: darkblue;
+        padding-top: 5px;
+    }
+
+        .newrowtext small {
+            color: red !important;
+        }
+
+    .mapping {
+        width: 60% !important;
+        display: inline !important;
+    }
+
+    .fileuploadmessage {
+        color: red;
+    }
+</style>
