@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IGS.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+569240e273e9d799c5679fb8535578417ff26adb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dd25b94975816337cd9bf8f400db0e6215eb318")]
 [assembly: System.Reflection.AssemblyProductAttribute("IGS.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IGS.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
