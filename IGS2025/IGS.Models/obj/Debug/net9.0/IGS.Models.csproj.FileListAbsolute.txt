@@ -1,11 +1,12 @@
+E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.deps.json
+E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.dll
+E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.csproj.AssemblyReference.cache
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.GeneratedMSBuildEditorConfig.editorconfig
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.AssemblyInfoInputs.cache
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.AssemblyInfo.cs
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.csproj.CoreCompileInputs.cache
-E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.deps.json
-E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.dll
-E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\IGS.Models.pdb
+E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.sourcelink.json
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.dll
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\refint\IGS.Models.dll
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.pdb

@@ -296,6 +296,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.MvcApplicationPartsAss
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.MvcApplicationPartsAssemblyInfo.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.RazorAssemblyInfo.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.RazorAssemblyInfo.cs
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.sourcelink.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\rjimswa.dswa.cache.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -3548,10 +3549,10 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.build.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.development.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.csproj.Up2Date
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\refint\IGS.Web.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.genruntimeconfig.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\ref\IGS.Web.dll
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

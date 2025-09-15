@@ -9,6 +9,7 @@
 
 namespace IGS.Models
 {
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
     
@@ -32,8 +33,8 @@ namespace IGS.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual AspNetUser AspNetUser1 { get; set; }
+
+        public virtual IdentityUser? CreatedByUser { get; set; }
+        public virtual IdentityUser? ModifiedByUser { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using IGS.Dal.Data;
 using IGS.Dal.Repository.IRepository;
 using IGS.Models;
-using IGS.Repository;
+using IGS.Dal.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

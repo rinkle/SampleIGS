@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IGS.Dal.Repository.Repository;
 
-namespace IGS.Repository
+namespace IGS.Dal.Repository
 {
     public class HomeRepository : Repository<Home>, IHomeRepository
     {

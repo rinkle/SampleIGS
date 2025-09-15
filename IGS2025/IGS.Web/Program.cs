@@ -1,13 +1,11 @@
 ﻿using Globalsetting;
-using IGS.Web.Data;
-
-//using IGS.Dal.Repository;
-//using IGS.Dal.Repository.IRepository;
-//using IGS.Dal.Repository.Repository;
-//using IGS.Data;
+using IGS.Dal.Repository;
+using IGS.Dal.Repository.IRepository;
+using IGS.Dal.Repository.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using IGS.Dal.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -43,8 +41,8 @@ builder.Services.AddSession(options => {
 });
 //builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 //builder.Services.AddRazorPages();
-//builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 var app = builder.Build();
