@@ -44,8 +44,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MZWZ0TWVudS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/Shared/_Notifications.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25zLmNzaHRtbA==
+[E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/Shared/_Scripts.cshtml]

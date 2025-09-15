@@ -43,6 +43,8 @@ builder.Services.AddSession(options => {
 //builder.Services.AddRazorPages();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 //builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 var app = builder.Build();

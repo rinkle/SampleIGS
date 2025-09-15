@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Globalsetting;
+using IGS.Web.Controllers;
 
 namespace IGS.Web.Areas.Identity.Pages.Account
 {
