@@ -18,12 +18,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@Title  @(ViewBag.title != null ? " | " + ViewBag.title : "") </title>
-    <link rel="apple-touch-icon" sizes="57x57" href='@(baseUrl + "images/favicon/favicon.ico")'>
-    <link rel="apple-touch-icon" sizes="192x19" href='@(baseUrl + "images/favicon/android-chrome-192x192.png")'>
-    <link rel="apple-touch-icon" sizes="512x512" href='@(baseUrl + "images/favicon/android-chrome-512x512.png")'>
-    <link rel="apple-touch-icon" sizes="72x72" href='@(baseUrl + "images/favicon/apple-touch-icon.png")'>
-    <link rel="apple-touch-icon" sizes="76x76" href='@(baseUrl + "images/favicon/favicon-16x16.png")'>
-    <link rel="apple-touch-icon" sizes="32x32" href='@(baseUrl + "images/favicon/favicon-32x32.png")'>
+    <link rel="apple-touch-icon" sizes="57x57" href='@(baseUrl + "images/favicon/favicon.ico")' asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="192x19" href='@(baseUrl + "images/favicon/android-chrome-192x192.png")' asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="512x512" href='@(baseUrl + "images/favicon/android-chrome-512x512.png")' asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="72x72" href='@(baseUrl + "images/favicon/apple-touch-icon.png")' asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="76x76" href='@(baseUrl + "images/favicon/favicon-16x16.png")' asp-append-version="true" />
+    <link rel="apple-touch-icon" sizes="32x32" href='@(baseUrl + "images/favicon/favicon-32x32.png")' asp-append-version="true" />
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap -->
@@ -90,8 +90,8 @@
 
     <script type="text/javascript">
         var currentView = @Html.Raw(JsonSerializer.Serialize(
-                          string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
-                  ));
+                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+                                                                                                                                                ));
             function readimage(input, imgid) {
                 if (checkImage(input, imgid)) {
                     if (input.files && input.files[0]) {

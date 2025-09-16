@@ -116,7 +116,7 @@ namespace IGS.Web.Areas.Identity.Pages.Account
                 {
                     if (returnUrl == "/")
                     {
-                        return Redirect(baseUrl + "admin/home");
+                        return Redirect(baseUrl + "admin/home/");
                     }
                     else
                     {
@@ -126,7 +126,7 @@ namespace IGS.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    return Redirect(baseUrl + "admin/home");
+                    return Redirect(baseUrl + "admin/home/");
                 }
             }
 

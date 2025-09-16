@@ -3,6 +3,7 @@ using IGS.Dal.Data;
 using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
+using IGS.Dal.Services;
 using IGS.Dal.Sql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -58,6 +59,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
+builder.Services.AddScoped<ILoggerService, LoggerService>();
 
 var app = builder.Build();
 

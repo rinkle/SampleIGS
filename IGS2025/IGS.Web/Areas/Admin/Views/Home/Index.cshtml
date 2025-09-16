@@ -6,15 +6,16 @@
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
 }
 
-@if (Model != null && Model.Home!=null)
-{
-    <div class="right_col" role="main">
-        <div class="">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <partial name="_Notification" />
-                </div>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @await Html.PartialAsync("_Notification", Model)
             </div>
+        </div>
+        @if (Model != null && Model.Home != null)
+        {
             <div class="row">
                 @using (Html.BeginForm("SaveHomeData", "home", FormMethod.Post, new { id = "form-Home", enctype = "multipart/form-data", data_parsley_validate = "", novalidate = "", @class = "form-horizontal form-label-left input_mask" }))
                 {
@@ -25,7 +26,7 @@
                         {
                             <div class="row">
                                 <div class="col-md-12 ">
-                                   
+
                                     <div class="x_title">
                                         <h2>Disclaimer Section <small>:</small></h2>
                                         <div class="clearfix"></div>
@@ -46,7 +47,7 @@
 
                                     <div class="row"><hr /></div>
 
-                                   
+
                                     <div class="x_title ">
                                         <h2>Investor Login<small>:</small></h2>
                                         <div class="clearfix"></div>
@@ -101,6 +102,6 @@
                     </div>
                 }
             </div>
-        </div>
+        }
     </div>
-}
+</div>

@@ -1,11 +1,19 @@
-﻿@if (TempData["success"] != null)
+﻿@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@using System.Text.Json
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+
+@if (TempData["success"] != null)
 {
     string? successMessage = Convert.ToString(TempData["success"]);
     if (!string.IsNullOrEmpty(successMessage))
     {
         successMessage = successMessage.Replace("[", "").Replace("]","").Replace("\"","");
     }
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src='@(baseUrl + "lib/jquery/dist/jquery.min.js")'></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
                 toastr.options = {
@@ -30,7 +38,13 @@
 }
 @if (TempData["error"] != null)
 {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    string? errorMessage = Convert.ToString(TempData["error"]);
+    if (!string.IsNullOrEmpty(errorMessage))
+    {
+        errorMessage = errorMessage.Replace("[", "").Replace("]", "").Replace("\"", "");
+    }
+
+    <script src='@(baseUrl + "lib/jquery/dist/jquery.min.js")'></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
                 toastr.options = {
@@ -50,6 +64,6 @@
           "showMethod": "fadeIn",
           "hideMethod": "fadeOut"
         }
-         toastr.error('@TempData["error"]');
+         toastr.error('@errorMessage');
     </script>
 }

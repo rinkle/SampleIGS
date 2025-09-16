@@ -1,5 +1,6 @@
 ﻿using Globalsetting;
 using IGS.Dal.Repository.IRepository;
+using IGS.Dal.Services;
 using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
@@ -16,20 +17,32 @@ namespace IGS.Web.Areas.Admin.Controllers
     {
         private readonly string baseUrl;
         private readonly IUnitOfWork _unitOfWork;
-        public HomeController(IOptions<AppSettings> options, IUnitOfWork unitOfWork)
+        private readonly ILoggerService _logger;
+
+        public HomeController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger)
         {
             baseUrl = options.Value.BaseUrl;
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
         public async Task<IActionResult> Index()
         {
-            // Call stored procedure via HomeRepository
-            var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
+            try
+            {
+                throw new Exception("Test exception");
+                // Call stored procedure via HomeRepository
+                var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
+                // Initialize ViewModel
+                var vm = new HomeViewModel(homeResult);
+                return View(vm);
+            }
+            catch (Exception Ex)
+            {
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+            }
+            return View(null);
 
-            // Initialize ViewModel
-            var vm = new HomeViewModel(homeResult);
-
-            return View(vm);
         }
 
         [HttpPost]
@@ -50,7 +63,7 @@ namespace IGS.Web.Areas.Admin.Controllers
                 }
             }
 
-            SuccessNotification("Home data saved successfully!");
+            SuccessNotification("Home page data saved successfully!");
             return RedirectToAction(nameof(Index));
         }
 
