@@ -71,7 +71,18 @@
             <!-- top navigation -->
             @await Html.PartialAsync("_TopNavigation")
             <!-- page content -->
-            @RenderBody()
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            @* @await Html.PartialAsync("_Notification", Model) *@
+                            <partial name="_Notification" />
+                        </div>
+                    </div>
+                    @RenderBody()
+                </div>
+            </div>
+            
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -90,8 +101,8 @@
 
     <script type="text/javascript">
         var currentView = @Html.Raw(JsonSerializer.Serialize(
-                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
-                                                                                                                                                ));
+                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+                                                                                                                                                                                                                                                                                                ));
             function readimage(input, imgid) {
                 if (checkImage(input, imgid)) {
                     if (input.files && input.files[0]) {

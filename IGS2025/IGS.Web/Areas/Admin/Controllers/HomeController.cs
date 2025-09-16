@@ -29,8 +29,6 @@ namespace IGS.Web.Areas.Admin.Controllers
         {
             try
             {
-                throw new Exception("Test exception");
-                // Call stored procedure via HomeRepository
                 var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
                 // Initialize ViewModel
                 var vm = new HomeViewModel(homeResult);
@@ -49,22 +47,30 @@ namespace IGS.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveHomeData(HomeViewModel model)
         {
-            if (model.Home != null)
+            try
             {
-                var entity = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
-                if (entity != null)
+                if (model.Home != null)
                 {
-                    entity.Disclaimer = model.Home.Disclaimer;
-                    entity.InvestorLogin = model.Home.InvestorLogin;
-                    entity.LinkedInUrl = model.Home.LinkedInUrl;
-                    entity.VimeoVideoUrl = model.Home.VimeoVideoUrl;
-
-                    await _unitOfWork.SaveAsync();
+                    var entity = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
+                    if (entity != null)
+                    {
+                        entity.Disclaimer = model.Home.Disclaimer;
+                        entity.InvestorLogin = model.Home.InvestorLogin;
+                        entity.LinkedInUrl = model.Home.LinkedInUrl;
+                        entity.VimeoVideoUrl = model.Home.VimeoVideoUrl;
+                        await _unitOfWork.SaveAsync();
+                        SuccessNotification("Home page data saved successfully!");
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
             }
+            catch (Exception Ex)
+            {
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+            }
 
-            SuccessNotification("Home page data saved successfully!");
-            return RedirectToAction(nameof(Index));
+            return View(null);
         }
 
     }

@@ -6,102 +6,92 @@
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
 }
 
-
-<div class="right_col" role="main">
-    <div class="">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                @await Html.PartialAsync("_Notification", Model)
-            </div>
-        </div>
-        @if (Model != null && Model.Home != null)
+@if (Model != null && Model.Home != null)
+{
+    <div class="row">
+        @using (Html.BeginForm("SaveHomeData", "home", FormMethod.Post, new { id = "form-Home", enctype = "multipart/form-data", data_parsley_validate = "", novalidate = "", @class = "form-horizontal form-label-left input_mask" }))
         {
-            <div class="row">
-                @using (Html.BeginForm("SaveHomeData", "home", FormMethod.Post, new { id = "form-Home", enctype = "multipart/form-data", data_parsley_validate = "", novalidate = "", @class = "form-horizontal form-label-left input_mask" }))
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Home!.Id)
+            <div class="col-md-12 col-xs-12">
+                @if (Model.Home != null)
                 {
-                    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(x => x.Home!.Id)
-                    <div class="col-md-12 col-xs-12">
-                        @if (Model.Home != null)
-                        {
-                            <div class="row">
-                                <div class="col-md-12 ">
+                    <div class="row">
+                        <div class="col-md-12 ">
 
-                                    <div class="x_title">
-                                        <h2>Disclaimer Section <small>:</small></h2>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="x_panel">
-                                        <div class="x_content">
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <br />
-                                                    <label for="Disclaimer">Disclaimer :</label>
-                                                    @Html.TextAreaFor(mode => Model.Home.Disclaimer, new { @class = "form-control", placeholder = "Disclaimer" })
-                                                    <br />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row"><hr /></div>
-
-
-                                    <div class="x_title ">
-                                        <h2>Investor Login<small>:</small></h2>
-                                        <div class="clearfix"></div>
-                                    </div>
-
-                                    <div class="x_panel">
-                                        <div class="x_content">
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <br />
-                                                    <label for="Investor Login">Investor Login/LP Login :</label>
-                                                    @Html.TextBoxFor(mode => Model.Home.InvestorLogin, new { @class = "form-control", placeholder = "Investor Login", type = "url" })
-                                                    <br />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <label for="LinkedInUrl">LinkedIn Url :</label>
-                                                    @Html.TextBoxFor(mode => Model.Home.LinkedInUrl, new { @class = "form-control", placeholder = "LinkedIn Url", type = "url" })
-                                                    <br />
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <label for="vimeoVideoUrl">vimeo Video Url :</label>
-                                                    @Html.TextBoxFor(mode => Model.Home.VimeoVideoUrl, new { @class = "form-control", placeholder = "vimeo video Url", type = "url" })
-                                                    <br />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3 display_inputx form-group has-feedback">
-                                                    <label for="Website Update Date">Website Update Date (MM/dd/yyyy)* :</label>
-                                                    @Html.TextBoxFor(mode => Model.Home.WebsiteUpdateDateStr, new { @class = "form-control has-feedback-left", placeholder = "Website update date", required = "", aria_describedby = "inputSuccess2Status" })
-                                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                                </div>
-                                            </div>
+                            <div class="x_title">
+                                <h2>Disclaimer Section <small>:</small></h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <br />
+                                            <label for="Disclaimer">Disclaimer :</label>
+                                            @Html.TextAreaFor(mode => Model.Home.Disclaimer, new { @class = "form-control", placeholder = "Disclaimer" })
+                                            <br />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                            </div>
-                            <div class="x_title" style="width:100%;float:right;">
+
+                            <div class="row"><hr /></div>
+
+
+                            <div class="x_title ">
+                                <h2>Investor Login<small>:</small></h2>
                                 <div class="clearfix"></div>
-                                <div style="float:right;padding-right:10px;">
-                                    <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                            </div>
+
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <br />
+                                            <label for="Investor Login">Investor Login/LP Login :</label>
+                                            @Html.TextBoxFor(mode => Model.Home.InvestorLogin, new { @class = "form-control", placeholder = "Investor Login", type = "url" })
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <label for="LinkedInUrl">LinkedIn Url :</label>
+                                            @Html.TextBoxFor(mode => Model.Home.LinkedInUrl, new { @class = "form-control", placeholder = "LinkedIn Url", type = "url" })
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <label for="vimeoVideoUrl">vimeo Video Url :</label>
+                                            @Html.TextBoxFor(mode => Model.Home.VimeoVideoUrl, new { @class = "form-control", placeholder = "vimeo video Url", type = "url" })
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 display_inputx form-group has-feedback">
+                                            <label for="Website Update Date">Website Update Date (MM/dd/yyyy)* :</label>
+                                            @Html.TextBoxFor(mode => Model.Home.WebsiteUpdateDateStr, new { @class = "form-control has-feedback-left", placeholder = "Website update date", required = "", aria_describedby = "inputSuccess2Status" })
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="clearfix"></div>
                             </div>
-                        }
+                        </div>
+
+                    </div>
+                    <div class="x_title" style="width:100%;float:right;">
+                        <div class="clearfix"></div>
+                        <div style="float:right;padding-right:10px;">
+                            <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 }
             </div>
         }
     </div>
-</div>
+}
