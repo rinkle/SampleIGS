@@ -30,8 +30,8 @@ namespace IGS.Web.Areas.Admin.Controllers
             try
             {
                 var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
-                // Initialize ViewModel
-                var vm = new HomeViewModel(homeResult);
+                var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
+                var vm = new HomeViewModel(homeResult, allListings.ToList());
                 return View(vm);
             }
             catch (Exception Ex)

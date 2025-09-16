@@ -18,4 +18,21 @@ namespace Globalsetting
         Error,
         Info
     }
+    public class PageSection
+    {
+        public const string HomeCarousel = "Carousel";
+    }
+
+    public enum PageEnum
+    {
+        Home = 1,
+        Team = 2,
+        TeamBio = 3,
+        Experience = 4,
+        ExperienceDetails = 5,
+        Careers = 6,
+        Contact = 7,
+        PrivacyPolicy = 8,
+        TermsofUse = 9
+    }
 }

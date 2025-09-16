@@ -4,7 +4,7 @@ using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
 using IGS.Dal.Services;
-using IGS.Dal.Sql;
+using IGS.Dal.SqlHelper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

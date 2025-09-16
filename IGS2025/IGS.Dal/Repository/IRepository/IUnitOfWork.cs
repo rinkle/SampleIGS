@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
         IHomeRepository Home { get; }
+        ICommonListingRepository CommonListing { get; }
         void Save();
         Task SaveAsync();
     }

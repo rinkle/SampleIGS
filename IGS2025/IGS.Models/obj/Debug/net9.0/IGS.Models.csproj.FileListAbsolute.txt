@@ -11,3 +11,6 @@ E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.dll
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\refint\IGS.Models.dll
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\ref\IGS.Models.dll
+E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\Globalsetting.dll
+E:\Git\SampleIGS\IGS2025\IGS.Models\bin\Debug\net9.0\Globalsetting.pdb
+E:\Git\SampleIGS\IGS2025\IGS.Models\obj\Debug\net9.0\IGS.Models.csproj.Up2Date

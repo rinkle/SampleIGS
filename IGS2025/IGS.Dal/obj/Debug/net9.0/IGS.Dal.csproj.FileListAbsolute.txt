@@ -14,3 +14,5 @@ E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\refint\IGS.Dal.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\ref\IGS.Dal.dll
+E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\Globalsetting.dll
+E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\Globalsetting.pdb

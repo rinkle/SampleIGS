@@ -1,9 +1,9 @@
 ﻿using IGS.Dal.Data;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
-using IGS.Dal.Sql;
+using IGS.Dal.SqlHelper;
 using IGS.Models;
-using IGS.Models.ViewModels;
+using IGS.Models.KeyLessModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace IGS.Dal.Repository

@@ -212,7 +212,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Globalsetting.csproj": {
+                "projectPath": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Globalsetting.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

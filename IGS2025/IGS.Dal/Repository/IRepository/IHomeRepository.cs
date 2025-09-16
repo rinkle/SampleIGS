@@ -1,5 +1,5 @@
 ﻿using IGS.Models;
-using IGS.Models.ViewModels;
+using IGS.Models.KeyLessModels;
 
 namespace IGS.Dal.Repository.IRepository
 {
