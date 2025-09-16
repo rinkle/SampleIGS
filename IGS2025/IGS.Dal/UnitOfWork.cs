@@ -1,28 +1,25 @@
 ﻿using IGS.Dal.Data;
 using IGS.Dal.Repository.IRepository;
-using IGS.Models;
-using IGS.Dal.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IGS.Dal.Sql;
 
 namespace IGS.Dal.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;
+        private readonly ISqlHelper _sql;
+
         public IHomeRepository Home { get; private set; }
-        public UnitOfWork(ApplicationDbContext db)
+
+        public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
-            Home = new HomeRepository(_db);
+            _sql = sql;
+            Home = new HomeRepository(_db, _sql);
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
+        public void Save() => _db.SaveChanges();
+
+        public async Task SaveAsync() => await _db.SaveChangesAsync();
     }
 }

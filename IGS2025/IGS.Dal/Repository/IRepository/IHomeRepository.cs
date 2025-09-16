@@ -1,14 +1,11 @@
 ﻿using IGS.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IGS.Models.ViewModels;
 
 namespace IGS.Dal.Repository.IRepository
 {
     public interface IHomeRepository : IRepository<Home>
     {
         void Update(Home obj);
+        Task<GetHome_Result?> GetHomeFromSpAsync();
     }
 }

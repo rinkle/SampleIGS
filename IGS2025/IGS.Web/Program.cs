@@ -1,51 +1,63 @@
 ﻿using Globalsetting;
+using IGS.Dal.Data;
 using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
+using IGS.Dal.Sql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using IGS.Dal.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.ConfigureApplicationCookie(options => {
-    options.LoginPath = $"/igsadmin";
-    options.LogoutPath = $"/Identity/Account/Logout";
-    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/igsadmin";
+    options.LogoutPath = "/Identity/Account/Logout";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
+
 builder.Services.AddRazorPages(options =>
 {
-    // 👇 Map /igsadmin → Identity Login page
+    // Map /igsadmin → Identity Login page
     options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/igsadmin");
 });
 
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddSingleton<GlobalEnvironmentSetting>();
-builder.Services.AddHttpContextAccessor();
+
+// 👇 Scoped instead of Singleton
+builder.Services.AddScoped<GlobalEnvironmentSetting>();
 builder.Services.AddScoped<GlobalCookies>();
+
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(options => {
+builder.Services.AddSession(options =>
+{
     options.IdleTimeout = TimeSpan.FromMinutes(100);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-//builder.Services.AddScoped<IDbInitializer, DbInitializer>();
-//builder.Services.AddRazorPages();
+
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-
-//builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 
 var app = builder.Build();
 
@@ -57,25 +69,25 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-//app.UseStaticFiles();
+
+// Static files with caching
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
-        // Cache for 30 days
-        ctx.Context.Response.Headers.Append(
-            "Cache-Control", "public,max-age=2592000"); // 30 days
+        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
     }
 });
+
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
+
 app.MapRazorPages();
 
 app.MapControllerRoute(
