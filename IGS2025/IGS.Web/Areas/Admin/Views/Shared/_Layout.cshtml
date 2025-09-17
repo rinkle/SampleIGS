@@ -29,6 +29,7 @@
     <!-- Bootstrap -->
     <meta name="theme-color" content="#ffffff">
     @await Html.PartialAsync("_CssSection")
+
     <style>
         .port .thumbnail {
             height: 215px;
@@ -37,6 +38,10 @@
 
         .img-circle {
             border-radius: 0% !important;
+        }
+
+        small {
+            margin-left: 0px !important;
         }
     </style>
     @RenderSection("scripttop", false)
@@ -101,8 +106,8 @@
 
     <script type="text/javascript">
         var currentView = @Html.Raw(JsonSerializer.Serialize(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ));
             function readimage(input, imgid) {
                 if (checkImage(input, imgid)) {
                     if (input.files && input.files[0]) {
@@ -263,9 +268,9 @@
             });
 
 
-          
 
-           
+
+
 
            function readVideo(input, imgid) {
                 if (checkVideo(input, imgid)) {
@@ -320,7 +325,7 @@
                 }
             }
     </script>
-    
+
     <script type="text/javascript">
          function fnDeleteCommonIcon(id, ctrl) {
             bootbox.confirm("Are you sure to delete this record?", function (result) {
@@ -398,8 +403,8 @@
             });
         }
     </script>
-   
-    
+
+
     <script type="text/javascript">
             function processImage(ctrl, imagepreview, hdnImageName, imagePath, thumbWidth, ThumbHeight, ThumbPath) {
             if (checkImageWithClass(ctrl)) {
@@ -495,7 +500,12 @@
 
     .newrowtext {
         color: darkblue;
-        padding-top: 5px;
+        padding-top: 0px;
+    }
+
+    small {
+        color: darkblue !important;
+        height:200px !important;
     }
 
         .newrowtext small {
@@ -510,4 +520,5 @@
     .fileuploadmessage {
         color: red;
     }
+
 </style>

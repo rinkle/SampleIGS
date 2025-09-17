@@ -54,6 +54,8 @@ namespace IGS.Web.Areas.Admin.Controllers
                 if (model.Home != null)
                 {
                     await _commonListingService.SaveCommonListingAsync(model.Carousel);
+                    await _commonListingService.SaveCommonListingAsync(model.AtAGlance);
+
                     var homeData = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
                     if (homeData != null)
                     {

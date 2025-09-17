@@ -21,6 +21,12 @@ namespace Globalsetting
     public class PageSection
     {
         public const string HomeCarousel = "Carousel";
+        public const string HomeAtAGlance = "At-A-Glance";
+        public const string HomeTransactionsandGrowth = "Transactions and Growth";
+        public const string HomeCoreAreasofFocus = "Core Areas of Focus";
+
+
+
     }
 
     public enum PageEnum

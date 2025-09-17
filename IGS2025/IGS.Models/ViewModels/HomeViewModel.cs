@@ -7,6 +7,8 @@ namespace IGS.Models.ViewModels
     {
         public GetHome_Result Home { get; set; } = new(); // ✅ always initialized
         public List<GetCommonListing_Result> Carousel { get; set; } = new();
+        public List<GetCommonListing_Result> AtAGlance { get; set; } = new();
+
 
         public HomeViewModel() { }
 
@@ -23,15 +25,17 @@ namespace IGS.Models.ViewModels
                 .ToList()
                 ?? new List<GetCommonListing_Result>();
 
+            AtAGlance = allListings?
+                .Where(x => !string.IsNullOrEmpty(x.Section) &&
+                            x.Section.Equals(PageSection.HomeAtAGlance, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(o => o.DisplayOrder)
+                .ToList()
+                ?? new List<GetCommonListing_Result>();
+
             if (isAdmin)
             {
                 // Always add one empty row for admin users
-                Carousel.Add(new GetCommonListing_Result
-                {
-                    Id = 0,
-                    Section = PageSection.HomeCarousel,
-                    Fk_PageId = (int)PageEnum.Home
-                });
+                Carousel.Add(new GetCommonListing_Result { Id = 0, Section = PageSection.HomeCarousel, Fk_PageId = (int)PageEnum.Home });
             }
         }
     }

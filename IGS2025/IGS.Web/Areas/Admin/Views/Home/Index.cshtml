@@ -6,7 +6,7 @@
     ViewBag.Title = "Home Page Management";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
-    bool show = false;
+    bool IsShow = false;
 }
 
 @if (Model?.Home != null)
@@ -17,21 +17,25 @@
             @Html.AntiForgeryToken()
             <input asp-for="Home.Id" type="hidden" />
             <div class="col-md-12 col-xs-12">
+
                 @if (Model.Carousel != null && Model.Carousel.Count > 0)
                 {
+                    <div class="x_title">
+                        <h2>Carousel Section<small>:</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
                     for (int i = 0; i < Model.Carousel.Count; i++)
                     {
                         <input asp-for="Carousel[i].Id" type="hidden" />
                         <input asp-for="Carousel[i].Section" type="hidden" />
                         <input asp-for="Carousel[i].Fk_PageId" type="hidden" />
-
-                        <div class="col-md-4 col-sm-4 col-xs-4 form-group rowcontainer">
+                        <div class="col-md-3 col-sm-3 col-xs-3 form-group rowcontainer">
                             <div class="x_panel">
                                 <div class="x_content">
                                     <div class="@(Model.Carousel[i].Id > 0 ? "x_title" : "x_title newrow")">
                                         <h2 class="@(Model.Carousel[i].Id > 0 ? "" : "newrowtext")">
-                                            @(Model.Carousel[i].Id > 0 ? "" : "New ") Carousel @(i + 1)
-                                            <small>@(Model.Carousel[i].Id > 0 ? "" : "Please enter order/title to create new record")</small>
+                                            @(Model.Carousel[i].Id > 0 ? "" : "New ") Carousel @(i + 1)<br />
+                                            <small>@(Model.Carousel[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
                                         </h2>
 
                                         @if (Model.Carousel[i].Id > 0)
@@ -81,7 +85,7 @@
                                         </div>
                                     </div>
                                     @* Disabled section (1== -1) *@
-                                    @if (show)
+                                    @if (IsShow)
                                     {
                                         <div class="row">
                                             <div class="col-md-12 col-sm-6 col-xs-6 form-group">
@@ -103,8 +107,105 @@
                     }
                 }
 
+                <div class="row">
+                    <hr />
+                </div>
+
+                @if (Model.AtAGlance != null && Model.AtAGlance.Count > 0)
+                {
+                    <div class="x_title">
+                        <h2>At-A-Glance Section<small>:</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    for (int i = 0; i < Model.AtAGlance.Count; i++)
+                    {
+                        <input asp-for="AtAGlance[i].Id" type="hidden" />
+                        <input asp-for="AtAGlance[i].Section" type="hidden" />
+                        <input asp-for="AtAGlance[i].Fk_PageId" type="hidden" />
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.AtAGlance[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.AtAGlance[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.AtAGlance[i].Id > 0 ? "" : "New ") At-A-Glance @(i + 1)<br />
+                                            <small>@(Model.AtAGlance[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                        </h2>
+
+                                        @if (Model.AtAGlance[i].Id > 0 && IsShow)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.AtAGlance[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 form-group">
+                                            <label>Image :</label>
+                                            <input style="width:88px;" id="AtAGlancelogo@i" type="file"
+                                                   onchange="processImage(this,'imagepreviewAtAGlance_@i','hdnImageAtAGlance_@i','@DbImagePath.HomeImage');" />
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                            <br />
+                                            <img class="imagepreviewAtAGlance_@i"
+                                                 src="@(baseUrl + DbImagePath.HomeImage + Model.AtAGlance[i].UploadedData)"
+                                                 alt="image"
+                                                 style="width: 50px; height: 50px; background: #374A63;"
+                                                 onerror="imgErrorNormal(this);" asp-append-version="true" />
+                                            <input asp-for="AtAGlance[i].UploadedData" type="hidden" class="hdnImageAtAGlance_@i" />
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <label>Display Order* :</label>
+                                            <input asp-for="AtAGlance[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Caption :</label>
+                                            <input asp-for="AtAGlance[i].Heading" class="form-control" placeholder="Caption" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Description:</label>
+                                            <textarea asp-for="AtAGlance[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
+                                    @if (IsShow)
+                                    {
+
+                                        <div class="row dnone">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Image Label :</label>
+                                                <input asp-for="AtAGlance[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <hr />
+                </div>
+
                 <div class="x_title">
-                    <h2>Disclaimer Section <small>:</small></h2>
+                    <h2>Partner for Transactions Section <small>:</small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_panel">
@@ -112,31 +213,18 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <br />
-                                <label asp-for="Home.TransactionsGrowthHeading"></label>
-                                <textarea asp-for="Home.TransactionsGrowthHeading" class="form-control" placeholder="Transactions Growth Heading"></textarea>
-                                <span asp-validation-for="Home.TransactionsGrowthHeading" class="text-danger"></span>
-                                <br />
+                                <label asp-for="Home.TransactionsGrowthHeading">Transactions Growth Heading</label>
+                                <input asp-for="Home.TransactionsGrowthHeading" class="form-control" placeholder="Transactions Growth Heading" />
                             </div>
                         </div>
-
-                        <!-- Brochure Upload -->
                         <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <br />
-                                <label for="Brochure">Firm Brochure :</label>
-                                <br />
-                                <input type="file" name="Brochure" id="Brochure" class="form-control" />
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                <br /><br />
-                                @if (!string.IsNullOrEmpty(Model.Home.OverviewPdf))
-                                {
-                                    <a href="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.OverviewPdf}")" target="_blank">
-                                        <i class="fa fa-file-pdf-o"></i> View Firm Brochure
-                                    </a>
-                                }
+                                <label asp-for="Home.TransactionsGrowthDescription">Transactions Growth Description</label>
+                                <textarea asp-for="Home.TransactionsGrowthDescription" class="form-control" placeholder="Transactions Growth Heading"></textarea>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
                 <div class="row"><hr /></div>
@@ -185,6 +273,24 @@
                                 <span asp-validation-for="Home.WebsiteUpdateDateStr" class="text-danger"></span>
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            </div>
+                        </div>
+                        <!-- Brochure Upload -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <br />
+                                <label for="Brochure">Firm Brochure :</label>
+                                <br />
+                                <input type="file" name="Brochure" id="Brochure" class="form-control" />
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <br /><br />
+                                @if (!string.IsNullOrEmpty(Model.Home.OverviewPdf))
+                                {
+                                    <a href="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.OverviewPdf}")" target="_blank">
+                                        <i class="fa fa-file-pdf-o"></i> View Firm Brochure
+                                    </a>
+                                }
                             </div>
                         </div>
                     </div>
