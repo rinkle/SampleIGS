@@ -76,4 +76,27 @@ namespace Globalsetting
         public const string ContactInvestmentLeadership = "images/Contact/Members/InvestmentLeadership/";
         public const string ContactOperationsLeadership = "images/Contact/Members/OperationsLeadership/";
     }
+
+    public class Message
+    {
+        public const string SuccessMessage = "Saved successfully";
+        public const string DeleteSuccessMessage = "Record has been deleted successfully";
+        public const string DataNotFoundMessage = "Data not found";
+        public const string Error = "Error with Id: ";
+        public const string DataNotSaved = "Data can not be saved, please contact admin";
+    }
+    public class Newstype
+    {
+        public const string External = "External";
+        public const string Internal = "Internal";
+        public const string PDF = "PDF";
+    }
+
+
+    public enum Newstypevalue
+    {
+        Externallink = 1,
+        Internallink = 2,
+        PDF = 3
+    }
 }
