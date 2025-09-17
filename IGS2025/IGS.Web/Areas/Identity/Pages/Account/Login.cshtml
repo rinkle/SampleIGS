@@ -75,17 +75,13 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                             </div>
                         </div>
-
-
                         <div class="control-group">
-                            <input asp-for="Input.Email" class="form-control" autocomplete="off" required="true" placeholder="User Name" />
-
+                            <input asp-for="Input.Email" type="text" class="form-control" autocomplete="username" placeholder="User Name" required />
                         </div>
                         <div class="control-group">
-                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" required="true" placeholder="password" data-val="true" data-val-required="The Password field is required." />
-
-
+                            <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password" placeholder="Password" required />
                         </div>
+
                         <div class="submit">
                             <input class="form-check-input" asp-for="Input.RememberMe" />
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
@@ -114,5 +110,5 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 }
