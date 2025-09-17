@@ -3249,7 +3249,6 @@ wwwroot\images\favicon\favicon.ico
 wwwroot\images\favicon\favicon-16x16.png
 wwwroot\images\favicon\favicon-32x32.png
 wwwroot\images\favicon\site.webmanifest
-wwwroot\images\home\12766c81-3652-45b5-858a-10678ab81e76.pdf
 wwwroot\images\icons\arrow-right.svg
 wwwroot\images\icons\chart.svg
 wwwroot\images\icons\core-1.svg
