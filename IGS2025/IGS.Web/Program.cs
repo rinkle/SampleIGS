@@ -63,7 +63,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
-
+builder.Services.AddScoped<ICommonListingService, CommonListingService>();
 var app = builder.Build();
 
 // 🔥 Global error handler → logs exceptions to DB

@@ -19,12 +19,13 @@ namespace IGS.Web.Areas.Admin.Controllers
         private readonly string baseUrl;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
-
-        public HomeController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger)
+        private readonly ICommonListingService _commonListingService;
+        public HomeController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger, ICommonListingService commonListingService)
         {
             baseUrl = options.Value.BaseUrl;
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _commonListingService = commonListingService;
         }
         public async Task<IActionResult> Index()
         {
@@ -32,7 +33,7 @@ namespace IGS.Web.Areas.Admin.Controllers
             {
                 var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
                 var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
-                var vm = new HomeViewModel(homeResult, allListings.ToList());
+                var vm = new HomeViewModel(homeResult, allListings.ToList(),true);
                 return View(vm);
             }
             catch (Exception Ex)
@@ -52,6 +53,7 @@ namespace IGS.Web.Areas.Admin.Controllers
             {
                 if (model.Home != null)
                 {
+                    await _commonListingService.SaveCommonListingAsync(model.Carousel);
                     var homeData = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
                     if (homeData != null)
                     {

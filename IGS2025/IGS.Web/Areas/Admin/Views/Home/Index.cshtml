@@ -20,43 +20,8 @@
 
             <div class="col-md-12 col-xs-12">
 
-                <!-- Disclaimer Section -->
-                <div class="x_title">
-                    <h2>Disclaimer Section <small>:</small></h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_panel">
-                    <div class="x_content">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <br />
-                                <label asp-for="Home.TransactionsGrowthHeading"></label>
-                                <textarea asp-for="Home.TransactionsGrowthHeading" class="form-control" placeholder="Transactions Growth Heading"></textarea>
-                                <span asp-validation-for="Home.TransactionsGrowthHeading" class="text-danger"></span>
-                                <br />
-                            </div>
-                        </div>
-
-                        <!-- Brochure Upload -->
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                <br />
-                                <label for="Brochure">Firm Brochure :</label>
-                                <br />
-                                <input type="file" name="Brochure" id="Brochure" class="form-control" />
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                <br /><br />
-                                @if (!string.IsNullOrEmpty(Model.Home.OverviewPdf))
-                                {
-                                    <a href="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.OverviewPdf}")" target="_blank">
-                                        <i class="fa fa-file-pdf-o"></i> View Firm Brochure
-                                    </a>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
+              
                 @if (Model.Carousel != null && Model.Carousel.Count > 0)
                 {
                     for (int i = 0; i < Model.Carousel.Count; i++)
@@ -143,7 +108,42 @@
                     }
                 }
 
+                <div class="x_title">
+                    <h2>Disclaimer Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Home.TransactionsGrowthHeading"></label>
+                                <textarea asp-for="Home.TransactionsGrowthHeading" class="form-control" placeholder="Transactions Growth Heading"></textarea>
+                                <span asp-validation-for="Home.TransactionsGrowthHeading" class="text-danger"></span>
+                                <br />
+                            </div>
+                        </div>
 
+                        <!-- Brochure Upload -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <br />
+                                <label for="Brochure">Firm Brochure :</label>
+                                <br />
+                                <input type="file" name="Brochure" id="Brochure" class="form-control" />
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                                <br /><br />
+                                @if (!string.IsNullOrEmpty(Model.Home.OverviewPdf))
+                                {
+                                    <a href="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.OverviewPdf}")" target="_blank">
+                                        <i class="fa fa-file-pdf-o"></i> View Firm Brochure
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row"><hr /></div>
 
                 <!-- Investor Login Section -->
