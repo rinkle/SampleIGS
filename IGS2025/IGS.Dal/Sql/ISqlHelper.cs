@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IGS.Dal.SqlHelper
+namespace IGS.Dal.Sql
 {
     public interface ISqlHelper
     {

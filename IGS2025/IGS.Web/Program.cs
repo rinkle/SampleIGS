@@ -4,14 +4,13 @@ using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
 using IGS.Dal.Services;
-using IGS.Dal.SqlHelper;
+using IGS.Dal.Sql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -32,18 +31,14 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
 
 builder.Services.AddRazorPages(options =>
 {
-    // Map /igsadmin → Identity Login page
     options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/igsadmin");
 });
 
 builder.Services.AddHttpContextAccessor();
-
-// 👇 Scoped instead of Singleton
 builder.Services.AddScoped<GlobalEnvironmentSetting>();
 builder.Services.AddScoped<GlobalCookies>();
 
@@ -62,8 +57,21 @@ builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 
 var app = builder.Build();
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        using var scope = app.Services.CreateScope();
+        var loggerService = scope.ServiceProvider.GetRequiredService<ILoggerService>();
+        await loggerService.LogErrorAsync(ex); // your implementation logs to DB
+        throw; // rethrow so normal error handling (UseExceptionHandler) still applies
+    }
+});
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -75,8 +83,6 @@ else
 }
 
 app.UseHttpsRedirection();
-
-// Static files with caching
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
@@ -86,12 +92,13 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseRouting();
+
+// ✅ recommended order
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();
 
 app.MapRazorPages();
-
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

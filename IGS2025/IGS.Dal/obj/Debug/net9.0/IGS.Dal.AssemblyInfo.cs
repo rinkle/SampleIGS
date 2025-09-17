@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IGS.Dal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e4c2920bb68c98f26947fefc0c94efd5dac397a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90b03ada2bbca74a11417fd2bf91874076672825")]
 [assembly: System.Reflection.AssemblyProductAttribute("IGS.Dal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IGS.Dal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

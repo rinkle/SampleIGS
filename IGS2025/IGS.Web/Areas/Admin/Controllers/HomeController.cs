@@ -46,7 +46,7 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveHomeData(HomeViewModel model)
+        public async Task<IActionResult> SaveHomeData(HomeViewModel model, IFormFile? Brochure)
         {
             try
             {
@@ -74,21 +74,59 @@ namespace IGS.Web.Areas.Admin.Controllers
                         homeData.OverviewPdf = model.Home.OverviewPdf;
                         homeData.WebsiteUpdateDate = model.Home.WebsiteUpdateDate;
                         homeData.ModifiedDate = DateTime.Now;
-                        homeData.ModifiedBy = User?.Identity is ClaimsIdentity identity ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value : null;
+                        homeData.ModifiedBy = User?.Identity is ClaimsIdentity identity
+                            ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                            : null;
+
+                        #region save Brochure
+                        if (Brochure != null && Brochure.Length > 0)
+                        {
+                            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", DbImagePath.HomeImage);
+                            if (!Directory.Exists(uploadsFolder))
+                                Directory.CreateDirectory(uploadsFolder);
+
+                            // Get original filename
+                            string originalFileName = Path.GetFileName(Brochure.FileName);
+                            string filePath = Path.Combine(uploadsFolder, originalFileName);
+
+                            // If file exists, append a random suffix before extension
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                string fileNameWithoutExt = Path.GetFileNameWithoutExtension(originalFileName);
+                                string extension = Path.GetExtension(originalFileName);
+                                string randomSuffix = "_" + Guid.NewGuid().ToString("N").Substring(0, 6); // short random string
+                                string newFileName = fileNameWithoutExt + randomSuffix + extension;
+                                filePath = Path.Combine(uploadsFolder, newFileName);
+                                originalFileName = newFileName;
+                            }
+
+                            // Save the file
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await Brochure.CopyToAsync(stream);
+                            }
+
+                            // Save final filename to DB
+                            homeData.OverviewPdf = originalFileName;
+                        }
+                        #endregion
+
+
                         await _unitOfWork.SaveAsync();
                         SuccessNotification("Home page data saved successfully!");
-                        return Redirect(baseUrl+"admin/home/");
+                        return Redirect(baseUrl + "admin/home/");
                     }
                 }
             }
             catch (Exception Ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/Index");
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/SaveHomeData");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
 
-            return View(null);
+            return View("Index", model);
         }
+
 
     }
 

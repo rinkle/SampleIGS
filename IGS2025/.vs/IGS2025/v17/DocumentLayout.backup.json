@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|e:\\git\\sampleigs\\igs2025\\globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|solutionrelative:globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +38,54 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeDocumentMoniker": "Globalsetting\\Constants.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeToolTip": "Globalsetting\\Constants.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAADgv0oAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T11:02:24.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAADwv3oAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-17T11:01:50.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\HomeController.cs",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\HomeController.cs",
               "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAiwE8AAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFgAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T10:35:07.636Z",
+              "WhenOpened": "2025-09-17T10:59:06.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Program.cs",
+              "RelativeDocumentMoniker": "IGS.Web\\Program.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Program.cs",
+              "RelativeToolTip": "IGS.Web\\Program.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAiwEsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T10:53:20.669Z",
               "EditorCaption": ""
             }
           ]

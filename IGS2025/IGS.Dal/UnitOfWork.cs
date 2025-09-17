@@ -1,6 +1,6 @@
 ﻿using IGS.Dal.Data;
 using IGS.Dal.Repository.IRepository;
-using IGS.Dal.SqlHelper;
+using IGS.Dal.Sql;
 
 namespace IGS.Dal.Repository
 {

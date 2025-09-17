@@ -1,7 +1,7 @@
 ﻿using IGS.Dal.Data;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
-using IGS.Dal.SqlHelper;
+using IGS.Dal.Sql;
 using IGS.Models;
 using IGS.Models.KeyLessModels;
 using Microsoft.EntityFrameworkCore;
