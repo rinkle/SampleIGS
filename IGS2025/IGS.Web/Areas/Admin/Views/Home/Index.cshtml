@@ -6,6 +6,7 @@
     ViewBag.Title = "Home Page Management";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    bool show = false;
 }
 
 @if (Model?.Home != null)
@@ -56,6 +57,92 @@
                         </div>
                     </div>
                 </div>
+                @if (Model.Carousel != null && Model.Carousel.Count > 0)
+                {
+                    for (int i = 0; i < Model.Carousel.Count; i++)
+                    {
+                        <input asp-for="Carousel[i].Id" type="hidden" />
+                        <input asp-for="Carousel[i].Section" type="hidden" />
+                        <input asp-for="Carousel[i].Fk_PageId" type="hidden" />
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.Carousel[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.Carousel[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.Carousel[i].Id > 0 ? "" : "New ") Carousel @(i + 1)
+                                            <small>@(Model.Carousel[i].Id > 0 ? "" : "Please enter order/title to create new record")</small>
+                                        </h2>
+
+                                        @if (Model.Carousel[i].Id > 0)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.Carousel[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 form-group">
+                                            <label>Image :</label>
+                                            <input style="width:88px;" id="Carousellogo@i" type="file"
+                                                   onchange="processImage(this,'imagepreviewCarousel_@i','hdnImageCarousel_@i','@DbImagePath.HomeCarousel');" />
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                            <br />
+                                            <img class="imagepreviewCarousel_@i"
+                                                 src="@(baseUrl + DbImagePath.HomeCarousel + Model.Carousel[i].UploadedData)"
+                                                 alt="image"
+                                                 style="width: 50px; height: 50px; background: #374A63;"
+                                                 onerror="imgErrorNormal(this);" />
+                                            <input asp-for="Carousel[i].UploadedData" type="hidden" class="hdnImageCarousel_@i" />
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <label>Display Order* :</label>
+                                            <input asp-for="Carousel[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Caption :</label>
+                                            <textarea asp-for="Carousel[i].Heading" class="form-control" placeholder="Caption"></textarea>
+                                        </div>
+                                    </div>
+                                    @* Disabled section (1== -1) *@
+                                    @if (show)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Description:</label>
+                                                <textarea asp-for="Carousel[i].Description" class="form-control" placeholder="Description"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row dnone">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Image Label :</label>
+                                                <input asp-for="Carousel[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
 
                 <div class="row"><hr /></div>
 
