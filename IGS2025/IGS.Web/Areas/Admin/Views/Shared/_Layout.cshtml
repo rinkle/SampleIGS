@@ -101,8 +101,8 @@
 
     <script type="text/javascript">
         var currentView = @Html.Raw(JsonSerializer.Serialize(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ));
             function readimage(input, imgid) {
                 if (checkImage(input, imgid)) {
                     if (input.files && input.files[0]) {
@@ -262,130 +262,10 @@
                 });
             });
 
-            function processImage(ctrl, imagepreview, hdnImageName, imagePath, thumbWidth, ThumbHeight, ThumbPath) {
-                if (checkImageWithClass(ctrl)) {
-                    var data = new FormData();
-                    var files = $('#' + $(ctrl).attr("id")).get(0).files;
-                    data.append('Filepath', imagePath);
-                    data.append('thumbWidth', thumbWidth);
-                    data.append('ThumbHeight', ThumbHeight);
-                    data.append('ThumbPath', ThumbPath);
-                    if (files.length > 0) {
-                        data.append("UploadedImage", files[0]);
-                    }
-                    var ajaxRequest = $.ajax({
-                        type: "POST",
-                        url: '@baseUrl' + 'CommonItem/UploadFiles',
-                        contentType: false,
-                        processData: false,
-                        data: data,
-                        success: function (d) {
-                            $('.' + hdnImageName).val(d.name);
-                            var reader = new FileReader();
-                            reader.onload = function (e) {
-                                $('.' + imagepreview)
-                                .attr('src', e.target.result);
-                            };
-                            reader.readAsDataURL(ctrl.files[0]);
-                            $(ctrl).val("");
-                        },
-                    });
-                    ajaxRequest.done(function (xhr, textStatus) {
-                    });
-                }
-            }
-            function checkImageWithClass(ctrl) {
-                var imageValid = true;
-                var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg','webp'];
-                if ($.inArray($(ctrl).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-                    imageValid = false;
-                    bootbox.alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp', 'svg','.webp' formats are allowed.")
-                    $(ctrl).val("");
-                }
-                var f = ctrl.files[0]
-                if (f.size > 21000000 || f.fileSize > 21000000) {
-                    imageValid = false;
-                    bootbox.alert("Allowed file size exceeded. (Max. 20 MB)")
-                    $(ctrl).val("");
-                }
-                return imageValid;
-            }
 
+          
 
-           function fnDeleteCommonIcon(id, ctrl) {
-            bootbox.confirm("Are you sure to delete this record?", function (result) {
-                if (result) {
-                    var StringFystring = JSON.stringify(id); // ✅ send raw int, not {id: id}
-
-                    $.ajax({
-                        type: "POST",
-                        async: false,
-                        contentType: "application/json; charset=utf-8",
-                        data: StringFystring,
-                        url: "@Url.Action("DeleteCommonListing", "Common")",
-                        dataType: "json",
-                        success: function (data) {
-                            var msg = (data && (data.Message || data.message))
-                                ? (data.Message || data.message)
-                                : "Operation completed.";
-
-                            if (data.IsSuccess || data.isSuccess) {
-                                $(ctrl).closest('tr').remove();
-                                bootbox.alert({
-                                    message: msg,
-                                    callback: function () {
-                                        location.reload();
-                                    }
-                                });
-                            } else {
-                                bootbox.alert({ message: msg });
-                            }
-                        },
-                        error: function () {
-                            bootbox.alert({ message: "Something went wrong while deleting the record." });
-                        }
-                    });
-                }
-            });
-        }
-
-           function fnDeleteCommonimage(id, ctrl) {
-            bootbox.confirm("Are you sure to delete this icon?", function (result) {
-                if (result) {
-                    // Send raw int instead of { id: id }
-                    var StringFystring = JSON.stringify(id);
-
-                    $.ajax({
-                        type: "POST",
-                        async: false,
-                        contentType: "application/json; charset=utf-8",
-                        data: StringFystring,
-                        url: "@Url.Action("DeleteCommonImageListing", "Common")",
-                        dataType: "json",
-                        success: function (data) {
-                            var msg = (data && (data.Message || data.message))
-                                ? (data.Message || data.message)
-                                : "Operation completed.";
-
-                            if (data.IsSuccess || data.isSuccess) {
-                                $(ctrl).closest('tr').remove();
-                                bootbox.alert({
-                                    message: msg,
-                                    callback: function () {
-                                        location.reload();
-                                    }
-                                });
-                            } else {
-                                bootbox.alert({ message: msg });
-                            }
-                        },
-                        error: function () {
-                            bootbox.alert({ message: "Something went wrong while deleting the icon." });
-                        }
-                    });
-                }
-            });
-        }
+           
 
            function readVideo(input, imgid) {
                 if (checkVideo(input, imgid)) {
@@ -440,6 +320,155 @@
                 }
             }
     </script>
+    
+    <script type="text/javascript">
+         function fnDeleteCommonIcon(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this record?", function (result) {
+                if (result) {
+                    var StringFystring = JSON.stringify(id); // ✅ send raw int, not {id: id}
+
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        data: StringFystring,
+                        url: "@Url.Action("DeleteCommonListing", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = (data && (data.Message || data.message))
+                                ? (data.Message || data.message)
+                                : "Operation completed.";
+
+                            if (data.IsSuccess || data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                bootbox.alert({
+                                    message: msg,
+                                    callback: function () {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                bootbox.alert({ message: msg });
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert({ message: "Something went wrong while deleting the record." });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function fnDeleteCommonimage(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this icon?", function (result) {
+                if (result) {
+                    // Send raw int instead of { id: id }
+                    var StringFystring = JSON.stringify(id);
+
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        data: StringFystring,
+                        url: "@Url.Action("DeleteCommonImageListing", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = (data && (data.Message || data.message))
+                                ? (data.Message || data.message)
+                                : "Operation completed.";
+
+                            if (data.IsSuccess || data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                bootbox.alert({
+                                    message: msg,
+                                    callback: function () {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                bootbox.alert({ message: msg });
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert({ message: "Something went wrong while deleting the icon." });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+   
+    
+    <script type="text/javascript">
+            function processImage(ctrl, imagepreview, hdnImageName, imagePath, thumbWidth, ThumbHeight, ThumbPath) {
+            if (checkImageWithClass(ctrl)) {
+                var data = new FormData();
+                var files = ctrl.files;
+
+                // Append extra form fields
+                data.append('Filepath', imagePath);
+                data.append('thumbWidth', thumbWidth || 0);
+                data.append('ThumbHeight', ThumbHeight || 0);
+                data.append('ExactCropThumbPath', ThumbPath || '');
+                data.append('ProportionCropPath', ThumbPath || '');
+                data.append('ScaledCropImagePath', ThumbPath || '');
+                data.append('ScaledFactor', 0);
+
+                if (files.length > 0) {
+                    // Name must match parameter in controller → "files"
+                    data.append("files", files[0]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '@baseUrl' + 'admin/Common/UploadImages', // ✅ matches your controller
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (d) {
+                        if (d && d.length > 0) {
+                            var fileInfo = d[0]; // backend returns array of uploaded files
+                            $('.' + hdnImageName).val(fileInfo.name);
+
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('.' + imagepreview).attr('src', e.target.result);
+                            };
+                            reader.readAsDataURL(ctrl.files[0]);
+                        }
+                        $(ctrl).val(""); // reset input
+                    },
+                    error: function () {
+                        bootbox.alert("Image upload failed. Please try again.");
+                    }
+                });
+            }
+        }
+
+        function checkImageWithClass(ctrl) {
+            var imageValid = true;
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg', 'webp'];
+
+            var fileName = $(ctrl).val().split('.').pop().toLowerCase();
+            if ($.inArray(fileName, fileExtension) === -1) {
+                imageValid = false;
+                bootbox.alert("Only '.jpeg','.jpg','.png','.gif','.bmp','.svg','.webp' formats are allowed.");
+                $(ctrl).val("");
+            }
+
+            var f = ctrl.files[0];
+            if (f && (f.size > 21000000)) {
+                imageValid = false;
+                bootbox.alert("Allowed file size exceeded. (Max. 20 MB)");
+                $(ctrl).val("");
+            }
+
+            return imageValid;
+        }
+
+    </script>
+
 </body>
 </html>
 <style>

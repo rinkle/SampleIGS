@@ -133,5 +133,86 @@ namespace IGS.Areas.Admin.Controllers
 
 
         #endregion
+
+        [HttpPost]
+        public async Task<IActionResult> UploadImages(
+    List<IFormFile> files,
+    [FromForm] string Filepath,
+    [FromForm] int? thumbWidth,
+    [FromForm] int? thumbHeight,
+    [FromForm] string ExactCropThumbPath,
+    [FromForm] string ProportionCropPath,
+    [FromForm] string ScaledCropImagePath,
+    [FromForm] decimal? ScaledFactor)
+        {
+            var results = new List<object>();
+
+            try
+            {
+                // Resolve physical path
+                string originalPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", Filepath);
+                if (!Directory.Exists(originalPath))
+                    Directory.CreateDirectory(originalPath);
+
+                foreach (var file in files)
+                {
+                    if (file.Length <= 0) continue;
+
+                    // Save original file
+                    string fileName = Path.GetFileName(file.FileName);
+                    string savePath = Path.Combine(originalPath, fileName);
+
+                    // If file already exists, add random suffix
+                    if (System.IO.File.Exists(savePath))
+                    {
+                        string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                        string ext = Path.GetExtension(fileName);
+                        fileName = $"{nameWithoutExt}_{Guid.NewGuid():N}{ext}";
+                        savePath = Path.Combine(originalPath, fileName);
+                    }
+
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    // Optional: Generate thumbnails (stubbed — you can wire up your ImageCropper here)
+                    if (!string.IsNullOrEmpty(ExactCropThumbPath) && (thumbWidth > 0 || thumbHeight > 0))
+                    {
+                        try
+                        {
+                            string exactThumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", ExactCropThumbPath);
+                            string proportionThumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", ProportionCropPath);
+
+                            if (!Directory.Exists(exactThumbPath)) Directory.CreateDirectory(exactThumbPath);
+                            if (!Directory.Exists(proportionThumbPath)) Directory.CreateDirectory(proportionThumbPath);
+
+                            // Call your ImageCropper service (to be ported to .NET Core)
+                            // ImageCropper.ExactSizeImageCrop(savePath, Path.Combine(exactThumbPath, fileName), thumbWidth.Value, thumbHeight.Value);
+                            // ImageCropper.CropImageWithNewSize(savePath, Path.Combine(proportionThumbPath, fileName), thumbWidth.Value, thumbHeight.Value);
+                        }
+                        catch (Exception ex)
+                        {
+                            await _logger.LogErrorAsync(ex, "Thumbnail generation failed");
+                        }
+                    }
+
+                    results.Add(new
+                    {
+                        Name = fileName,
+                        Length = file.Length,
+                        Type = file.ContentType
+                    });
+                }
+
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error in UploadImages");
+                return StatusCode(500, "Image upload failed.");
+            }
+        }
+
     }
 }

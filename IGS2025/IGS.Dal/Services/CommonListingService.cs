@@ -22,58 +22,68 @@ namespace IGS.Dal.Services
         {
             try
             {
-                if (commonListItems == null || commonListItems.Count == 0)
-                    return;
-
-                foreach (var item in commonListItems)
+                if (commonListItems != null && commonListItems.Count > 0)
                 {
-                    var commonListItem = await _unitOfWork.CommonListing.GetAsync(
-                        c => c.Id == item.Id,
-                        tracked: true);
-
-                    if (commonListItem == null)
+                    foreach (var item in commonListItems)
                     {
-                        commonListItem = new CommonListing
+                        var commonListItem = await _unitOfWork.CommonListing.GetAsync(
+                            c => c.Id == item.Id,
+                            tracked: true);
+
+                        if (commonListItem == null)
                         {
-                            CreatedBy = _globalEnvironment.UserId,
-                            CreatedDate = DateTime.Now,
-                            IsActive = true
-                        };
-                        await _unitOfWork.CommonListing.AddAsync(commonListItem);
+                            // ✅ Only insert if Id == 0 AND DisplayOrder.HasValue
+                            if (item.Id == 0 && item.DisplayOrder.HasValue)
+                            {
+                                commonListItem = new CommonListing
+                                {
+                                    CreatedBy = _globalEnvironment.UserId,
+                                    CreatedDate = DateTime.Now,
+                                    IsActive = true
+                                };
+                                await _unitOfWork.CommonListing.AddAsync(commonListItem);
+                            }
+                            else
+                            {
+                                // Skip this record completely
+                                continue;
+                            }
+                        }
+
+                        // Map fields (for both update & new insert)
+                        commonListItem.Fk_PageId = item.Fk_PageId;
+                        commonListItem.Section = item.Section;
+                        commonListItem.Heading = item.Heading;
+                        commonListItem.SubHeading = item.SubHeading;
+                        commonListItem.Description = item.Description;
+                        commonListItem.UploadedData = item.UploadedData;
+                        commonListItem.AdditionalImage1 = item.AdditionalImage1;
+                        commonListItem.AdditionalImage2 = item.AdditionalImage2;
+                        commonListItem.AdditionalImage3 = item.AdditionalImage3;
+                        commonListItem.ImageLabel = item.ImageLabel;
+                        commonListItem.AdditionalSubHeading = item.AdditionalSubHeading;
+                        commonListItem.ReferanceUrl = item.ReferanceUrl;
+                        commonListItem.DisplayOrder = item.DisplayOrder;
+
+                        if (item.Fk_CaseStudyId.HasValue)
+                            commonListItem.Fk_CaseStudyId = item.Fk_CaseStudyId.Value;
+
+                        if (item.Fk_PortId.HasValue)
+                            commonListItem.Fk_PortId = item.Fk_PortId.Value;
+
+                        // Audit info
+                        commonListItem.ModifiedBy = _globalEnvironment.UserId;
+                        commonListItem.ModifiedDate = DateTime.Now;
                     }
 
-                    // map fields
-                    commonListItem.Fk_PageId = item.Fk_PageId;
-                    commonListItem.Section = item.Section;
-                    commonListItem.Heading = item.Heading;
-                    commonListItem.SubHeading = item.SubHeading;
-                    commonListItem.Description = item.Description;
-                    commonListItem.UploadedData = item.UploadedData;
-                    commonListItem.AdditionalImage1 = item.AdditionalImage1;
-                    commonListItem.AdditionalImage2 = item.AdditionalImage2;
-                    commonListItem.AdditionalImage3 = item.AdditionalImage3;
-                    commonListItem.ImageLabel = item.ImageLabel;
-                    commonListItem.AdditionalSubHeading = item.AdditionalSubHeading;
-                    commonListItem.ReferanceUrl = item.ReferanceUrl;
-                    commonListItem.DisplayOrder = item.DisplayOrder;
-
-                    if (item.Fk_CaseStudyId.HasValue)
-                        commonListItem.Fk_CaseStudyId = item.Fk_CaseStudyId.Value;
-
-                    if (item.Fk_PortId.HasValue)
-                        commonListItem.Fk_PortId = item.Fk_PortId.Value;
-
-                    // audit fields
-                    commonListItem.ModifiedBy = _globalEnvironment.UserId;
-                    commonListItem.ModifiedDate = DateTime.Now;
+                    await _unitOfWork.SaveAsync();
                 }
-
-                await _unitOfWork.SaveAsync();
             }
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error in SaveCommonListingAsync");
             }
         }
+
     }
 }
