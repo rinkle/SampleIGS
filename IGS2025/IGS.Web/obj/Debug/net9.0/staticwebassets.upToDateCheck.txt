@@ -11,6 +11,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\src\VectorCanvas.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\x-pseudo.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\docs\bagdes.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-mr-IN.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-2.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\parsley.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\dist\jquery.easypiechart.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\docs\_includes\examples\tokenizer.html
@@ -41,6 +42,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\ar-EG.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-it-IT.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\lib\jquery\dist\jquery.slim.min.map
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\dropzone\dist\dropzone.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-6.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\ckeditor.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-es-DO.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\package.json
@@ -171,6 +173,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\de.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\ru-RU.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\fr.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\mjolnic-bootstrap-colorpicker\src\js\colorpicker-plugin-wrapper.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\modal-arrow-left.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\build-config.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\docs\options.md
@@ -182,6 +185,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\Flot\jquery.flot.canvas.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\lb.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\uk-UA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-sparkline\src\footer.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\minus-colored.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\examples\multi.html
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jszip\documentation\api_jszip\constructor_load.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\morris.js\examples\donut-colors.html
@@ -306,6 +310,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\hu.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-en-GB.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\mi-NZ.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\duration\add-subtract.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\arrow-right.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-smj-SE.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-es-EC.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\parsley\field.js
@@ -460,6 +465,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\en.extra.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-fixedheader-bs\.bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\team-arrow-right.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\ja.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\src\JQVMap\getPinId.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\ru.js
@@ -613,6 +619,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-uz-Latn-UZ.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\attributes.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\i18n\gl.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\he.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\news-mail.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\tzm-latn.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\dist\js\i18n\it.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\less\.csscomb.json
@@ -667,6 +674,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fullcalendar\dist\lang\ar-sa.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\utils\has-own-prop.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\event.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\sr.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\IGS-logo.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\en-gb.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\lv.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\hr.extra.js
@@ -943,6 +951,8 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fastclick\.bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-pa-IN.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\dropzone\dist\dropzone.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\lv-LV.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-dashed-line.svg
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\footer-linkedin.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\tests\data\maximumInputLength-tests.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\ar.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\my.js
@@ -959,6 +969,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\js\carousel.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\src\renderer\canvas.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-es-CL.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\tableselection\styles\tableselection.css
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\favicon\site.webmanifest
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\tr.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.1.0.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\eu.js
@@ -1058,6 +1069,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-bs
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\eo.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\dist\js\i18n\zh-CN.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-ko-KR.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\plus-colored.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\selection\multiple.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\fr-ca.js
@@ -1248,6 +1260,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\jquery.validate-vsdoc.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\dist\i18n\zh_cn.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\es-PY.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fullcalendar\dist\lang\sk.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-3.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\js\tab.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\parsley\factory.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\switchery\.bower.json
@@ -1337,6 +1350,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\en-ca.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-fi-FI.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\ar-MA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\diacritics.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-4.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-daterangepicker\example\amd\require.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\ar-QA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\ms.js
@@ -1462,6 +1476,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.inputmask\dist\min\input
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\az-Latn-AZ.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\defaults.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\src\ColorScale\rgbToArray.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\search-status.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\validator\.bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\devbridge-autocomplete\dist\jquery.autocomplete.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jszip\documentation\contributing.md
@@ -1664,6 +1679,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-de-CH.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\dist\i18n\it.extra.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\event\focusin.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-smj-NO.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\footer-phone.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-sv-FI.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-fr-FR.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\README.md
@@ -1870,6 +1886,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\nl-NL.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\dist\jquery.easypiechart.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\data\ajax.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\gauge.js\bower.json
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\slick-arrow.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\core\time_period.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-mt-MT.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\locale\locales.js
@@ -1909,6 +1926,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-bs\License.txt
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\tt-RU.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-es-BO.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\subscribe-mail.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.0.0-rc2.min.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\iCheck\skins\minimal\red.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-buttons\js\dataTables.buttons.min.js
@@ -2187,6 +2205,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\bo.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\pnotify\dist\pnotify.tooltip.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\samples\old\inlinetextarea.html
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-sr-Latn-CS.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-1.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\flot-spline\package.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\vi.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\fa.js
@@ -2280,6 +2299,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\cy.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\mr-IN.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\compat\dropdownCss.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\uk.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\team-mail-dark.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\switchery\switchery.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-2.2.0.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\google-code-prettify\styles\sons-of-obsidian.css
@@ -2308,6 +2328,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\iCheck\skins\square\yellow.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fullcalendar\dist\lang\hi.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\dropdown\search.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-mn-MN.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\team-mail.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\iCheck\skins\minimal\grey.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fullcalendar\dist\lang\lv.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\lib\jquery-validation\LICENSE.md
@@ -2389,6 +2410,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\min\locales.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\sr-Cyrl-CS.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\moment.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\si.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\modal-arrow-right.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\it.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\queue\delay.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\units\hour.js
@@ -2441,6 +2463,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\sq
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\select2.jquery.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\nn.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\create\from-array.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\footer-location.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-buttons-bs\bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-sms-FI.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-sparkline\bower.json
@@ -2610,6 +2633,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\samples\toolbarconfigu
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\ms-BN.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\autosize\readme.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\kok-IN.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\footer-mail.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\hr.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-es-PE.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\th.js
@@ -2623,6 +2647,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\bs.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\al.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\src\js\custom.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\core\var\rsingleTag.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\core-5.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\fr-MC.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\utils\keys.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\cs.js
@@ -2684,6 +2709,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-zh
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\selector-sizzle.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\en-CA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\ro-RO.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\chart.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jszip\lib\uint8ArrayReader.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\nl.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-daterangepicker\example\amd\index.html
@@ -2738,6 +2764,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\ko.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\i18n\ko.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\samples\old\xhtmlstyle.html
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\morris.js\spec\viz\examples.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\news-linkedin.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\sv.extra.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\fr-MC.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\af-ZA.js
@@ -3118,6 +3145,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\CHANGELOG
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\flot.orderbars\examples\js\main.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.inputmask\dist\min\inputmask\jquery.inputmask.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\ta-IN.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\favicon\favicon.ico
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-2.1.1.min.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\en-AU.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\units\second.js
@@ -3214,6 +3242,39 @@ wwwroot\Content\loader-8.css
 wwwroot\Content\Site.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\favicon\android-chrome-192x192.png
+wwwroot\images\favicon\android-chrome-512x512.png
+wwwroot\images\favicon\apple-touch-icon.png
+wwwroot\images\favicon\favicon.ico
+wwwroot\images\favicon\favicon-16x16.png
+wwwroot\images\favicon\favicon-32x32.png
+wwwroot\images\favicon\site.webmanifest
+wwwroot\images\icons\arrow-right.svg
+wwwroot\images\icons\chart.svg
+wwwroot\images\icons\core-1.svg
+wwwroot\images\icons\core-2.svg
+wwwroot\images\icons\core-3.svg
+wwwroot\images\icons\core-4.svg
+wwwroot\images\icons\core-5.svg
+wwwroot\images\icons\core-6.svg
+wwwroot\images\icons\core-dashed-line.svg
+wwwroot\images\icons\footer-linkedin.svg
+wwwroot\images\icons\footer-location.svg
+wwwroot\images\icons\footer-mail.svg
+wwwroot\images\icons\footer-phone.svg
+wwwroot\images\icons\minus-colored.svg
+wwwroot\images\icons\modal-arrow-left.svg
+wwwroot\images\icons\modal-arrow-right.svg
+wwwroot\images\icons\news-linkedin.svg
+wwwroot\images\icons\news-mail.svg
+wwwroot\images\icons\plus-colored.svg
+wwwroot\images\icons\search-status.svg
+wwwroot\images\icons\slick-arrow.svg
+wwwroot\images\icons\subscribe-mail.svg
+wwwroot\images\icons\team-arrow-right.svg
+wwwroot\images\icons\team-mail.svg
+wwwroot\images\icons\team-mail-dark.svg
+wwwroot\images\IGS-logo.svg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

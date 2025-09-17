@@ -23,18 +23,7 @@ namespace IGS.Dal.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Home>()
-            .   HasOne(h => h.CreatedByUser)
-                .WithMany()
-                .HasForeignKey(h => h.CreatedBy)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<Home>()
-                .HasOne(h => h.ModifiedByUser)
-                .WithMany()
-                .HasForeignKey(h => h.ModifiedBy)
-                .OnDelete(DeleteBehavior.Restrict);
-            
+            builder.Entity<Home>().ToTable("Home");
             builder.Entity<ErrorLog>().ToTable("ErrorLog");
             builder.Entity<GetHome_Result>().HasNoKey();
             builder.Entity<GetCommonListing_Result>().HasNoKey();

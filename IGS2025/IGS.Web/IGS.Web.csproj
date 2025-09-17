@@ -25,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\favicon\.DS_Store" />
+    <None Include="wwwroot\images\icons\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Globalsetting\Globalsetting.csproj" />
     <ProjectReference Include="..\IGS.Dal\IGS.Dal.csproj" />
   </ItemGroup>
