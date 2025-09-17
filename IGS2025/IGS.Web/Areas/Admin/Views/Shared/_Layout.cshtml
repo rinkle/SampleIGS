@@ -82,7 +82,7 @@
                     @RenderBody()
                 </div>
             </div>
-            
+
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -101,8 +101,8 @@
 
     <script type="text/javascript">
         var currentView = @Html.Raw(JsonSerializer.Serialize(
-                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
-                                                                                                                                                                                                                                                                                                ));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                string.IsNullOrEmpty(Cookies.CheckDesktop) ? "Desktop" : Cookies.CheckDesktop
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ));
             function readimage(input, imgid) {
                 if (checkImage(input, imgid)) {
                     if (input.files && input.files[0]) {
@@ -310,67 +310,84 @@
                 }
                 return imageValid;
             }
-             function fnDeleteCommonIcon(id, ctrl) {
-                bootbox.confirm("Are you sure to delete this record?", function (result) {
-                    if (result) {
-                        var StringFystring = JSON.stringify({ id: id });
-                        $.ajax({
-                            type: "POST",
-                            async: false,
-                            contentType: "application/json; charset=utf-8",
-                            data: StringFystring,
-                            url: "@Url.Action("DeleteCommonListing", "Common")",
-                            dataType: "json",
-                            success: function (data) {
-                                if (data.IsSuccess) {
-                                    $(ctrl).closest('tr').remove();
-                                    bootbox.alert({
-                                        message: data.Message,
-                                        callback: function () {
-                                            location.reload();
-                                        }
-                                    });
-                                }
-                                else {
-                                    bootbox.alert(data.Message);
-                                }
-                            }
-                        })
-                    }
-                })
-            }
 
-             function fnDeleteCommonimage(id, ctrl) {
-                bootbox.confirm("Are you sure to delete this icon?", function (result) {
-                    if (result) {
-                        var StringFystring = JSON.stringify({ id: id });
-                        $.ajax({
-                            type: "POST",
-                            async: false,
-                            contentType: "application/json; charset=utf-8",
-                            data: StringFystring,
-                            url: "@Url.Action("DeleteCommonImageListing", "Common")",
-                            dataType: "json",
-                            success: function (data) {
-                                if (data.IsSuccess) {
-                                    $(ctrl).closest('tr').remove();
-                                    bootbox.alert({
-                                        message: data.Message,
-                                        callback: function () {
-                                            location.reload();
-                                        }
-                                    });
-                                }
-                                else {
-                                    bootbox.alert(data.Message);
-                                }
+
+           function fnDeleteCommonIcon(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this record?", function (result) {
+                if (result) {
+                    var StringFystring = JSON.stringify(id); // ✅ send raw int, not {id: id}
+
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        data: StringFystring,
+                        url: "@Url.Action("DeleteCommonListing", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = (data && (data.Message || data.message))
+                                ? (data.Message || data.message)
+                                : "Operation completed.";
+
+                            if (data.IsSuccess || data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                bootbox.alert({
+                                    message: msg,
+                                    callback: function () {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                bootbox.alert({ message: msg });
                             }
-                        })
-                    }
-                })
+                        },
+                        error: function () {
+                            bootbox.alert({ message: "Something went wrong while deleting the record." });
+                        }
+                    });
+                }
+            });
         }
 
-            function readVideo(input, imgid) {
+           function fnDeleteCommonimage(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this icon?", function (result) {
+                if (result) {
+                    // Send raw int instead of { id: id }
+                    var StringFystring = JSON.stringify(id);
+
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        data: StringFystring,
+                        url: "@Url.Action("DeleteCommonImageListing", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = (data && (data.Message || data.message))
+                                ? (data.Message || data.message)
+                                : "Operation completed.";
+
+                            if (data.IsSuccess || data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                bootbox.alert({
+                                    message: msg,
+                                    callback: function () {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                bootbox.alert({ message: msg });
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert({ message: "Something went wrong while deleting the icon." });
+                        }
+                    });
+                }
+            });
+        }
+
+           function readVideo(input, imgid) {
                 if (checkVideo(input, imgid)) {
                     return true;
                 }
@@ -379,7 +396,7 @@
                 }
             }
 
-            function checkVideo(input) {
+           function checkVideo(input) {
                 var VideoValid = true;
                 vid = '#' + $(this).attr("id");
                 var fileExtension = ['mp4', 'avi', 'flv', 'wmv', 'wmv','mov'];
