@@ -5,7 +5,6 @@
     ViewData["Title"] = "Log in";
     string baseUrl = @GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
     Layout = null;
-
 }
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,19 +13,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@GlobalEnvironmentSetting.AppSettingValue("AppSettings:adminTitle") | Login </title>
-
     <link rel="apple-touch-icon" sizes="57x57" href='@(baseUrl + "images/favicon/favicon.ico")' asp-append-version="true">
     <link rel="apple-touch-icon" sizes="192x19" href='@(baseUrl + "images/favicon/android-chrome-192x192.png")' asp-append-version="true">
     <link rel="apple-touch-icon" sizes="512x512" href='@(baseUrl + "images/favicon/android-chrome-512x512.png")' asp-append-version="true">
     <link rel="apple-touch-icon" sizes="72x72" href='@(baseUrl + "images/favicon/apple-touch-icon.png")' asp-append-version="true">
     <link rel="apple-touch-icon" sizes="76x76" href='@(baseUrl + "images/favicon/favicon-16x16.png")' asp-append-version="true">
     <link rel="apple-touch-icon" sizes="32x32" href='@(baseUrl + "images/favicon/favicon-32x32.png")' asp-append-version="true">
-
     <link rel="manifest" href='@(baseUrl + "images/favicon/site.webmanifest.json")' asp-append-version="true">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content='@(baseUrl + "images/favicon/ms-icon-144x144.png")' asp-append-version="true">
     <meta name="theme-color" content="#ffffff">
-
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link href='@(baseUrl + "Content/bootstrap.min.css")' rel="stylesheet" asp-append-version="true" />
@@ -40,7 +36,6 @@
     <!-- Custom Theme Style -->
     <link href='@(baseUrl + "build/css/custom.css")' rel="stylesheet" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" asp-append-version="true" />
-
     <script src='@(baseUrl + "Scripts/jquery.min.js")' asp-append-version="true"></script>
     <script src='@(baseUrl + "Scripts/bootstrap.min.js")' asp-append-version="true"></script>
     <script src='@(baseUrl + "Scripts/jquery.unobtrusive-ajax.min.js")' asp-append-version="true"></script>
@@ -59,9 +54,7 @@
 
 </head>
 <body class="login">
-
     <div>
-
         <a class="hiddenanchor" id="signup"></a>
         <a class="hiddenanchor" id="signin"></a>
         <div class="login_wrapper">
@@ -105,8 +98,6 @@
         </div>
     </div>
 </body>
-
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
