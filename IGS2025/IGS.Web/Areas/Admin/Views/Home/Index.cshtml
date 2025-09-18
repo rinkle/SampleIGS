@@ -455,22 +455,36 @@
                 <div class="x_panel">
                     <div class="x_content">
                         <div class="row">
-                            <div class="col-md-8 col-sm-8 col-xs-8">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <br />
                                 <label asp-for="Home.InsightTitle">Insight Title</label>
                                 <input asp-for="Home.InsightTitle" class="form-control" placeholder="Insight Title" />
                             </div>
+                            <div class="col-md-1 col-sm-1 col-xs-1 form-group">
+                                <br />
+                                <label for="fullname">Pdf Report :</label>
+                                <input style="width:88px;" id='@("HomeInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.HomeImage');" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <br /><br />
+                                @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
+                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightImage) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                            </div>
+
                             <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label asp-for="Home.InsightImage">Right Insight Image</label>
                                 <br /> <br />
                                 <input id="InsightImage" type="file" onchange="processImage(this, '@("imagepreview_InsightImage")', '@("hdnImage_InsightImageName")','@DbImagePath.HomeImage','0','0','');" />
                             </div>
-                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <br /> <br />
                                 <img class='@("imagepreview_InsightImage")' src="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.InsightImage}")" alt="image" style="width:100px;border:1px solid gray" onerror="imgErrorSmall(this);" asp-append-version="true" />
                                 @Html.HiddenFor(x => x.Home.InsightImage, new { @class = "hdnImage_InsightImageName" })
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <br />
@@ -489,68 +503,80 @@
 
                     </div>
                 </div>
-                <!-- Investor Login Section -->
-                <div class="x_title ">
-                    <h2>Investor Login <small>:</small></h2>
+
+                <div class="x_title">
+                    <h2>Newsletter Section <small>:</small></h2>
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="x_panel">
                     <div class="x_content">
-
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <br />
-                                <label asp-for="Home.InvestorLogin"></label>
-                                <input asp-for="Home.InvestorLogin" class="form-control" type="url" placeholder="Investor Login" />
-                                <span asp-validation-for="Home.InvestorLogin" class="text-danger"></span>
+                                <label asp-for="Home.NewsletterHeading">Newsletter Heading</label>
+                                <input asp-for="Home.NewsletterHeading" class="form-control" placeholder="Newsletter Heading" />
+                            </div>
+
+                            <div class="col-md-8 col-sm-8 col-xs-8">
                                 <br />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label asp-for="Home.LinkedInUrl"></label>
-                                <input asp-for="Home.LinkedInUrl" class="form-control" type="url" placeholder="LinkedIn Url" />
-                                <span asp-validation-for="Home.LinkedInUrl" class="text-danger"></span>
-                                <br />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label asp-for="Home.VimeoVideoUrl"></label>
-                                <input asp-for="Home.VimeoVideoUrl" class="form-control" type="url" placeholder="Vimeo Video Url" />
-                                <span asp-validation-for="Home.VimeoVideoUrl" class="text-danger"></span>
-                                <br />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 display_inputx form-group has-feedback">
-                                <label asp-for="Home.WebsiteUpdateDateStr">Website Update Date (MM/dd/yyyy)* :</label>
-                                <input asp-for="Home.WebsiteUpdateDateStr" class="form-control has-feedback-left" placeholder="Website update date" required />
-                                <span asp-validation-for="Home.WebsiteUpdateDateStr" class="text-danger"></span>
-                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                            </div>
-                        </div>
-
-
-                        <div class="row ">
-                            <div class="col-md-3 col-sm-6 col-xs-6 form-group">
-                                <label for="fullname">Pdf Report :</label>
-                                <input style="width:88px;" id='@("HomeInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.HomeImage');" />
-                            </div>
-                            <div class="col-md-2 col-sm-3 col-xs-3 form-group">
-                                <br />
-                                @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
-                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightImage) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                                <label asp-for="Home.NewsletterScript">Insight Newsletter Script</label>
+                                <textarea asp-for="Home.NewsletterScript" class="form-control DescriptionS" placeholder="Insight Newsletter Script"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                @if (IsShow)
+                {
+                    <!-- Investor Login Section -->
+                    <div class="x_title ">
+                        <h2>Investor Login <small>:</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_panel">
+                        <div class="x_content">
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <br />
+                                    <label asp-for="Home.InvestorLogin"></label>
+                                    <input asp-for="Home.InvestorLogin" class="form-control" type="url" placeholder="Investor Login" />
+                                    <span asp-validation-for="Home.InvestorLogin" class="text-danger"></span>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label asp-for="Home.LinkedInUrl"></label>
+                                    <input asp-for="Home.LinkedInUrl" class="form-control" type="url" placeholder="LinkedIn Url" />
+                                    <span asp-validation-for="Home.LinkedInUrl" class="text-danger"></span>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label asp-for="Home.VimeoVideoUrl"></label>
+                                    <input asp-for="Home.VimeoVideoUrl" class="form-control" type="url" placeholder="Vimeo Video Url" />
+                                    <span asp-validation-for="Home.VimeoVideoUrl" class="text-danger"></span>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 display_inputx form-group has-feedback">
+                                    <label asp-for="Home.WebsiteUpdateDateStr">Website Update Date (MM/dd/yyyy)* :</label>
+                                    <input asp-for="Home.WebsiteUpdateDateStr" class="form-control has-feedback-left" placeholder="Website update date" required />
+                                    <span asp-validation-for="Home.WebsiteUpdateDateStr" class="text-danger"></span>
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
                 <!-- Save Button -->
                 <div class="x_title" style="width:100%;float:right;">
                     <div class="clearfix"></div>

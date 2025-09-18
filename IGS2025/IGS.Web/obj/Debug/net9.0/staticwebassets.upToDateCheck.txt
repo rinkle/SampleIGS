@@ -3269,6 +3269,7 @@ wwwroot\images\home\core-4.svg
 wwwroot\images\home\core-5.svg
 wwwroot\images\home\core-6.svg
 wwwroot\images\home\recent-projects.jpg
+wwwroot\images\home\Tariff_Responsive_Pricing_IGS.pdf
 wwwroot\images\icons\arrow-right.svg
 wwwroot\images\icons\chart.svg
 wwwroot\images\icons\core-1.svg
