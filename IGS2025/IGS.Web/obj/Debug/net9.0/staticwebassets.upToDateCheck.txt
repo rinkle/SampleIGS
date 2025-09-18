@@ -77,6 +77,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\dist\js\i18n\sk.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\src\JQVMap\removePin.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\mjolnic-bootstrap-colorpicker\src\js\colorpicker-color.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\mjolnic-bootstrap-colorpicker\.bower.json
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-4.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-daterangepicker\.bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\grunt\change-version.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\pdfmake\build\pdfmake.js
@@ -380,6 +381,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\datatables.net-scroller\js\data
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-en-NZ.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\morris.js\package.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\units\week-calendar-utils.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-1.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\es-VE.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\docs\_includes\js-source-states.html
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\duration\abs.js
@@ -1356,6 +1358,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\ar
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\ms.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-ar-DZ.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-be-BY.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-3.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\mt-MT.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\dropdown\hidePlaceholder.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\gauge.js\.bower.json
@@ -2094,6 +2097,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\Readme.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\sl.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\es-NI.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\Flot\examples\axes-interacting\index.html
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-2.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\dist\js\i18n\sr-Cyrl.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\Flot\examples\ajax\data-eu-gdp-growth-1.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-2.0.2.css
@@ -2536,6 +2540,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\examples\js\jquery.vmap.
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\xh-ZA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\docs\plugin-api.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\specialchar\dialogs\lang\af.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\Carousel\arrow-right.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\i18n\id.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\fa.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\en-ie.js
@@ -2803,6 +2808,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\dist\maps\jquery.vmap.ir
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\zh-HK.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\results.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fontawesome\css\font-awesome.css.map
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-6.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\fullcalendar\dist\lang\uk.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-sparkline\src\simpledraw.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\dist\i18n\ro.js
@@ -3249,9 +3255,16 @@ wwwroot\images\favicon\favicon.ico
 wwwroot\images\favicon\favicon-16x16.png
 wwwroot\images\favicon\favicon-32x32.png
 wwwroot\images\favicon\site.webmanifest
+wwwroot\images\home\Carousel\arrow-right.svg
 wwwroot\images\home\Carousel\landing-1.jpg
 wwwroot\images\home\Carousel\landing-2.jpg
 wwwroot\images\home\Carousel\landing-3.jpg
+wwwroot\images\home\core-1.svg
+wwwroot\images\home\core-2.svg
+wwwroot\images\home\core-3.svg
+wwwroot\images\home\core-4.svg
+wwwroot\images\home\core-6.svg
+wwwroot\images\home\recent-projects.jpg
 wwwroot\images\icons\arrow-right.svg
 wwwroot\images\icons\chart.svg
 wwwroot\images\icons\core-1.svg

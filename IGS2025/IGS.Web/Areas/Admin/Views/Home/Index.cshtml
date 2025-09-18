@@ -65,10 +65,11 @@
                                         <div class="col-md-2 col-sm-3 col-xs-3 form-group">
                                             <br />
                                             <img class="imagepreviewCarousel_@i"
-                                                 src="@(baseUrl + DbImagePath.HomeCarousel + Model.Carousel[i].UploadedData)"
+                                                 src="@($"{baseUrl}{DbImagePath.HomeCarousel}{Model.Carousel[i].UploadedData}")"
                                                  alt="image"
                                                  style="width: 25px; height: 25px; background: #374A63;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
+
                                             <input asp-for="Carousel[i].UploadedData" type="hidden" class="hdnImageCarousel_@i" />
                                         </div>
 
@@ -183,7 +184,7 @@
                                         <div class="col-md-2 col-sm-3 col-xs-3 form-group">
                                             <br />
                                             <img class="imagepreviewAtAGlance_@i"
-                                                 src="@(baseUrl + DbImagePath.HomeImage + Model.AtAGlance[i].UploadedData)"
+                                                 src="@($"{baseUrl}{DbImagePath.HomeImage}{Model.AtAGlance[i].UploadedData}")"
                                                  alt="image"
                                                  style="width: 25px; height: 25px; background: #374A63;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
@@ -362,7 +363,7 @@
                                                 <label>Title :</label>
                                                 <input asp-for="CoreAreasoFocus[i].Heading" class="form-control" placeholder="Title" />
                                             </div>
-                                            
+
                                         </div>
 
                                     </div>
@@ -376,11 +377,13 @@
                                         <div class="col-md-2 col-sm-3 col-xs-3 form-group">
                                             <br />
                                             <img class="imagepreviewCoreAreasoFocus_@i"
-                                                 src="@(baseUrl + DbImagePath.HomeImage + Model.CoreAreasoFocus[i].UploadedData)"
+                                                 src="@($"{baseUrl}{DbImagePath.HomeImage}{Model.CoreAreasoFocus[i].UploadedData}")"
                                                  alt="image"
-                                                 style="width: 25px; height: 25px; background: #374A63;"
+                                                 style="width: 25px; height: 25px;border:1px solid gray;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
+
                                             <input asp-for="CoreAreasoFocus[i].UploadedData" type="hidden" class="hdnImageCoreAreasoFocus_@i" />
+
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 form-group">
                                             <label>Display Order* :</label>
@@ -397,7 +400,7 @@
 
                                     @if (IsShow)
                                     {
-                                        
+
                                         <div class="row">
                                             <div class="col-md-12 col-sm-6 col-xs-6 form-group">
                                                 <label>Image Label :</label>
@@ -464,7 +467,7 @@
                             </div>
                             <div class="col-md-2 col-sm-12 col-xs-12 form-group">
                                 <br /> <br />
-                                <img class='@("imagepreview_InsightImage")' src='@(baseUrl + DbImagePath.HomeImage + Model.Home.InsightImage)' alt="image" style="width:100px;border:1px solid gray" onerror="imgErrorSmall(this);" asp-append-version="true" />
+                                <img class='@("imagepreview_InsightImage")' src="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.InsightImage}")" alt="image" style="width:100px;border:1px solid gray" onerror="imgErrorSmall(this);" asp-append-version="true" />
                                 @Html.HiddenFor(x => x.Home.InsightImage, new { @class = "hdnImage_InsightImageName" })
                             </div>
                         </div>
