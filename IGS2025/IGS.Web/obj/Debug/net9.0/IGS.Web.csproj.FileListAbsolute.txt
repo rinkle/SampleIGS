@@ -3606,3 +3606,5 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\n69hkkhoea-2k28p19q
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\ew5cebddz1-622wcaljoy.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\11c6du08rk-cbdnlxxvb0.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\vk6q9vkmdu-zlg36qgox4.gz
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\640k1loq6m-fdbjv5exq4.gz
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\yqcfn6dbuk-m7ofghuajt.gz

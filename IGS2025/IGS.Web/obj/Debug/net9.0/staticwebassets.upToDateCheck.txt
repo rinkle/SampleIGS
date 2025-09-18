@@ -530,6 +530,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\es-PR.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-sw-KE.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\_references.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\moment\calendar.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\core-5.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-sr-Latn-BA.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\mk-MK.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\uz-Cyrl-UZ.js
@@ -3097,6 +3098,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\utils\is-object.
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\en-ie.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\nprogress\License.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.0.1.css
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\home\Carousel\team-mail-dark.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\ion.rangeSlider\js\ion.rangeSlider.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\intro.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\Flot\FAQ.md
@@ -3259,10 +3261,12 @@ wwwroot\images\home\Carousel\arrow-right.svg
 wwwroot\images\home\Carousel\landing-1.jpg
 wwwroot\images\home\Carousel\landing-2.jpg
 wwwroot\images\home\Carousel\landing-3.jpg
+wwwroot\images\home\Carousel\team-mail-dark.svg
 wwwroot\images\home\core-1.svg
 wwwroot\images\home\core-2.svg
 wwwroot\images\home\core-3.svg
 wwwroot\images\home\core-4.svg
+wwwroot\images\home\core-5.svg
 wwwroot\images\home\core-6.svg
 wwwroot\images\home\recent-projects.jpg
 wwwroot\images\icons\arrow-right.svg

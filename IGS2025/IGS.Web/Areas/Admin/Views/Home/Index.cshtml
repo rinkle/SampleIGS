@@ -535,22 +535,17 @@
                                 <span id="inputSuccess2Status" class="sr-only">(success)</span>
                             </div>
                         </div>
-                        <!-- Brochure Upload -->
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                <br />
-                                <label for="Brochure">Firm Brochure :</label>
-                                <br />
-                                <input type="file" name="Brochure" id="Brochure" class="form-control" />
+
+
+                        <div class="row ">
+                            <div class="col-md-3 col-sm-6 col-xs-6 form-group">
+                                <label for="fullname">Pdf Report :</label>
+                                <input style="width:88px;" id='@("HomeInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.HomeImage');" />
                             </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                                <br /><br />
-                                @if (!string.IsNullOrEmpty(Model.Home.OverviewPdf))
-                                {
-                                    <a href="@($"{baseUrl}{DbImagePath.HomeImage}{Model.Home.OverviewPdf}")" target="_blank">
-                                        <i class="fa fa-file-pdf-o"></i> View Firm Brochure
-                                    </a>
-                                }
+                            <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                <br />
+                                @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
+                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightImage) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
                             </div>
                         </div>
                     </div>

@@ -135,15 +135,16 @@ namespace IGS.Areas.Admin.Controllers
                 };
                 ErrorNotification(response.Message);
             }
-            
+
             return Json(response);
         }
 
 
         #endregion
 
+        #region image upload
         [HttpPost]
-    public async Task<IActionResult> UploadImages(
+        public async Task<IActionResult> UploadImages(
     List<IFormFile> files,
     [FromForm] string Filepath,
     [FromForm] int? thumbWidth,
@@ -221,6 +222,114 @@ namespace IGS.Areas.Admin.Controllers
                 return StatusCode(500, "Image upload failed.");
             }
         }
+        #endregion
 
+        #region upload video 
+        [HttpPost]
+        public async Task<IActionResult> UploadVideoFiles(IFormFile UploadedVideo, [FromForm] string Filepath)
+        {
+            if (UploadedVideo == null || UploadedVideo.Length == 0)
+                return BadRequest("No video file uploaded.");
+
+            try
+            {
+                // Build save path: wwwroot + Filepath
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", Filepath);
+
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
+
+                // Get original filename
+                string originalFileName = Path.GetFileName(UploadedVideo.FileName);
+                string filePath = Path.Combine(uploadsFolder, originalFileName);
+
+                // If file already exists, append random suffix
+                if (System.IO.File.Exists(filePath))
+                {
+                    string fileNameWithoutExt = Path.GetFileNameWithoutExtension(originalFileName);
+                    string extension = Path.GetExtension(originalFileName);
+                    string randomSuffix = "_" + Guid.NewGuid().ToString("N").Substring(0, 6);
+                    string newFileName = fileNameWithoutExt + randomSuffix + extension;
+                    filePath = Path.Combine(uploadsFolder, newFileName);
+                    originalFileName = newFileName;
+                }
+
+                // Save file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await UploadedVideo.CopyToAsync(stream);
+                }
+
+                // Build result
+                var result = new
+                {
+                    name = originalFileName,
+                    type = UploadedVideo.ContentType,
+                    size = $"{UploadedVideo.Length} bytes"
+                };
+
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                // log error if you want: await _logger.LogErrorAsync(ex, "Error in UploadVideoFiles");
+                return StatusCode(500, "An error occurred while uploading the video.");
+            }
+        }
+
+        #endregion
+
+        #region upload pdf
+        [HttpPost]
+        public async Task<IActionResult> UploadPdfFiles(IFormFile UploadedPdf, [FromForm] string Filepath)
+        {
+            if (UploadedPdf == null || UploadedPdf.Length == 0)
+                return BadRequest("No PDF file uploaded.");
+
+            try
+            {
+                // Save path under wwwroot
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", Filepath);
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
+
+                // Original filename
+                string originalFileName = Path.GetFileName(UploadedPdf.FileName);
+                string filePath = Path.Combine(uploadsFolder, originalFileName);
+
+                // Prevent overwriting → add random suffix if file exists
+                if (System.IO.File.Exists(filePath))
+                {
+                    string fileNameWithoutExt = Path.GetFileNameWithoutExtension(originalFileName);
+                    string extension = Path.GetExtension(originalFileName);
+                    string randomSuffix = "_" + Guid.NewGuid().ToString("N").Substring(0, 6);
+                    string newFileName = fileNameWithoutExt + randomSuffix + extension;
+                    filePath = Path.Combine(uploadsFolder, newFileName);
+                    originalFileName = newFileName;
+                }
+
+                // Save PDF
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await UploadedPdf.CopyToAsync(stream);
+                }
+
+                // Return JSON
+                var result = new
+                {
+                    name = originalFileName,
+                    type = UploadedPdf.ContentType,
+                    size = $"{UploadedPdf.Length} bytes"
+                };
+
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                // optionally log: await _logger.LogErrorAsync(ex, "Error in UploadPdfFiles");
+                return StatusCode(500, "An error occurred while uploading the PDF.");
+            }
+        }
+        #endregion
     }
 }
