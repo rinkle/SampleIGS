@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IGS.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f195f8447bd12d22c5768f5118bc709a88d674c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cb8e722c885d1a66da3e1f0a779010ef7c29b61")]
 [assembly: System.Reflection.AssemblyProductAttribute("IGS.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IGS.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

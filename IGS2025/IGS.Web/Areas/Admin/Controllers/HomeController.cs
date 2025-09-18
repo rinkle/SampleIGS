@@ -63,6 +63,9 @@ namespace IGS.Web.Areas.Admin.Controllers
                         homeData.TransactionsGrowthDescription = model.Home.TransactionsGrowthDescription;
                         homeData.CoreAreasHeading = model.Home.CoreAreasHeading;
                         homeData.CoreAreaDescription = model.Home.CoreAreaDescription;
+                        homeData.RecentProjectsHeading = model.Home.RecentProjectsHeading;
+                        homeData.RecentProjectsDescription = model.Home.RecentProjectsDescription;
+                        homeData.InsightTitle = model.Home.InsightTitle;
                         homeData.InsightHeading = model.Home.InsightHeading;
                         homeData.InsightDescription = model.Home.InsightDescription;
                         homeData.InsightImage = model.Home.InsightImage;

@@ -13,6 +13,9 @@ namespace IGS.Models
         public string? TransactionsGrowthDescription { get; set; }
         public string? CoreAreasHeading { get; set; }
         public string? CoreAreaDescription { get; set; }
+        public string? RecentProjectsHeading { get; set; }
+        public string? RecentProjectsDescription { get; set; }
+        public string? InsightTitle { get; set; }
         public string? InsightHeading { get; set; }
         public string? InsightDescription { get; set; }
         public string? InsightImage { get; set; }
