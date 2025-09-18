@@ -3249,6 +3249,9 @@ wwwroot\images\favicon\favicon.ico
 wwwroot\images\favicon\favicon-16x16.png
 wwwroot\images\favicon\favicon-32x32.png
 wwwroot\images\favicon\site.webmanifest
+wwwroot\images\home\Carousel\landing-1.jpg
+wwwroot\images\home\Carousel\landing-2.jpg
+wwwroot\images\home\Carousel\landing-3.jpg
 wwwroot\images\icons\arrow-right.svg
 wwwroot\images\icons\chart.svg
 wwwroot\images\icons\core-1.svg

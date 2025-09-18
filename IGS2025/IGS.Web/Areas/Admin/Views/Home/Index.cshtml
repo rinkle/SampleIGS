@@ -29,7 +29,7 @@
                         <input asp-for="Carousel[i].Id" type="hidden" />
                         <input asp-for="Carousel[i].Section" type="hidden" />
                         <input asp-for="Carousel[i].Fk_PageId" type="hidden" />
-                        <div class="col-md-3 col-sm-3 col-xs-3 form-group rowcontainer">
+                        <div class="col-md-6 col-sm-6 col-xs-6 form-group rowcontainer">
                             <div class="x_panel">
                                 <div class="x_content">
                                     <div class="@(Model.Carousel[i].Id > 0 ? "x_title" : "x_title newrow")">
@@ -132,7 +132,7 @@
                                             <small>@(Model.AtAGlance[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
                                         </h2>
 
-                                        @if (Model.AtAGlance[i].Id > 0 && IsShow)
+                                        @if (Model.AtAGlance[i].Id > 0)
                                         {
                                             <ul class="nav navbar-right panel_toolbox">
                                                 <li>
@@ -161,10 +161,10 @@
                                                 <input asp-for="AtAGlance[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
                                             </div>
                                         </div>
-                                       
+
                                     </div>
 
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12 col-sm-6 col-xs-6 form-group">
                                             <label>Description:</label>
@@ -185,7 +185,7 @@
                                             <img class="imagepreviewAtAGlance_@i"
                                                  src="@(baseUrl + DbImagePath.HomeImage + Model.AtAGlance[i].UploadedData)"
                                                  alt="image"
-                                                 style="width: 50px; height: 50px; background: #374A63;"
+                                                 style="width: 25px; height: 25px; background: #374A63;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
                                             <input asp-for="AtAGlance[i].UploadedData" type="hidden" class="hdnImageAtAGlance_@i" />
                                         </div>
@@ -206,7 +206,7 @@
                 </div>
 
                 <div class="x_title">
-                    <h2>Partner for Transactions Section <small>:</small></h2>
+                    <h2>Transactions and Growth Section <small>:</small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_panel">
@@ -225,10 +225,194 @@
                                 <textarea asp-for="Home.TransactionsGrowthDescription" class="form-control" placeholder="Transactions Growth Heading"></textarea>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
-                <div class="row"><hr /></div>
+                @if (Model.TransactionsandGrowth != null && Model.TransactionsandGrowth.Count > 0)
+                {
+                    for (int i = 0; i < Model.TransactionsandGrowth.Count; i++)
+                    {
+                        <input asp-for="TransactionsandGrowth[i].Id" type="hidden" />
+                        <input asp-for="TransactionsandGrowth[i].Section" type="hidden" />
+                        <input asp-for="TransactionsandGrowth[i].Fk_PageId" type="hidden" />
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.TransactionsandGrowth[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.TransactionsandGrowth[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.TransactionsandGrowth[i].Id > 0 ? "" : "New ") Transactions and Growth @(i + 1)<br />
+                                            <small>@(Model.TransactionsandGrowth[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                        </h2>
+
+                                        @if (Model.TransactionsandGrowth[i].Id > 0)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.TransactionsandGrowth[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                                <label>Title :</label>
+                                                <input asp-for="TransactionsandGrowth[i].Heading" class="form-control" placeholder="Title" />
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                                <label>Display Order* :</label>
+                                                <input asp-for="TransactionsandGrowth[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Description:</label>
+                                            <textarea asp-for="TransactionsandGrowth[i].Description" class="form-control DescriptionS" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
+                                    @if (IsShow)
+                                    {
+                                        <div class="col-md-4 col-sm-6 col-xs-6 form-group">
+                                            <label>Image :</label>
+                                            <input style="width:88px;" id="PartnerTransactionlogo@i" type="file"
+                                                   onchange="processImage(this,'imagepreviewPartnerTransaction_@i','hdnImagePartnerTransaction_@i','@DbImagePath.HomeImage');" />
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                            <br />
+                                            <img class="imagepreviewPartnerTransaction_@i"
+                                                 src="@(baseUrl + DbImagePath.HomeImage + Model.TransactionsandGrowth[i].UploadedData)"
+                                                 alt="image"
+                                                 style="width: 25px; height: 25px; background: #374A63;"
+                                                 onerror="imgErrorNormal(this);" asp-append-version="true" />
+                                            <input asp-for="TransactionsandGrowth[i].UploadedData" type="hidden" class="hdnImagePartnerTransaction_@i" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Image Label :</label>
+                                                <input asp-for="TransactionsandGrowth[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <hr />
+                </div>
+                @if (Model.CoreAreasoFocus != null && Model.CoreAreasoFocus.Count > 0)
+                {
+                    <div class="x_title">
+                        <h2>Core Areas of Focus Section<small>:</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    for (int i = 0; i < Model.CoreAreasoFocus.Count; i++)
+                    {
+                        <input asp-for="CoreAreasoFocus[i].Id" type="hidden" />
+                        <input asp-for="CoreAreasoFocus[i].Section" type="hidden" />
+                        <input asp-for="CoreAreasoFocus[i].Fk_PageId" type="hidden" />
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.CoreAreasoFocus[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.CoreAreasoFocus[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.CoreAreasoFocus[i].Id > 0 ? "" : "New ") Core Areas of Focus @(i + 1)<br />
+                                            <small>@(Model.CoreAreasoFocus[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                        </h2>
+
+                                        @if (Model.CoreAreasoFocus[i].Id > 0)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.CoreAreasoFocus[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                                <label>Title :</label>
+                                                <input asp-for="CoreAreasoFocus[i].Heading" class="form-control" placeholder="Title" />
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 form-group">
+                                            <label>Image :</label>
+                                            <input style="width:88px;" id="CoreAreasoFocuslogo@i" type="file"
+                                                   onchange="processImage(this,'imagepreviewCoreAreasoFocus_@i','hdnImageCoreAreasoFocus_@i','@DbImagePath.HomeImage');" />
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                            <br />
+                                            <img class="imagepreviewCoreAreasoFocus_@i"
+                                                 src="@(baseUrl + DbImagePath.HomeImage + Model.CoreAreasoFocus[i].UploadedData)"
+                                                 alt="image"
+                                                 style="width: 25px; height: 25px; background: #374A63;"
+                                                 onerror="imgErrorNormal(this);" asp-append-version="true" />
+                                            <input asp-for="CoreAreasoFocus[i].UploadedData" type="hidden" class="hdnImageCoreAreasoFocus_@i" />
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <label>Display Order* :</label>
+                                            <input asp-for="CoreAreasoFocus[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Description:</label>
+                                            <textarea asp-for="CoreAreasoFocus[i].Description" class="form-control DescriptionM" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
+                                    @if (IsShow)
+                                    {
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Image Label :</label>
+                                                <input asp-for="CoreAreasoFocus[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <hr />
+                </div>
 
                 <!-- Investor Login Section -->
                 <div class="x_title ">
