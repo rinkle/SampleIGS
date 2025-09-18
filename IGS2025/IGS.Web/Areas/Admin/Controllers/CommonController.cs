@@ -2,12 +2,14 @@
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services;
 using IGS.Models;
+using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 namespace IGS.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CommonController : Controller
+    public class CommonController : BaseController
     {
         private readonly GlobalCookies _cookies;
         private readonly GlobalEnvironmentSetting _globalEnvironment;
@@ -67,16 +69,19 @@ namespace IGS.Areas.Admin.Controllers
 
                     status = true;
                     returnMessage = Message.DeleteSuccessMessage;
+                    SuccessNotification(returnMessage);
                 }
                 else
                 {
                     returnMessage = Message.DataNotFoundMessage;
+                    ErrorNotification(returnMessage);
                 }
             }
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error in DeleteCommonListing");
                 returnMessage = "Something went wrong.";
+                SuccessNotification(returnMessage);
             }
 
             return Json(new { IsSuccess = status, Message = returnMessage });
@@ -108,6 +113,7 @@ namespace IGS.Areas.Admin.Controllers
                         IsSuccess = true,
                         Message = Message.DeleteSuccessMessage
                     };
+                    SuccessNotification(response.Message);
                 }
                 else
                 {
@@ -116,6 +122,7 @@ namespace IGS.Areas.Admin.Controllers
                         IsSuccess = false,
                         Message = Message.DataNotFoundMessage
                     };
+                    ErrorNotification(response.Message);
                 }
             }
             catch (Exception ex)
@@ -126,8 +133,9 @@ namespace IGS.Areas.Admin.Controllers
                     IsSuccess = false,
                     Message = "An error occurred while deleting the image."
                 };
+                ErrorNotification(response.Message);
             }
-
+            
             return Json(response);
         }
 
@@ -135,7 +143,7 @@ namespace IGS.Areas.Admin.Controllers
         #endregion
 
         [HttpPost]
-        public async Task<IActionResult> UploadImages(
+    public async Task<IActionResult> UploadImages(
     List<IFormFile> files,
     [FromForm] string Filepath,
     [FromForm] int? thumbWidth,

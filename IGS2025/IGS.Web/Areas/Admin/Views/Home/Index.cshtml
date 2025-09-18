@@ -67,7 +67,7 @@
                                             <img class="imagepreviewCarousel_@i"
                                                  src="@(baseUrl + DbImagePath.HomeCarousel + Model.Carousel[i].UploadedData)"
                                                  alt="image"
-                                                 style="width: 50px; height: 50px; background: #374A63;"
+                                                 style="width: 25px; height: 25px; background: #374A63;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
                                             <input asp-for="Carousel[i].UploadedData" type="hidden" class="hdnImageCarousel_@i" />
                                         </div>
@@ -150,6 +150,30 @@
                                     </div>
 
                                     <div class="row">
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                                <label>Title :</label>
+                                                <input asp-for="AtAGlance[i].Heading" class="form-control" placeholder="Title" />
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                                <label>Display Order* :</label>
+                                                <input asp-for="AtAGlance[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Description:</label>
+                                            <textarea asp-for="AtAGlance[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
+                                    @if (IsShow)
+                                    {
                                         <div class="col-md-4 col-sm-6 col-xs-6 form-group">
                                             <label>Image :</label>
                                             <input style="width:88px;" id="AtAGlancelogo@i" type="file"
@@ -165,30 +189,7 @@
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
                                             <input asp-for="AtAGlance[i].UploadedData" type="hidden" class="hdnImageAtAGlance_@i" />
                                         </div>
-
-                                        <div class="col-md-6 col-sm-6 col-xs-6 form-group">
-                                            <label>Display Order* :</label>
-                                            <input asp-for="AtAGlance[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
-                                            <label>Caption :</label>
-                                            <input asp-for="AtAGlance[i].Heading" class="form-control" placeholder="Caption" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
-                                            <label>Description:</label>
-                                            <textarea asp-for="AtAGlance[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
-                                        </div>
-                                    </div>
-
-                                    @if (IsShow)
-                                    {
-
-                                        <div class="row dnone">
+                                        <div class="row">
                                             <div class="col-md-12 col-sm-6 col-xs-6 form-group">
                                                 <label>Image Label :</label>
                                                 <input asp-for="AtAGlance[i].ImageLabel" class="form-control" placeholder="Image Label" />
