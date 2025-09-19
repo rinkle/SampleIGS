@@ -8,10 +8,6 @@ using System.Threading.Tasks;
 
 namespace IGS.Dal.Services
 {
-    public interface ILoggerService
-    {
-        Task<int> LogErrorAsync(Exception e, string? details = null);
-    }
     public class LoggerService : ILoggerService
     {
         private readonly ApplicationDbContext _db;
