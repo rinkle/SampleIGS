@@ -15,7 +15,7 @@ namespace IGS.Dal.Data
         public DbSet<CommonListing> CommonListings { get; set; } = default!;
         public DbSet<ErrorLog> ErrorLogs { get; set; } = default!;
         public DbSet<PageHeader> PageHeaders { get; set; } = default!;
-
+        public DbSet<Page> Pages { get; set; } = default!;
 
         //Keyless entities (SP result models)
         public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;

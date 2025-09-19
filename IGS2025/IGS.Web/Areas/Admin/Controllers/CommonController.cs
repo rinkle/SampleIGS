@@ -4,6 +4,7 @@ using IGS.Dal.Services;
 using IGS.Models;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Runtime.InteropServices;
 
 namespace IGS.Areas.Admin.Controllers
@@ -15,26 +16,31 @@ namespace IGS.Areas.Admin.Controllers
         private readonly GlobalEnvironmentSetting _globalEnvironment;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
-        private readonly ICommonListingService _commonListingService;
+        private readonly IPageHeaderService _pageHeaderService;
 
-        public CommonController(
-            GlobalCookies cookies,
-            GlobalEnvironmentSetting globalEnvironment,
-            IUnitOfWork unitOfWork,
-            ILoggerService logger,
-            ICommonListingService commonListingService)
+        public CommonController(GlobalCookies cookies, GlobalEnvironmentSetting globalEnvironment, IUnitOfWork unitOfWork, ILoggerService logger, IPageHeaderService pageHeaderService)
         {
             _cookies = cookies;
             _globalEnvironment = globalEnvironment;
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _commonListingService = commonListingService;
+            _pageHeaderService = pageHeaderService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> PageHeader(string id)
         {
+            int pageid = 0;
+            Int32.TryParse(id, out pageid);
+            ViewBag.hederpageid = pageid;
+            var PageInfo = await _unitOfWork.Page.GetAsync(c => c.Id == pageid, tracked: true);
+            if (PageInfo==null)
+            {
+                PageInfo = new Models.Page();
+            }
+            var PageHeader = await _pageHeaderService.GetPageHeaderAsync(PageInfo.Name, PageInfo.Id);
             return View();
         }
+
 
         #region Menu Settings
         [HttpPost]
