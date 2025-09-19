@@ -2,6 +2,8 @@
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services;
 using IGS.Models;
+using IGS.Models.KeyLessModels;
+using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,15 +18,12 @@ namespace IGS.Areas.Admin.Controllers
         private readonly GlobalEnvironmentSetting _globalEnvironment;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
-        private readonly IPageHeaderService _pageHeaderService;
-
-        public CommonController(GlobalCookies cookies, GlobalEnvironmentSetting globalEnvironment, IUnitOfWork unitOfWork, ILoggerService logger, IPageHeaderService pageHeaderService)
+        public CommonController(GlobalCookies cookies, GlobalEnvironmentSetting globalEnvironment, IUnitOfWork unitOfWork, ILoggerService logger)
         {
             _cookies = cookies;
             _globalEnvironment = globalEnvironment;
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _pageHeaderService = pageHeaderService;
         }
 
         public async Task<IActionResult> PageHeader(string id)
@@ -37,8 +36,15 @@ namespace IGS.Areas.Admin.Controllers
             {
                 PageInfo = new Models.Page();
             }
-            var PageHeader = await _pageHeaderService.GetPageHeaderAsync(PageInfo.Name, PageInfo.Id);
-            return View();
+
+            GetPageHeader_Result pageHeader=new GetPageHeader_Result();
+            if (!string.IsNullOrEmpty(PageInfo.Name))
+            {
+                await _unitOfWork.PageHeader.GetPageHeaderFromSpAsync(PageInfo.Name);
+            }
+            var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
+            PageHeaderModel Modal = new PageHeaderModel(pageHeader, allListings.ToList(), true);
+            return View(Modal);
         }
 
 
@@ -278,6 +284,7 @@ namespace IGS.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
+                int errorId = await _logger.LogErrorAsync(ex, "An error occurred while uploading the video.");
                 // log error if you want: await _logger.LogErrorAsync(ex, "Error in UploadVideoFiles");
                 return StatusCode(500, "An error occurred while uploading the video.");
             }
@@ -332,7 +339,7 @@ namespace IGS.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-                // optionally log: await _logger.LogErrorAsync(ex, "Error in UploadPdfFiles");
+                int errorId = await _logger.LogErrorAsync(ex, "An error occurred while uploading the PDF");
                 return StatusCode(500, "An error occurred while uploading the PDF.");
             }
         }

@@ -24,7 +24,7 @@ namespace Globalsetting
         public const string HomeAtAGlance = "At-A-Glance";
         public const string HomeTransactionsandGrowth = "Transactions and Growth";
         public const string HomeCoreAreasofFocus = "Core Areas of Focus";
-
+        public const string PageHeader = "Page Header";
 
 
     }
