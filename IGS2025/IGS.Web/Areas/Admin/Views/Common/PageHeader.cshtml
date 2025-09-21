@@ -1,0 +1,106 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.PageHeaderModel
+
+@{
+    ViewBag.Title = Model.PageHeader.PageName + " | Page Header Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.PageHeader != null)
+{
+    <div class="row">
+        <form asp-action="SavePageHeader" asp-controller="Common" asp-area="Admin" method="post" enctype="multipart/form-data" id="form-newsfeature">
+            <input type="hidden" asp-for="PageHeader.Id" />
+            <input type="hidden" asp-for="PageHeader.Fk_PageId" />
+
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            @Model.PageHeader.PageName Header:
+                            <small>Complete below form to update @Model.PageHeader.PageName header information</small>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <!-- Page Title -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label>Page Title</label>
+                                <input asp-for="PageHeader.PageTitle" class="form-control" placeholder="Page Title" />
+                                <span asp-validation-for="PageHeader.PageTitle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Meta Data -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label>Page Meta Data</label>
+                                <input asp-for="PageHeader.MetaData" class="form-control" placeholder="Page Meta Data" />
+                                <span asp-validation-for="PageHeader.MetaData" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <!-- Meta Description -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label>Page Meta Description</label>
+                                <input asp-for="PageHeader.MetaDescription" class="form-control" placeholder="Page Meta Description" />
+                                <span asp-validation-for="PageHeader.MetaDescription" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <!-- Header Image -->
+                        @if (new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14 }.Contains(Model.PageHeader.Fk_PageId ?? 0))
+                        {
+                            <div class="row">
+                                <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                    <label for="HeaderImage">Header Image:</label>
+                                    <br />
+                                    <input id="HeaderImage" type="file" onchange="processImage(this, 'imagepreview_HeaderImage', 'hdnImage_HeaderImageName', '@DbImagePath.pageHeader', '0', '0', '');" />
+                                    <span class="fileuploadmessage">(Max width 1200px, Max height 1200px)</span>
+                                </div>
+
+                                <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                    <br />
+                                    <img class="imagepreview_HeaderImage"
+                                         src="@(string.IsNullOrEmpty(Model.PageHeader?.HeaderImage) ? baseUrl + "content/images/preview.png" : baseUrl + DbImagePath.pageHeader + Model.PageHeader.HeaderImage)"
+                                         alt="image"
+                                         style="width:100px; border:1px solid gray;"
+                                         onerror="imgErrorSmall(this);" asp-append-version="true" />
+
+                                    <input asp-for="PageHeader.HeaderImage" type="hidden" class="hdnImage_HeaderImageName" />
+                                    <span asp-validation-for="PageHeader.HeaderImage" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                    <label>Header Caption</label>
+                                    <textarea asp-for="PageHeader.HeaderCaption" class="form-control" placeholder="Caption"></textarea>
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="x_title" style="width:100%;float:right;">
+                    <div style="float:right;padding-right:10px;">
+                        <button type="submit" class="btn btn-round btn-dark" id="btnsave">Save</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+}
+

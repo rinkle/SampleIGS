@@ -3296,6 +3296,7 @@ wwwroot\images\icons\team-arrow-right.svg
 wwwroot\images\icons\team-mail.svg
 wwwroot\images\icons\team-mail-dark.svg
 wwwroot\images\IGS-logo.svg
+wwwroot\images\pageHeader\team.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

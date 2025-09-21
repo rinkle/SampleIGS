@@ -45,11 +45,14 @@ namespace IGS.Areas.Admin.Controllers
             {
                 PageInfo = new Models.Page();
             }
-
-            GetPageHeader_Result pageHeader = new GetPageHeader_Result();
+            GetPageHeader_Result? pageHeader = null;
             if (!string.IsNullOrEmpty(PageInfo.Name))
             {
-                await _unitOfWork.PageHeader.GetPageHeaderFromSpAsync(PageInfo.Name);
+                pageHeader = await _unitOfWork.PageHeader.GetPageHeaderFromSpAsync(PageInfo.Name);
+                if (pageHeader==null)
+                {
+                    pageHeader = new GetPageHeader_Result();
+                }
             }
             var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
             PageHeaderModel Modal = new PageHeaderModel(pageHeader, allListings.ToList(), true);
