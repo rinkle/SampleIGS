@@ -6,7 +6,7 @@
         ICommonListingRepository CommonListing { get; }
         IPageHeaderRepository PageHeader { get; }
         IPageRepository Page { get; }
-
+        ITransactionServiceRepository TransactionService { get; }
         void Save();
         Task SaveAsync();
     }

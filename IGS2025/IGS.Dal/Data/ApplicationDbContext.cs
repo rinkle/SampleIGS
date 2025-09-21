@@ -16,12 +16,14 @@ namespace IGS.Dal.Data
         public DbSet<ErrorLog> ErrorLogs { get; set; } = default!;
         public DbSet<PageHeader> PageHeaders { get; set; } = default!;
         public DbSet<Page> Pages { get; set; } = default!;
+        public DbSet<TransactionService> TransactionServices { get; set; } = default!;
 
         //Keyless entities (SP result models)
         public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;
         public DbSet<GetCommonListing_Result> GetCommonListingResults { get; set; } = default!;
         public DbSet<GetPageHeader_Result> GetPageHeaders { get; set; } = default!;
 
+        public DbSet<GetTransactionService_Result> GetTransactionServices { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -30,11 +32,13 @@ namespace IGS.Dal.Data
             builder.Entity<Home>().ToTable("Home");
             builder.Entity<ErrorLog>().ToTable("ErrorLog");
             builder.Entity<PageHeader>().ToTable("PageHeader");
+            builder.Entity<TransactionService>().ToTable("TransactionService");
+
 
             builder.Entity<GetHome_Result>().HasNoKey();
             builder.Entity<GetCommonListing_Result>().HasNoKey();
             builder.Entity<GetPageHeader_Result>().HasNoKey();
-
+            builder.Entity<GetTransactionService_Result>().HasNoKey();
 
         }
 
