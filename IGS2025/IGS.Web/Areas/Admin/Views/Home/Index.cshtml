@@ -467,9 +467,9 @@
                             </div>
                             <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <br /><br />
-                                @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
-                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightImage) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
-                            </div>
+                                    @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
+                                    <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                                </div>
 
                             <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label asp-for="Home.InsightImage">Right Insight Image</label>
