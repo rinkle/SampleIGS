@@ -7,6 +7,7 @@ using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using System.Runtime.InteropServices;
 
 namespace IGS.Areas.Admin.Controllers
@@ -14,30 +15,38 @@ namespace IGS.Areas.Admin.Controllers
     [Area("Admin")]
     public class CommonController : BaseController
     {
+        private readonly string baseUrl;
         private readonly GlobalCookies _cookies;
         private readonly GlobalEnvironmentSetting _globalEnvironment;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
-        public CommonController(GlobalCookies cookies, GlobalEnvironmentSetting globalEnvironment, IUnitOfWork unitOfWork, ILoggerService logger)
+
+        public CommonController(IOptions<AppSettings> options, GlobalCookies cookies, GlobalEnvironmentSetting globalEnvironment, IUnitOfWork unitOfWork, ILoggerService logger)
         {
             _cookies = cookies;
             _globalEnvironment = globalEnvironment;
             _unitOfWork = unitOfWork;
             _logger = logger;
+            baseUrl = options.Value.BaseUrl;
         }
 
+        #region PageHeader Section
         public async Task<IActionResult> PageHeader(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return Redirect(baseUrl + "admin/home/");
+            }
             int pageid = 0;
             Int32.TryParse(id, out pageid);
             ViewBag.hederpageid = pageid;
             var PageInfo = await _unitOfWork.Page.GetAsync(c => c.Id == pageid, tracked: true);
-            if (PageInfo==null)
+            if (PageInfo == null)
             {
                 PageInfo = new Models.Page();
             }
 
-            GetPageHeader_Result pageHeader=new GetPageHeader_Result();
+            GetPageHeader_Result pageHeader = new GetPageHeader_Result();
             if (!string.IsNullOrEmpty(PageInfo.Name))
             {
                 await _unitOfWork.PageHeader.GetPageHeaderFromSpAsync(PageInfo.Name);
@@ -46,6 +55,57 @@ namespace IGS.Areas.Admin.Controllers
             PageHeaderModel Modal = new PageHeaderModel(pageHeader, allListings.ToList(), true);
             return View(Modal);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SavePageHeader(PageHeaderModel model)
+        {
+            if (model == null || !ModelState.IsValid)
+            {
+                ErrorNotification("Invalid data.");
+                return RedirectToAction("PageHeader", "Common", new { area = "Admin", id = model?.PageHeader?.Fk_PageId });
+            }
+
+            try
+            {
+                // ✅ Use UnitOfWork instead of FindAll
+                var pageHeader = await _unitOfWork.PageHeader.GetAsync(x => x.Fk_PageId == model.PageHeader.Fk_PageId, tracked: true);
+
+                if (pageHeader == null)
+                {
+                    pageHeader = new IGS.Models.PageHeader
+                    {
+                        CreatedBy = _globalEnvironment.UserId,
+                        CreatedDate = DateTime.Now,
+                        Fk_PageId = model.PageHeader.Fk_PageId
+                    };
+                }
+                // Map fields
+                pageHeader.HeaderCaption = model.PageHeader.HeaderCaption;
+                pageHeader.MetaData = model.PageHeader.MetaData;
+                pageHeader.PageTitle = model.PageHeader.PageTitle;
+                pageHeader.MetaDescription = model.PageHeader.MetaDescription;
+                pageHeader.ModifiedBy = _globalEnvironment.UserId;
+                pageHeader.ModifiedDate = DateTime.Now;
+                pageHeader.Additionalinfo = model.PageHeader.Additionalinfo;
+                pageHeader.VimeoVideoUrl = model.PageHeader.VimeoVideoUrl;
+                pageHeader.AdditionalSubHeading = model.PageHeader.AdditionalSubHeading;
+                pageHeader.AdditionalSubDescription = model.PageHeader.AdditionalSubDescription;
+                pageHeader.HeaderImage = model.PageHeader.HeaderImage;
+                pageHeader.AdditionalImage = model.PageHeader.AdditionalImage;
+                await _unitOfWork.SaveAsync();
+                SuccessNotification(Message.SuccessMessage);
+            }
+            catch (Exception ex)
+            {
+                var errorId = await _logger.LogErrorAsync(ex, "Error in SavePageHeader");
+                ErrorNotification($"{Message.Error} : {errorId}");
+            }
+            return Redirect(baseUrl + "admin/common/pageheader/" + model.PageHeader.Id);
+        }
+
+
+        #endregion
 
 
         #region Menu Settings
