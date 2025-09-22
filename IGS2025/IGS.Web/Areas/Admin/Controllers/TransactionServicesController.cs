@@ -31,9 +31,9 @@ namespace IGS.Web.Areas.Admin.Controllers
         {
             try
             {
-                var homeResult = await _unitOfWork.Home.GetHomeFromSpAsync();
+                var transactionServiceResult = await _unitOfWork.TransactionService.GetTransactionServiceFromSpAsync();
                 var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
-                var vm = new HomeViewModel(homeResult, allListings.ToList(),true);
+                var vm = new TransactionServicesViewModel(transactionServiceResult, allListings.ToList(),true);
                 return View(vm);
             }
             catch (Exception Ex)
@@ -47,89 +47,40 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveHomeData(HomeViewModel model, IFormFile? Brochure)
+        public async Task<IActionResult> SaveTransactionServicesData(TransactionServicesViewModel model, IFormFile? Brochure)
         {
             try
             {
-                if (model.Home != null)
+                if (model.TransactionService != null)
                 {
-                    await _commonListingService.SaveCommonListingAsync(model.Carousel);
-                    await _commonListingService.SaveCommonListingAsync(model.AtAGlance);
-                    await _commonListingService.SaveCommonListingAsync(model.CoreAreasoFocus);
+                    await _commonListingService.SaveCommonListingAsync(model.CoreAreasofFocus);
 
 
-                    var homeData = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
-                    if (homeData != null)
+                    var transactionServiceData = await _unitOfWork.TransactionService.GetAsync(h => h.Id == model.TransactionService.Id, tracked: true);
+                    if (transactionServiceData != null)
                     {
-                        homeData.TransactionsGrowthHeading = model.Home.TransactionsGrowthHeading;
-                        homeData.TransactionsGrowthDescription = model.Home.TransactionsGrowthDescription;
-                        homeData.CoreAreasHeading = model.Home.CoreAreasHeading;
-                        homeData.CoreAreaDescription = model.Home.CoreAreaDescription;
-                        homeData.RecentProjectsHeading = model.Home.RecentProjectsHeading;
-                        homeData.RecentProjectsDescription = model.Home.RecentProjectsDescription;
-                        homeData.InsightTitle = model.Home.InsightTitle;
-                        homeData.InsightHeading = model.Home.InsightHeading;
-                        homeData.InsightDescription = model.Home.InsightDescription;
-                        homeData.InsightImage = model.Home.InsightImage;
-                        homeData.InsightPdfReport = model.Home.InsightPdfReport;
-                        homeData.NewsletterHeading = model.Home.NewsletterHeading;
-                        homeData.NewsletterScript = model.Home.NewsletterScript;
-                        homeData.InvestorLogin = model.Home.InvestorLogin;
-                        homeData.VimeoVideoUrl = model.Home.VimeoVideoUrl;
-                        homeData.LinkedInUrl = model.Home.LinkedInUrl;
-                        homeData.TwitterUrl = model.Home.TwitterUrl;
-                        homeData.FacebookUrl = model.Home.FacebookUrl;
-                        homeData.Email = model.Home.Email;
-                        homeData.OverviewPdf = model.Home.OverviewPdf;
-                        homeData.WebsiteUpdateDate = model.Home.WebsiteUpdateDate;
-                        homeData.ModifiedDate = DateTime.Now;
-                        homeData.ModifiedBy = User?.Identity is ClaimsIdentity identity
+                        transactionServiceData.AreasofFocusHeading = model.TransactionService.AreasofFocusHeading;
+                        transactionServiceData.AreasofFocusDescription = model.TransactionService.AreasofFocusDescription;
+                        transactionServiceData.IndustryExpertiseHeading = model.TransactionService.IndustryExpertiseHeading;
+                        transactionServiceData.IndustryExpertiseSubHeading = model.TransactionService.IndustryExpertiseSubHeading;
+                        transactionServiceData.IndustryExpertiseDescription = model.TransactionService.IndustryExpertiseDescription;
+                        transactionServiceData.RecentProjectHeading = model.TransactionService.RecentProjectHeading;
+                        transactionServiceData.RecentProjectDescription = model.TransactionService.RecentProjectDescription;
+                        transactionServiceData.InsightHeading = model.TransactionService.InsightHeading;
+                        transactionServiceData.InsightHeading = model.TransactionService.InsightHeading;
+                        transactionServiceData.ModifiedDate = DateTime.Now;
+                        transactionServiceData.ModifiedBy = User?.Identity is ClaimsIdentity identity
                             ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
                             : null;
-
-                        #region save Brochure
-                        if (Brochure != null && Brochure.Length > 0)
-                        {
-                            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", DbImagePath.HomeImage);
-                            if (!Directory.Exists(uploadsFolder))
-                                Directory.CreateDirectory(uploadsFolder);
-
-                            // Get original filename
-                            string originalFileName = Path.GetFileName(Brochure.FileName);
-                            string filePath = Path.Combine(uploadsFolder, originalFileName);
-
-                            // If file exists, append a random suffix before extension
-                            if (System.IO.File.Exists(filePath))
-                            {
-                                string fileNameWithoutExt = Path.GetFileNameWithoutExtension(originalFileName);
-                                string extension = Path.GetExtension(originalFileName);
-                                string randomSuffix = "_" + Guid.NewGuid().ToString("N").Substring(0, 6); // short random string
-                                string newFileName = fileNameWithoutExt + randomSuffix + extension;
-                                filePath = Path.Combine(uploadsFolder, newFileName);
-                                originalFileName = newFileName;
-                            }
-
-                            // Save the file
-                            using (var stream = new FileStream(filePath, FileMode.Create))
-                            {
-                                await Brochure.CopyToAsync(stream);
-                            }
-
-                            // Save final filename to DB
-                            homeData.OverviewPdf = originalFileName;
-                        }
-                        #endregion
-
-
                         await _unitOfWork.SaveAsync();
                         SuccessNotification("Home page data saved successfully!");
-                        return Redirect(baseUrl + "admin/home/");
+                        return Redirect(baseUrl + "admin/transactionservices/");
                     }
                 }
             }
             catch (Exception Ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/SaveHomeData");
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in TransactionServices/SaveTransactionServicesData");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
 
