@@ -25,7 +25,11 @@ namespace IGS.Models.ViewModels
 
             if (isAdmin)
             {
-                CoreAreasofFocus.Add(new GetCommonListing_Result { Id = 0, Section = PageSection.HomeAtAGlance, Fk_PageId = (int)PageEnum.Home });
+                for (int i = 0; i < 3; i++)
+                {
+                    CoreAreasofFocus.Add(new GetCommonListing_Result { Id = 0, Section = PageSection.HomeAtAGlance, Fk_PageId = (int)PageEnum.Home });
+
+                }
             }
         }
     }

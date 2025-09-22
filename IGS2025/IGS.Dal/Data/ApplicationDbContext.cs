@@ -32,8 +32,7 @@ namespace IGS.Dal.Data
             builder.Entity<Home>().ToTable("Home");
             builder.Entity<ErrorLog>().ToTable("ErrorLog");
             builder.Entity<PageHeader>().ToTable("PageHeader");
-            builder.Entity<TransactionService>().ToTable("TransactionService");
-
+            builder.Entity<TransactionService>().ToTable("TransactionServices");
 
             builder.Entity<GetHome_Result>().HasNoKey();
             builder.Entity<GetCommonListing_Result>().HasNoKey();

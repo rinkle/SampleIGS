@@ -29,16 +29,17 @@ namespace IGS.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            var transactionServiceData = await _unitOfWork.TransactionService.GetAsync(h => h.Id == 1, tracked: true);
             try
             {
                 var transactionServiceResult = await _unitOfWork.TransactionService.GetTransactionServiceFromSpAsync();
-                var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.Home);
-                var vm = new TransactionServicesViewModel(transactionServiceResult, allListings.ToList(),true);
+                var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.TransactionServices);
+                var vm = new TransactionServicesViewModel(transactionServiceResult, allListings.ToList(), true);
                 return View(vm);
             }
             catch (Exception Ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in Home/Index");
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in TransactionServices/Index");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
             return View(null);
@@ -47,15 +48,13 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveTransactionServicesData(TransactionServicesViewModel model, IFormFile? Brochure)
+        public async Task<IActionResult> SaveTransactionServiceData(TransactionServicesViewModel model, IFormFile? Brochure)
         {
             try
             {
                 if (model.TransactionService != null)
                 {
                     await _commonListingService.SaveCommonListingAsync(model.CoreAreasofFocus);
-
-
                     var transactionServiceData = await _unitOfWork.TransactionService.GetAsync(h => h.Id == model.TransactionService.Id, tracked: true);
                     if (transactionServiceData != null)
                     {

@@ -1,4 +1,5 @@
 E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.deps.json
+E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.runtimeconfig.json
 E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.dll
 E:\Git\SampleIGS\IGS2025\Globalsetting\bin\Debug\net9.0\Globalsetting.pdb
 E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.csproj.AssemblyReference.cache
@@ -10,4 +11,5 @@ E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.sourcelink
 E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.dll
 E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\refint\Globalsetting.dll
 E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.pdb
+E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\Globalsetting.genruntimeconfig.cache
 E:\Git\SampleIGS\IGS2025\Globalsetting\obj\Debug\net9.0\ref\Globalsetting.dll
