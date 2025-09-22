@@ -8,7 +8,8 @@
         IPageRepository Page { get; }
         ITransactionServiceRepository TransactionService { get; }
         IPortfolioServiceRepository PortfolioService { get; }
-
+        IIndustryRepository IndustryService { get; }
+        IIndustryCategoryRepository IndustryCategory { get; }
         void Save();
         Task SaveAsync();
     }

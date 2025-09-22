@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IGS.Models
 {
-    [Table("Industries")]
+    [Table("Industry")]
     public class Industry
     {
         [Key] // ✅ Explicitly mark as primary key

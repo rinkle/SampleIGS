@@ -18,8 +18,8 @@ namespace IGS.Dal.Data
         public DbSet<Page> Pages { get; set; } = default!;
         public DbSet<TransactionService> TransactionServices { get; set; } = default!;
         public DbSet<PortfolioService> PortfolioServices { get; set; } = default!;
-
-
+        public DbSet<Industry> Industries { get; set; } = default!;
+        public DbSet<IndustryCategory> IndustryCategories { get; set; } = default!;
 
         //Keyless entities (SP result models)
         //public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;
@@ -38,6 +38,9 @@ namespace IGS.Dal.Data
             builder.Entity<TransactionService>().ToTable("TransactionServices");
             builder.Entity<PortfolioService>().ToTable("PortfolioServices");
 
+            builder.Entity<Industry>().ToTable("Industry");
+            builder.Entity<IndustryCategory>().ToTable("IndustryCategory");
+
             builder.Entity<CommonListing>()
                 .Property(p => p.DisplayOrder)
                 .HasPrecision(18, 2);
@@ -48,8 +51,8 @@ namespace IGS.Dal.Data
             builder.Entity<GetPageHeader_Result>().HasNoKey().ToView(null);
             builder.Entity<GetTransactionService_Result>().HasNoKey().ToView(null);
             builder.Entity<GetPortfolioService_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetIndustry_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetIndustryCategory_Result>().HasNoKey().ToView(null);
         }
-
-
     }
 }

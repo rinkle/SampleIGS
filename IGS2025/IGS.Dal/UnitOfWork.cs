@@ -16,6 +16,8 @@ namespace IGS.Dal.Repository
         public IPageRepository Page { get; private set; }
         public ITransactionServiceRepository TransactionService { get; private set; }
         public IPortfolioServiceRepository PortfolioService { get; private set; }
+        public IIndustryRepository IndustryService { get; private set; }
+        public IIndustryCategoryRepository IndustryCategory { get; private set; }
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -26,6 +28,8 @@ namespace IGS.Dal.Repository
             Page = new PageRepository(_db, _sql);
             TransactionService=new TransactionServiceRepository(_db, _sql);
             PortfolioService=new PortfolioServiceRepository(_db, _sql);
+            IndustryService = new IndustryRepository(_db, _sql);
+            IndustryCategory = new IndustryCategoryRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();
