@@ -5,8 +5,227 @@
     ViewBag.Title = "Portfolio Services  Page Management";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    bool IsShow = false;
 }
 
 @if (Model?.PortfolioServices != null)
 {
+    <div class="row">
+        <form asp-action="SavePortfolioServiceData" asp-controller="PortfolioServices" method="post" enctype="multipart/form-data"
+              id="form-Home" class="form-horizontal form-label-left input_mask" novalidate data-parsley-validate>
+            @Html.AntiForgeryToken()
+            <input asp-for="PortfolioServices.Id" type="hidden" />
+            <div class="col-md-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Portfolio Services: <small>Update below form to save basic Portfolio Services info </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="PortfolioServices.CoreAreasHeading">Core Areas of Focus Heading</label>
+                                <input asp-for="PortfolioServices.CoreAreasHeading" class="form-control" placeholder="Core Areas of Focus Heading" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="PortfolioServices.CoreAreasDescription">Core Areas of Focus Description</label>
+                                <textarea asp-for="PortfolioServices.CoreAreasDescription" class="form-control DescriptionS" placeholder="Core Areas of Focus Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.CoreAreasofFocus != null && Model.CoreAreasofFocus.Count > 0)
+                {
+                    for (int i = 0; i < Model.CoreAreasofFocus.Count; i++)
+                    {
+                        <input asp-for="CoreAreasofFocus[i].Id" type="hidden" />
+                        <input asp-for="CoreAreasofFocus[i].Section" type="hidden" />
+                        <input asp-for="CoreAreasofFocus[i].Fk_PageId" type="hidden" />
+
+                        <div class="col-md-6 col-sm-6 col-xs-6 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.CoreAreasofFocus[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.CoreAreasofFocus[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.CoreAreasofFocus[i].Id > 0 ? "" : "New ") Core Areas of Focus @(i + 1)<br />
+                                            <small>@(Model.CoreAreasofFocus[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                        </h2>
+
+                                        @if (Model.CoreAreasofFocus[i].Id > 0)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.CoreAreasofFocus[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                            <label>Title :</label>
+                                            <input asp-for="CoreAreasofFocus[i].Heading" class="form-control" placeholder="Title" />
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                            <label>Display Order* :</label>
+                                            <input asp-for="CoreAreasofFocus[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label>Description:</label>
+                                            <textarea asp-for="CoreAreasofFocus[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
+                                    @if (IsShow)
+                                    {
+                                        <div class="col-md-4 col-sm-6 col-xs-6 form-group">
+                                            <label>Image :</label>
+                                            <input style="width:88px;" id="CoreAreasofFocuslogo@i" type="file"
+                                                   onchange="processImage(this,'imagepreviewCoreAreasofFocus_@i','hdnImageCoreAreasofFocus_@i','@DbImagePath.TransactionservicesImage');" />
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 col-xs-3 form-group">
+                                            <br />
+                                            <img class="imagepreviewCoreAreasofFocus_@i"
+                                                 src="@($"{baseUrl}{DbImagePath.TransactionservicesImage}{Model.CoreAreasofFocus[i].UploadedData}")"
+                                                 alt="image"
+                                                 style="width: 25px; height: 25px; background: #374A63;"
+                                                 onerror="imgErrorNormal(this);" asp-append-version="true" />
+                                            <input asp-for="CoreAreasofFocus[i].UploadedData" type="hidden" class="hdnImageCoreAreasofFocus_@i" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                                <label>Image Label :</label>
+                                                <input asp-for="CoreAreasofFocus[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <hr />
+                </div>
+                <div class="x_title">
+                    <h2>Industry Expertise Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <br />
+                                <label asp-for="PortfolioServices.IndustryExpertiseHeading">Industry Expertise Heading</label>
+                                <input asp-for="PortfolioServices.IndustryExpertiseHeading" class="form-control" placeholder="Industry Expertise Heading" />
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <br />
+                                <label asp-for="PortfolioServices.IndustryExpertiseSubHeading">Industry Expertise Sub-Heading</label>
+                                <input asp-for="PortfolioServices.IndustryExpertiseSubHeading" class="form-control" placeholder="Industry Expertise Sub-Heading" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <br /><br />
+                                <a href='@(baseUrl + "admin/industries/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Industry Expertise</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="PortfolioServices.IndustryExpertiseDescription">Industry Expertise Description</label>
+                                <textarea asp-for="PortfolioServices.IndustryExpertiseDescription" class="form-control ckeditor" placeholder="Industry Expertise Description"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <hr />
+                </div>
+
+                <div class="x_title">
+                    <h2>Featured Insight Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <br />
+                                <label asp-for="PortfolioServices.FeaturedInsightHeading">Featured Insight Heading</label>
+                                <input asp-for="PortfolioServices.FeaturedInsightHeading" class="form-control" placeholder="Featured Insight Heading" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <br /><br />
+                                <a href='@(baseUrl + "admin/experience/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Projects</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <br />
+                                <label asp-for="PortfolioServices.FeaturedInsightSubHeading">Featured Insight Heading Heading</label>
+                                <input asp-for="PortfolioServices.FeaturedInsightSubHeading" class="form-control" placeholder="Featured Insight SubHeading" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <br /><br />
+                                <a href='@(baseUrl + "admin/experience/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Projects</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="PortfolioServices.FeaturedInsighDescription">Featured Insigh Description</label>
+                                <textarea asp-for="PortfolioServices.FeaturedInsighDescription" class="form-control" placeholder="Featured Insigh Description"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <hr />
+                </div>
+                <div class="x_title">
+                    <h2>Insight Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <br />
+                                <label asp-for="PortfolioServices.InsightHeading">Insight Heading</label>
+                                <input asp-for="PortfolioServices.InsightHeading" class="form-control" placeholder="Insight Heading" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <br /><br />
+                                <a href='@(baseUrl + "admin/news/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Insights</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="x_title" style="width:100%;float:right;">
+                    <div class="clearfix"></div>
+                    <div style="float:right;padding-right:10px;">
+                        <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </form>
+
+    </div>
 }
