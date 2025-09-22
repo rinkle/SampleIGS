@@ -54,7 +54,6 @@
                                             @(Model.CoreAreasofFocus[i].Id > 0 ? "" : "New ") Core Areas of Focus @(i + 1)<br />
                                             <small>@(Model.CoreAreasofFocus[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
                                         </h2>
-
                                         @if (Model.CoreAreasofFocus[i].Id > 0)
                                         {
                                             <ul class="nav navbar-right panel_toolbox">
@@ -73,12 +72,18 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                                            <label>Title :</label>
+                                            <label>Heading :</label>
                                             <input asp-for="CoreAreasofFocus[i].Heading" class="form-control" placeholder="Title" />
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                                             <label>Display Order* :</label>
                                             <input asp-for="CoreAreasofFocus[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                            <label>Sub-Heading :</label>
+                                            <textarea asp-for="CoreAreasofFocus[i].SubHeading" class="form-control DescriptionS" placeholder="Sub-Heading"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -188,7 +193,32 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <br />
                                 <label asp-for="PortfolioServices.FeaturedInsighDescription">Featured Insigh Description</label>
-                                <textarea asp-for="PortfolioServices.FeaturedInsighDescription" class="form-control" placeholder="Featured Insigh Description"></textarea>
+                                <textarea asp-for="PortfolioServices.FeaturedInsighDescription" class="form-control ckeditor" placeholder="Featured Insigh Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-sm-1 col-xs-1 form-group">
+                                <br />
+                                <label for="fullname">Pdf Report :</label>
+                                <input style="width:88px;" id='@("PortfolioServicesInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.PortfolioServicesImage');" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <br /><br />
+                                @Html.HiddenFor(x => x.PortfolioServices.FeaturedInsighPdf, new { @class = "hdnImageInsightPdfReport" })
+                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.PortfolioServices.FeaturedInsighPdf) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.PortfolioServices.FeaturedInsighPdf) ? baseUrl + DbImagePath.PortfolioServicesImage + Model.PortfolioServices.FeaturedInsighPdf : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                            </div>
+
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <br />
+                                <label asp-for="PortfolioServices.FeaturedInsighImage">Right Insight Image</label>
+                                <input id="InsightImage" type="file" onchange="processImage(this, '@("imagepreview_InsightImage")', '@("hdnImage_InsightImageName")','@DbImagePath.PortfolioServicesImage','0','0','');" />
+                            </div>
+
+
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <br />
+                                <img class='@("imagepreview_InsightImage")' src="@($"{baseUrl}{DbImagePath.PortfolioServicesImage}{Model.PortfolioServices.FeaturedInsighImage}")" alt="image" style="width:100px;border:1px solid gray" onerror="imgErrorSmall(this);" asp-append-version="true" />
+                                @Html.HiddenFor(x => x.PortfolioServices.FeaturedInsighImage, new { @class = "hdnImage_InsightImageName" })
                             </div>
                         </div>
 
@@ -214,7 +244,7 @@
                                 <a href='@(baseUrl + "admin/news/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Insights</a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="x_title" style="width:100%;float:right;">
