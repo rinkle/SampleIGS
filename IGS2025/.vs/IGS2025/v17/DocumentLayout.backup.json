@@ -18,8 +18,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -28,18 +36,10 @@
               "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
               "RelativeToolTip": "IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAACIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-22T09:15:08.444Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
