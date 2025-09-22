@@ -72,7 +72,7 @@ namespace IGS.Web.Areas.Admin.Controllers
                             ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
                             : null;
                         await _unitOfWork.SaveAsync();
-                        SuccessNotification("Home page data saved successfully!");
+                        SuccessNotification(Message.SuccessMessage);
                         return Redirect(baseUrl + "admin/transactionservices/");
                     }
                 }

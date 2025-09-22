@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\viewmodels\\transactionservicesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\viewmodels\\transactionservicesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\transactionservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\transactionservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransactionServicesViewModel.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
+              "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
+              "RelativeToolTip": "IGS.Models\\ViewModels\\TransactionServicesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T09:15:08.444Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -18,6 +40,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransactionServicesController.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\TransactionServicesController.cs",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\TransactionServicesController.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\TransactionServicesController.cs",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\TransactionServicesController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAADIAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T09:14:56.499Z",
+              "EditorCaption": ""
             }
           ]
         }

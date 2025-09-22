@@ -14,8 +14,6 @@ namespace IGS.Models.ViewModels
         {
             // Ensure Home is never null
             TransactionService = transactionServiceResult ?? new GetTransactionService_Result();
-
-            // Ensure Carousel is never null
             CoreAreasofFocus = allListings?
                 .Where(x => !string.IsNullOrEmpty(x.Section) &&
                             x.Section.Equals(PageSection.TransactionServicesCoreAreasofFocus, StringComparison.OrdinalIgnoreCase))
@@ -25,11 +23,7 @@ namespace IGS.Models.ViewModels
 
             if (isAdmin)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    CoreAreasofFocus.Add(new GetCommonListing_Result { Id = 0, Section = PageSection.HomeAtAGlance, Fk_PageId = (int)PageEnum.Home });
-
-                }
+                CoreAreasofFocus.Add(new GetCommonListing_Result { Id = 0, Section = PageSection.TransactionServicesCoreAreasofFocus, Fk_PageId = (int)PageEnum.TransactionServices });
             }
         }
     }
