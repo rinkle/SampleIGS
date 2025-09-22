@@ -7,6 +7,8 @@
         IPageHeaderRepository PageHeader { get; }
         IPageRepository Page { get; }
         ITransactionServiceRepository TransactionService { get; }
+        IPortfolioServiceRepository PortfolioService { get; }
+
         void Save();
         Task SaveAsync();
     }

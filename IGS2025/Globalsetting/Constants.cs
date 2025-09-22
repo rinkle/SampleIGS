@@ -26,6 +26,7 @@ namespace Globalsetting
         public const string HomeCoreAreasofFocus = "Core Areas of Focus";
         public const string PageHeader = "Page Header";
         public const string TransactionServicesCoreAreasofFocus = "Core Areas of Focus";
+        public const string PortfolioServicesCoreAreasofFocus = "Core Areas of Focus";
 
 
 

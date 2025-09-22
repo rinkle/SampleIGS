@@ -14,8 +14,8 @@ namespace IGS.Dal.Repository
         public ICommonListingRepository CommonListing { get; private set; }
         public IPageHeaderRepository PageHeader { get; private set; }
         public IPageRepository Page { get; private set; }
-
         public ITransactionServiceRepository TransactionService { get; private set; }
+        public IPortfolioServiceRepository PortfolioService { get; private set; }
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -25,6 +25,7 @@ namespace IGS.Dal.Repository
             PageHeader = new PageHeaderRepository(_db, _sql);
             Page = new PageRepository(_db, _sql);
             TransactionService=new TransactionServiceRepository(_db, _sql);
+            PortfolioService=new PortfolioServiceRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

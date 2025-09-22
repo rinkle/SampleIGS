@@ -17,13 +17,16 @@ namespace IGS.Dal.Data
         public DbSet<PageHeader> PageHeaders { get; set; } = default!;
         public DbSet<Page> Pages { get; set; } = default!;
         public DbSet<TransactionService> TransactionServices { get; set; } = default!;
+        public DbSet<PortfolioService> PortfolioServices { get; set; } = default!;
+
+
 
         //Keyless entities (SP result models)
-        public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;
-        public DbSet<GetCommonListing_Result> GetCommonListingResults { get; set; } = default!;
-        public DbSet<GetPageHeader_Result> GetPageHeaders { get; set; } = default!;
-
-        public DbSet<GetTransactionService_Result> GetTransactionServices { get; set; } = default!;
+        //public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;
+        //public DbSet<GetCommonListing_Result> GetCommonListingResults { get; set; } = default!;
+        //public DbSet<GetPageHeader_Result> GetPageHeaders { get; set; } = default!;
+        //public DbSet<GetTransactionService_Result> GetTransactionServices { get; set; } = default!;
+        //public DbSet<GetPortfolioService_Result> GetPortfolioService { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -33,13 +36,20 @@ namespace IGS.Dal.Data
             builder.Entity<ErrorLog>().ToTable("ErrorLog");
             builder.Entity<PageHeader>().ToTable("PageHeader");
             builder.Entity<TransactionService>().ToTable("TransactionServices");
+            builder.Entity<PortfolioService>().ToTable("PortfolioServices");
 
-            builder.Entity<GetHome_Result>().HasNoKey();
-            builder.Entity<GetCommonListing_Result>().HasNoKey();
-            builder.Entity<GetPageHeader_Result>().HasNoKey();
-            builder.Entity<GetTransactionService_Result>().HasNoKey();
+            builder.Entity<CommonListing>()
+                .Property(p => p.DisplayOrder)
+                .HasPrecision(18, 2);
 
+            // Keyless entities (SP result models) → explicitly NOT mapped to tables/views
+            builder.Entity<GetHome_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetCommonListing_Result>().HasNoKey().ToView(null).Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetPageHeader_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetTransactionService_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetPortfolioService_Result>().HasNoKey().ToView(null);
         }
+
 
     }
 }

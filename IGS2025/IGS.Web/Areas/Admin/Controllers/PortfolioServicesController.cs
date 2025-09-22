@@ -29,17 +29,16 @@ namespace IGS.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var transactionServiceData = await _unitOfWork.TransactionService.GetAsync(h => h.Id == 1, tracked: true);
             try
             {
-                var transactionServiceResult = await _unitOfWork.TransactionService.GetTransactionServiceFromSpAsync();
-                var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.TransactionServices);
-                var vm = new TransactionServicesViewModel(transactionServiceResult, allListings.ToList(), true);
+                var portfolioServiceData = await _unitOfWork.PortfolioService.GetPortfolioServiceFromSpAsync();
+                var allListings = await _unitOfWork.CommonListing.GetCommonListingFromSpAsync((int)PageEnum.PortfolioServices);
+                var vm = new PortfolioServicessViewModel(portfolioServiceData, allListings.ToList(), true);
                 return View(vm);
             }
             catch (Exception Ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in TransactionServices/Index");
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in PortfolioServices/Index");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
             return View(null);
@@ -48,38 +47,40 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveTransactionServiceData(TransactionServicesViewModel model, IFormFile? Brochure)
+        public async Task<IActionResult> SavePortfolioServiceData(PortfolioServicessViewModel model, IFormFile? Brochure)
         {
             try
             {
-                if (model.TransactionService != null)
+                if (model.PortfolioServices != null)
                 {
                     await _commonListingService.SaveCommonListingAsync(model.CoreAreasofFocus);
-                    var transactionServiceData = await _unitOfWork.TransactionService.GetAsync(h => h.Id == model.TransactionService.Id, tracked: true);
-                    if (transactionServiceData != null)
+                    var portfolioServiceData = await _unitOfWork.PortfolioService.GetAsync(h => h.Id == model.PortfolioServices.Id, tracked: true);
+                    if (portfolioServiceData != null)
                     {
-                        transactionServiceData.AreasofFocusHeading = model.TransactionService.AreasofFocusHeading;
-                        transactionServiceData.AreasofFocusDescription = model.TransactionService.AreasofFocusDescription;
-                        transactionServiceData.IndustryExpertiseHeading = model.TransactionService.IndustryExpertiseHeading;
-                        transactionServiceData.IndustryExpertiseSubHeading = model.TransactionService.IndustryExpertiseSubHeading;
-                        transactionServiceData.IndustryExpertiseDescription = model.TransactionService.IndustryExpertiseDescription;
-                        transactionServiceData.RecentProjectHeading = model.TransactionService.RecentProjectHeading;
-                        transactionServiceData.RecentProjectDescription = model.TransactionService.RecentProjectDescription;
-                        transactionServiceData.InsightHeading = model.TransactionService.InsightHeading;
-                        transactionServiceData.InsightHeading = model.TransactionService.InsightHeading;
-                        transactionServiceData.ModifiedDate = DateTime.Now;
-                        transactionServiceData.ModifiedBy = User?.Identity is ClaimsIdentity identity
+                        portfolioServiceData.CoreAreasHeading = model.PortfolioServices.CoreAreasHeading;
+                        portfolioServiceData.CoreAreasDescription = model.PortfolioServices.CoreAreasDescription;
+                        portfolioServiceData.IndustryExpertiseHeading = model.PortfolioServices.IndustryExpertiseHeading;
+                        portfolioServiceData.IndustryExpertiseSubHeading = model.PortfolioServices.IndustryExpertiseSubHeading;
+                        portfolioServiceData.IndustryExpertiseDescription = model.PortfolioServices.IndustryExpertiseDescription;
+                        portfolioServiceData.FeaturedInsightHeading = model.PortfolioServices.FeaturedInsightHeading;
+                        portfolioServiceData.FeaturedInsightSubHeading = model.PortfolioServices.FeaturedInsightSubHeading;
+                        portfolioServiceData.FeaturedInsighDescription = model.PortfolioServices.FeaturedInsighDescription;
+                        portfolioServiceData.FeaturedInsighImage = model.PortfolioServices.FeaturedInsighImage;
+                        portfolioServiceData.FeaturedInsighPdf = model.PortfolioServices.FeaturedInsighPdf;
+                        portfolioServiceData.InsightHeading = model.PortfolioServices.InsightHeading;
+                        portfolioServiceData.ModifiedDate = DateTime.Now;
+                        portfolioServiceData.ModifiedBy = User?.Identity is ClaimsIdentity identity
                             ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
                             : null;
                         await _unitOfWork.SaveAsync();
                         SuccessNotification(Message.SuccessMessage);
-                        return Redirect(baseUrl + "admin/transactionservices/");
+                        return Redirect(baseUrl + "admin/portfolioservices/");
                     }
                 }
             }
             catch (Exception Ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in TransactionServices/SaveTransactionServicesData");
+                int errorId = await _logger.LogErrorAsync(Ex, "Error in PortfolioServices/SavePortfolioServicesData");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
 

@@ -52,6 +52,7 @@ namespace IGS.Dal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("DisplayOrder")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("Fk_CaseStudyId")
@@ -244,6 +245,7 @@ namespace IGS.Dal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("DisplayOrder")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("Fk_CaseStudyId")
@@ -285,7 +287,9 @@ namespace IGS.Dal.Migrations
                     b.Property<string>("UploadedData")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("GetCommonListingResults");
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("IGS.Models.KeyLessModels.GetHome_Result", b =>
@@ -371,7 +375,9 @@ namespace IGS.Dal.Migrations
                     b.Property<string>("WebsiteUpdateDateStr")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("GetHomeResults");
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("IGS.Models.KeyLessModels.GetPageHeader_Result", b =>
@@ -430,7 +436,64 @@ namespace IGS.Dal.Migrations
                     b.Property<string>("VimeoVideoUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("GetPageHeaders");
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
+            modelBuilder.Entity("IGS.Models.KeyLessModels.GetPortfolioService_Result", b =>
+                {
+                    b.Property<string>("CoreAreasDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoreAreasHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FeaturedInsighDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsighImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsighPdf")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsightHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsightSubHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IndustryExpertiseDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryExpertiseHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryExpertiseSubHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InsightHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("IGS.Models.KeyLessModels.GetTransactionService_Result", b =>
@@ -474,7 +537,9 @@ namespace IGS.Dal.Migrations
                     b.Property<string>("RecentProjectHeading")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("GetTransactionServices");
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("IGS.Models.Page", b =>
@@ -561,6 +626,64 @@ namespace IGS.Dal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PageHeader", (string)null);
+                });
+
+            modelBuilder.Entity("IGS.Models.PortfolioService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CoreAreasDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoreAreasHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FeaturedInsighDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsighImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsighPdf")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsightHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FeaturedInsightSubHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryExpertiseDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryExpertiseHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryExpertiseSubHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InsightHeading")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PortfolioServices", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

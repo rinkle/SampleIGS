@@ -16,11 +16,14 @@ namespace IGS.Dal.Repository.Repository
             dbSet = _db.Set<T>();
         }
 
+        // -------------------------------
         // Sync
+        // -------------------------------
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             if (filter != null) query = query.Where(filter);
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
@@ -28,6 +31,7 @@ namespace IGS.Dal.Repository.Repository
                     query = query.Include(includeProp);
                 }
             }
+
             return query.ToList();
         }
 
@@ -35,6 +39,7 @@ namespace IGS.Dal.Repository.Repository
         {
             IQueryable<T> query = tracked ? dbSet : dbSet.AsNoTracking();
             query = query.Where(filter);
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
@@ -42,6 +47,24 @@ namespace IGS.Dal.Repository.Repository
                     query = query.Include(includeProp);
                 }
             }
+
+            return query.FirstOrDefault();
+        }
+
+        public T? GetFirstOrDefault(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, bool tracked = false)
+        {
+            IQueryable<T> query = tracked ? dbSet : dbSet.AsNoTracking();
+
+            if (filter != null) query = query.Where(filter);
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+
             return query.FirstOrDefault();
         }
 
@@ -49,11 +72,14 @@ namespace IGS.Dal.Repository.Repository
         public void Remove(T entity) => dbSet.Remove(entity);
         public void RemoveRange(IEnumerable<T> entity) => dbSet.RemoveRange(entity);
 
+        // -------------------------------
         // Async
+        // -------------------------------
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             if (filter != null) query = query.Where(filter);
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
@@ -61,6 +87,7 @@ namespace IGS.Dal.Repository.Repository
                     query = query.Include(includeProp);
                 }
             }
+
             return await query.ToListAsync();
         }
 
@@ -68,6 +95,7 @@ namespace IGS.Dal.Repository.Repository
         {
             IQueryable<T> query = tracked ? dbSet : dbSet.AsNoTracking();
             query = query.Where(filter);
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
@@ -75,6 +103,24 @@ namespace IGS.Dal.Repository.Repository
                     query = query.Include(includeProp);
                 }
             }
+
+            return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<T?> GetFirstOrDefaultAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, bool tracked = false)
+        {
+            IQueryable<T> query = tracked ? dbSet : dbSet.AsNoTracking();
+
+            if (filter != null) query = query.Where(filter);
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+
             return await query.FirstOrDefaultAsync();
         }
 
