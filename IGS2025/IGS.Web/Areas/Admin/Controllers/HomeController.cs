@@ -48,7 +48,7 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveHomeData(HomeViewModel model, IFormFile? brochure)
+        public async Task<IActionResult> SaveHomeData(HomeViewModel model)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace IGS.Web.Areas.Admin.Controllers
                     ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
                     : null;
 
-                await _homeService.SaveHomeAsync(model, brochure, userId);
+                await _homeService.SaveHomeAsync(model);
 
                 SuccessNotification("Home page data saved successfully!");
                 return Redirect(_baseUrl + "admin/home/");

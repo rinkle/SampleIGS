@@ -11,18 +11,21 @@ namespace IGS.Dal.Services.Implementations
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
         private readonly ICommonListingService _commonListingService;
+        private readonly GlobalEnvironmentSetting _globalEnvironment;
 
         public HomeService(
             IUnitOfWork unitOfWork,
             ILoggerService logger,
-            ICommonListingService commonListingService)
+            ICommonListingService commonListingService,
+            GlobalEnvironmentSetting globalEnvironment)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _commonListingService = commonListingService;
+            _globalEnvironment = globalEnvironment;
         }
 
-        public async Task SaveHomeAsync(HomeViewModel model, IFormFile? brochure, string? userId)
+        public async Task SaveHomeAsync(HomeViewModel model)
         {
             try
             {
@@ -37,6 +40,9 @@ namespace IGS.Dal.Services.Implementations
 
                 if (model.CoreAreasoFocus?.Count > 0)
                     await _commonListingService.SaveCommonListingAsync(model.CoreAreasoFocus);
+
+                if (model.TransactionsandGrowth?.Count > 0)
+                    await _commonListingService.SaveCommonListingAsync(model.TransactionsandGrowth);
 
                 var homeData = await _unitOfWork.Home.GetAsync(h => h.Id == model.Home.Id, tracked: true);
                 if (homeData == null) return;
@@ -64,34 +70,7 @@ namespace IGS.Dal.Services.Implementations
                 homeData.OverviewPdf = model.Home.OverviewPdf;
                 homeData.WebsiteUpdateDate = model.Home.WebsiteUpdateDate;
                 homeData.ModifiedDate = DateTime.Now;
-                homeData.ModifiedBy = userId;
-
-                // ✅ Handle brochure upload
-                if (brochure != null && brochure.Length > 0)
-                {
-                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", DbImagePath.HomeImage);
-                    if (!Directory.Exists(uploadsFolder))
-                        Directory.CreateDirectory(uploadsFolder);
-
-                    string originalFileName = Path.GetFileName(brochure.FileName);
-                    string filePath = Path.Combine(uploadsFolder, originalFileName);
-
-                    // ensure unique file name
-                    if (File.Exists(filePath))
-                    {
-                        string fileNameWithoutExt = Path.GetFileNameWithoutExtension(originalFileName);
-                        string extension = Path.GetExtension(originalFileName);
-                        string randomSuffix = "_" + Guid.NewGuid().ToString("N")[..6];
-                        originalFileName = fileNameWithoutExt + randomSuffix + extension;
-                        filePath = Path.Combine(uploadsFolder, originalFileName);
-                    }
-
-                    using var stream = new FileStream(filePath, FileMode.Create);
-                    await brochure.CopyToAsync(stream);
-
-                    homeData.OverviewPdf = originalFileName;
-                }
-
+                homeData.ModifiedBy = _globalEnvironment.UserId;
                 await _unitOfWork.SaveAsync();
             }
             catch (Exception ex)
