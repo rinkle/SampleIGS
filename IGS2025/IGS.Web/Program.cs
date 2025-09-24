@@ -68,8 +68,13 @@ builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
 
+// Home Services
 builder.Services.AddScoped<IHomeVmService, HomeVmService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
+
+// Transaction Services
+builder.Services.AddScoped<ITransactionServicesVmService, TransactionServicesVmService>();
+builder.Services.AddScoped<ITransactionServicesService, TransactionServicesService>();
 
 // Portfolio Services
 builder.Services.AddScoped<IPortfolioServicesVmService, PortfolioServicesVmService>();
@@ -79,7 +84,6 @@ builder.Services.AddScoped<IPortfolioServicesService, PortfolioServicesService>(
 builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
 builder.Services.AddScoped<IIndustryService, IndustryService>();
 builder.Services.AddScoped<IIndustryVmService, IndustryVmService>();
-
 
 
 var app = builder.Build();
