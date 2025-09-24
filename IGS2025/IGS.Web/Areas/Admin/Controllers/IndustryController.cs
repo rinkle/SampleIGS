@@ -1,5 +1,7 @@
 ﻿using Globalsetting;
 using IGS.Dal.Services;
+using IGS.Dal.Services.Implementations;
+using IGS.Dal.Services.Interfaces;
 using IGS.Models.KeyLessModels;
 using IGS.Models.ViewModels;
 using IGS.ViewModels;

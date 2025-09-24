@@ -3,12 +3,13 @@ using IGS.Dal.Data;
 using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
-using IGS.Dal.Services;
 using IGS.Dal.Sql;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using IGS.Dal.Services.Interfaces;
+using IGS.Dal.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,7 @@
 ﻿using Globalsetting;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services;
+using IGS.Dal.Services.Interfaces;
 using IGS.Models;
 using IGS.Models.KeyLessModels;
 using IGS.Models.ViewModels;

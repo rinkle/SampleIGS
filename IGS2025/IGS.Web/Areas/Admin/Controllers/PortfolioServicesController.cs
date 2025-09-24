@@ -1,6 +1,7 @@
 ﻿using Globalsetting;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services;
+using IGS.Dal.Services.Interfaces;
 using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;

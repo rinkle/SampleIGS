@@ -4,7 +4,9 @@ E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.Dal.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.Dal.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\Globalsetting.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.Models.dll
+E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.ViewModels.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.Models.pdb
+E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.ViewModels.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\Globalsetting.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.csproj.AssemblyReference.cache
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.GeneratedMSBuildEditorConfig.editorconfig
@@ -18,5 +20,3 @@ E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\refint\IGS.Dal.dll
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\IGS.Dal.genruntimeconfig.cache
 E:\Git\SampleIGS\IGS2025\IGS.Dal\obj\Debug\net9.0\ref\IGS.Dal.dll
-E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.ViewModels.dll
-E:\Git\SampleIGS\IGS2025\IGS.Dal\bin\Debug\net9.0\IGS.ViewModels.pdb
