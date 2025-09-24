@@ -8,6 +8,7 @@ using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Buffers.Text;
 
 namespace IGS.Web.Areas.Admin.Controllers
 {
@@ -60,13 +61,15 @@ namespace IGS.Web.Areas.Admin.Controllers
                 if (model.Industry != null)
                 {
                     // Save categories
-                    if (model.IndustryCategory != null && model.IndustryCategory.Count > 0)
+                    if (model.IndustryCategory?.Count > 0)
                     {
                         await _industryCategoryService.SaveIndustryCategoryAsync(model.IndustryCategory);
                     }
 
                     // Save industry
                     await _industryService.SaveIndustryAsync(model.Industry);
+
+                    SuccessNotification("Industry data saved successfully!");
                 }
             }
             catch (Exception ex)
@@ -76,7 +79,8 @@ namespace IGS.Web.Areas.Admin.Controllers
             }
 
             // Redirect back to Index (fresh data)
-            return RedirectToAction("Index");
+            return Redirect(_baseUrl + "admin/industry/");
         }
+
     }
 }

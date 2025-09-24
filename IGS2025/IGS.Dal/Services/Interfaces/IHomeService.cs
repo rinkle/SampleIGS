@@ -5,6 +5,6 @@ namespace IGS.Dal.Services.Interfaces
 {
     public interface IHomeService
     {
-        Task SaveHomeAsync(HomeViewModel model, IFormFile? brochure, string userId);
+        Task SaveHomeAsync(HomeViewModel model, IFormFile? brochure, string? userId);
     }
 }

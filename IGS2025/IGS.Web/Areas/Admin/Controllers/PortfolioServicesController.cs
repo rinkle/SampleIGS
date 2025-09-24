@@ -14,22 +14,31 @@ namespace IGS.Web.Areas.Admin.Controllers
     [RemoveCache]
     public class PortfolioServicesController : BaseController
     {
-        private readonly string baseUrl;
+        private readonly string _baseUrl;
         private readonly ILoggerService _logger;
-        private readonly IPortfolioServicesVmService _portfolioServicesVmService;
+        private readonly IPortfolioServicesVmService _portfolioVmService;
+        private readonly IPortfolioServicesService _portfolioService;
+        private readonly ICommonListingService _commonListingService;
 
-        public PortfolioServicesController(IOptions<AppSettings> options, ILoggerService logger, IPortfolioServicesVmService portfolioServicesVmService)
+        public PortfolioServicesController(
+            IOptions<AppSettings> options,
+            ILoggerService logger,
+            IPortfolioServicesVmService portfolioVmService,
+            IPortfolioServicesService portfolioService,
+            ICommonListingService commonListingService)
         {
-            baseUrl = options.Value.BaseUrl;
+            _baseUrl = options.Value.BaseUrl;
             _logger = logger;
-            _portfolioServicesVmService = portfolioServicesVmService;
+            _portfolioVmService = portfolioVmService;
+            _portfolioService = portfolioService;
+            _commonListingService = commonListingService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var vm = await _portfolioServicesVmService.GetPortfolioServicesVmAsync(true);
+                var vm = await _portfolioVmService.GetPortfolioServicesVmAsync(true);
                 return View(vm);
             }
             catch (Exception ex)
@@ -42,25 +51,36 @@ namespace IGS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SavePortfolioServiceData(PortfolioServicesViewModel model, IFormFile? Brochure)
+        public async Task<IActionResult> SavePortfolioServiceData(PortfolioServicesViewModel model)
         {
             try
             {
-                var userId = User?.Identity is ClaimsIdentity identity
-                    ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                    : null;
+                if (model.PortfolioServices != null)
+                {
+                    // Save related listings
+                    if (model.CoreAreasOfFocus?.Any() == true)
+                    {
+                        await _commonListingService.SaveCommonListingAsync(model.CoreAreasOfFocus);
+                    }
 
-                await _portfolioServicesVmService.SavePortfolioServicesAsync(model, Brochure, userId);
+                    // Save main entity
+                    var userId = User?.Identity is ClaimsIdentity identity
+                        ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                        : null;
 
-                SuccessNotification(Message.SuccessMessage);
-                return Redirect(baseUrl + "admin/portfolioservices/");
+                    await _portfolioService.SavePortfolioServiceAsync(model.PortfolioServices, userId);
+
+                    SuccessNotification("Portfolio Services data saved successfully!");
+                    return Redirect(_baseUrl + "admin/portfolioservices/");
+                }
             }
             catch (Exception ex)
             {
                 int errorId = await _logger.LogErrorAsync(ex, "Error in PortfolioServices/SavePortfolioServiceData");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
-                return View("Index", model);
             }
+
+            return View("Index", model);
         }
     }
 }

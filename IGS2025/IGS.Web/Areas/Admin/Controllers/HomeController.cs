@@ -52,9 +52,9 @@ namespace IGS.Web.Areas.Admin.Controllers
         {
             try
             {
-                string userId = User?.Identity is ClaimsIdentity identity
-                    ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "system"
-                    : "system";
+                string? userId = User?.Identity is ClaimsIdentity identity
+                    ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                    : null;
 
                 await _homeService.SaveHomeAsync(model, brochure, userId);
 
@@ -68,5 +68,6 @@ namespace IGS.Web.Areas.Admin.Controllers
                 return View("Index", model);
             }
         }
+
     }
 }
