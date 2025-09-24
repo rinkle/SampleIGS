@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 namespace Globalsetting
 {
+    /// <summary>
+    /// Wrapper for getting/setting cookies with local request caching.
+    /// </summary>
     public class GlobalCookies
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        // cache for values set in the current request
+        // Cache values for the lifetime of the current request
         private readonly Dictionary<string, string> _requestCache = new();
 
         public GlobalCookies(IHttpContextAccessor httpContextAccessor)
@@ -16,67 +19,78 @@ namespace Globalsetting
             _httpContextAccessor = httpContextAccessor;
         }
 
-        private HttpContext HttpContext => _httpContextAccessor.HttpContext;
+        private HttpContext? HttpContext => _httpContextAccessor.HttpContext;
 
-        private string GetCookieVal(string key)
+        /// <summary>
+        /// Reads a cookie value safely. Returns "" if not found.
+        /// </summary>
+        private string GetCookie(string key)
         {
-            if (_requestCache.ContainsKey(key))
-                return _requestCache[key]; // ✅ return latest set value immediately
+            if (_requestCache.TryGetValue(key, out var cached))
+                return cached;
 
-            if (HttpContext == null) return string.Empty;
+            if (HttpContext?.Request?.Cookies.TryGetValue(key, out var value) == true)
+            {
+                _requestCache[key] = value ?? string.Empty;
+                return value ?? string.Empty;
+            }
 
-            HttpContext.Request.Cookies.TryGetValue(key, out var value);
-            return value ?? string.Empty;
+            return string.Empty;
         }
 
-        private void UpdateCookieVal(string key, string val, int expireDays)
+        /// <summary>
+        /// Sets a cookie value and updates local cache.
+        /// </summary>
+        private void SetCookie(string key, string value, int expireDays = 1000)
         {
             if (HttpContext == null) return;
 
-            _requestCache[key] = val ?? string.Empty; // ✅ update local cache too
+            _requestCache[key] = value;
 
             var options = new CookieOptions
             {
-                Expires = DateTime.Now.AddDays(expireDays),
-                HttpOnly = false,
-                Secure = false, // true if HTTPS
+                Expires = DateTime.UtcNow.AddDays(expireDays),
+                HttpOnly = true, // security best practice
+                Secure = true,   // only over HTTPS
                 IsEssential = true,
                 SameSite = SameSiteMode.Lax
             };
 
-            HttpContext.Response.Cookies.Append(key, val ?? string.Empty, options);
+            HttpContext.Response.Cookies.Append(key, value, options);
         }
 
-        // ✅ Properties
+        // -------------------------
+        // Strongly typed properties
+        // -------------------------
 
         public string CheckDesktop
         {
-            get => GetCookieVal("CheckDesktop");
-            set => UpdateCookieVal("CheckDesktop", value, 1000);
+            get => GetCookie("CheckDesktop");
+            set => SetCookie("CheckDesktop", value);
         }
 
         public string ShowMap
         {
-            get => GetCookieVal("ShowMap");
-            set => UpdateCookieVal("ShowMap", value, 1000);
+            get => GetCookie("ShowMap");
+            set => SetCookie("ShowMap", value);
         }
 
         public string UserName
         {
-            get => GetCookieVal("UserName");
-            set => UpdateCookieVal("UserName", value, 1000);
+            get => GetCookie("UserName");
+            set => SetCookie("UserName", value);
         }
 
         public string UserPassword
         {
-            get => GetCookieVal("UserPassword");
-            set => UpdateCookieVal("UserPassword", value, 1000);
+            get => GetCookie("UserPassword");
+            set => SetCookie("UserPassword", value);
         }
 
         public bool IsRemembered
         {
-            get => bool.TryParse(GetCookieVal("IsRemembered"), out var result) && result;
-            set => UpdateCookieVal("IsRemembered", value.ToString(), 1000);
+            get => bool.TryParse(GetCookie("IsRemembered"), out var result) && result;
+            set => SetCookie("IsRemembered", value.ToString());
         }
     }
 }

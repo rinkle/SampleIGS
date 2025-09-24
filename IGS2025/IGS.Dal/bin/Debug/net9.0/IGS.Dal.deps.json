@@ -10,7 +10,6 @@
         "dependencies": {
           "Dapper": "2.1.66",
           "IGS.Models": "1.0.0",
-          "IGS.ViewModels": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "9.0.9",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.9",
           "Microsoft.AspNetCore.Identity.UI": "9.0.9",
@@ -1055,17 +1054,6 @@
             "fileVersion": "1.0.0.0"
           }
         }
-      },
-      "IGS.ViewModels/1.0.0": {
-        "dependencies": {
-          "IGS.Models": "1.0.0"
-        },
-        "runtime": {
-          "IGS.ViewModels.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -1599,11 +1587,6 @@
       "sha512": ""
     },
     "IGS.Models/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "IGS.ViewModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

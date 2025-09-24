@@ -299,11 +299,9 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\runtimes\win\lib\net9.0\System
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\Globalsetting.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.Dal.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.Models.dll
-E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.ViewModels.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\Globalsetting.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.Dal.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.Models.pdb
-E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.ViewModels.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.csproj.AssemblyReference.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\rpswa.dswa.cache.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.GeneratedMSBuildEditorConfig.editorconfig

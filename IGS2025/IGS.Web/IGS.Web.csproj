@@ -38,7 +38,6 @@
     <ProjectReference Include="..\Globalsetting\Globalsetting.csproj" />
     <ProjectReference Include="..\IGS.Dal\IGS.Dal.csproj" />
     <ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
-    <ProjectReference Include="..\IGS.ViewModels\IGS.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
