@@ -20,12 +20,14 @@ namespace IGS.Web.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
         private readonly IIndustryCategoryService _iIndustryCategoryService;
-        public IndustryController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger, IIndustryCategoryService iIndustryCategoryService)
+        private readonly IIndustryService _iIndustryService;
+        public IndustryController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger, IIndustryCategoryService iIndustryCategoryService, IIndustryService iIndustryService)
         {
             baseUrl = options.Value.BaseUrl;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _iIndustryCategoryService = iIndustryCategoryService;
+            _iIndustryService = iIndustryService;
         }
         public async Task<IActionResult> Index()
         {
@@ -60,34 +62,9 @@ namespace IGS.Web.Areas.Admin.Controllers
                     }
                     #endregion
 
-                    #region Industry
-                    var industryData = await _unitOfWork.IndustryService
-                        .GetAsync(h => h.Id == model.Industry.Id, tracked: true);
-
-                    if (industryData != null)
-                    {
-                        // Update fields
-                        industryData.IndustryHeading = model.Industry.IndustryHeading;
-                        industryData.IndustryDescription = model.Industry.IndustryDescription;
-                        industryData.InsightHeading = model.Industry.InsightHeading;
-                        industryData.ModifiedDate = DateTime.Now;
-
-                        // Always log who modified
-                        industryData.ModifiedBy = User?.Identity is ClaimsIdentity identity
-                            ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                            : "System";
-
-                        await _unitOfWork.SaveAsync();
-
-                        SuccessNotification("Industry page data saved successfully!");
-                        return Redirect(baseUrl + "admin/industry/");
-                    }
-                    else
-                    {
-                        ErrorNotification("Industry record not found.");
-                    }
+                    #region Save Industry Data
+                     await _iIndustryService.SaveIndustryAsync(model.Industry);
                     #endregion
-
                 }
             }
             catch (Exception ex)

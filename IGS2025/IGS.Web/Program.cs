@@ -65,6 +65,8 @@ builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
 builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
+builder.Services.AddScoped<IIndustryService, IndustryService>();
+
 
 var app = builder.Build();
 
