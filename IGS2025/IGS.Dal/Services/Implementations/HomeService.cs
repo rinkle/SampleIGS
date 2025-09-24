@@ -93,7 +93,6 @@ namespace IGS.Dal.Services.Implementations
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error in SaveHomeAsync");
-                throw;
             }
         }
     }

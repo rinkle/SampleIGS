@@ -1,6 +1,6 @@
 ﻿@using Globalsetting
 @inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
-@model IGS.Models.ViewModels.PortfolioServicessViewModel
+@model IGS.Models.ViewModels.PortfolioServicesViewModel
 @{
     ViewBag.Title = "Portfolio Services  Page Management";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -38,29 +38,29 @@
                         </div>
                     </div>
                 </div>
-                @if (Model.CoreAreasofFocus != null && Model.CoreAreasofFocus.Count > 0)
+                @if (Model.CoreAreasOfFocus != null && Model.CoreAreasOfFocus.Count > 0)
                 {
-                    for (int i = 0; i < Model.CoreAreasofFocus.Count; i++)
+                    for (int i = 0; i < Model.CoreAreasOfFocus.Count; i++)
                     {
-                        <input asp-for="CoreAreasofFocus[i].Id" type="hidden" />
-                        <input asp-for="CoreAreasofFocus[i].Section" type="hidden" />
-                        <input asp-for="CoreAreasofFocus[i].Fk_PageId" type="hidden" />
+                        <input asp-for="CoreAreasOfFocus[i].Id" type="hidden" />
+                        <input asp-for="CoreAreasOfFocus[i].Section" type="hidden" />
+                        <input asp-for="CoreAreasOfFocus[i].Fk_PageId" type="hidden" />
 
                         <div class="col-md-6 col-sm-6 col-xs-6 form-group rowcontainer">
                             <div class="x_panel">
                                 <div class="x_content">
-                                    <div class="@(Model.CoreAreasofFocus[i].Id > 0 ? "x_title" : "x_title newrow")">
-                                        <h2 class="@(Model.CoreAreasofFocus[i].Id > 0 ? "" : "newrowtext")">
-                                            @(Model.CoreAreasofFocus[i].Id > 0 ? "" : "New ") Core Areas of Focus @(i + 1)<br />
-                                            <small>@(Model.CoreAreasofFocus[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                    <div class="@(Model.CoreAreasOfFocus[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.CoreAreasOfFocus[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.CoreAreasOfFocus[i].Id > 0 ? "" : "New ") Core Areas of Focus @(i + 1)<br />
+                                            <small>@(Model.CoreAreasOfFocus[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
                                         </h2>
-                                        @if (Model.CoreAreasofFocus[i].Id > 0)
+                                        @if (Model.CoreAreasOfFocus[i].Id > 0)
                                         {
                                             <ul class="nav navbar-right panel_toolbox">
                                                 <li>
                                                     <div class="row fontawesome-icon-list">
                                                         <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
-                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.CoreAreasofFocus[i].Id,this)" href="javascript:void(0);">
+                                                            <a class="dnone1" title="Delete record" onclick="return fnDeleteCommonIcon(@Model.CoreAreasOfFocus[i].Id,this)" href="javascript:void(0);">
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </div>
@@ -73,23 +73,23 @@
                                     <div class="row">
                                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
                                             <label>Heading :</label>
-                                            <input asp-for="CoreAreasofFocus[i].Heading" class="form-control" placeholder="Title" />
+                                            <input asp-for="CoreAreasOfFocus[i].Heading" class="form-control" placeholder="Title" />
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                                             <label>Display Order* :</label>
-                                            <input asp-for="CoreAreasofFocus[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                            <input asp-for="CoreAreasOfFocus[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                                             <label>Sub-Heading :</label>
-                                            <textarea asp-for="CoreAreasofFocus[i].SubHeading" class="form-control DescriptionS" placeholder="Sub-Heading"></textarea>
+                                            <textarea asp-for="CoreAreasOfFocus[i].SubHeading" class="form-control DescriptionS" placeholder="Sub-Heading"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 col-sm-6 col-xs-6 form-group">
                                             <label>Description:</label>
-                                            <textarea asp-for="CoreAreasofFocus[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
+                                            <textarea asp-for="CoreAreasOfFocus[i].Description" class="form-control ckeditor" placeholder="Description"></textarea>
                                         </div>
                                     </div>
 
@@ -104,16 +104,16 @@
                                         <div class="col-md-2 col-sm-3 col-xs-3 form-group">
                                             <br />
                                             <img class="imagepreviewCoreAreasofFocus_@i"
-                                                 src="@($"{baseUrl}{DbImagePath.TransactionservicesImage}{Model.CoreAreasofFocus[i].UploadedData}")"
+                                                 src="@($"{baseUrl}{DbImagePath.TransactionservicesImage}{Model.CoreAreasOfFocus[i].UploadedData}")"
                                                  alt="image"
                                                  style="width: 25px; height: 25px; background: #374A63;"
                                                  onerror="imgErrorNormal(this);" asp-append-version="true" />
-                                            <input asp-for="CoreAreasofFocus[i].UploadedData" type="hidden" class="hdnImageCoreAreasofFocus_@i" />
+                                            <input asp-for="CoreAreasOfFocus[i].UploadedData" type="hidden" class="hdnImageCoreAreasofFocus_@i" />
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 col-sm-6 col-xs-6 form-group">
                                                 <label>Image Label :</label>
-                                                <input asp-for="CoreAreasofFocus[i].ImageLabel" class="form-control" placeholder="Image Label" />
+                                                <input asp-for="CoreAreasOfFocus[i].ImageLabel" class="form-control" placeholder="Image Label" />
                                             </div>
                                         </div>
                                     }

@@ -69,7 +69,6 @@ namespace IGS.Dal.Services.Implementations
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error in SaveIndustryCategoryAsync");
-                throw; // rethrow if you want the controller to handle failure
             }
         }
     }
