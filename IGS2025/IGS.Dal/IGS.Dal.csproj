@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
+    <ProjectReference Include="..\IGS.ViewModels\IGS.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

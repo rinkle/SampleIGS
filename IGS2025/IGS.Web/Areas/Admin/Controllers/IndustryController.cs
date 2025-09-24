@@ -1,13 +1,12 @@
 ﻿using Globalsetting;
-using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services;
+using IGS.Models.KeyLessModels;
 using IGS.Models.ViewModels;
+using IGS.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System.Buffers.Text;
-using System.Security.Claims;
 
 namespace IGS.Web.Areas.Admin.Controllers
 {
@@ -16,35 +15,39 @@ namespace IGS.Web.Areas.Admin.Controllers
     [RemoveCache]
     public class IndustryController : BaseController
     {
-        private readonly string baseUrl;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly string _baseUrl;
         private readonly ILoggerService _logger;
-        private readonly IIndustryCategoryService _iIndustryCategoryService;
-        private readonly IIndustryService _iIndustryService;
-        public IndustryController(IOptions<AppSettings> options, IUnitOfWork unitOfWork, ILoggerService logger, IIndustryCategoryService iIndustryCategoryService, IIndustryService iIndustryService)
+        private readonly IIndustryService _industryService;
+        private readonly IIndustryVmService _industryVmService;
+        private readonly IIndustryCategoryService _industryCategoryService;
+
+        public IndustryController(
+            IOptions<AppSettings> options,
+            ILoggerService logger,
+            IIndustryService industryService,
+            IIndustryVmService industryVmService,
+            IIndustryCategoryService industryCategoryService)
         {
-            baseUrl = options.Value.BaseUrl;
-            _unitOfWork = unitOfWork;
+            _baseUrl = options.Value.BaseUrl;
             _logger = logger;
-            _iIndustryCategoryService = iIndustryCategoryService;
-            _iIndustryService = iIndustryService;
+            _industryService = industryService;
+            _industryVmService = industryVmService;
+            _industryCategoryService = industryCategoryService;
         }
+
         public async Task<IActionResult> Index()
         {
             try
             {
-                var IndustryResult = await _unitOfWork.IndustryService.GetIndustryFromSpAsync();
-                var allIndustryCategories = await _unitOfWork.IndustryService.GetIndustryCategoryFromSpAsync();
-                var vm = new IndustryViewModel(IndustryResult, allIndustryCategories, true);
+                var vm = await _industryVmService.GetIndustryVmAsync(isAdmin: true);
                 return View(vm);
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                int errorId = await _logger.LogErrorAsync(Ex, "Error in Industry/Index");
+                int errorId = await _logger.LogErrorAsync(ex, "Error in Industry/Index");
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
+                return View(null);
             }
-            return View(null);
-
         }
 
         [HttpPost]
@@ -55,16 +58,14 @@ namespace IGS.Web.Areas.Admin.Controllers
             {
                 if (model.Industry != null)
                 {
-                    #region Save IndustryCategory
+                    // Save categories
                     if (model.IndustryCategory != null && model.IndustryCategory.Count > 0)
                     {
-                        await _iIndustryCategoryService.SaveIndustryCategoryAsync(model.IndustryCategory);
+                        await _industryCategoryService.SaveIndustryCategoryAsync(model.IndustryCategory);
                     }
-                    #endregion
 
-                    #region Save Industry Data
-                     await _iIndustryService.SaveIndustryAsync(model.Industry);
-                    #endregion
+                    // Save industry
+                    await _industryService.SaveIndustryAsync(model.Industry);
                 }
             }
             catch (Exception ex)
@@ -73,12 +74,8 @@ namespace IGS.Web.Areas.Admin.Controllers
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
 
-            // Show same page if failure
-            return View("Index", model);
+            // Redirect back to Index (fresh data)
+            return RedirectToAction("Index");
         }
-
-
-
     }
-
 }

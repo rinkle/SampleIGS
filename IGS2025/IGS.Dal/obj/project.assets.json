@@ -1580,6 +1580,19 @@
         "runtime": {
           "bin/placeholder/IGS.Models.dll": {}
         }
+      },
+      "IGS.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "IGS.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/IGS.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IGS.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -4366,12 +4379,18 @@
       "type": "project",
       "path": "../IGS.Models/IGS.Models.csproj",
       "msbuildProject": "../IGS.Models/IGS.Models.csproj"
+    },
+    "IGS.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../IGS.ViewModels/IGS.ViewModels.csproj",
+      "msbuildProject": "../IGS.ViewModels/IGS.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Dapper >= 2.1.66",
       "IGS.Models >= 1.0.0",
+      "IGS.ViewModels >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 9.0.9",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.9",
       "Microsoft.AspNetCore.Identity.UI >= 9.0.9",
@@ -4415,6 +4434,9 @@
           "projectReferences": {
             "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\IGS.Models.csproj": {
               "projectPath": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\IGS.Models.csproj"
+            },
+            "E:\\Git\\SampleIGS\\IGS2025\\IGS.ViewModels\\IGS.ViewModels.csproj": {
+              "projectPath": "E:\\Git\\SampleIGS\\IGS2025\\IGS.ViewModels\\IGS.ViewModels.csproj"
             }
           }
         }

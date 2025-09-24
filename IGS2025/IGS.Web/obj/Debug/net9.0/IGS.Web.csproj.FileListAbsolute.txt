@@ -308,7 +308,6 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.GeneratedMSBuildEditor
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.AssemblyInfoInputs.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.AssemblyInfo.cs
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.csproj.CoreCompileInputs.cache
-E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.MvcApplicationPartsAssemblyInfo.cs
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.MvcApplicationPartsAssemblyInfo.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.RazorAssemblyInfo.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.RazorAssemblyInfo.cs
@@ -3608,3 +3607,5 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\11c6du08rk-cbdnlxxv
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\vk6q9vkmdu-zlg36qgox4.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\640k1loq6m-fdbjv5exq4.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\yqcfn6dbuk-m7ofghuajt.gz
+E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.ViewModels.dll
+E:\Git\SampleIGS\IGS2025\IGS.Web\bin\Debug\net9.0\IGS.ViewModels.pdb

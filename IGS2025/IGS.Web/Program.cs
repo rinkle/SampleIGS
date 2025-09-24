@@ -66,6 +66,7 @@ builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
 builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
 builder.Services.AddScoped<IIndustryService, IndustryService>();
+builder.Services.AddScoped<IIndustryVmService, IndustryVmService>();
 
 
 var app = builder.Build();

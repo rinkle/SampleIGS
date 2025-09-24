@@ -2,41 +2,31 @@
 using IGS.Dal.Repository.IRepository;
 using IGS.Models;
 using IGS.Models.KeyLessModels;
-using System.Buffers.Text;
-using System.Security.Claims;
 
 namespace IGS.Dal.Services
 {
-    public interface IIndustryService
-    {
-        Task SaveIndustryAsync(GetIndustry_Result IndustryItem);
-    }
-
     public class IndustryService : IIndustryService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
-        private readonly GlobalEnvironmentSetting _globalEnvironment;
+        private readonly GlobalEnvironmentSetting _env;
 
-        public IndustryService(
-            IUnitOfWork unitOfWork,
-            ILoggerService logger,
-            GlobalEnvironmentSetting globalEnvironment)
+        public IndustryService(IUnitOfWork unitOfWork, ILoggerService logger, GlobalEnvironmentSetting env)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _globalEnvironment = globalEnvironment;
+            _env = env;
         }
 
         public async Task SaveIndustryAsync(GetIndustry_Result IndustryItem)
         {
             try
             {
-                if (IndustryItem == null || IndustryItem.Id==0)
-                    return; // nothing to process
+                if (IndustryItem == null || IndustryItem.Id == 0)
+                    return;
 
                 var industryData = await _unitOfWork.IndustryService
-                       .GetAsync(h => h.Id == IndustryItem.Id, tracked: true);
+                    .GetAsync(h => h.Id == IndustryItem.Id, tracked: true);
 
                 if (industryData != null)
                 {
@@ -45,20 +35,15 @@ namespace IGS.Dal.Services
                     industryData.IndustryDescription = IndustryItem.IndustryDescription;
                     industryData.InsightHeading = IndustryItem.InsightHeading;
                     industryData.ModifiedDate = DateTime.Now;
-                    industryData.ModifiedBy = _globalEnvironment.UserId;
-                    await _unitOfWork.SaveAsync();
+                    industryData.ModifiedBy = _env.UserId;
                 }
-                else
-                {
-                }
-
 
                 await _unitOfWork.SaveAsync();
             }
             catch (Exception ex)
             {
-                await _logger.LogErrorAsync(ex, "Error in Save Industry Async");
-                throw; // rethrow if you want the controller to handle failure
+                await _logger.LogErrorAsync(ex, "Error in SaveIndustryAsync");
+                throw;
             }
         }
     }

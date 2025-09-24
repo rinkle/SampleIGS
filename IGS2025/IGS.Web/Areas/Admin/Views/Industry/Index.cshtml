@@ -1,6 +1,6 @@
 ﻿@using Globalsetting
 @inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
-@model IGS.Models.ViewModels.IndustryViewModel
+@model IGS.ViewModels.IndustryViewModel
 
 @{
     ViewBag.Title = "Industrys Page Management";
@@ -11,4 +11,5 @@
 
 @if (Model?.Industry != null)
 {
+    <span> @Model.Industry.IndustryHeading</span>
 }
