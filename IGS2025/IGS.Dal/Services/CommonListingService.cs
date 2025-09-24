@@ -85,7 +85,7 @@ namespace IGS.Dal.Services
             }
             catch (Exception ex)
             {
-                await _logger.LogErrorAsync(ex, "Error in SaveCommonListingAsync");
+                await _logger.LogErrorAsync(ex, "Error in Save CommonListing Async");
             }
         }
 

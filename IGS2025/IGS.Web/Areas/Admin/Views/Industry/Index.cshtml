@@ -1,0 +1,14 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.IndustryViewModel
+
+@{
+    ViewBag.Title = "Industrys Page Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    bool IsShow = false;
+}
+
+@if (Model?.Industry != null)
+{
+}

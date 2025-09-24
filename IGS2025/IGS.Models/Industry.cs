@@ -13,7 +13,7 @@ namespace IGS.Models
     {
         [Key] // ✅ Explicitly mark as primary key
         public int Id { get; set; }
-        public string IndustryHeading { get; set; } = string.Empty;
+        public string? IndustryHeading { get; set; } = string.Empty;
         public string? IndustryDescription { get; set; }
         public string? InsightHeading { get; set; }
         public DateTime? CreatedDate { get; set; }

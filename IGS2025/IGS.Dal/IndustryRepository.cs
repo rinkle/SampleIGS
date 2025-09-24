@@ -4,6 +4,8 @@ using IGS.Dal.Repository.Repository;
 using IGS.Dal.Sql;
 using IGS.Models;
 using IGS.Models.KeyLessModels;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,6 +51,23 @@ namespace IGS.Dal.Repository
                 // Optionally log exception here
                 throw;
             }
+        }
+
+
+        public async Task<IEnumerable<GetIndustryCategory_Result>> GetIndustryCategoryFromSpAsync()
+        {
+            try
+            {
+                return await _sql.QueryAsync<GetIndustryCategory_Result>(
+                  "dbo.GetIndustryCategory",
+                  isStoredProc: true
+           );
+            }
+            catch (Exception Ex)
+            {
+                throw;
+            }
+
         }
     }
 }

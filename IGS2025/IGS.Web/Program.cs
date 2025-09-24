@@ -64,6 +64,7 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
+builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
 
 var app = builder.Build();
 

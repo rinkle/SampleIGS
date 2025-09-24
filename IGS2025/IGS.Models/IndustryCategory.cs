@@ -13,7 +13,7 @@ namespace IGS.Models
     {
         [Key] // ✅ Explicit PK
         public int Id { get; set; }
-        public string IndustryName { get; set; } = string.Empty;
+        public string? IndustryName { get; set; } = string.Empty;
         public string? IndustryDescription { get; set; }
 
         [Column(TypeName = "decimal(18,2)")] // ✅ Safe precision for SQL

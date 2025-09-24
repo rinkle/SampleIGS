@@ -9,5 +9,7 @@ namespace IGS.Dal.Repository.IRepository
 
         // Stored procedure result
         Task<GetIndustry_Result?> GetIndustryFromSpAsync();
+
+        Task<IEnumerable<GetIndustryCategory_Result>> GetIndustryCategoryFromSpAsync();
     }
 }
