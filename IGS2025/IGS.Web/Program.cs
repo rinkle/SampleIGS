@@ -63,15 +63,23 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
-builder.Services.AddScoped<IHomeVmService, HomeVmService>();
-builder.Services.AddScoped<IHomeService, HomeService>();
+
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
+
+builder.Services.AddScoped<IHomeVmService, HomeVmService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
+
+// Portfolio Services
+builder.Services.AddScoped<IPortfolioServicesVmService, PortfolioServicesVmService>();
+builder.Services.AddScoped<IPortfolioServicesService, PortfolioServicesService>();
+
+// Industry
 builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
 builder.Services.AddScoped<IIndustryService, IndustryService>();
 builder.Services.AddScoped<IIndustryVmService, IndustryVmService>();
-builder.Services.AddScoped<IPortfolioServicesVmService, PortfolioServicesVmService>();
+
 
 
 var app = builder.Build();
