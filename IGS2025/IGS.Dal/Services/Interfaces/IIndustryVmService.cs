@@ -1,5 +1,4 @@
 ﻿using IGS.Models.ViewModels;
-using IGS.ViewModels;
 
 namespace IGS.Dal.Services.Interfaces
 {

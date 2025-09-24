@@ -62,6 +62,9 @@ builder.Services.AddSession(options =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
+builder.Services.AddScoped<IHomeVmService, HomeVmService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();

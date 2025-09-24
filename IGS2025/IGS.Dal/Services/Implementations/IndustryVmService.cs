@@ -1,7 +1,6 @@
 ﻿using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models.ViewModels;
-using IGS.ViewModels;
 
 namespace IGS.Dal.Services.Implementations
 {
