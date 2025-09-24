@@ -31,9 +31,11 @@ namespace IGS.Dal.Services.Implementations
                 var existing = await _unitOfWork.TransactionService.GetAsync(h => h.Id == model.TransactionService.Id, tracked: true);
                 if (existing == null) return;
 
-                if(model.CoreAreasofFocus?.Count > 0)
+                // ✅ Save related listings
+                if (model.CoreAreasofFocus?.Any() == true)
+                {
                     await _commonListingService.SaveCommonListingAsync(model.CoreAreasofFocus);
-
+                }
                 // Map fields
                 existing.AreasofFocusHeading = model.TransactionService.AreasofFocusHeading;
                 existing.AreasofFocusDescription = model.TransactionService.AreasofFocusDescription;

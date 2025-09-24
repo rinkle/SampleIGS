@@ -57,19 +57,7 @@ namespace IGS.Web.Areas.Admin.Controllers
             {
                 if (model.PortfolioServices != null)
                 {
-                    // Save related listings
-                    if (model.CoreAreasOfFocus?.Any() == true)
-                    {
-                        await _commonListingService.SaveCommonListingAsync(model.CoreAreasOfFocus);
-                    }
-
-                    // Save main entity
-                    var userId = User?.Identity is ClaimsIdentity identity
-                        ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                        : null;
-
-                    await _portfolioService.SavePortfolioServiceAsync(model.PortfolioServices, userId);
-
+                    await _portfolioService.SavePortfolioServiceAsync(model);
                     SuccessNotification("Portfolio Services data saved successfully!");
                     return Redirect(_baseUrl + "admin/portfolioservices/");
                 }
