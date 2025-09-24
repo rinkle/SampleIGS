@@ -2,6 +2,7 @@
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models.KeyLessModels;
+using IGS.Models.ViewModels;
 
 namespace IGS.Dal.Services.Implementations
 {
@@ -9,35 +10,42 @@ namespace IGS.Dal.Services.Implementations
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILoggerService _logger;
+        private readonly GlobalEnvironmentSetting _globalEnvironment;
+        private readonly ICommonListingService _commonListingService;
 
-        public TransactionServicesService(IUnitOfWork unitOfWork, ILoggerService logger)
+
+        public TransactionServicesService(IUnitOfWork unitOfWork, ILoggerService logger, ICommonListingService commonListingService, GlobalEnvironmentSetting globalEnvironment)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _commonListingService = commonListingService;
+            _globalEnvironment = globalEnvironment;
         }
 
-        public async Task SaveTransactionServiceAsync(GetTransactionService_Result transactionService, string? userId)
+        public async Task SaveTransactionServiceAsync(TransactionServicesViewModel model)
         {
             try
             {
-                if (transactionService == null) return;
+                if (model == null) return;
 
-                var existing = await _unitOfWork.TransactionService.GetAsync(h => h.Id == transactionService.Id, tracked: true);
+                var existing = await _unitOfWork.TransactionService.GetAsync(h => h.Id == model.TransactionService.Id, tracked: true);
                 if (existing == null) return;
 
-                // Map fields
-                existing.AreasofFocusHeading = transactionService.AreasofFocusHeading;
-                existing.AreasofFocusDescription = transactionService.AreasofFocusDescription;
-                existing.IndustryExpertiseHeading = transactionService.IndustryExpertiseHeading;
-                existing.IndustryExpertiseSubHeading = transactionService.IndustryExpertiseSubHeading;
-                existing.IndustryExpertiseDescription = transactionService.IndustryExpertiseDescription;
-                existing.RecentProjectHeading = transactionService.RecentProjectHeading;
-                existing.RecentProjectDescription = transactionService.RecentProjectDescription;
-                existing.InsightHeading = transactionService.InsightHeading;
+                if(model.CoreAreasofFocus?.Count > 0)
+                    await _commonListingService.SaveCommonListingAsync(model.CoreAreasofFocus);
 
+                // Map fields
+                existing.AreasofFocusHeading = model.TransactionService.AreasofFocusHeading;
+                existing.AreasofFocusDescription = model.TransactionService.AreasofFocusDescription;
+                existing.IndustryExpertiseHeading = model.TransactionService.IndustryExpertiseHeading;
+                existing.IndustryExpertiseSubHeading = model.TransactionService.IndustryExpertiseSubHeading;
+                existing.IndustryExpertiseDescription = model.TransactionService.IndustryExpertiseDescription;
+                existing.RecentProjectHeading = model.TransactionService.RecentProjectHeading;
+                existing.RecentProjectDescription = model.TransactionService.RecentProjectDescription;
+                existing.InsightHeading = model.TransactionService.InsightHeading;
                 // Audit
                 existing.ModifiedDate = DateTime.Now;
-                existing.ModifiedBy = userId;
+                existing.ModifiedBy = _globalEnvironment.UserId;
 
                 await _unitOfWork.SaveAsync();
             }

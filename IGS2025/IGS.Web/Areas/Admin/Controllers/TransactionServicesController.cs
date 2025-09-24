@@ -68,7 +68,7 @@ namespace IGS.Web.Areas.Admin.Controllers
                         ? identity.FindFirst(ClaimTypes.NameIdentifier)?.Value
                         : null;
 
-                    await _transactionService.SaveTransactionServiceAsync(model.TransactionService, userId);
+                    await _transactionService.SaveTransactionServiceAsync(model);
 
                     SuccessNotification("Transaction Services data saved successfully!");
                     return Redirect(_baseUrl + "admin/transactionservices/");
