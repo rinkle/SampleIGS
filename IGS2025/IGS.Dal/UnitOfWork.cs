@@ -18,6 +18,8 @@ namespace IGS.Dal.Repository
         public IPortfolioServiceRepository PortfolioService { get; private set; }
         public IIndustryRepository IndustryService { get; private set; }
         public IIndustryCategoryRepository IndustryCategory { get; private set; }
+        public IExperienceRepository Experience { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -30,6 +32,7 @@ namespace IGS.Dal.Repository
             PortfolioService=new PortfolioServiceRepository(_db, _sql);
             IndustryService = new IndustryRepository(_db, _sql);
             IndustryCategory = new IndustryCategoryRepository(_db, _sql);
+            Experience = new ExperienceRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

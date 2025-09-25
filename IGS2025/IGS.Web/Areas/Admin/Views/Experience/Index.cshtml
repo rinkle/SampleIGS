@@ -1,0 +1,62 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.ExperienceViewModel
+
+@{
+    ViewBag.Title = "Experience Page Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.ExperienceList?.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Experience Listing<small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="row fontawesome-icon-list">
+                                <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                    <a href='@string.Concat(baseUrl, "admin/experience/manageexperience/0")' title="Add New Team Member"><i class="fa fa-plus-square"></i> Add New Experience </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Display Order</th>
+                                <th>Client Name / Industry / Show on page</th>
+                                <th>Client Logo</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.ExperienceList.OrderBy(x => x.ClientName).ToList())
+                            {
+                                <tr>
+                                    <td>@item.DisplayOrder</td>
+                                    <td><b> @item.ClientName</b><br />@item.IndustryNames <br />@item.PageNames </td>
+                                    <td><img src='@string.Concat(baseUrl, DbImagePath.ExperienceImage)@item.TopLogo1' alt="@item.ClientName" style="height:20px;" onerror="imgErrorSmall(this);" /></td>
+                                    <td>
+                                        <a title="Edit '@item.ClientName'' " href='@(baseUrl + "admin/experience/manageexperience/" + item.Id)'><i class="fa fa-edit"></i></a>
+                                        <a title="Delete '@item.ClientName' Info" onclick="return fnDeleteExperience(@item.Id,this)" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -10,6 +10,8 @@
         IPortfolioServiceRepository PortfolioService { get; }
         IIndustryRepository IndustryService { get; }
         IIndustryCategoryRepository IndustryCategory { get; }
+        IExperienceRepository Experience { get; }
+
         void Save();
         Task SaveAsync();
     }

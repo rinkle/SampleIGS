@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="CommonListingRepository.cs" />
+    <None Include="Repository\CommonListingRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

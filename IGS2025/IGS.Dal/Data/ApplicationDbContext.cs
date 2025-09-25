@@ -11,6 +11,8 @@ namespace IGS.Dal.Data
             : base(options)
         {
         }
+
+        // Main entities
         public DbSet<Home> Homes { get; set; } = default!;
         public DbSet<CommonListing> CommonListings { get; set; } = default!;
         public DbSet<ErrorLog> ErrorLogs { get; set; } = default!;
@@ -21,38 +23,70 @@ namespace IGS.Dal.Data
         public DbSet<Industry> Industries { get; set; } = default!;
         public DbSet<IndustryCategory> IndustryCategories { get; set; } = default!;
 
-        //Keyless entities (SP result models)
-        //public DbSet<GetHome_Result> GetHomeResults { get; set; } = default!;
-        //public DbSet<GetCommonListing_Result> GetCommonListingResults { get; set; } = default!;
-        //public DbSet<GetPageHeader_Result> GetPageHeaders { get; set; } = default!;
-        //public DbSet<GetTransactionService_Result> GetTransactionServices { get; set; } = default!;
-        //public DbSet<GetPortfolioService_Result> GetPortfolioService { get; set; } = default!;
+        // New tables
+        public DbSet<Experience> Experiences { get; set; } = default!;
+        public DbSet<ExperienceIndustryMapping> ExperienceIndustryMappings { get; set; } = default!;
+        public DbSet<ExperiencePageMapping> ExperiencePageMappings { get; set; } = default!;
+
+        // ⚠️ Do NOT add DbSet<> for SP result models (keyless)
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            // Table mapping
             builder.Entity<Home>().ToTable("Home");
             builder.Entity<ErrorLog>().ToTable("ErrorLog");
             builder.Entity<PageHeader>().ToTable("PageHeader");
             builder.Entity<TransactionService>().ToTable("TransactionServices");
             builder.Entity<PortfolioService>().ToTable("PortfolioServices");
-
             builder.Entity<Industry>().ToTable("Industry");
             builder.Entity<IndustryCategory>().ToTable("IndustryCategory");
 
+            // New tables
+            builder.Entity<Experience>().ToTable("Experience");
+            builder.Entity<ExperienceIndustryMapping>().ToTable("ExperienceIndustryMapping");
+            builder.Entity<ExperiencePageMapping>().ToTable("ExperiencePageMapping");
+
+            // Decimal precision config
             builder.Entity<CommonListing>()
                 .Property(p => p.DisplayOrder)
                 .HasPrecision(18, 2);
 
-            // Keyless entities (SP result models) → explicitly NOT mapped to tables/views
+            builder.Entity<Experience>()
+                .Property(p => p.DisplayOrder)
+                .HasPrecision(18, 2);
+
+            builder.Entity<ExperienceIndustryMapping>()
+                .Property(p => p.DisplayOrder)
+                .HasPrecision(18, 2);
+
+            builder.Entity<ExperiencePageMapping>()
+                .Property(p => p.DisplayOrder)
+                .HasPrecision(18, 2);
+
+            // Keyless entities (SP result models)
             builder.Entity<GetHome_Result>().HasNoKey().ToView(null);
-            builder.Entity<GetCommonListing_Result>().HasNoKey().ToView(null).Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetCommonListing_Result>()
+                .HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<GetPageHeader_Result>().HasNoKey().ToView(null);
             builder.Entity<GetTransactionService_Result>().HasNoKey().ToView(null);
             builder.Entity<GetPortfolioService_Result>().HasNoKey().ToView(null);
             builder.Entity<GetIndustry_Result>().HasNoKey().ToView(null);
-            builder.Entity<GetIndustryCategory_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetIndustryCategory_Result>()
+                .HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+
+            // New SP result models
+            builder.Entity<GetExperienceDetail_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetExperienceFilterList_Result>()
+                .HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetExperienceIndustryCategoryMapping_Result>()
+                .HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetExperiencePageMapping_Result>().HasNoKey().ToView(null);
         }
     }
 }

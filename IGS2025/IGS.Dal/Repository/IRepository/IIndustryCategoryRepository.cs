@@ -6,8 +6,6 @@ namespace IGS.Dal.Repository.IRepository
     public interface IIndustryCategoryRepository : IRepository<IndustryCategory>
     {
         void Update(IndustryCategory obj);
-
-        // Stored procedure result
-        Task<GetIndustryCategory_Result?> GetIndustryCategoryFromSpAsync();
+        Task<IEnumerable<GetIndustryCategory_Result>> GetIndustryCategoryFromSpAsync();
     }
 }

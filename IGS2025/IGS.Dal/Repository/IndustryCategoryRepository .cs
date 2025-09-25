@@ -16,20 +16,20 @@ namespace IGS.Dal.Repository
         public IndustryCategoryRepository(ApplicationDbContext db, ISqlHelper sql) : base(db)
         {
             _db = db;
-            _sql = sql;
+            _sql = sql; // ✅ kept for consistency, even if not used
         }
 
-        // Required by IIndustryCategoryRepository
         public void Update(IndustryCategory obj)
         {
             _db.IndustryCategories.Update(obj);
         }
-        public async Task<GetIndustryCategory_Result?> GetIndustryCategoryFromSpAsync()
-        {
-            var result = await _sql.QueryAsync<GetIndustryCategory_Result>(
-                "dbo.GetIndustryCategory", isStoredProc: true);
 
-            return result.FirstOrDefault();
+        public async Task<IEnumerable<GetIndustryCategory_Result>> GetIndustryCategoryFromSpAsync()
+        {
+            // Using EF Core SP call, _sql not required here
+            return await _db.Set<GetIndustryCategory_Result>()
+                .FromSqlRaw("EXEC dbo.GetIndustryCategory")
+                .ToListAsync();
         }
     }
 }
