@@ -255,14 +255,41 @@
                             if (data.IsSuccess || data.isSuccess) {
                                 $(ctrl).closest('tr').remove();
                                  location.reload();
-                                // bootbox.alert({
-                                //     message: msg,
-                                //     callback: function () {
-                                //         location.reload();
-                                //     }
-                                // });
                             } else {
-                                //bootbox.alert({ message: msg });
+                                 location.reload();
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert({ message: "Something went wrong while deleting the record." });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+         function fnDeleteIndustry(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this industry?", function (result) {
+                if (result) {
+                    var StringFystring = JSON.stringify(id); // ✅ send raw int, not {id: id}
+
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        data: StringFystring,
+                        url: "@Url.Action("DeleteIndustryListing", "Common")",
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = (data && (data.Message || data.message))
+                                ? (data.Message || data.message)
+                                : "Operation completed.";
+
+                            if (data.IsSuccess || data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                 location.reload();
+                            } else {
                                  location.reload();
                             }
                         },

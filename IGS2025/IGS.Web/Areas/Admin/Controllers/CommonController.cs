@@ -408,5 +408,55 @@ namespace IGS.Areas.Admin.Controllers
             }
         }
         #endregion
+
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<JsonResult> DeleteIndustryListing([FromBody] int id)
+        {
+            var response = new
+            {
+                IsSuccess = false,
+                Message = "An unexpected error occurred." // default fallback
+            };
+
+            try
+            {
+                var industryCategoryDetails = await _unitOfWork.IndustryCategory.GetAsync(c => c.Id == id, tracked: true);
+                if (industryCategoryDetails != null)
+                {
+                    industryCategoryDetails.IsActive = false;
+                    industryCategoryDetails.ModifiedBy = _globalEnvironment.UserId;
+                    industryCategoryDetails.ModifiedDate = DateTime.Now;
+                    await _unitOfWork.SaveAsync();
+                    response = new
+                    {
+                        IsSuccess = true,
+                        Message = Message.DeleteSuccessMessage
+                    };
+                    SuccessNotification(response.Message);
+                }
+                else
+                {
+                    response = new
+                    {
+                        IsSuccess = false,
+                        Message = Message.DataNotFoundMessage
+                    };
+                    ErrorNotification(response.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error in DeleteCommonImageListing");
+                response = new
+                {
+                    IsSuccess = false,
+                    Message = "An error occurred while deleting the image."
+                };
+                ErrorNotification(response.Message);
+            }
+
+            return Json(response);
+        }
     }
 }

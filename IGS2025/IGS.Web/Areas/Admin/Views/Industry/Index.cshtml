@@ -6,10 +6,126 @@
     ViewBag.Title = "Industrys Page Management";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
-   // bool IsShow = false;
 }
 
 @if (Model?.Industry != null)
 {
-    <span> @Model.Industry.IndustryHeading</span>
+    <div class="row">
+        <form asp-action="SaveIndustryData" asp-controller="Industry" method="post" enctype="multipart/form-data"
+              id="form-Home" class="form-horizontal form-label-left input_mask" novalidate data-parsley-validate>
+            @Html.AntiForgeryToken()
+            <input asp-for="Industry.Id" type="hidden" />
+            <div class="col-md-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Industry Services: <small>Update below form to save basic Industry info </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Industry.IndustryHeading">Industry Expertise Heading</label>
+                                <input asp-for="Industry.IndustryHeading" class="form-control" placeholder="Industry Expertise Heading" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Industry.IndustryDescription">Industry Expertise Description</label>
+                                <textarea asp-for="Industry.IndustryDescription" class="form-control DescriptionS" placeholder="Industry Expertise  Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.IndustryCategory != null && Model.IndustryCategory.Count > 0)
+                {
+                    for (int i = 0; i < Model.IndustryCategory.Count; i++)
+                    {
+                        <input asp-for="IndustryCategory[i].Id" type="hidden" />
+
+                        <div class="col-md-6 col-sm-6 col-xs-6 form-group rowcontainer">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="@(Model.IndustryCategory[i].Id > 0 ? "x_title" : "x_title newrow")">
+                                        <h2 class="@(Model.IndustryCategory[i].Id > 0 ? "" : "newrowtext")">
+                                            @(Model.IndustryCategory[i].Id > 0 ? "" : "New ") Industry Category @(i + 1)<br />
+                                            <small>@(Model.IndustryCategory[i].Id > 0 ? "........" : "Please enter order/title to create new record")</small>
+                                        </h2>
+                                        @if (Model.IndustryCategory[i].Id > 0)
+                                        {
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li>
+                                                    <div class="row fontawesome-icon-list">
+                                                        <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                                            <a class="dnone1" title="Delete Industry" onclick="return fnDeleteIndustry(@Model.IndustryCategory[i].Id,this)" href="javascript:void(0);">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                            <label asp-for="IndustryCategory[i].IndustryName">Industry Name</label>
+                                            <input asp-for="IndustryCategory[i].IndustryName" class="form-control" placeholder="Title" />
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                            <label>Display Order* :</label>
+                                            <label asp-for="IndustryCategory[i].DisplayOrder">Display Order</label>
+                                            <input asp-for="IndustryCategory[i].DisplayOrder" class="form-control numericval" placeholder="Display Order" maxlength="8" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-6 form-group">
+                                            <label asp-for="IndustryCategory[i].IndustryDescription">Industry Description</label>
+                                            <textarea asp-for="IndustryCategory[i].IndustryDescription" class="form-control ckeditor" placeholder="Industry Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <hr />
+                </div>
+                <div class="row">
+                    <hr />
+                </div>
+                <div class="x_title">
+                    <h2>Insight Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <br />
+                                <label asp-for="Industry.InsightHeading">Insight Heading</label>
+                                <input asp-for="Industry.InsightHeading" class="form-control" placeholder="Insight Heading" />
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <br /><br />
+                                <a href='@(baseUrl + "admin/news/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Insights</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="x_title" style="width:100%;float:right;">
+                    <div class="clearfix"></div>
+                    <div style="float:right;padding-right:10px;">
+                        <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </form>
+
+    </div>
 }

@@ -55,7 +55,7 @@ namespace IGS.Web.Areas.Admin.Controllers
         {
             try
             {
-                if (model.PortfolioServices != null)
+                if (model.PortfolioServices != null && model.PortfolioServices.Id>0)
                 {
                     await _portfolioService.SavePortfolioServiceAsync(model);
                     SuccessNotification("Portfolio Services data saved successfully!");
@@ -68,7 +68,8 @@ namespace IGS.Web.Areas.Admin.Controllers
                 ErrorNotification($"Something went wrong. Error ID: {errorId}");
             }
 
-            return View("Index", model);
+            return Redirect(_baseUrl + "admin/portfolioservices/");
+
         }
     }
 }
