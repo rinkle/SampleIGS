@@ -1,5 +1,7 @@
 ﻿using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services.Interfaces;
+using IGS.Models;
+using IGS.Models.KeyLessModels;
 using IGS.Models.ViewModels;
 
 namespace IGS.Dal.Services.Implementations
@@ -38,6 +40,32 @@ namespace IGS.Dal.Services.Implementations
                 await _logger.LogErrorAsync(ex, "Error in ExperienceVmService.GetExperienceVmAsync");
                 return new ExperienceViewModel(); // safe empty VM
             }
+        }
+
+        /// <summary>
+        /// Builds ExperienceModel for add/edit.
+        /// </summary>
+        public async Task<ExperienceModel> GetExperienceModelAsync(
+      int experienceId,
+      string? industryCategoryIds = null,
+      string? pageIds = null,
+      string? orderBy = null)
+        {
+            var detail = await _unitOfWork.Experience
+                .GetExperienceDetailByIdAsync(experienceId, industryCategoryIds, pageIds, orderBy);
+
+            var industryMappings = await _unitOfWork.Experience
+                .GetExperienceIndustryCategoryMappingAsync(experienceId);
+
+            var pageMappings = await _unitOfWork.Experience
+                .GetExperiencePageMappingAsync(experienceId);
+
+            return new ExperienceModel
+            {
+                ExperienceInfo = detail ?? new GetExperienceDetail_Result(),
+                ExperienceIndustryCategoryMapping = industryMappings?.ToList() ?? new(),
+                ExperiencePageMapping = pageMappings?.ToList() ?? new()
+            };
         }
     }
 }

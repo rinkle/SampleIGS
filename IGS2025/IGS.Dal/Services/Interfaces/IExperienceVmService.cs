@@ -1,4 +1,5 @@
-﻿using IGS.Models.ViewModels;
+﻿using IGS.Models;
+using IGS.Models.ViewModels;
 
 namespace IGS.Dal.Services.Interfaces
 {
@@ -9,5 +10,10 @@ namespace IGS.Dal.Services.Interfaces
             string? pageIds = null,
             string? orderBy = null,
             bool isAdmin = false);
+        Task<ExperienceModel> GetExperienceModelAsync(
+             int experienceId,
+             string? industryCategoryIds = null,
+             string? pageIds = null,
+             string? orderBy = null);
     }
 }

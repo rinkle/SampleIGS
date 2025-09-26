@@ -12,7 +12,8 @@ namespace IGS.Models.KeyLessModels
         public string? PageUrl { get; set; }
         public bool? IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public int CheckedStatus { get; set; }   // stays non-nullable (int)
+        public bool CheckedStatus { get; set; }   // ✅ now a bool
         public int? FK_ExperienceId { get; set; }
     }
+
 }

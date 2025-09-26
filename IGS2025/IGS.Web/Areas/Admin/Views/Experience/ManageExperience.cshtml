@@ -1,0 +1,268 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ExperienceModel
+
+@{
+    ViewBag.Title = "Experience Page Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.ExperienceIndustryCategoryMapping?.Count > 0 && Model?.ExperiencePageMapping?.Count > 0)
+{
+    <div class="row">
+        <form asp-action="SaveIndustryData"
+              asp-controller="Industry"
+              method="post"
+              enctype="multipart/form-data"
+              id="form-Home"
+              class="form-horizontal form-label-left input_mask"
+              novalidate
+              data-parsley-validate>
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.ExperienceInfo.Id)
+            <div class="col-md-12 col-xs-12">
+
+                <!-- Experience Info -->
+                <div class="x_title">
+                    <h2>Experience: <small>Update below form to save Experience data</small></h2>
+                    <div class="clearfix"></div>
+                  
+                </div>
+                <!-- Client Info -->
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="Description">Title*:</label>
+                                @Html.TextBoxFor(m => m.ExperienceInfo.ClientName,
+                                new { @class = "form-control", required = "", placeholder = "Client Name" })
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                            <label for="Description">Display Order:</label>
+                            @Html.TextBoxFor(m => m.ExperienceInfo.DisplayOrder,
+                                                        new { @class = "form-control numericval", placeholder = "Display Order" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group"><hr /></div>
+                    </div>
+                </div>
+            </div>
+                <!-- Industries -->
+                <div class="x_title">
+                    <h2>Industries</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_panel">
+                    <div class="x_content">
+                        @for (int i = 0; i < Model.ExperienceIndustryCategoryMapping.Count; i++)
+                        {
+                            <div class="col-md-55 searchdiv" style="height:10%;">
+                                <div class="thumbnail" style="height:80px;">
+                                    <div class="caption" style="min-height:80px;">
+                                        <p><b>@Model.ExperienceIndustryCategoryMapping[i].IndustryName</b></p>
+                                        @Html.CheckBoxFor(m => m.ExperienceIndustryCategoryMapping[i].CheckedStatus)
+                                        @Html.HiddenFor(m => m.ExperienceIndustryCategoryMapping[i].Id)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Show on Page -->
+                <div class="x_title">
+                    <h2>Show on page</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_panel">
+                    <div class="x_content">
+                        @for (int i = 0; i < Model.ExperiencePageMapping.Count; i++)
+                        {
+                            <div class="col-md-55 searchdiv" style="height:10%;">
+                                <div class="thumbnail" style="height:80px;">
+                                    <div class="caption" style="min-height:80px;">
+                                        <p><b>@Model.ExperiencePageMapping[i].Name</b></p>
+                                        @Html.CheckBoxFor(m => m.ExperiencePageMapping[i].CheckedStatus)
+                                        @Html.HiddenFor(m => m.ExperiencePageMapping[i].Id)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+              
+
+            <!-- Tombstone Details -->
+            <div class="x_title">
+                <h2>Tombstone Details</h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_panel">
+                <div class="x_content">
+
+                    <!-- Top Logo 1 -->
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <label for="TopLogo1">Top Logo 1:</label><br />
+                            <input id="TopLogo1Image" type="file"
+                                   onchange="processImage(this, '@("imagepreview_TopLogo1Image")',
+                                                 '@("hdnImage_TopLogo1ImageName")',
+                                                 '@DbImagePath.ExperienceImage','0','0','@DbImagePath.ExperienceImage');" />
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <br />
+                            <img class='@("imagepreview_TopLogo1Image")'
+                                 src='@(baseUrl + DbImagePath.ExperienceImage + Model.ExperienceInfo.TopLogo1)'
+                                 alt="image"
+                                 style="width:100px;height:50px;"
+                                 onerror="imgErrorSmall(this);" />
+
+                            @Html.HiddenFor(x => x.ExperienceInfo.TopLogo1, new { @class = "hdnImage_TopLogo1ImageName" })
+
+                            @if (!string.IsNullOrEmpty(Model.ExperienceInfo.TopLogo1))
+                                {
+                                    <a href="javascript:void(0);"
+                                       onclick="fnDeleteTopLogo1('@Model.ExperienceInfo.Id')"
+                                       title="delete top logo 1">
+                                        <i class="fa fa-trash-o"></i> Delete logo
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="TopLogo1Caption">Top Logo 1 Caption</label>
+                                @Html.TextBoxFor(m => m.ExperienceInfo.TopLogo1Caption,
+                                new { @class = "form-control ckeditor1", placeholder = "Top Logo1 Caption" })
+                        </div>
+                    </div>
+
+                    <div class="row"><hr /></div>
+
+                    <!-- Top Logo 2 -->
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <label for="TopLogo2">Top Logo 2:</label><br />
+                            <input id="TopLogo2Image" type="file"
+                                   onchange="processImage(this, '@("imagepreview_TopLogo2Image")',
+                                                 '@("hdnImage_TopLogo2ImageName")',
+                                                 '@DbImagePath.ExperienceImage','0','0','@DbImagePath.ExperienceImage');" />
+                            <span class="picsize"></span>
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <img class='@("imagepreview_TopLogo2Image")'
+                                 src='@(baseUrl + DbImagePath.ExperienceImage + Model.ExperienceInfo.TopLogo2)'
+                                 alt="image"
+                                 style="width:100px;height:50px;"
+                                 onerror="imgErrorSmall(this);" />
+                            @Html.HiddenFor(x => x.ExperienceInfo.TopLogo2, new { @class = "hdnImage_TopLogo2ImageName" })
+
+                            @if (!string.IsNullOrEmpty(Model.ExperienceInfo.TopLogo2))
+                                {
+                                    <a href="javascript:void(0);"
+                                       onclick="fnDeleteTopLogo2('@Model.ExperienceInfo.Id')"
+                                       title="delete top logo 2">
+                                        <i class="fa fa-trash-o"></i> Delete logo
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="TopLogo2Caption">Top Logo 2 Caption</label>
+                                @Html.TextBoxFor(m => m.ExperienceInfo.TopLogo2Caption,
+                                new { @class = "form-control ckeditor1", placeholder = "Top Logo2 Caption" })
+                        </div>
+                    </div>
+
+                    <div class="row"><hr /></div>
+
+                    <!-- Bottom Logo 1 -->
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <label for="BottomLogo1">Bottom Logo 1:</label><br />
+                            <input id="Bottom1LogoImage" type="file"
+                                   onchange="processImage(this, '@("imagepreview_Bottom1LogoImage")',
+                                                 '@("hdnImage_Bottom1LogoImageName")',
+                                                 '@DbImagePath.ExperienceImage','0','0','@DbImagePath.ExperienceImage');" />
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <img class='@("imagepreview_Bottom1LogoImage")'
+                                 src='@(baseUrl + DbImagePath.ExperienceImage + Model.ExperienceInfo.Bottom1Logo)'
+                                 alt="image"
+                                 style="width:100px;height:50px;"
+                                 onerror="imgErrorSmall(this);" />
+
+                            @Html.HiddenFor(x => x.ExperienceInfo.Bottom1Logo, new { @class = "hdnImage_Bottom1LogoImageName" })
+
+                            @if (!string.IsNullOrEmpty(Model.ExperienceInfo.Bottom1Logo))
+                                {
+                                    <a href="javascript:void(0);"
+                                       onclick="fnDeleteBottomLogo1('@Model.ExperienceInfo.Id')"
+                                       title="delete Bottom logo 1">
+                                        <i class="fa fa-trash-o"></i> Delete logo
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="Bottom1LogoCaption">Bottom Logo 1 Caption</label>
+                                @Html.TextBoxFor(m => m.ExperienceInfo.Bottom1LogoCaption,
+                                new { @class = "form-control ckeditor1", placeholder = "Bottom Logo 1 Caption" })
+                        </div>
+                    </div>
+
+                    <div class="row"><hr /></div>
+
+                    <!-- Bottom Logo 2 -->
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <label for="BottomLogo2">Bottom Logo 2:</label><br />
+                            <input id="Bottom2LogoImage" type="file"
+                                   onchange="processImage(this, '@("imagepreview_Bottom2LogoImage")',
+                                                 '@("hdnImage_Bottom2LogoImageName")',
+                                                 '@DbImagePath.ExperienceImage','0','0','@DbImagePath.ExperienceImage');" />
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <img class='@("imagepreview_Bottom2LogoImage")'
+                                 src='@(baseUrl + DbImagePath.ExperienceImage + Model.ExperienceInfo.Bottom2Logo)'
+                                 alt="image"
+                                 style="width:100px;height:50px;"
+                                 onerror="imgErrorSmall(this);" />
+
+                            @Html.HiddenFor(x => x.ExperienceInfo.Bottom2Logo, new { @class = "hdnImage_Bottom2LogoImageName" })
+
+                            @if (!string.IsNullOrEmpty(Model.ExperienceInfo.Bottom2Logo))
+                                {
+                                    <a href="javascript:void(0);"
+                                       onclick="fnDeleteBottomLogo2('@Model.ExperienceInfo.Id')"
+                                       title="delete Bottom logo 2">
+                                        <i class="fa fa-trash-o"></i> Delete logo
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="Bottom2LogoCaption">Bottom Logo 2 Caption</label>
+                                @Html.TextBoxFor(m => m.ExperienceInfo.Bottom2LogoCation,
+                                new { @class = "form-control ckeditor1", placeholder = "Bottom Logo 2 Caption" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="x_title" style="width:100%;float:right;">
+                <div class="clearfix"></div>
+                <div style="float:right;padding-right:10px;">
+                    <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </form>
+</div>
+}

@@ -10,5 +10,12 @@ namespace IGS.Dal.Repository.IRepository
             string? pageIds = null,             // e.g. "3,5"
             string? orderBy = null              // "ClientName" | "TransactionDate" | null
         );
+
+        // ✅ New methods (for ExperienceModel)
+        Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(int experienceId, string? industryCategoryIds = null, string? pageIds = null, string? orderBy = null);
+        Task<IEnumerable<GetExperienceIndustryCategoryMapping_Result>> GetExperienceIndustryCategoryMappingAsync(int experienceId);
+        Task<IEnumerable<GetExperiencePageMapping_Result>> GetExperiencePageMappingAsync(int experienceId);
+
+
     }
 }

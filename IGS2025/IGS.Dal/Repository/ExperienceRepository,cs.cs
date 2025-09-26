@@ -33,5 +33,39 @@ namespace IGS.Dal.Repository
                 },
                 isStoredProc: true);
         }
+
+        // ✅ New methods (for ExperienceModel)
+
+        public async Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(int experienceId, string? industryCategoryIds = null, string? pageIds = null, string? orderBy = null)
+        {
+            var result = await _sql.QueryAsync<GetExperienceDetail_Result>(
+                "dbo.GetExperienceDetail",
+                new
+                {
+                    prmExperienceId = experienceId,
+                    prmIndustriesCategoryIds = industryCategoryIds,
+                    prmPageIds = pageIds,
+                    prmOrderBy = orderBy
+                },
+                isStoredProc: true);
+
+            return result.FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<GetExperienceIndustryCategoryMapping_Result>> GetExperienceIndustryCategoryMappingAsync(int experienceId)
+        {
+            return await _sql.QueryAsync<GetExperienceIndustryCategoryMapping_Result>(
+                "dbo.GetExperienceIndustryCategoryMapping",
+                new { ExperienceId = experienceId },
+                isStoredProc: true);
+        }
+
+        public async Task<IEnumerable<GetExperiencePageMapping_Result>> GetExperiencePageMappingAsync(int experienceId)
+        {
+            return await _sql.QueryAsync<GetExperiencePageMapping_Result>(
+                "dbo.GetExperiencePageMapping",
+                new { ExperienceId = experienceId },
+                isStoredProc: true);
+        }
     }
 }

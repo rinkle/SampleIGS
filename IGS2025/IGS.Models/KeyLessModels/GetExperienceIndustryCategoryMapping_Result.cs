@@ -15,7 +15,9 @@ namespace IGS.Models.KeyLessModels
         public DateTime? ModifiedDate { get; set; }
         public string? CreatedBy { get; set; }
         public string? ModifiedBy { get; set; }
-        public int CheckedStatus { get; set; }   // not nullable in your definition
+
+        public bool CheckedStatus { get; set; }   // ✅ now a bool
         public int? Fk_ExperienceId { get; set; }
     }
+
 }
