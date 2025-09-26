@@ -1,7 +1,8 @@
-﻿using IGS.Dal.Data;
+﻿using IGS.Dal.Data;   // ✅ Correct namespace
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Sql;
 using IGS.Models;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace IGS.Dal.Repository
 {
@@ -24,19 +25,23 @@ namespace IGS.Dal.Repository
         {
             _db = db;
             _sql = sql;
+
             Home = new HomeRepository(_db, _sql);
             CommonListing = new CommonListingRepository(_db, _sql);
             PageHeader = new PageHeaderRepository(_db, _sql);
             Page = new PageRepository(_db, _sql);
-            TransactionService=new TransactionServiceRepository(_db, _sql);
-            PortfolioService=new PortfolioServiceRepository(_db, _sql);
+            TransactionService = new TransactionServiceRepository(_db, _sql);
+            PortfolioService = new PortfolioServiceRepository(_db, _sql);
             IndustryService = new IndustryRepository(_db, _sql);
             IndustryCategory = new IndustryCategoryRepository(_db, _sql);
             Experience = new ExperienceRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();
-
         public async Task SaveAsync() => await _db.SaveChangesAsync();
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _db.Database.BeginTransactionAsync();
+        }
     }
 }

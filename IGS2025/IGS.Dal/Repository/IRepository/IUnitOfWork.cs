@@ -1,4 +1,6 @@
-﻿namespace IGS.Dal.Repository.IRepository
+﻿using Microsoft.EntityFrameworkCore.Storage;
+
+namespace IGS.Dal.Repository.IRepository
 {
     public interface IUnitOfWork
     {
@@ -14,5 +16,8 @@
 
         void Save();
         Task SaveAsync();
+
+        // ✅ New
+        Task<IDbContextTransaction> BeginTransactionAsync();
     }
 }

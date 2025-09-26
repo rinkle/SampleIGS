@@ -4,6 +4,7 @@ using IGS.Dal.Repository.Repository;
 using IGS.Dal.Sql;
 using IGS.Models;
 using IGS.Models.KeyLessModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace IGS.Dal.Repository
 {
@@ -34,9 +35,11 @@ namespace IGS.Dal.Repository
                 isStoredProc: true);
         }
 
-        // ✅ New methods (for ExperienceModel)
-
-        public async Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(int experienceId, string? industryCategoryIds = null, string? pageIds = null, string? orderBy = null)
+        public async Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(
+            int experienceId,
+            string? industryCategoryIds = null,
+            string? pageIds = null,
+            string? orderBy = null)
         {
             var result = await _sql.QueryAsync<GetExperienceDetail_Result>(
                 "dbo.GetExperienceDetail",
@@ -66,6 +69,42 @@ namespace IGS.Dal.Repository
                 "dbo.GetExperiencePageMapping",
                 new { ExperienceId = experienceId },
                 isStoredProc: true);
+        }
+
+        // ✅ Replace mappings
+        public async Task ReplaceIndustryMappingsAsync(int experienceId, IEnumerable<int> categoryIds)
+        {
+            var old = _db.ExperienceIndustryMappings.Where(x => x.Fk_ExperienceId == experienceId);
+            _db.ExperienceIndustryMappings.RemoveRange(old);
+
+            foreach (var id in categoryIds)
+            {
+                await _db.ExperienceIndustryMappings.AddAsync(new ExperienceIndustryMapping
+                {
+                    Fk_ExperienceId = experienceId,
+                    Fk_IndustryCategoryId = id,
+                });
+            }
+
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task ReplacePageMappingsAsync(int experienceId, IEnumerable<int> pageIds)
+        {
+            var old = _db.ExperiencePageMappings.Where(x => x.FK_ExperienceId == experienceId);
+            _db.ExperiencePageMappings.RemoveRange(old);
+
+            foreach (var id in pageIds)
+            {
+                await _db.ExperiencePageMappings.AddAsync(new ExperiencePageMapping
+                {
+                    FK_ExperienceId = experienceId,
+                    FK_PageId = id,
+                    //CreatedDate = DateTime.Now
+                });
+            }
+
+            await _db.SaveChangesAsync();
         }
     }
 }

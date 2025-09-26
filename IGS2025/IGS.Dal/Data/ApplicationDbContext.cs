@@ -8,7 +8,7 @@ namespace IGS.Dal.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+            : base(options)  // ✅ correct constructor
         {
         }
 
@@ -28,8 +28,6 @@ namespace IGS.Dal.Data
         public DbSet<ExperienceIndustryMapping> ExperienceIndustryMappings { get; set; } = default!;
         public DbSet<ExperiencePageMapping> ExperiencePageMappings { get; set; } = default!;
 
-        // ⚠️ Do NOT add DbSet<> for SP result models (keyless)
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -42,49 +40,30 @@ namespace IGS.Dal.Data
             builder.Entity<PortfolioService>().ToTable("PortfolioServices");
             builder.Entity<Industry>().ToTable("Industry");
             builder.Entity<IndustryCategory>().ToTable("IndustryCategory");
-
-            // New tables
             builder.Entity<Experience>().ToTable("Experience");
             builder.Entity<ExperienceIndustryMapping>().ToTable("ExperienceIndustryMapping");
             builder.Entity<ExperiencePageMapping>().ToTable("ExperiencePageMapping");
 
-            // Decimal precision config
-            builder.Entity<CommonListing>()
-                .Property(p => p.DisplayOrder)
-                .HasPrecision(18, 2);
+            // Decimal precision
+            builder.Entity<CommonListing>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<Experience>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<ExperienceIndustryMapping>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<ExperiencePageMapping>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
 
-            builder.Entity<Experience>()
-                .Property(p => p.DisplayOrder)
-                .HasPrecision(18, 2);
-
-            builder.Entity<ExperienceIndustryMapping>()
-                .Property(p => p.DisplayOrder)
-                .HasPrecision(18, 2);
-
-            builder.Entity<ExperiencePageMapping>()
-                .Property(p => p.DisplayOrder)
-                .HasPrecision(18, 2);
-
-            // Keyless entities (SP result models)
+            // Keyless SP result models
             builder.Entity<GetHome_Result>().HasNoKey().ToView(null);
-            builder.Entity<GetCommonListing_Result>()
-                .HasNoKey().ToView(null)
+            builder.Entity<GetCommonListing_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<GetPageHeader_Result>().HasNoKey().ToView(null);
             builder.Entity<GetTransactionService_Result>().HasNoKey().ToView(null);
             builder.Entity<GetPortfolioService_Result>().HasNoKey().ToView(null);
             builder.Entity<GetIndustry_Result>().HasNoKey().ToView(null);
-            builder.Entity<GetIndustryCategory_Result>()
-                .HasNoKey().ToView(null)
+            builder.Entity<GetIndustryCategory_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
-
-            // New SP result models
             builder.Entity<GetExperienceDetail_Result>().HasNoKey().ToView(null);
-            builder.Entity<GetExperienceFilterList_Result>()
-                .HasNoKey().ToView(null)
+            builder.Entity<GetExperienceFilterList_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
-            builder.Entity<GetExperienceIndustryCategoryMapping_Result>()
-                .HasNoKey().ToView(null)
+            builder.Entity<GetExperienceIndustryCategoryMapping_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<GetExperiencePageMapping_Result>().HasNoKey().ToView(null);
         }

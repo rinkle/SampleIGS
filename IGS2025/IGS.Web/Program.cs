@@ -1,5 +1,5 @@
 ﻿using Globalsetting;
-using IGS.Dal.Data;
+using IGS.Dal.Data;  // ✅ ensure this is here
 using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
@@ -17,24 +17,25 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
+// ✅ Correct EF Core registration (no custom hacks)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+// 🔐 Identity setup
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()   // ✅ uses your ApplicationDbContext
+    .AddDefaultTokenProviders();
 
 // 🔐 Identity cookie config → ensure redirect goes to /igsadmin
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = new PathString("/igsadmin");       // ✅ force login path
+    options.LoginPath = new PathString("/igsadmin");
     options.LogoutPath = new PathString("/Identity/Account/Logout");
-    options.AccessDeniedPath = new PathString("/igsadmin"); // redirect access denied to login
+    options.AccessDeniedPath = new PathString("/igsadmin");
 });
 
 // 🛠 Dev helpers
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-// 🔐 Identity setup
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
@@ -63,7 +64,6 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
-
 builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
@@ -85,29 +85,24 @@ builder.Services.AddScoped<IIndustryCategoryService, IndustryCategoryService>();
 builder.Services.AddScoped<IIndustryService, IndustryService>();
 builder.Services.AddScoped<IIndustryVmService, IndustryVmService>();
 
-//IExperience
+// Experience
 builder.Services.AddScoped<IExperienceVmService, ExperienceVmService>();
-
 
 var app = builder.Build();
 
-// 🔥 Global error handler → logs exceptions to DB
+// 🔥 Global error handler
 app.Use(async (context, next) =>
 {
-    try
-    {
-        await next();
-    }
+    try { await next(); }
     catch (Exception ex)
     {
         using var scope = app.Services.CreateScope();
         var loggerService = scope.ServiceProvider.GetRequiredService<ILoggerService>();
         await loggerService.LogErrorAsync(ex);
-        throw; // rethrow so exception page / handler still works
+        throw;
     }
 });
 
-// 🌍 Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -119,30 +114,9 @@ else
 }
 
 app.UseHttpsRedirection();
-
-// Static files with cache headers
-app.UseStaticFiles(new StaticFileOptions
-{
-    OnPrepareResponse = ctx =>
-    {
-        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
-    }
-});
-
+app.UseStaticFiles();
 app.UseRouting();
 
-// 🚦 Lightweight redirect from /Account/Login → /igsadmin
-app.Use(async (context, next) =>
-{
-    if (context.Request.Path.StartsWithSegments("/Account/Login", StringComparison.OrdinalIgnoreCase))
-    {
-        context.Response.Redirect("/igsadmin" + context.Request.QueryString);
-        return;
-    }
-    await next();
-});
-
-// ✅ correct order
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();

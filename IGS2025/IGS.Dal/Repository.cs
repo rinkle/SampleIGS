@@ -27,9 +27,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return query.ToList();
@@ -43,9 +41,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return query.FirstOrDefault();
@@ -60,9 +56,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return query.FirstOrDefault();
@@ -71,6 +65,9 @@ namespace IGS.Dal.Repository.Repository
         public void Add(T entity) => dbSet.Add(entity);
         public void Remove(T entity) => dbSet.Remove(entity);
         public void RemoveRange(IEnumerable<T> entity) => dbSet.RemoveRange(entity);
+
+        // ✅ New
+        public void Update(T entity) => dbSet.Update(entity);
 
         // -------------------------------
         // Async
@@ -83,9 +80,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return await query.ToListAsync();
@@ -99,9 +94,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return await query.FirstOrDefaultAsync();
@@ -116,9 +109,7 @@ namespace IGS.Dal.Repository.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-                {
                     query = query.Include(includeProp);
-                }
             }
 
             return await query.FirstOrDefaultAsync();

@@ -35,6 +35,8 @@ namespace IGS.Dal.Repository.IRepository
             Expression<Func<T, bool>>? filter = null,
             string? includeProperties = null,
             bool tracked = false);
+
+        void Update(T entity);
     }
 
 }
