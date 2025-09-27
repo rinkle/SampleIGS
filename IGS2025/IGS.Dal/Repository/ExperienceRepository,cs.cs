@@ -106,5 +106,13 @@ namespace IGS.Dal.Repository
 
             await _db.SaveChangesAsync();
         }
+        public async Task UpdateExperienceUrlAsync(int experienceId)
+        {
+            await _sql.ExecuteAsync(
+                "dbo.UpdateExperienceUrl",
+                new { ExperienceId = experienceId },
+                isStoredProc: true
+            );
+        }
     }
 }

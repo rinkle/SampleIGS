@@ -95,6 +95,8 @@ namespace IGS.Web.Areas.Admin.Controllers
                 _unitOfWork.Experience.Update(expEntity);
                 await _unitOfWork.SaveAsync();
 
+                await _unitOfWork.Experience.UpdateExperienceUrlAsync(expEntity.Id);
+
                 // 2. Replace Industry Mappings
                 if (model.ExperienceIndustryCategoryMapping?.Any() == true)
                 {

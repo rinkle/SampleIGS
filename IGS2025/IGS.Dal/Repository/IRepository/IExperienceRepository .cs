@@ -24,5 +24,7 @@ namespace IGS.Dal.Repository.IRepository
         // ✅ New replace methods
         Task ReplaceIndustryMappingsAsync(int experienceId, IEnumerable<int> categoryIds);
         Task ReplacePageMappingsAsync(int experienceId, IEnumerable<int> pageIds);
+        Task UpdateExperienceUrlAsync(int experienceId);
+
     }
 }
