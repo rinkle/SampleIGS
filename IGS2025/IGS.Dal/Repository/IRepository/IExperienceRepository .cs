@@ -8,10 +8,8 @@ namespace IGS.Dal.Repository.IRepository
         Task<IEnumerable<GetExperienceFilterList_Result>> GetExperienceFilterListFromSpAsync(
             string? industryCategoryIds = null,
             string? pageIds = null,
-            string? orderBy = null
-        );
+            string? orderBy = null);
 
-        // ✅ For ExperienceModel
         Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(
             int experienceId,
             string? industryCategoryIds = null,
@@ -21,10 +19,9 @@ namespace IGS.Dal.Repository.IRepository
         Task<IEnumerable<GetExperienceIndustryCategoryMapping_Result>> GetExperienceIndustryCategoryMappingAsync(int experienceId);
         Task<IEnumerable<GetExperiencePageMapping_Result>> GetExperiencePageMappingAsync(int experienceId);
 
-        // ✅ New replace methods
+        // ✅ Write helpers
         Task ReplaceIndustryMappingsAsync(int experienceId, IEnumerable<int> categoryIds);
         Task ReplacePageMappingsAsync(int experienceId, IEnumerable<int> pageIds);
-        Task UpdateExperienceUrlAsync(int experienceId);
-
+        Task UpdateExperienceUrlAsync(int experienceId);   // <-- here
     }
 }

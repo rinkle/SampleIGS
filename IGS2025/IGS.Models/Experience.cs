@@ -8,6 +8,7 @@ namespace IGS.Models
     {
         public int Id { get; set; }
         public string? ClientName { get; set; }
+        public string? SupportText { get; set; }
         public string? TopLogo1 { get; set; }
         public string? TopLogo1Caption { get; set; }
         public string? TopLogo2 { get; set; }

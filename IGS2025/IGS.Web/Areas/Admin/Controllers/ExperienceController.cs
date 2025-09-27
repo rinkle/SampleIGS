@@ -15,7 +15,7 @@ namespace IGS.Web.Areas.Admin.Controllers
     public class ExperienceController : BaseController
     {
         private readonly IExperienceVmService _experienceVmService;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IExperienceService _experienceService;   // ✅ use service
         private readonly ILoggerService _logger;
         private readonly string _baseUrl;
 
@@ -23,12 +23,12 @@ namespace IGS.Web.Areas.Admin.Controllers
             IOptions<AppSettings> options,
             ILoggerService logger,
             IExperienceVmService experienceVmService,
-            IUnitOfWork unitOfWork)
+            IExperienceService experienceService)   // ✅ inject service
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
             _experienceVmService = experienceVmService;
-            _unitOfWork = unitOfWork;
+            _experienceService = experienceService;
         }
 
         // GET: /Admin/Experience
@@ -60,64 +60,8 @@ namespace IGS.Web.Areas.Admin.Controllers
 
             try
             {
-                // 1. Save Experience main entity
-                var expEntity = await _unitOfWork.Experience.GetAsync(
-                    e => e.Id == model.ExperienceInfo.Id,
-                    tracked: true
-                );
-
-                if (expEntity == null)
-                {
-                    expEntity = new Experience();
-                    await _unitOfWork.Experience.AddAsync(expEntity);
-                }
-
-                // map fields from model.ExperienceInfo → expEntity
-                expEntity.ClientName = model.ExperienceInfo.ClientName;
-                expEntity.TopLogo1 = model.ExperienceInfo.TopLogo1;
-                expEntity.TopLogo1Caption = model.ExperienceInfo.TopLogo1Caption;
-                expEntity.TopLogo2 = model.ExperienceInfo.TopLogo2;
-                expEntity.TopLogo2Caption = model.ExperienceInfo.TopLogo2Caption;
-                expEntity.Bottom1Logo = model.ExperienceInfo.Bottom1Logo;
-                expEntity.Bottom1LogoCaption = model.ExperienceInfo.Bottom1LogoCaption;
-                expEntity.Bottom2Logo = model.ExperienceInfo.Bottom2Logo;
-                expEntity.Bottom2LogoCation = model.ExperienceInfo.Bottom2LogoCation;
-                expEntity.Target = model.ExperienceInfo.Target;
-                expEntity.Website = model.ExperienceInfo.Website;
-                expEntity.DisplayOrder = model.ExperienceInfo.DisplayOrder;
-                expEntity.TransactionDate = model.ExperienceInfo.TransactionDate;
-                expEntity.EndDate = model.ExperienceInfo.EndDate;
-                expEntity.HideTombstone = model.ExperienceInfo.HideTombstone;
-                expEntity.IsActive = model.ExperienceInfo.IsActive ?? true;
-                expEntity.ModifiedDate = DateTime.Now;
-                expEntity.ModifiedBy = User?.Identity?.Name ?? "system";
-
-                _unitOfWork.Experience.Update(expEntity);
-                await _unitOfWork.SaveAsync();
-
-                await _unitOfWork.Experience.UpdateExperienceUrlAsync(expEntity.Id);
-
-                // 2. Replace Industry Mappings
-                if (model.ExperienceIndustryCategoryMapping?.Any() == true)
-                {
-                    var selectedIds = model.ExperienceIndustryCategoryMapping
-                        .Where(x => x.CheckedStatus == true)
-                        .Select(x => x.Id)
-                        .ToList();
-
-                    await _unitOfWork.Experience.ReplaceIndustryMappingsAsync(expEntity.Id, selectedIds);
-                }
-
-                // 3. Replace Page Mappings
-                if (model.ExperiencePageMapping?.Any() == true)
-                {
-                    var selectedIds = model.ExperiencePageMapping
-                        .Where(x => x.CheckedStatus == true)
-                        .Select(x => x.Id)
-                        .ToList();
-
-                    await _unitOfWork.Experience.ReplacePageMappingsAsync(expEntity.Id, selectedIds);
-                }
+                // ✅ delegate save to service
+                await _experienceService.SaveExperienceAsync(model);
 
                 SuccessNotification("Experience saved successfully.");
                 return Redirect(_baseUrl + "admin/experience");
