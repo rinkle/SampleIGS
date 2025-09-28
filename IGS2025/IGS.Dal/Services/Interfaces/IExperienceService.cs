@@ -9,5 +9,6 @@ namespace IGS.Dal.Services.Interfaces
         /// Creates/updates Experience and replaces mappings. Returns Experience Id.
         /// </summary>
         Task<int> SaveExperienceAsync(ExperienceModel model);
+        Task<bool> DeleteExperienceAsync(int id);
     }
 }

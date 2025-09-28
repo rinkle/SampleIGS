@@ -153,35 +153,17 @@ namespace IGS.Web.Areas.Admin.Controllers
 
             try
             {
-                var experience = await _unitOfWork.Experience.GetAsync(
-                    x => x.Id == id,
-                    tracked: true);
-
-                if (experience != null)
-                {
-                    experience.IsActive = false;
-                    experience.ModifiedBy = _globalEnvironment.UserId;
-                    experience.ModifiedDate = DateTime.Now;
-
-                    _unitOfWork.Experience.Update(experience);
-                    await _unitOfWork.SaveAsync();
-
-                    status = true;
-                    returnMessage = Message.DeleteSuccessMessage;
-                }
-                else
-                {
-                    returnMessage = Message.DataNotFoundMessage;
-                }
+                status = await _experienceService.DeleteExperienceAsync(id);
+                returnMessage = status ? Message.DeleteSuccessMessage : Message.DataNotFoundMessage;
             }
-            catch (Exception ex)
+            catch
             {
-                int errorId = await _logger.LogErrorAsync(ex, $"Error deleting Experience {id}");
                 returnMessage = "An error occurred while deleting the experience.";
             }
 
             return Json(new { isSuccess = status, message = returnMessage });
         }
+
 
 
 

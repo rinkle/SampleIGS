@@ -101,7 +101,7 @@ namespace IGS.Dal.Services.Implementations
         private static void MapExperience(Experience target, GetExperienceDetail_Result src)
         {
             target.ClientName = src.ClientName;
-            target.SupportText= src.SupportText;
+            target.SupportText = src.SupportText;
             target.TopLogo1 = src.TopLogo1;
             target.TopLogo1Caption = src.TopLogo1Caption;
             target.TopLogo2 = src.TopLogo2;
@@ -118,6 +118,33 @@ namespace IGS.Dal.Services.Implementations
             target.TransactionDate = src.TransactionDate;
             target.HideTombstone = src.HideTombstone;
             target.IsActive = src.IsActive ?? true;
+        }
+
+        public async Task<bool> DeleteExperienceAsync(int id)
+        {
+            try
+            {
+                var experience = await _unitOfWork.Experience.GetAsync(
+                    x => x.Id == id,
+                    tracked: true);
+
+                if (experience == null)
+                    return false;
+
+                experience.IsActive = false;
+                experience.ModifiedBy = _env.UserId;
+                experience.ModifiedDate = DateTime.Now;
+
+                _unitOfWork.Experience.Update(experience);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, $"Error deleting Experience {id}");
+                throw;
+            }
         }
     }
 }
