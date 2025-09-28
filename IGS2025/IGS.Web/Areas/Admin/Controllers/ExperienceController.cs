@@ -70,13 +70,13 @@ namespace IGS.Web.Areas.Admin.Controllers
                 await _experienceService.SaveExperienceAsync(model);
 
                 SuccessNotification("Experience saved successfully.");
-                return Redirect(_baseUrl + "admin/experience");
+                return Redirect(_baseUrl + "admin/experience/");
             }
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error saving Experience");
                 ErrorNotification("Error while saving Experience: " + ex.Message);
-                return Redirect(_baseUrl + "admin/experience");
+                return Redirect(_baseUrl + "admin/experience/");
             }
         }
 

@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>@item.DisplayOrder</td>
                                     <td><b> @item.ClientName</b><br />@item.IndustryNames <br />@item.PageNames </td>
-                                    <td><img src='@string.Concat(baseUrl, DbImagePath.ExperienceImage)@item.TopLogo1' alt="@item.ClientName" style="height:20px;" onerror="imgErrorSmall(this);" /></td>
+                                    <td><img src='@string.Concat(baseUrl, DbImagePath.ExperienceImage)@item.TopLogo1' alt="@item.ClientName" style="height:20px;" onerror="imgErrorSmall(this);" asp-append-version="true" /></td>
                                     <td>
                                         <a title="Edit '@item.ClientName'' " href='@(baseUrl + "admin/experience/manageexperience/" + item.Id)'><i class="fa fa-edit"></i></a>
                                         <a title="Delete '@item.ClientName' Info" onclick="return fnDeleteExperience(@item.Id,this)" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
