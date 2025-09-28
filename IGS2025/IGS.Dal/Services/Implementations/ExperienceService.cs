@@ -137,9 +137,9 @@ namespace IGS.Dal.Services.Implementations
                 experience.IsActive = false;
                 experience.ModifiedBy = _env.UserId;
                 experience.ModifiedDate = DateTime.Now;
-
                 _unitOfWork.Experience.Update(experience);
                 await _unitOfWork.SaveAsync();
+                await _unitOfWork.Experience.UpdateExperienceUrlAsync(experience.Id);
 
                 return true;
             }
