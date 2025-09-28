@@ -3275,6 +3275,7 @@ wwwroot\images\Experience\FacilityGrid.png
 wwwroot\images\Experience\Galloway.png
 wwwroot\images\Experience\GladstoneCapital.jpg
 wwwroot\images\Experience\GuidantPower.jpg
+wwwroot\images\Experience\ICS.jpg
 wwwroot\images\Experience\Immec.jpg
 wwwroot\images\Experience\Insero_Co.png
 wwwroot\images\Experience\InterLock.png
@@ -3297,6 +3298,7 @@ wwwroot\images\Experience\Ragnarok.png
 wwwroot\images\Experience\Rallyday.png
 wwwroot\images\Experience\Renovus_Capital.png
 wwwroot\images\Experience\RiteInTheRain.png
+wwwroot\images\Experience\SafetyPartners.png
 wwwroot\images\Experience\SBJ_Capital.png
 wwwroot\images\Experience\SETWorks.png
 wwwroot\images\Experience\SGP.jpg
@@ -3306,8 +3308,10 @@ wwwroot\images\Experience\ShoreCapital_471cb89882e24b8f913055ee5bbe49f0.jpg
 wwwroot\images\Experience\ShoreCapital_620d1350214f4d43bf2794dbe35b3122.jpg
 wwwroot\images\Experience\Simon_Pearce.png
 wwwroot\images\Experience\Star.png
+wwwroot\images\Experience\Stellex.png
 wwwroot\images\Experience\TechServ.png
 wwwroot\images\Experience\TouchPoint.png
+wwwroot\images\Experience\Trinity.png
 wwwroot\images\Experience\VCS.png
 wwwroot\images\Experience\Wynnchurch.png
 wwwroot\images\favicon\android-chrome-192x192.png

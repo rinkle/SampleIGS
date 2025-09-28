@@ -100,7 +100,10 @@ namespace IGS.Dal.Services.Implementations
 
         private static void MapExperience(Experience target, GetExperienceDetail_Result src)
         {
-            target.ClientName = src.ClientName;
+            if (!string.IsNullOrEmpty(src.ClientName))
+            {
+                target.ClientName = src.ClientName.TrimStart().TrimEnd().Trim();
+            }
             target.SupportText = src.SupportText;
             target.TopLogo1 = src.TopLogo1;
             target.TopLogo1Caption = src.TopLogo1Caption;
