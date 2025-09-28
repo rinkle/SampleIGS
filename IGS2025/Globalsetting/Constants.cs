@@ -59,7 +59,7 @@ namespace Globalsetting
         public const string pageHeader = "images/pageHeader/";
         public const string TransactionservicesImage = "images/transactionServices/";
         public const string PortfolioServicesImage = "images/portfolioServices/";
-        public const string ExperienceImage = "images/portfolioServices/";
+        public const string ExperienceImage = "images/Experience/";
 
         
 
