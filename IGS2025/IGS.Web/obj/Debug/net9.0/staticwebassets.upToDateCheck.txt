@@ -3298,6 +3298,8 @@ wwwroot\images\icons\team-mail-dark.svg
 wwwroot\images\IGS-logo.svg
 wwwroot\images\pageHeader\team.jpg
 wwwroot\images\pageHeader\transaction-services.jpg
+wwwroot\images\portfolioServices\3RC.png
+wwwroot\images\portfolioServices\80_20.png
 wwwroot\images\portfolioServices\IGS-B2B-Competitive-Pricing-Intelligence-F.pdf
 wwwroot\images\portfolioServices\recent-projects-4.jpg
 wwwroot\js\site.js

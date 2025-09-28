@@ -185,7 +185,7 @@
                                                     </a>
                                                 }
                                             </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
                                                 <label for="TopLogo2Caption">Top Logo 2 Caption</label>
                                                 @Html.TextBoxFor(m => m.ExperienceInfo.TopLogo2Caption,
                                                 new { @class = "form-control ckeditor1", placeholder = "Top Logo2 Caption" })
@@ -293,4 +293,44 @@
         </div>
     </form>
 </div>
+}
+@section script {
+    <script type="text/javascript">
+                function deleteLogo(actionName, id) {
+            bootbox.confirm("Are you sure you want to delete this logo?", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: `/admin/experience/${actionName}`,  // Core-style route
+                        data: { id: id },                        // send as form-url-encoded
+                        success: function (data) {
+                            bootbox.alert(data.message || data.Message, function () {
+                                location.reload();
+                            });
+                        },
+                        error: function () {
+                            bootbox.alert("An error occurred while deleting the logo.");
+                        }
+                    });
+                }
+            });
+        }
+
+        function fnDeleteTopLogo1(id) {
+            deleteLogo("DeleteTopLogo1", id);
+        }
+
+        function fnDeleteTopLogo2(id) {
+            deleteLogo("DeleteTopLogo2", id);
+        }
+
+        function fnDeleteBottomLogo1(id) {
+            deleteLogo("DeleteBottomLogo1", id);
+        }
+
+        function fnDeleteBottomLogo2(id) {
+            deleteLogo("DeleteBottomLogo2", id);
+        }
+
+    </script>
 }
