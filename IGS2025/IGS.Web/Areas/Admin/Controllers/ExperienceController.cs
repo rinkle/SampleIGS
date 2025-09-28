@@ -49,10 +49,11 @@ namespace IGS.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> ManageExperience(string id)
         {
+           
             if (!int.TryParse(id, out var experienceId))
                 return BadRequest("Invalid Experience Id");
-
-            var vm = await _experienceVmService.GetExperienceModelAsync(experienceId);
+            ViewBag.ExperienceId = experienceId;
+           var vm = await _experienceVmService.GetExperienceModelAsync(experienceId);
             return View(vm);
         }
 
@@ -143,5 +144,48 @@ namespace IGS.Web.Areas.Admin.Controllers
 
             return Json(new { IsSuccess = status, Message = returnMessage });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteExperience(int id)
+        {
+            bool status = false;
+            string returnMessage;
+
+            try
+            {
+                var experience = await _unitOfWork.Experience.GetAsync(
+                    x => x.Id == id,
+                    tracked: true);
+
+                if (experience != null)
+                {
+                    experience.IsActive = false;
+                    experience.ModifiedBy = _globalEnvironment.UserId;
+                    experience.ModifiedDate = DateTime.Now;
+
+                    _unitOfWork.Experience.Update(experience);
+                    await _unitOfWork.SaveAsync();
+
+                    status = true;
+                    returnMessage = Message.DeleteSuccessMessage;
+                }
+                else
+                {
+                    returnMessage = Message.DataNotFoundMessage;
+                }
+            }
+            catch (Exception ex)
+            {
+                int errorId = await _logger.LogErrorAsync(ex, $"Error deleting Experience {id}");
+                returnMessage = "An error occurred while deleting the experience.";
+            }
+
+            return Json(new { isSuccess = status, message = returnMessage });
+        }
+
+
+
+
+
     }
 }

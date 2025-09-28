@@ -3,9 +3,7 @@
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
     var CarouselId = ViewBag.CarouselId ?? 0;
     var teamid = ViewBag.teamId ?? 0;
-    var PortfolioId = ViewBag.PortfolioId ?? 0;
-    var caseStudyId = ViewBag.caseStudyId ?? 0;
-    var TransactionId = ViewBag.TransactionId ?? 0;
+    var ExperienceId = ViewBag.ExperienceId ?? 0;
     var pageId = ViewBag.pageId;
     var newsid = ViewBag.newsid ?? 0;
     var TeamTitleId = ViewBag.TeamTitleId ?? 0;
@@ -67,6 +65,7 @@
                         <ul class="nav child_menu">
                             <li><a href='@string.Concat(baseUrl, "admin/experience/")'>Experience</a></li>
                             <li><a title="Industries Page Header" href='@string.Concat(baseUrl, "admin/common/pageheader/5")'>Page Header</a></li>
+                            <li style="display:none;"><a href='@(baseUrl + "admin/experience/manageexperience/" + ExperienceId)' title="update Portfolio">Update Experience </a></li>-->
                         </ul>
                     </li>
 
@@ -92,17 +91,7 @@
                             <li><a title="Strategies Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/16")'>Strategies Page Header</a></li>
                         </ul>
                     </li>
-                    <!--<li>
-                        <a title="portfolio Management"><i class="fa fa-th-large"></i> Portfolio <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href='@(baseUrl+"admin/portfolio/")' title="Portfolio">Portfolio</a></li>
-                            <li><a title="Portfolio Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/3")'>Portfolio Page Header </a></li>
-                            <li style="display:none;"><a href='@(baseUrl+"admin/portfolio/manageportfolio/"+PortfolioId)' title="update Portfolio">Update Portfolio </a></li>-->
-                            @*<li><a href='@(baseUrl+"admin/portfolio/investmentsector")' title="Portfolio">Industry/Sector</a></li>*@
-
-                        <!--</ul>
-                    </li>-->
-
+                  
                     <li>
                         <a><i class="fa fa-comments-o"></i>Impact<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
