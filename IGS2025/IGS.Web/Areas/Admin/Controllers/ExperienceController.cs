@@ -164,10 +164,5 @@ namespace IGS.Web.Areas.Admin.Controllers
             return Json(new { isSuccess = status, message = returnMessage });
         }
 
-
-
-
-
-
     }
 }

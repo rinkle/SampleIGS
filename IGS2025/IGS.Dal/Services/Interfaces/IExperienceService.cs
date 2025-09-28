@@ -10,5 +10,6 @@ namespace IGS.Dal.Services.Interfaces
         /// </summary>
         Task<int> SaveExperienceAsync(ExperienceModel model);
         Task<bool> DeleteExperienceAsync(int id);
+        Task<bool> DeleteLogoAsync(int id, Action<Experience> clearLogoAction);
     }
 }

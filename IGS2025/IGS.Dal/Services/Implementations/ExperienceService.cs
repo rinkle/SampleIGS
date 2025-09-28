@@ -146,5 +146,33 @@ namespace IGS.Dal.Services.Implementations
                 throw;
             }
         }
+
+        public async Task<bool> DeleteLogoAsync(int id, Action<Experience> clearLogoAction)
+        {
+            try
+            {
+                var experience = await _unitOfWork.Experience.GetAsync(
+                    e => e.Id == id,
+                    tracked: true);
+
+                if (experience == null)
+                    return false;
+
+                clearLogoAction(experience); // e.g. exp.TopLogo1 = null;
+
+                experience.ModifiedBy = _env.UserId;
+                experience.ModifiedDate = DateTime.Now;
+
+                _unitOfWork.Experience.Update(experience);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, $"Error deleting logo for Experience {id}");
+                throw;
+            }
+        }
     }
 }
