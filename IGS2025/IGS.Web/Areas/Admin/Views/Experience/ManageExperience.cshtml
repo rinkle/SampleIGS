@@ -24,33 +24,7 @@
             @Html.HiddenFor(x => x.ExperienceInfo.Id)
             <div class="col-md-12 col-xs-12">
 
-                <!-- Industries -->
-                <div class="x_title">
-                    <h2>Industries</h2>
-                    <div class="clearfix"></div>
-                </div>
 
-                <div class="x_panel">
-                    <div class="x_content">
-                        @for (int i = 0; i < Model.ExperienceIndustryCategoryMapping.Count; i++)
-                        {
-                            <div class="col-md-55 searchdiv" style="height:10%;">
-                                <div class="thumbnail" style="height:80px;">
-                                    <div class="caption" style="min-height:80px;">
-                                        <p><b>@Model.ExperienceIndustryCategoryMapping[i].IndustryName</b></p>
-                                        @Html.CheckBoxFor(m => m.ExperienceIndustryCategoryMapping[i].CheckedStatus)
-                                        @Html.HiddenFor(m => m.ExperienceIndustryCategoryMapping[i].Id)
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                        <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
-                    </div>
-                </div>
                 <!-- Experience Info -->
                 <div class="x_title">
                     <h2>Experience: <small>Update below form to save Experience data</small></h2>
@@ -264,8 +238,29 @@
                     </div>
                 </div>
             </div>
-          
 
+            <!-- Industries -->
+            <div class="x_title">
+                <h2>Industries</h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_panel">
+                <div class="x_content">
+                    @for (int i = 0; i < Model.ExperienceIndustryCategoryMapping.Count; i++)
+                        {
+                            <div class="col-md-55 searchdiv" style="height:10%;">
+                                <div class="thumbnail" style="height:80px;">
+                                    <div class="caption" style="min-height:80px;">
+                                        <p><b>@Model.ExperienceIndustryCategoryMapping[i].IndustryName</b></p>
+                                        @Html.CheckBoxFor(m => m.ExperienceIndustryCategoryMapping[i].CheckedStatus)
+                                        @Html.HiddenFor(m => m.ExperienceIndustryCategoryMapping[i].Id)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
                 <!-- Show on Page -->
                 <div class="x_title">
                     <h2>Show on page</h2>
