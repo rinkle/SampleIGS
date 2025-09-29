@@ -54,66 +54,77 @@ namespace IGS.Web.Areas.Admin.Controllers
         // POST: /Admin/Team/SaveTeamData
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveTeamData(Team model)
+        public async Task<IActionResult> SaveTeamData(TeamModel model)
         {
             if (model == null)
                 return BadRequest("Invalid data submitted");
 
             try
             {
-                // fetch or create new team
+                // check existing
                 var teamEntity = await _unitOfWork.Team.GetAsync(
-                    t => t.TeamId == model.TeamId,
+                    t => t.TeamId == model.TeamInfo.TeamId,
                     tracked: true);
+
+                bool isNew = false;
 
                 if (teamEntity == null)
                 {
-                    teamEntity = new Team();
-                    await _unitOfWork.Team.AddAsync(teamEntity);
+                    teamEntity = new Team
+                    {
+                        CreatedBy = User?.Identity?.Name ?? "system",
+                        CreatedDate = DateTime.Now,
+                        IsActive = true
+                    };
+                    isNew = true;
                 }
 
                 // map fields
-                teamEntity.Fk_LocationId = model.Fk_LocationId;
-                teamEntity.Fk_TeamTitleId = model.Fk_TeamTitleId;
-                teamEntity.FirstName = model.FirstName;
-                teamEntity.MiddleName = model.MiddleName;
-                teamEntity.LastName = model.LastName;
-                teamEntity.Email = model.Email;
-                teamEntity.OfficeNumber = model.OfficeNumber;
-                teamEntity.PhoneNumber = model.PhoneNumber;
-                teamEntity.LinkedInUrl = model.LinkedInUrl;
-                teamEntity.BioImage = model.BioImage;
-                teamEntity.GridImage = model.GridImage;
-                teamEntity.HomeBioImage = model.HomeBioImage;
-                teamEntity.Comments = model.Comments;
-                teamEntity.SortDescription = model.SortDescription;
-                teamEntity.Description = model.Description;
-                teamEntity.EducationTitle = model.EducationTitle;
-                teamEntity.EducationDescription = model.EducationDescription;
-                teamEntity.ExperienceTitle = model.ExperienceTitle;
-                teamEntity.ExperienceDescription = model.ExperienceDescription;
-                teamEntity.ListOnHome = model.ListOnHome;
+                teamEntity.Fk_LocationId = model.TeamInfo.Fk_LocationId;
+                teamEntity.Fk_TeamTitleId = model.TeamInfo.Fk_TeamTitleId;
+                teamEntity.FirstName = model.TeamInfo.FirstName;
+                teamEntity.MiddleName = model.TeamInfo.MiddleName;
+                teamEntity.LastName = model.TeamInfo.LastName;
+                teamEntity.Email = model.TeamInfo.Email;
+                teamEntity.OfficeNumber = model.TeamInfo.OfficeNumber;
+                teamEntity.PhoneNumber = model.TeamInfo.PhoneNumber;
+                teamEntity.LinkedInUrl = model.TeamInfo.LinkedInUrl;
+                teamEntity.BioImage = model.TeamInfo.BioImage;
+                teamEntity.GridImage = model.TeamInfo.GridImage;
+                teamEntity.HomeBioImage = model.TeamInfo.HomeBioImage;
+                teamEntity.Comments = model.TeamInfo.Comments;
+                teamEntity.SortDescription = model.TeamInfo.SortDescription;
+                teamEntity.Description = model.TeamInfo.Description;
+                teamEntity.EducationTitle = model.TeamInfo.EducationTitle;
+                teamEntity.EducationDescription = model.TeamInfo.EducationDescription;
+                teamEntity.ExperienceTitle = model.TeamInfo.ExperienceTitle;
+                teamEntity.ExperienceDescription = model.TeamInfo.ExperienceDescription;
+                teamEntity.ListOnHome = model.TeamInfo.ListOnHome;
+                teamEntity.DisplayOrder = model.TeamInfo.DisplayOrder;
+                teamEntity.VCard = model.TeamInfo.VCard;
 
-                // ✅ updated from OrderNo → DisplayOrder
-                teamEntity.DisplayOrder = model.DisplayOrder;
-
-                teamEntity.VCard = model.VCard;
-                teamEntity.IsActive = model.IsActive ?? true;
+                teamEntity.IsActive = model.TeamInfo.IsActive ?? true;
                 teamEntity.ModifiedDate = DateTime.Now;
                 teamEntity.ModifiedBy = User?.Identity?.Name ?? "system";
 
-                _unitOfWork.Team.Update(teamEntity);
+                // ✅ Save correctly
+                if (isNew)
+                    await _unitOfWork.Team.AddAsync(teamEntity);
+                else
+                    _unitOfWork.Team.Update(teamEntity);
+
                 await _unitOfWork.SaveAsync();
 
                 SuccessNotification("Team saved successfully.");
-                return Redirect(_baseUrl + "admin/team");
+                return Redirect(_baseUrl + "admin/team/");
             }
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error saving Team");
                 ErrorNotification("Error while saving Team: " + ex.Message);
-                return Redirect(_baseUrl + "admin/team");
+                return Redirect(_baseUrl + "admin/team/");
             }
         }
+
     }
 }
