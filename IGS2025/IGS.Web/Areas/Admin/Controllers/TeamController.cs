@@ -1,11 +1,10 @@
 ﻿using Globalsetting;
-using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models;
-using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Options;
 
 namespace IGS.Web.Areas.Admin.Controllers
@@ -16,7 +15,7 @@ namespace IGS.Web.Areas.Admin.Controllers
     public class TeamController : BaseController
     {
         private readonly ITeamVmService _teamVmService;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITeamService _teamService;
         private readonly ILoggerService _logger;
         private readonly string _baseUrl;
 
@@ -24,107 +23,110 @@ namespace IGS.Web.Areas.Admin.Controllers
             IOptions<AppSettings> options,
             ILoggerService logger,
             ITeamVmService teamVmService,
-            IUnitOfWork unitOfWork)
+            ITeamService teamService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
             _teamVmService = teamVmService;
-            _unitOfWork = unitOfWork;
+            _teamService = teamService;
         }
 
-        // GET: /Admin/Team
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var vm = await _teamVmService.GetTeamVmAsync(null, null, null, isAdmin: true);
+            var vm = await _teamVmService.GetTeamVmAsync(orderBy: "DisplayOrder", isAdmin: true);
             return View(vm);
         }
 
-        // GET: /Admin/Team/ManageTeam/5
         [HttpGet]
-        public async Task<IActionResult> ManageTeam(string id)
+        public async Task<IActionResult> ManageTeam(int id = 0)
         {
-            if (!int.TryParse(id, out var teamId))
-                return BadRequest("Invalid Team Id");
+            ViewBag.teamId = id;
+            var model = id > 0
+                ? await _teamVmService.GetTeamModelAsync(id)
+                : new TeamModel();
 
-            var vm = await _teamVmService.GetTeamModelAsync(teamId);
-            return View(vm);
+            return View(model);
         }
 
-        // POST: /Admin/Team/SaveTeamData
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveTeamData(TeamModel model)
         {
-            if (model == null)
-                return BadRequest("Invalid data submitted");
+            if (!ModelState.IsValid)
+            {
+                ErrorNotification("Invalid Team data.");
+                return Redirect(_baseUrl + "admin/team");
+            }
 
             try
             {
-                // check existing
-                var teamEntity = await _unitOfWork.Team.GetAsync(
-                    t => t.TeamId == model.TeamInfo.TeamId,
-                    tracked: true);
+                var teamId = await _teamService.SaveTeamAsync(model);
 
-                bool isNew = false;
-
-                if (teamEntity == null)
-                {
-                    teamEntity = new Team
-                    {
-                        CreatedBy = User?.Identity?.Name ?? "system",
-                        CreatedDate = DateTime.Now,
-                        IsActive = true
-                    };
-                    isNew = true;
-                }
-
-                // map fields
-                teamEntity.Fk_LocationId = model.TeamInfo.Fk_LocationId;
-                teamEntity.Fk_TeamTitleId = model.TeamInfo.Fk_TeamTitleId;
-                teamEntity.FirstName = model.TeamInfo.FirstName;
-                teamEntity.MiddleName = model.TeamInfo.MiddleName;
-                teamEntity.LastName = model.TeamInfo.LastName;
-                teamEntity.Email = model.TeamInfo.Email;
-                teamEntity.OfficeNumber = model.TeamInfo.OfficeNumber;
-                teamEntity.PhoneNumber = model.TeamInfo.PhoneNumber;
-                teamEntity.LinkedInUrl = model.TeamInfo.LinkedInUrl;
-                teamEntity.BioImage = model.TeamInfo.BioImage;
-                teamEntity.GridImage = model.TeamInfo.GridImage;
-                teamEntity.HomeBioImage = model.TeamInfo.HomeBioImage;
-                teamEntity.Comments = model.TeamInfo.Comments;
-                teamEntity.SortDescription = model.TeamInfo.SortDescription;
-                teamEntity.Description = model.TeamInfo.Description;
-                teamEntity.EducationTitle = model.TeamInfo.EducationTitle;
-                teamEntity.EducationDescription = model.TeamInfo.EducationDescription;
-                teamEntity.ExperienceTitle = model.TeamInfo.ExperienceTitle;
-                teamEntity.ExperienceDescription = model.TeamInfo.ExperienceDescription;
-                teamEntity.ListOnHome = model.TeamInfo.ListOnHome;
-                teamEntity.DisplayOrder = model.TeamInfo.DisplayOrder;
-                teamEntity.VCard = model.TeamInfo.VCard;
-
-                teamEntity.IsActive = model.TeamInfo.IsActive ?? true;
-                teamEntity.ModifiedDate = DateTime.Now;
-                teamEntity.ModifiedBy = User?.Identity?.Name ?? "system";
-
-                // ✅ Save correctly
-                if (isNew)
-                    await _unitOfWork.Team.AddAsync(teamEntity);
+                if (teamId > 0)
+                    SuccessNotification("Team saved successfully.");
                 else
-                    _unitOfWork.Team.Update(teamEntity);
+                    ErrorNotification("Failed to save Team.");
 
-                await _unitOfWork.SaveAsync();
-
-                SuccessNotification("Team saved successfully.");
                 return Redirect(_baseUrl + "admin/team/");
             }
             catch (Exception ex)
             {
                 await _logger.LogErrorAsync(ex, "Error saving Team");
-                ErrorNotification("Error while saving Team: " + ex.Message);
+                ErrorNotification("Error while saving Team.");
                 return Redirect(_baseUrl + "admin/team/");
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteTeam(int id)
+        {
+            try
+            {
+                var success = await _teamService.DeleteTeamAsync(id);
+                var message = success ? Message.DeleteSuccessMessage : Message.DataNotFoundMessage;
+
+                return Json(new { isSuccess = success, message });
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, $"Error deleting Team {id}");
+                return Json(new { isSuccess = false, message = "An error occurred while deleting the team." });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteBioImage(int id)
+        {
+            return await DeletePhotoAsync(id, t => t.BioImage = null);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteGridImage(int id)
+        {
+            return await DeletePhotoAsync(id, t => t.GridImage = null);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteHomeBioImage(int id)
+        {
+            return await DeletePhotoAsync(id, t => t.HomeBioImage = null);
+        }
+
+        private async Task<IActionResult> DeletePhotoAsync(int id, Action<Team> clearPhotoAction)
+        {
+            try
+            {
+                var success = await _teamService.DeletePhotoAsync(id, clearPhotoAction);
+                var message = success ? Message.DeleteSuccessMessage : Message.DataNotFoundMessage;
+
+                return Json(new { isSuccess = success, message });
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, $"Error deleting photo for Team {id}");
+                return Json(new { isSuccess = false, message = "An error occurred while deleting the photo." });
+            }
+        }
     }
 }

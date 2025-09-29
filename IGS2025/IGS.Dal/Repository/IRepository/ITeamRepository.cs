@@ -17,7 +17,8 @@ namespace IGS.Dal.Repository.IRepository
             string? orderBy = null);
 
         Task<IEnumerable<getTeamTeamCategoryMapping_Result>> GetTeamCategoryMappingAsync(int teamId);
-        Task UpdateTeamUrlAsync(int teamId);
         Task<IEnumerable<GetTeamTitle_Result>> GetTeamTitlesAsync();
+        Task ReplaceCategoryMappingsAsync(int teamId, IEnumerable<int> categoryIds);
+        Task UpdateTeamUrlAsync(int teamId);
     }
 }

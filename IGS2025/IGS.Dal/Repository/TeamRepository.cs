@@ -62,6 +62,32 @@ namespace IGS.Dal.Repository
                 isStoredProc: true);
         }
 
+        public async Task<IEnumerable<GetTeamTitle_Result>> GetTeamTitlesAsync()
+        {
+            return await _sql.QueryAsync<GetTeamTitle_Result>(
+                "dbo.GetTeamTitle",  
+                null,
+                isStoredProc: true
+            );
+        }
+      
+        public async Task ReplaceCategoryMappingsAsync(int teamId, IEnumerable<int> categoryIds)
+        {
+            var old = _db.TeamCategoryMappings.Where(x => x.Fk_TeamId == teamId);
+            _db.TeamCategoryMappings.RemoveRange(old);
+
+            foreach (var id in categoryIds)
+            {
+                await _db.TeamCategoryMappings.AddAsync(new TeamCategoryMapping
+                {
+                    Fk_TeamId = teamId,
+                    Fk_CategoryId = id,
+                    CreatedDate = DateTime.Now
+                });
+            }
+            await _db.SaveChangesAsync();
+        }
+
         public async Task UpdateTeamUrlAsync(int teamId)
         {
             await _sql.ExecuteAsync(
@@ -71,14 +97,6 @@ namespace IGS.Dal.Repository
             );
         }
 
-        public async Task<IEnumerable<GetTeamTitle_Result>> GetTeamTitlesAsync()
-        {
-            return await _sql.QueryAsync<GetTeamTitle_Result>(
-                "dbo.GetTeamTitle",  
-                null,
-                isStoredProc: true
-            );
-        }
 
     }
 }

@@ -89,7 +89,9 @@ builder.Services.AddScoped<IIndustryVmService, IndustryVmService>();
 builder.Services.AddScoped<IExperienceVmService, ExperienceVmService>();
 builder.Services.AddScoped<IExperienceService, ExperienceService>();
 
+builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<ITeamVmService, TeamVmService>();
+
 
 var app = builder.Build();
 

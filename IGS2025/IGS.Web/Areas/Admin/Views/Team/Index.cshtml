@@ -64,3 +64,42 @@
         </div>
     </div>
 }
+
+@section Scripts {
+    <script type="text/javascript">
+        function fnDelete(id, ctrl) {
+            bootbox.confirm("Are you sure to delete this team member?", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("DeleteTeam", "Team", new { area = "Admin" })",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({ id: id }),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.isSuccess) {
+                                $(ctrl).closest('tr').remove();
+                                bootbox.alert({
+                                    message: data.message,
+                                    callback: function () {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                bootbox.alert(data.message);
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert("An error occurred while deleting the team member.");
+                        }
+                    });
+                }
+            });
+        }
+
+        var table = $('#datatable-responsive').DataTable({
+            "aLengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
+            "iDisplayLength": -1
+        });
+    </script>
+}
