@@ -74,11 +74,10 @@
                         <a title="Team Management"><i class="fa fa-users"></i> Team <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a title="Team List" href='@string.Concat(baseUrl,"admin/team/")'>Team</a></li>
-                            <li><a title="update team member" href='@(baseUrl + "admin/team/manageteam/" + teamid)'>update team member</a></li>
+                            <li style="display:none;"><a title="update team member" href='@(baseUrl + "admin/team/manageteam/" + teamid)'>update team member</a></li>
                             <li><a title="Team Title List" href='@string.Concat(baseUrl,"admin/team/teamtitles/")'>Title List</a></li>
                             <li style="display:none;"><a title="Team Title List" href='@(baseUrl+"admin/team/manageteamtitle/"+@TeamTitleId)'>update Title</a></li>
                             <li><a title="Team Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/5")'>Page Header</a></li>
-                            @*<li><a class="dnone" title="Team Detail Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/5")'>Bio Page Header</a></li>*@
                             @*<li><a title="update team member" href='@(baseUrl+"admin/team/manageteamcategory")'>Team Category</a></li>*@
                         </ul>
                     </li>
