@@ -60,8 +60,11 @@ namespace Globalsetting
         public const string TransactionservicesImage = "images/transactionServices/";
         public const string PortfolioServicesImage = "images/portfolioServices/";
         public const string ExperienceImage = "images/Experience/";
+        public const string TeamGrid = "images/Team/Grid/";
+        public const string TeamBio = "images/Team/Bio/";
 
-        
+
+
 
     }
 

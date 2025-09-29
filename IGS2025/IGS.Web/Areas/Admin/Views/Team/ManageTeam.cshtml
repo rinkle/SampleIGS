@@ -1,0 +1,150 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.TeamModel
+
+@{
+    ViewBag.Title = "Team Info management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+
+<div class="row">
+    <form asp-action="ManageTeam"
+          asp-controller="Team"
+          method="post"
+          enctype="multipart/form-data"
+          id="form-Team"
+          class="form-horizontal form-label-left input_mask"
+          data-parsley-validate
+          novalidate>
+        
+        @Html.AntiForgeryToken()
+
+        <input asp-for="TeamInfo.TeamId" type="hidden" />
+        <input asp-for="TeamInfo.VCard" type="hidden" />
+
+        <div class="col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Manage Team: <small>Complete below form to update Team information</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-6 form-group">
+                            <label asp-for="TeamInfo.Fk_TeamTitleId">Title* :</label>
+                            <select asp-for="TeamInfo.Fk_TeamTitleId"
+                                    asp-items="@(new SelectList(Model.TeamTitleList.OrderBy(o => o.Title), "Id", "Title"))"
+                                    id="ddlDesigationName"
+                                    class="form-control"
+                                    required>
+                                <option value="">Select Title</option>
+                            </select>
+                        </div>
+
+                        <input asp-for="TeamInfo.Fk_LocationId" type="hidden" />
+
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group has-feedback">
+                            <label asp-for="TeamInfo.FirstName">First Name*:</label>
+                            <input asp-for="TeamInfo.FirstName" class="form-control has-feedback-left" placeholder="First Name" required />
+                            <span aria-hidden="true" class="fa fa-user form-control-feedback left"></span>
+                        </div>
+
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label asp-for="TeamInfo.MiddleName">Middle Name:</label>
+                            <input asp-for="TeamInfo.MiddleName" class="form-control" placeholder="Middle Name" />
+                        </div>
+
+                        <div class="col-md-3 col-sm-12 col-xs-12 form-group has-feedback">
+                            <label asp-for="TeamInfo.LastName">Last Name :</label>
+                            <input asp-for="TeamInfo.LastName" class="form-control" placeholder="Last Name" />
+                            <span aria-hidden="true" class="fa fa-user form-control-feedback right"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <label for="BioImage">Bio Image:</label><br />
+                            <input id="BioImage" type="file"
+                                   onchange="processImage(this, 'imagepreview_BioImage', 'hdnImage_BioImageName','@DbImagePath.TeamBio','0','0','');" />
+                        </div>
+
+                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                            <br />
+                            <img class="imagepreview_BioImage"
+                                 src="@(baseUrl + DbImagePath.TeamBio + Model.TeamInfo.BioImage)"
+                                 alt="image"
+                                 style="width:100px;border:1px solid gray"
+                                 onerror="imgErrorSmall(this);" />
+                            <input asp-for="TeamInfo.BioImage" type="hidden" class="hdnImage_BioImageName" />
+                        </div>
+
+                        <div class="col-md-3 col-sm-4 col-xs-4 form-group has-feedback">
+                            <label asp-for="TeamInfo.Email">Email :</label>
+                            <input asp-for="TeamInfo.Email" class="form-control" placeholder="Email" type="email" />
+                            <span aria-hidden="true" class="fa fa-at form-control-feedback right"></span>
+                        </div>
+
+                        <div class="col-md-2 col-sm-5 col-xs-5 form-group">
+                            <label asp-for="TeamInfo.DisplayOrder">Display Order * :</label>
+                            <input asp-for="TeamInfo.DisplayOrder"
+                                   class="form-control numericval"
+                                   placeholder="Display order"
+                                   required
+                                   data-validate-minmax="1,10000" />
+                        </div>
+                    </div>
+
+                    <div class="row"><div><br /></div></div>
+
+                    <div class="x_content">
+                        @for (int i = 0; i < Model.TeamCategoryMappings.Count; i++)
+                        {
+                            <div class="col-md-3 searchdivCurrent" style="height:15%;">
+                                <div class="thumbnail" style="height:100px;background:#EDEDED">
+                                    <div class="captionCurrent" style="min-height:100px;">
+                                        <p>
+                                            <br />
+                                            <b>
+                                                <input type="checkbox" asp-for="TeamCategoryMappings[@i].CheckedStatus" value="true" />
+                                                @Model.TeamCategoryMappings[i].Category
+                                            </b>
+                                        </p>
+                                        <input asp-for="TeamCategoryMappings[@i].Id" type="hidden" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="TeamInfo.Description">Description :</label><br />
+                            <textarea asp-for="TeamInfo.Description" class="form-control ckeditor" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
+                            <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
+
+                            <label asp-for="TeamInfo.EducationDescription">Education Description :</label>
+                            <textarea asp-for="TeamInfo.EducationDescription" class="form-control ckeditor"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_title" style="width:100%;float:right;">
+                <div style="float:right;padding-right:10px;">
+                    <a asp-area="Admin" asp-controller="Team" asp-action="Index" class="btn btn-round btn-default">Cancel</a>
+                    <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </form>
+</div>

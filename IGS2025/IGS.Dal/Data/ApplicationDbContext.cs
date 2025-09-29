@@ -27,6 +27,12 @@ namespace IGS.Dal.Data
         public DbSet<Experience> Experiences { get; set; } = default!;
         public DbSet<ExperienceIndustryMapping> ExperienceIndustryMappings { get; set; } = default!;
         public DbSet<ExperiencePageMapping> ExperiencePageMappings { get; set; } = default!;
+        public DbSet<Team> Teams { get; set; } = default!;
+        public DbSet<TeamLocation> TeamLocations { get; set; } = default!;
+        public DbSet<TeamTitle> TeamTitles { get; set; } = default!;
+        public DbSet<TeamCategory> TeamCategories { get; set; } = default!;
+        public DbSet<TeamCategoryMapping> TeamCategoryMappings { get; set; } = default!;
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -43,6 +49,13 @@ namespace IGS.Dal.Data
             builder.Entity<Experience>().ToTable("Experience");
             builder.Entity<ExperienceIndustryMapping>().ToTable("ExperienceIndustryMapping");
             builder.Entity<ExperiencePageMapping>().ToTable("ExperiencePageMapping");
+            // ✅ Team table mappings
+            builder.Entity<Team>().ToTable("Team");
+            builder.Entity<TeamLocation>().ToTable("TeamLocation");
+            builder.Entity<TeamTitle>().ToTable("TeamTitle");
+            builder.Entity<TeamCategory>().ToTable("TeamCategory");
+            builder.Entity<TeamCategoryMapping>().ToTable("TeamCategoryMapping");
+
 
             // Decimal precision
             builder.Entity<CommonListing>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
@@ -66,6 +79,16 @@ namespace IGS.Dal.Data
             builder.Entity<GetExperienceIndustryCategoryMapping_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<GetExperiencePageMapping_Result>().HasNoKey().ToView(null);
+
+            builder.Entity<GetTeamFilterList_Result>().HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetTeamDetails_Result>().HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetTeamLocation_Result>().HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<GetTeamCategory_Result>().HasNoKey().ToView(null)
+                .Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<getTeamTeamCategoryMapping_Result>().HasNoKey().ToView(null);
         }
     }
 }

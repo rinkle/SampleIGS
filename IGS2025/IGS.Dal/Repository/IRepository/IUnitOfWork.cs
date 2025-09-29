@@ -13,6 +13,8 @@ namespace IGS.Dal.Repository.IRepository
         IIndustryRepository IndustryService { get; }
         IIndustryCategoryRepository IndustryCategory { get; }
         IExperienceRepository Experience { get; }
+        ITeamRepository Team { get; }
+        ITeamCategoryRepository TeamCategory { get; }
 
         void Save();
         Task SaveAsync();

@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace IGS.Models.KeyLessModels
 {
-    [Keyless] // Stored procedure / view result
-    public class getTeamFilter_Result
+    [Keyless] // SP result, not a table
+    public class GetTeamDetails_Result
     {
         public int TeamId { get; set; }
         public int Fk_LocationId { get; set; }
@@ -27,32 +26,22 @@ namespace IGS.Models.KeyLessModels
         public string? ExperienceTitle { get; set; }
         public string? ExperienceDescription { get; set; }
         public bool? ListOnHome { get; set; }
-        public decimal? OrderNo { get; set; }
+        public decimal? DisplayOrder { get; set; }
         public string? VCard { get; set; }
         public string? TeamUrl { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? ModifiedDate { get; set; }
+        public bool? IsActive { get; set; }
         public string? CreatedBy { get; set; }
         public string? ModifiedBy { get; set; }
-        public bool? IsActive { get; set; }
-        public string? TeamTitle { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        // Aggregated fields from SP
+        public string? CategoryNames { get; set; }
         public string? LocationName { get; set; }
-        public string? LocationUrl { get; set; }
-        public string? TitleUrl { get; set; }
-        public long? rn { get; set; }
-        public int? PrevId { get; set; }
-        public int? NextId { get; set; }
+        public string? TeamTitleName { get; set; }
+        // Navigation (wrap-around)
         public int? PreviousId { get; set; }
-        public string? PreviousMemberName { get; set; }
-        public string? PreviousTitle { get; set; }
-        public string? PreviousBioImage { get; set; }
-        public string? PreviousGridImage { get; set; }
-        public string? PreviousUrl { get; set; }
-        public int? NextId1 { get; set; }
-        public string? NextMemberName { get; set; }
-        public string? NextTitle { get; set; }
-        public string? NextBioImage { get; set; }
-        public string? NextGridImage { get; set; }
-        public string? NextUrl { get; set; }
+        public string? PreviousName { get; set; }
+        public int? NextId { get; set; }
+        public string? NextName { get; set; }
     }
 }

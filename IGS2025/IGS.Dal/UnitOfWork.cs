@@ -20,6 +20,9 @@ namespace IGS.Dal.Repository
         public IIndustryRepository IndustryService { get; private set; }
         public IIndustryCategoryRepository IndustryCategory { get; private set; }
         public IExperienceRepository Experience { get; private set; }
+        public ITeamRepository Team { get; private set; }
+        public ITeamCategoryRepository TeamCategory { get; private set; }
+
 
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
@@ -35,6 +38,8 @@ namespace IGS.Dal.Repository
             IndustryService = new IndustryRepository(_db, _sql);
             IndustryCategory = new IndustryCategoryRepository(_db, _sql);
             Experience = new ExperienceRepository(_db, _sql);
+            Team = new TeamRepository(_db, _sql);
+            TeamCategory = new TeamCategoryRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();
