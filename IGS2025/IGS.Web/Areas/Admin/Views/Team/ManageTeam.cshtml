@@ -100,8 +100,8 @@
                     <div class="x_content">
                         @for (int i = 0; i < Model.TeamCategoryMappings.Count; i++)
                         {
-                            <div class="col-md-3 searchdivCurrent" style="height:15%;">
-                                <div class="thumbnail" style="height:100px;background:#EDEDED">
+                            <div class="col-md-55 searchdiv" style="height:10%;">
+                                <div class="thumbnail" style="height:75px;background:#EDEDED">
                                     <div class="captionCurrent" style="min-height:100px;">
                                         <p>
                                             <br />
@@ -131,7 +131,10 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                             <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
                             <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
-
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                             <label asp-for="TeamInfo.EducationDescription">Education Description :</label>
                             <textarea asp-for="TeamInfo.EducationDescription" class="form-control ckeditor"></textarea>
                         </div>
