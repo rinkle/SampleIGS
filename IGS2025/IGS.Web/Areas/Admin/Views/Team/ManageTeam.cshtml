@@ -108,7 +108,10 @@
                                         <p>
                                             <br />
                                             <b>
-                                                <input type="checkbox" asp-for="TeamCategoryMappings[@i].CheckedStatus" value="true" />
+                                                <input type="checkbox"
+                                                       name="TeamCategoryMappings[@i].CheckedStatus"
+                                                       value="1"
+                                                       @(Model.TeamCategoryMappings[i].CheckedStatus == 1 ? "checked" : "") />
                                                 @Model.TeamCategoryMappings[i].Category
                                             </b>
                                         </p>

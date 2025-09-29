@@ -401,6 +401,8 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\eijp7qgq1t-70nkhxjh
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\8opuop71m5-ggk9pu3208.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\7vpuspupjb-b9sayid5wm.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\bl8whnm45m-61n19gt1b8.gz
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\gqh0d5qdwg-14yny215mj.gz
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\5u5nsmfon9-qu73va0mke.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\z9ac2nc5m6-jpm8lp9vm0.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\ahm4ihf5sr-6sx6pifph3.gz
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\s6sqfr71w6-kx3t70i8os.gz
@@ -3608,5 +3610,3 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\refint\IGS.Web.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\IGS.Web.genruntimeconfig.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\ref\IGS.Web.dll
-E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\5u5nsmfon9-qu73va0mke.gz
-E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Debug\net9.0\compressed\gqh0d5qdwg-14yny215mj.gz

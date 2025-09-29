@@ -57,7 +57,7 @@ namespace IGS.Dal.Repository
         public async Task<IEnumerable<getTeamTeamCategoryMapping_Result>> GetTeamCategoryMappingAsync(int teamId)
         {
             return await _sql.QueryAsync<getTeamTeamCategoryMapping_Result>(
-                "dbo.GetTeamCategoryMapping",
+                "dbo.getTeamTeamCategoryMapping",
                 new { TeamId = teamId },
                 isStoredProc: true);
         }

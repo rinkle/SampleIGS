@@ -11,6 +11,10 @@ namespace IGS.Dal.Services.Interfaces
             string? orderBy = null,
             bool isAdmin = false);
 
-        Task<TeamModel> GetTeamModelAsync(int teamId);
+        Task<TeamModel> GetTeamModelAsync(
+            int teamId,
+            string? categoryIds = null,
+            string? locationIds = null,
+            string? orderBy = null);
     }
 }

@@ -19,7 +19,7 @@
                         <li>
                             <div class="row fontawesome-icon-list">
                                 <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
-                                    <a href='@string.Concat(baseUrl, "admin/team/manageteam/0")' title="Add new member"><i class="fa fa-plus-square"></i> Add new member</a>
+                                    <a href='@(baseUrl + "admin/team/manageteam/0")' title="Add new member"><i class="fa fa-plus-square"></i> Add new member</a>
                                 </div>
                             </div>
                         </li>
@@ -50,7 +50,7 @@
                                             <img src='@(baseUrl + DbImagePath.TeamBio + item.BioImage)' onerror="imgErrorSmall(this);" style="width:100px;border:1px solid gray;" />
                                         </td>
                                         <td>
-                                            <a title="Edit '@item.FirstName @item.MiddleName @item.LastName' Info" onclick="fnEdit(@item.TeamId);" href="javascript:void(0);"><i class="fa fa-edit"></i></a>
+                                            <a title="Edit '@item.FirstName @item.MiddleName @item.LastName' Info" href='@(baseUrl + "admin/team/manageteam/" + item.TeamId)'><i class="fa fa-edit"></i></a>
                                             <a title="Delete '@item.FirstName @item.MiddleName @item.LastName' Info" onclick="return fnDelete(@item.TeamId,this)" href="javascript:void(0);"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
