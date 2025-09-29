@@ -88,6 +88,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxNYW5hZ2VUZWFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/Team/ManageTeamTitle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxNYW5hZ2VUZWFtVGl0bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/Team/TeamTitles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxUZWFtVGl0bGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Git/SampleIGS/IGS2025/IGS.Web/Areas/Admin/Views/TransactionServices/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhbnNhY3Rpb25TZXJ2aWNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

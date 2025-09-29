@@ -1,0 +1,69 @@
+﻿@using Globalsetting
+@inject GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.KeyLessModels.GetTeamTitle_Result
+@{
+    ViewBag.Title = "Manage Team Title";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("baseUrl");
+    var title = Model ?? new IGS.Models.KeyLessModels.GetTeamTitle_Result();
+}
+
+<div class="row">
+    @using (Html.BeginForm("SaveTeamTitle", "Team", FormMethod.Post,
+        new { id = "form-TeamTitle", @class = "form-horizontal form-label-left input_mask" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("Id", title.Id)
+
+        <div class="col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Manage Team Title <small>Complete the form to update team title information</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-9 form-group">
+                            <label for="Title">Title* :</label>
+                            <input type="text" name="Title" value="@title.Title"
+                                   class="form-control" placeholder="Team Title" required />
+                        </div>
+
+                        <div class="col-md-3 col-sm-3 col-xs-3 form-group">
+                            <label for="DisplayOrder">Display Order* :</label>
+                            <input type="number" name="DisplayOrder"
+                                   value="@(title.DisplayOrder ?? 0)"
+                                   class="form-control numericval"
+                                   placeholder="Display order"
+                                   required min="1" max="10000" />
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_title" style="width:100%;float:right;">
+                <div class="clearfix"></div>
+                <div style="float:right;padding-right:10px;">
+                    <a href='@string.Concat(baseUrl, "admin/team/teamtitles")'
+                       class="btn btn-round btn-default">Cancel</a>
+                    <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnSave" />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+</div>
+
+@section script {
+    <script type="text/javascript">
+        $(function () {
+            $("#btnCancel").click(function () {
+                $(".loader").modal('show');
+                window.location.href = '@baseUrl' + "admin/team/teamtitles";
+            });
+        });
+    </script>
+}

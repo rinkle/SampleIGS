@@ -1,6 +1,7 @@
 ﻿using Globalsetting;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models;
+using IGS.Models.KeyLessModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,8 @@ namespace IGS.Web.Areas.Admin.Controllers
     {
         private readonly ITeamVmService _teamVmService;
         private readonly ITeamService _teamService;
+        private readonly ITeamTitleVmService _teamTitleVmService;
+        private readonly ITeamTitleService _teamTitleService;
         private readonly ILoggerService _logger;
         private readonly string _baseUrl;
 
@@ -23,12 +26,16 @@ namespace IGS.Web.Areas.Admin.Controllers
             IOptions<AppSettings> options,
             ILoggerService logger,
             ITeamVmService teamVmService,
-            ITeamService teamService)
+            ITeamService teamService,
+             ITeamTitleVmService teamTitleVmService,
+            ITeamTitleService teamTitleService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
             _teamVmService = teamVmService;
             _teamService = teamService;
+            _teamTitleVmService = teamTitleVmService;
+            _teamTitleService = teamTitleService;
         }
 
         [HttpGet]
@@ -126,6 +133,68 @@ namespace IGS.Web.Areas.Admin.Controllers
             {
                 await _logger.LogErrorAsync(ex, $"Error deleting photo for Team {id}");
                 return Json(new { isSuccess = false, message = "An error occurred while deleting the photo." });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TeamTitles()
+        {
+            var vm = await _teamTitleVmService.GetTeamTitleVmAsync(isAdmin: true);
+            return View(vm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ManageTeamTitle(int id = 0)
+        {
+            var model = id > 0
+                ? await _teamTitleVmService.GetTeamTitleDetailAsync(id)
+                : new GetTeamTitle_Result();
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveTeamTitle(GetTeamTitle_Result model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ErrorNotification("Invalid Team Title data.");
+                return Redirect(_baseUrl + "admin/team/teamtitles");
+            }
+
+            try
+            {
+                var titleId = await _teamTitleService.SaveTeamTitleAsync(model);
+
+                if (titleId > 0)
+                    SuccessNotification("Team Title saved successfully.");
+                else
+                    ErrorNotification("Failed to save Team Title.");
+
+                return Redirect(_baseUrl + "admin/team/teamtitles");
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error saving Team Title");
+                ErrorNotification("Error while saving Team Title.");
+                return Redirect(_baseUrl + "admin/team/teamtitles");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteTeamTitle(int id)
+        {
+            try
+            {
+                var success = await _teamTitleService.DeleteTeamTitleAsync(id);
+                var message = success ? Message.DeleteSuccessMessage : Message.DataNotFoundMessage;
+
+                return Json(new { isSuccess = success, message });
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, $"Error deleting Team Title {id}");
+                return Json(new { isSuccess = false, message = "An error occurred while deleting the Team Title." });
             }
         }
     }

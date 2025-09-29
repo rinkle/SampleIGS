@@ -3,13 +3,14 @@ using IGS.Dal.Data;  // ✅ ensure this is here
 using IGS.Dal.Repository;
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Repository.Repository;
+using IGS.Dal.Services;
+using IGS.Dal.Services.Implementations;
+using IGS.Dal.Services.Interfaces;
 using IGS.Dal.Sql;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using IGS.Dal.Services.Interfaces;
-using IGS.Dal.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -92,6 +93,8 @@ builder.Services.AddScoped<IExperienceService, ExperienceService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<ITeamVmService, TeamVmService>();
 
+builder.Services.AddScoped<ITeamTitleService, TeamTitleService>();      
+builder.Services.AddScoped<ITeamTitleVmService, TeamTitleVmService>();
 
 var app = builder.Build();
 

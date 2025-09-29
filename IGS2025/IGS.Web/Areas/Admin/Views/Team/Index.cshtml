@@ -1,13 +1,11 @@
 ﻿@using Globalsetting
 @inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
 @model IGS.Models.ViewModels.TeamViewModel
-
 @{
     ViewBag.Title = "Team List";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
 }
-
 @if (Model?.TeamList?.Count > 0)
 {
     <div class="row">

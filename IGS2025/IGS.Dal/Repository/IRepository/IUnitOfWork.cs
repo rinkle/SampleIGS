@@ -15,7 +15,7 @@ namespace IGS.Dal.Repository.IRepository
         IExperienceRepository Experience { get; }
         ITeamRepository Team { get; }
         ITeamCategoryRepository TeamCategory { get; }
-
+        ITeamTitleRepository TeamTitle { get; }
         void Save();
         Task SaveAsync();
 

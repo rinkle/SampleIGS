@@ -22,8 +22,7 @@ namespace IGS.Dal.Repository
         public IExperienceRepository Experience { get; private set; }
         public ITeamRepository Team { get; private set; }
         public ITeamCategoryRepository TeamCategory { get; private set; }
-
-
+        public ITeamTitleRepository TeamTitle { get; private set; }
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -40,6 +39,7 @@ namespace IGS.Dal.Repository
             Experience = new ExperienceRepository(_db, _sql);
             Team = new TeamRepository(_db, _sql);
             TeamCategory = new TeamCategoryRepository(_db, _sql);
+            TeamTitle = new TeamTitleRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

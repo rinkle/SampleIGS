@@ -2,6 +2,7 @@
 using IGS.Models.KeyLessModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace IGS.Dal.Data
 {
@@ -89,6 +90,8 @@ namespace IGS.Dal.Data
             builder.Entity<GetTeamCategory_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<getTeamTeamCategoryMapping_Result>().HasNoKey().ToView(null);
+
+            builder.Entity<GetTeamTitle_Result>().HasNoKey().ToView(null);
         }
     }
 }
