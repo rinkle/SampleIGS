@@ -51,7 +51,7 @@ namespace IGS.Web.Areas.Admin.Controllers
             ViewBag.teamId = id;
             var model = id > 0
                 ? await _teamVmService.GetTeamModelAsync(id)
-                : new TeamModel();
+                : await _teamVmService.GetTeamModelAsync(id);
 
             return View(model);
         }

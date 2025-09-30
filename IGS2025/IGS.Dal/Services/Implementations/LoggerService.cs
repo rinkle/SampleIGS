@@ -37,7 +37,7 @@ namespace IGS.Dal.Services.Implementations
 
                 return log.Id;
             }
-            catch
+            catch(Exception ex)
             {
                 return 0; // swallow to avoid recursive logging failures
             }

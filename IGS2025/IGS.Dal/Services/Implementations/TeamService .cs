@@ -89,6 +89,10 @@ namespace IGS.Dal.Services.Implementations
         private static void MapTeam(Team target, GetTeamDetails_Result src)
         {
             target.Fk_LocationId = src.Fk_LocationId;
+            if (src.Fk_LocationId==0)
+            {
+                target.Fk_LocationId = 1;
+            }
             target.Fk_TeamTitleId = src.Fk_TeamTitleId;
             target.FirstName = src.FirstName;
             target.MiddleName = src.MiddleName;
