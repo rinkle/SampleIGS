@@ -43,7 +43,7 @@
                                 <option value="">Select Title</option>
                             </select>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3 form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 col-xs-3 form-group has-feedback">
                             <label asp-for="TeamInfo.FirstName">First Name*:</label>
                             <input asp-for="TeamInfo.FirstName" class="form-control has-feedback-left" placeholder="First Name" required />
                             <span aria-hidden="true" class="fa fa-user form-control-feedback left"></span>
@@ -57,14 +57,7 @@
                             <input asp-for="TeamInfo.LastName" class="form-control" placeholder="Last Name" />
                             <span aria-hidden="true" class="fa fa-user form-control-feedback right"></span>
                         </div>
-                        <div class="col-md-2 col-sm-5 col-xs-5 form-group">
-                            <label asp-for="TeamInfo.DisplayOrder">Display Order * :</label>
-                            <input asp-for="TeamInfo.DisplayOrder"
-                                   class="form-control numericval"
-                                   placeholder="Display order"
-                                   required
-                                   data-validate-minmax="1,10000" />
-                        </div>
+
                     </div>
 
 
@@ -82,7 +75,7 @@
                                    onchange="processImage(this, 'imagepreview_BioImage', 'hdnImage_BioImageName','@DbImagePath.TeamBio','0','0','');" />
                         </div>
 
-                        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                        <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                             <br />
                             <img class="imagepreview_BioImage"
                                  src="@(baseUrl + DbImagePath.TeamBio + Model.TeamInfo.BioImage)"
@@ -101,20 +94,28 @@
                     <div class="x_content">
                         @for (int i = 0; i < Model.TeamCategoryMappings.Count; i++)
                         {
-                            <div class="col-md-55 searchdiv" style="height:10%;">
-                                <div class="thumbnail" style="height:75px;background:#EDEDED">
-                                    <div class="captionCurrent" style="min-height:100px;">
-                                        <p>
-                                            <br />
-                                            <b>
-                                                <input type="checkbox"
-                                                       name="TeamCategoryMappings[@i].CheckedStatus"
-                                                       value="1"
-                                                       @(Model.TeamCategoryMappings[i].CheckedStatus == 1 ? "checked" : "") />
-                                                @Model.TeamCategoryMappings[i].Category
-                                            </b>
-                                        </p>
-                                        <input asp-for="TeamCategoryMappings[@i].Id" type="hidden" />
+                            <div class="col-md-55 searchdiv">
+                                <div class="thumbnail" style="background:#EDEDED">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                            <input type="checkbox"
+                                                   name="TeamCategoryMappings[@i].CheckedStatus"
+                                                   value="1"
+                                                   @(Model.TeamCategoryMappings[i].CheckedStatus == 1 ? "checked" : "") />
+                                            @Model.TeamCategoryMappings[i].Category
+                                            <input asp-for="TeamCategoryMappings[@i].Id" type="hidden" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                                <label asp-for="TeamCategoryMappings[i].DisplayOrder">Display Order * :</label>
+                                                <input asp-for="TeamCategoryMappings[i].DisplayOrder"
+                                                       class="form-control numericval1"
+                                                       placeholder="Display order"
+                                                      
+                                                       data-validate-minmax="1,10000" type="number" />
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -135,12 +136,20 @@
                     </div>
                     @if (isShow)
                     {
-                         <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                            <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
-                            <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
+                                <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-md-2 col-sm-5 col-xs-5 form-group">
+                            <label asp-for="TeamInfo.DisplayOrder">Display Order * :</label>
+                            <input asp-for="TeamInfo.DisplayOrder"
+                                   class="form-control numericval"
+                                   placeholder="Display order"
+                                   required
+                                   data-validate-minmax="1,10000" />
+                        </div>
                     }
                 </div>
             </div>
@@ -155,3 +164,9 @@
         </div>
     </form>
 </div>
+<style>
+    .thumbnail{
+        height:150px !important;
+        padding:20px;
+    }
+</style>

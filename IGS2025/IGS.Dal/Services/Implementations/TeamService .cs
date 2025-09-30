@@ -68,14 +68,15 @@ namespace IGS.Dal.Services.Implementations
 
                 // Replace Category Mappings
                 if (model.TeamCategoryMappings?.Any() == true)
-                {
-                    var selectedCategoryIds = model.TeamCategoryMappings
-                        .Where(x => x.CheckedStatus == 1) // int flag, treat >0 as checked
-                        .Select(x => x.Id)
-                        .ToList();
+                    if (model.TeamCategoryMappings?.Any() == true)
+                    {
+                        var selected = model.TeamCategoryMappings
+                            .Where(x => x.CheckedStatus == 1)
+                            .Select(x => (x.Id, x.DisplayOrder)) // tuple: CategoryId + DisplayOrder
+                            .ToList();
 
-                    await _unitOfWork.Team.ReplaceCategoryMappingsAsync(teamEntity.TeamId, selectedCategoryIds);
-                }
+                        await _unitOfWork.Team.ReplaceCategoryMappingsAsync(teamEntity.TeamId, selected);
+                    }
 
                 return teamEntity.TeamId;
             }

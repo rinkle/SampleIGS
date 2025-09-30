@@ -70,18 +70,19 @@ namespace IGS.Dal.Repository
                 isStoredProc: true
             );
         }
-      
-        public async Task ReplaceCategoryMappingsAsync(int teamId, IEnumerable<int> categoryIds)
+
+        public async Task ReplaceCategoryMappingsAsync(int teamId, IEnumerable<(int CategoryId, decimal DisplayOrder)> mappings)
         {
             var old = _db.TeamCategoryMappings.Where(x => x.Fk_TeamId == teamId);
             _db.TeamCategoryMappings.RemoveRange(old);
 
-            foreach (var id in categoryIds)
+            foreach (var mapping in mappings)
             {
                 await _db.TeamCategoryMappings.AddAsync(new TeamCategoryMapping
                 {
                     Fk_TeamId = teamId,
-                    Fk_CategoryId = id,
+                    Fk_CategoryId = mapping.CategoryId,
+                    DisplayOrder = mapping.DisplayOrder,
                     CreatedDate = DateTime.Now
                 });
             }

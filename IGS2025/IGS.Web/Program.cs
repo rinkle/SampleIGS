@@ -20,7 +20,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // ✅ Correct EF Core registration (no custom hacks)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(
+        connectionString,
+        sqlOptions => sqlOptions.CommandTimeout(180) // timeout in seconds
+    ));
 
 // 🔐 Identity setup
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
