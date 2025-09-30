@@ -159,7 +159,7 @@ namespace IGS.Web.Areas.Admin.Controllers
             if (!ModelState.IsValid)
             {
                 ErrorNotification("Invalid Team Title data.");
-                return Redirect(_baseUrl + "admin/team/teamtitles");
+                return Redirect(_baseUrl + "admin/team/teamtitles/");
             }
 
             try
@@ -171,7 +171,7 @@ namespace IGS.Web.Areas.Admin.Controllers
                 else
                     ErrorNotification("Failed to save Team Title.");
 
-                return Redirect(_baseUrl + "admin/team/teamtitles");
+                return Redirect(_baseUrl + "admin/team/teamtitles/");
             }
             catch (Exception ex)
             {
