@@ -127,8 +127,6 @@
                             <textarea asp-for="TeamInfo.Description" class="form-control ckeditor" placeholder="Description"></textarea>
                         </div>
                     </div>
-
-                   
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                             <label asp-for="TeamInfo.EducationDescription">Education Description :</label>
@@ -137,12 +135,12 @@
                     </div>
                     @if (isShow)
                     {
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                                <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
-                                <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
-                            </div>
+                         <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="TeamInfo.EducationTitle">Education Title :</label>
+                            <input asp-for="TeamInfo.EducationTitle" class="form-control" placeholder="Education Title" />
                         </div>
+                    </div>
                     }
                 </div>
             </div>
