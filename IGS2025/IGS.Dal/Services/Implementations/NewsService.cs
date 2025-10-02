@@ -167,7 +167,7 @@ namespace IGS.Dal.Services.Implementations
         /// </summary>
         private static void MapNews(News target, GetNewsDetail_Result src)
         {
-            target.NewsDate = DateTime.Now;
+            target.NewsDate = src.NewsDate == default ? DateTime.Now : src.NewsDate;
             target.NewsHeadLine = src.NewsHeadLine?.Trim();
             target.Logo = src.Logo;
             target.SortDescription = src.SortDescription;
