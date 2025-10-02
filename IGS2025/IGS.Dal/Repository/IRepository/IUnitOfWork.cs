@@ -16,6 +16,8 @@ namespace IGS.Dal.Repository.IRepository
         ITeamRepository Team { get; }
         ITeamCategoryRepository TeamCategory { get; }
         ITeamTitleRepository TeamTitle { get; }
+
+        INewsRepository News { get; }
         void Save();
         Task SaveAsync();
 

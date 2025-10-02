@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\repository\\teamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\repository\\teamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\repository\\irepository\\iteamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\repository\\irepository\\iteamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\teamservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\teamservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|e:\\git\\sampleigs\\igs2025\\globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|solutionrelative:globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\loggerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\loggerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\team\\manageteam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\team\\manageteam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\interfaces\\inewsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\interfaces\\inewsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\team\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\team\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\experience\\manageexperience.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\experience\\manageexperience.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,8 +42,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeDocumentMoniker": "Globalsetting\\Constants.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeToolTip": "Globalsetting\\Constants.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAqwEAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T04:35:19.02Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -54,85 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TeamRepository.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Repository\\TeamRepository.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Repository\\TeamRepository.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Repository\\TeamRepository.cs",
-              "RelativeToolTip": "IGS.Dal\\Repository\\TeamRepository.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFQAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T18:22:16.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ITeamRepository.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Repository\\IRepository\\ITeamRepository.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Repository\\IRepository\\ITeamRepository.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Repository\\IRepository\\ITeamRepository.cs",
-              "RelativeToolTip": "IGS.Dal\\Repository\\IRepository\\ITeamRepository.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAnwBUAAABaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T18:21:49.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TeamService .cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\TeamService .cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\TeamService .cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\TeamService .cs",
-              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\TeamService .cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAiwE0AAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T18:20:42.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Team\\Index.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\Team\\Index.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Team\\Index.cshtml",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\Team\\Index.cshtml",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T18:16:58.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TeamController.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\TeamController.cs",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\TeamController.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\TeamController.cs",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\TeamController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAD4AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T18:00:40.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Program.cs",
-              "RelativeDocumentMoniker": "IGS.Web\\Program.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Program.cs",
-              "RelativeToolTip": "IGS.Web\\Program.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBkAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T17:56:24.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LoggerService.cs",
               "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\LoggerService.cs",
               "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\LoggerService.cs",
@@ -140,20 +75,85 @@
               "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\LoggerService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAqwBgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T17:45:22.29Z",
+              "WhenOpened": "2025-10-02T04:02:24.537Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ManageTeam.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Team\\ManageTeam.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\Team\\ManageTeam.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Team\\ManageTeam.cshtml",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\Team\\ManageTeam.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAG8AAABbAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ManageExperience.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Experience\\ManageExperience.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\Experience\\ManageExperience.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Experience\\ManageExperience.cshtml",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\Experience\\ManageExperience.cshtml",
+              "ViewState": "AgIAAC4BAAAAAAAAAAAiwD0BAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T17:43:32.429Z",
+              "WhenOpened": "2025-10-02T04:00:31.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManageNews.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAqwFoAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T04:00:16.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NewsService.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsService.cs",
+              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\NewsService.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsService.cs",
+              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\NewsService.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAKsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T03:56:32.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "INewsService.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Interfaces\\INewsService.cs",
+              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Interfaces\\INewsService.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Interfaces\\INewsService.cs",
+              "RelativeToolTip": "IGS.Dal\\Services\\Interfaces\\INewsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T03:56:14.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T03:44:36.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAADQAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T03:34:43.887Z",
               "EditorCaption": ""
             }
           ]

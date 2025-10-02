@@ -1,0 +1,155 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.NewsModel
+
+@{
+    ViewBag.Title = "Insight Page Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.NewsCategoryMapping?.Count > 0 && Model?.NewsPageMapping?.Count > 0)
+{
+    <div class="row">
+        <form asp-action="SaveNewsData"
+              asp-controller="News"
+              method="post"
+              enctype="multipart/form-data"
+              id="form-News"
+              class="form-horizontal form-label-left input_mask"
+              novalidate
+              data-parsley-validate>
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.NewsInfo.NewsId)
+
+            <div class="col-md-12 col-xs-12">
+                <!-- News Info -->
+                <div class="x_title">
+                    <h2>Insight: <small>Update below form to save Insight data</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                                <label for="NewsHeadLine">Headline*:</label>
+                                @Html.TextBoxFor(m => m.NewsInfo.NewsHeadLine,
+                                new { @class = "form-control", required = "", placeholder = "Headline" })
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                            <label for="DisplayOrder">Display Order:</label>
+                            @Html.TextBoxFor(m => m.NewsInfo.DisplayOrder,
+                                                        new { @class = "form-control numericval",required="",  placeholder = "Display Order" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                            <label for="Logo">Logo:</label><br />
+                            <input id="LogoImage" type="file"
+                                   onchange="processImage(this, 'imagepreview_LogoImage', 'hdnImage_LogoImageName',
+                                       '@DbImagePath.InsightImage','0','0','@DbImagePath.InsightImage');" />
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                            <br />
+                            <img class="imagepreview_LogoImage"
+                                 src="@(baseUrl + DbImagePath.InsightImage + Model.NewsInfo.Logo)"
+                                 alt="logo"
+                                 style="width:100px;"
+                                 onerror="imgErrorSmall(this);" asp-append-version="true" />
+                            @Html.HiddenFor(x => x.NewsInfo.Logo, new { @class = "hdnImage_LogoImageName" })
+
+                            @if (!string.IsNullOrEmpty(Model.NewsInfo.Logo))
+                                {
+                                    <br />
+                                    <a href="javascript:void(0);" onclick="fnDeleteLogo('@Model.NewsInfo.NewsId')" title="delete logo">
+                                        <i class="fa fa-trash-o"></i> Delete logo
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="Description">Full Description:</label>
+                                @Html.TextAreaFor(m => m.NewsInfo.Description,
+                                new { @class = "form-control ckeditor", placeholder = "Description", rows = "6" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Key Insights">Key Insights:</label>
+                            @Html.TextAreaFor(m => m.NewsInfo.KeyInsight,
+                                                        new { @class = "form-control ckeditor", placeholder = "Key Insights" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Bottom Text">Bottom Text:</label>
+                            @Html.TextAreaFor(m => m.NewsInfo.BottomText,
+                                                        new { @class = "form-control", placeholder = "Bottom Text" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Show on Pages -->
+            <div class="x_title">
+                <h2>Show on Page</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_panel">
+                <div class="x_content">
+                    @for (int i = 0; i < Model.NewsPageMapping.Count; i++)
+                        {
+                            <div class="col-md-55 searchdiv" style="height:10%;">
+                                <div class="thumbnail" style="height:80px;">
+                                    <div class="caption" style="min-height:80px;">
+                                        <p><b>@Model.NewsPageMapping[i].PageName</b></p>
+                                        @Html.CheckBoxFor(m => m.NewsPageMapping[i].CheckedStatus)
+                                        @Html.HiddenFor(m => m.NewsPageMapping[i].PageId)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="x_title" style="width:100%;float:right;">
+                    <div class="clearfix"></div>
+                    <div style="float:right;padding-right:10px;">
+                        <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+
+@section script {
+    <script type="text/javascript">
+        function fnDeleteLogo(id) {
+            bootbox.confirm("Are you sure you want to delete this logo?", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@(baseUrl + "admin/news/deletelogo")',
+                        data: { id: id },
+                        success: function (data) {
+                            bootbox.alert(data.message || data.Message, function () {
+                                location.reload();
+                            });
+                        },
+                        error: function () {
+                            bootbox.alert("An error occurred while deleting the logo.");
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}

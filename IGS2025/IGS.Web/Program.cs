@@ -99,6 +99,10 @@ builder.Services.AddScoped<ITeamVmService, TeamVmService>();
 builder.Services.AddScoped<ITeamTitleService, TeamTitleService>();      
 builder.Services.AddScoped<ITeamTitleVmService, TeamTitleVmService>();
 
+builder.Services.AddScoped<INewsVmService, NewsVmService>();
+builder.Services.AddScoped<INewsService, NewsService>();
+
+
 var app = builder.Build();
 
 // 🔥 Global error handler

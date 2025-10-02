@@ -1,0 +1,104 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.NewsViewModel
+
+@{
+    ViewBag.Title = "Insight Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.NewsList?.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Insight Listing <small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <div class="row fontawesome-icon-list">
+                                <div class="fa-hover col-md-12 col-sm-12 col-xs-12">
+                                    <a href='@string.Concat(baseUrl, "admin/news/managenews/0")' title="Add New Insight">
+                                        <i class="fa fa-plus-square"></i> Add New Insight
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Display Order</th>
+                                <th>Headline / Categories / Pages</th>
+                                <th>Logo</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.NewsList.OrderBy(x => x.DisplayOrder).ToList())
+                            {
+                                <tr>
+                                    <td>@item.DisplayOrder</td>
+                                    <td>
+                                        <b>@item.NewsHeadLine</b><br />
+                                        @item.CategoryNames <br />
+                                        @item.PageNames
+                                    </td>
+                                    <td>
+                                        <img src='@string.Concat(baseUrl, DbImagePath.InsightImage)@item.Logo'
+                                             alt="@item.NewsHeadLine"
+                                             style="height:20px;"
+                                             onerror="imgErrorSmall(this);"
+                                             asp-append-version="true" />
+                                    </td>
+                                    <td>
+                                        <a title="Edit '@item.NewsHeadLine'" href='@(baseUrl + "admin/news/managenews/" + item.NewsId)'>
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a title="Delete '@item.NewsHeadLine'" onclick="return fnDeleteInsight(@item.NewsId,this)" href="javascript:void(0);">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">No insights found.</div>
+}
+
+@section script {
+    <script type="text/javascript">
+        function fnDeleteInsight(id, ctrl) {
+            bootbox.confirm("Are you sure you want to delete this record?", function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@(baseUrl + "admin/news/deletenews")',
+                        data: { id: id },
+                        success: function (data) {
+                            bootbox.alert(data.message || data.Message);
+                            if (data.isSuccess) {
+                                $(ctrl).closest("tr").remove();
+                            }
+                        },
+                        error: function () {
+                            bootbox.alert("An error occurred while deleting the record.");
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}

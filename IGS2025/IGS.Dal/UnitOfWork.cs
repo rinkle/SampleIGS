@@ -23,6 +23,7 @@ namespace IGS.Dal.Repository
         public ITeamRepository Team { get; private set; }
         public ITeamCategoryRepository TeamCategory { get; private set; }
         public ITeamTitleRepository TeamTitle { get; private set; }
+        public INewsRepository News { get; private set; }
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -40,6 +41,7 @@ namespace IGS.Dal.Repository
             Team = new TeamRepository(_db, _sql);
             TeamCategory = new TeamCategoryRepository(_db, _sql);
             TeamTitle = new TeamTitleRepository(_db, _sql);
+            News = new NewsRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

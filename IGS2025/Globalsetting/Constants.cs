@@ -62,6 +62,8 @@ namespace Globalsetting
         public const string ExperienceImage = "images/Experience/";
         public const string TeamGrid = "images/Team/Grid/";
         public const string TeamBio = "images/Team/Bio/";
+        public const string InsightImage = "images/Insight/";
+
 
 
 

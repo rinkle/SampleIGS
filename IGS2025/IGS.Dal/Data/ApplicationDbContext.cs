@@ -34,6 +34,10 @@ namespace IGS.Dal.Data
         public DbSet<TeamCategory> TeamCategories { get; set; } = default!;
         public DbSet<TeamCategoryMapping> TeamCategoryMappings { get; set; } = default!;
 
+        public DbSet<News> News { get; set; }
+        public DbSet<NewsCategory> NewsCategories { get; set; }
+        public DbSet<NewsCategoryMapping> NewsCategoryMappings { get; set; }
+        public DbSet<NewsPageMapping> NewsPageMappings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -56,6 +60,16 @@ namespace IGS.Dal.Data
             builder.Entity<TeamTitle>().ToTable("TeamTitle");
             builder.Entity<TeamCategory>().ToTable("TeamCategory");
             builder.Entity<TeamCategoryMapping>().ToTable("TeamCategoryMapping");
+            
+            //news
+
+            builder.Entity<News>().ToTable("News");
+            builder.Entity<NewsCategory>().ToTable("NewsCategory");
+            builder.Entity<NewsCategoryMapping>().ToTable("NewsCategoryMapping");
+            builder.Entity<NewsPageMapping>().ToTable("NewsPageMapping");
+
+            builder.Entity<NewsCategory>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
+            builder.Entity<NewsCategoryMapping>().Property(p => p.DisplayOrder).HasPrecision(18, 2);
 
 
             // Decimal precision
@@ -92,6 +106,12 @@ namespace IGS.Dal.Data
             builder.Entity<getTeamTeamCategoryMapping_Result>().HasNoKey().ToView(null);
 
             builder.Entity<GetTeamTitle_Result>().HasNoKey().ToView(null);
+
+            builder.Entity<GetNewsDetail_Result>().HasNoKey();
+            builder.Entity<GetNewsFilterList_Result>().HasNoKey();
+            builder.Entity<GetNewsCategoryMapping_Result>().HasNoKey();
+            builder.Entity<GetNewsPageMapping_Result>().HasNoKey();
+
         }
     }
 }
