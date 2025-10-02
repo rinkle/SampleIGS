@@ -134,5 +134,35 @@ namespace IGS.Dal.Repository
                 isStoredProc: true
             );
         }
+
+        public async Task<GetNewsCommonData_Result?> GetNewsCommonDataAsync()
+        {
+            var rows = await _sql.QueryAsync<GetNewsCommonData_Result>(
+                "dbo.GetNewsCommonData",
+                null,
+                isStoredProc: true);
+
+            return rows.FirstOrDefault();
+        }
+        public async Task UpdateNewsCommonDataAsync(NewsCommonData entity)
+        {
+            var existing = await _db.NewsCommonData.FirstOrDefaultAsync();
+            if (existing != null)
+            {
+                existing.InsightHeading = entity.InsightHeading;
+                existing.InsightSubHeading = entity.InsightSubHeading;
+                existing.FeaturedInsightHeading = entity.FeaturedInsightHeading;
+                existing.FeaturedInsightSubHeading = entity.FeaturedInsightSubHeading;
+                existing.FeaturedInsightDescription = entity.FeaturedInsightDescription;
+                existing.FeaturedInsightImage = entity.FeaturedInsightImage;
+
+                _db.NewsCommonData.Update(existing);
+            }
+            else
+            {
+                await _db.NewsCommonData.AddAsync(entity);
+            }
+            await _db.SaveChangesAsync();
+        }
     }
 }

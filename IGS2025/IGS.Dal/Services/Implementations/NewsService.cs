@@ -181,5 +181,53 @@ namespace IGS.Dal.Services.Implementations
             target.DisplayOrder = src.DisplayOrder;
             target.IsActive = src.IsActive ?? true;
         }
+
+        public async Task<GetNewsCommonData_Result?> GetNewsCommonDataAsync()
+        {
+            try
+            {
+                return await _unitOfWork.News.GetNewsCommonDataAsync();
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error fetching NewsCommonData");
+                throw;
+            }
+        }
+        // NEW: Creates or updates NewsCommonData
+        public async Task SaveNewsCommonDataAsync(NewsCommonData model)
+        {
+            if (model == null) return;
+
+            try
+            {
+                var existing = await _unitOfWork.NewsCommonData.GetAsync(
+                    n => n.Id == model.Id, tracked: true);
+
+                if (existing != null)
+                {
+                    // update
+                    existing.InsightHeading = model.InsightHeading;
+                    existing.InsightSubHeading = model.InsightSubHeading;
+                    existing.FeaturedInsightHeading = model.FeaturedInsightHeading;
+                    existing.FeaturedInsightSubHeading = model.FeaturedInsightSubHeading;
+                    existing.FeaturedInsightDescription = model.FeaturedInsightDescription;
+                    existing.FeaturedInsightImage = model.FeaturedInsightImage;
+                    existing.FeaturedInsightPdf = model.FeaturedInsightPdf;
+                    _unitOfWork.NewsCommonData.Update(existing);
+                }
+                else
+                {
+                    await _unitOfWork.NewsCommonData.AddAsync(model);
+                }
+
+                await _unitOfWork.SaveAsync();
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error in NewsService.SaveNewsCommonDataAsync");
+                throw;
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using IGS.Dal.Repository.IRepository;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models;
+using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -110,6 +111,34 @@ namespace IGS.Web.Areas.Admin.Controllers
 
             return Json(new { isSuccess = status, message = returnMessage });
         }
+        #endregion
+
+
+        #region save insight common data
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewsCommonData(NewsViewModel model)
+        {
+            if (model == null || model.NewsCommonData == null)
+                return BadRequest("Invalid data submitted");
+
+            try
+            {
+                // ✅ Pass the entity, not the keyless SP result
+                await _newsService.SaveNewsCommonDataAsync(model.NewsCommonData);
+
+                SuccessNotification("News common data updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error saving NewsCommonData");
+                ErrorNotification("Error while saving News common data: " + ex.Message);
+            }
+
+            return Redirect(_baseUrl + "admin/news/");
+        }
+
+
         #endregion
     }
 }

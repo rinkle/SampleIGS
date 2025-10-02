@@ -3728,7 +3728,11 @@ wwwroot\images\Insight\Industrial-Automation.jpg
 wwwroot\images\Insight\Leak-pipe-repair.jpg
 wwwroot\images\Insight\MedSpa.jpg
 wwwroot\images\Insight\Physical-Therapy.jpg
+wwwroot\images\Insight\recent-projects-2.jpg
 wwwroot\images\Insight\Roofing.jpg
+wwwroot\images\Insight\Sample_PDF.pdf
+wwwroot\images\Insight\Tariff_Responsive_Pricing_IGS.pdf
+wwwroot\images\Insight\Tariff_Responsive_Pricing_IGS_205e5f.pdf
 wwwroot\images\Insight\Telecomm.jpg
 wwwroot\images\Insight\Urgent-Care.jpg
 wwwroot\images\Insight\Warehouse.jpg

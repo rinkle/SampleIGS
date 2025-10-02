@@ -21,7 +21,8 @@ namespace IGS.Dal.Repository.IRepository
 
         Task ReplaceCategoryMappingsAsync(int newsId, IEnumerable<int> categoryIds);
         Task ReplacePageMappingsAsync(int newsId, IEnumerable<int> pageIds);
-
         Task UpdateNewsUrlAsync(int newsId);
+        Task<GetNewsCommonData_Result?> GetNewsCommonDataAsync();
+        Task UpdateNewsCommonDataAsync(NewsCommonData entity);
     }
 }

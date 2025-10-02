@@ -8,13 +8,37 @@
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
 }
 
-@if (Model?.NewsList?.Count > 0)
+@if (Model?.NewsList?.Count > 0 && Model?.NewsCommonData != null)
 {
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
+    <form asp-action="SaveNewsCommonData" asp-controller="News" method="post" enctype="multipart/form-data" id="form-NewsCommonData"
+          class="form-horizontal form-label-left input_mask" novalidate data-parsley-validate>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.NewsCommonData.Id)
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_title">
-                    <h2>Insight Listing <small></small></h2>
+                    <h2>Insight <small></small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label>Insight Heading</label>
+                                @Html.TextBoxFor(m => m.NewsCommonData.InsightHeading, new { @class = "form-control", placeholder = "Insight Heading" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label>Insight Sub Heading</label>
+                                @Html.TextAreaFor(m => m.NewsCommonData.InsightSubHeading, new { @class = "form-control", placeholder = "Insight Sub Heading" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_title">
+                    <h2>Insight List<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
                             <div class="row fontawesome-icon-list">
@@ -28,55 +52,118 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-
-                <div class="x_content">
-                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Display Order</th>
-                                <th>Headline / Categories / Pages</th>
-                                <th>Logo</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.NewsList.OrderBy(x => x.DisplayOrder).ToList())
-                            {
+                <div class="x_panel">
+                    <div class="x_content">
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
                                 <tr>
-                                    <td>@item.DisplayOrder</td>
-                                    <td>
-                                        <b>@item.NewsHeadLine</b><br />
-                                        @item.CategoryNames <br />
-                                        @item.PageNames
-                                    </td>
-                                    <td>
-                                        <img src='@string.Concat(baseUrl, DbImagePath.InsightImage)@item.Logo'
-                                             alt="@item.NewsHeadLine"
-                                             style="height:20px;"
-                                             onerror="imgErrorSmall(this);"
-                                             asp-append-version="true" />
-                                    </td>
-                                    <td>
-                                        <a title="Edit '@item.NewsHeadLine'" href='@(baseUrl + "admin/news/managenews/" + item.NewsId)'>
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a title="Delete '@item.NewsHeadLine'" onclick="return fnDeleteInsight(@item.NewsId,this)" href="javascript:void(0);">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
+                                    <th>Display Order</th>
+                                    <th>Headline / Categories / Pages</th>
+                                    <th>Logo</th>
+                                    <th>Action</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.NewsList.OrderBy(x => x.DisplayOrder).ToList())
+                                {
+                                    <tr>
+                                        <td>@item.DisplayOrder</td>
+                                        <td>
+                                            <b>@item.NewsHeadLine</b><br />
+                                            @item.CategoryNames <br />
+                                            @item.PageNames
+                                        </td>
+                                        <td>
+                                            <img src='@string.Concat(baseUrl, DbImagePath.InsightImage)@item.Logo'
+                                                 alt="@item.NewsHeadLine"
+                                                 style="height:20px;"
+                                                 onerror="imgErrorSmall(this);"
+                                                 asp-append-version="true" />
+                                        </td>
+                                        <td>
+                                            <a title="Edit '@item.NewsHeadLine'" href='@(baseUrl + "admin/news/managenews/" + item.NewsId)'>
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a title="Delete '@item.NewsHeadLine'" onclick="return fnDeleteInsight(@item.NewsId,this)" href="javascript:void(0);">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="x_title">
+                    <h2>Insight Common Data <small></small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <!-- ✅ NewsCommonData Form -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <div class="row">
+                                            <div class="col-md-3 form-group">
+                                                <label>Featured Insight Heading</label>
+                                                @Html.TextBoxFor(m => m.NewsCommonData.FeaturedInsightHeading, new { @class = "form-control", placeholder = "Featured Heading" })
+                                            </div>
+                                            <div class="col-md-3 form-group">
+                                                <label>Featured Insight Sub Heading</label>
+                                                @Html.TextBoxFor(m => m.NewsCommonData.FeaturedInsightSubHeading, new { @class = "form-control", placeholder = "Featured Sub Heading" })
+                                            </div>
+
+                                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                                <label for="FeaturedImage">Featured Image:</label><br />
+                                                <input id="FeaturedImage" type="file" onchange="processImage(this, 'imagepreview_FeaturedImage', 'hdnImage_FeaturedImageName','@DbImagePath.InsightImage','0','0','');" />
+                                            </div>
+
+                                            <div class="col-md-1 col-sm-1 col-xs-1 form-group">
+                                                <br />
+                                                <img class="imagepreview_FeaturedImage" src="@(baseUrl + DbImagePath.InsightImage + Model.NewsCommonData.FeaturedInsightImage)"
+                                                     alt="image" style="width:50px;height:50px;border:1px solid gray" onerror="imgErrorSmall(this);" />
+                                                <input asp-for="NewsCommonData.FeaturedInsightImage" type="hidden" class="hdnImage_FeaturedImageName" />
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+
+                                                <label for="fullname">Pdf Report :</label>
+                                                <input style="width:88px;" id='@("NewsInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.InsightImage');" />
+                                            </div>
+                                            <div class="col-md-1 col-sm-1 col-xs-1 form-group">
+                                                <br />
+                                                @Html.HiddenFor(x => x.NewsCommonData.FeaturedInsightPdf, new { @class = "hdnImageInsightPdfReport" })
+                                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.NewsCommonData.FeaturedInsightPdf) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.NewsCommonData.FeaturedInsightPdf) ? baseUrl + DbImagePath.InsightImage + Model.NewsCommonData.FeaturedInsightPdf : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 form-group">
+                                                <label>Featured Description</label>
+                                                @Html.TextAreaFor(m => m.NewsCommonData.FeaturedInsightDescription, new { @class = "form-control ckeditor", rows = 3, placeholder = "Description" })
+                                            </div>
+                                        </div>
+
+                                        <div style="float:right; padding-top:10px;">
+                                            <input type="submit" class="btn btn-round btn-dark" value="Save Common Data" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 }
 else
 {
     <div class="alert alert-info">No insights found.</div>
 }
+
+
 
 @section script {
     <script type="text/javascript">

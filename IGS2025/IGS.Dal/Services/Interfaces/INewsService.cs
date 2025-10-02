@@ -1,4 +1,5 @@
 ﻿using IGS.Models;
+using IGS.Models.KeyLessModels;
 using IGS.Models.ViewModels;
 
 namespace IGS.Dal.Services.Interfaces
@@ -8,5 +9,7 @@ namespace IGS.Dal.Services.Interfaces
         Task<int> SaveNewsAsync(NewsModel model);
         Task<bool> DeleteNewsAsync(int id);
         Task<bool> DeleteLogoAsync(int id, Action<News> clearLogoAction);
+        Task<GetNewsCommonData_Result?> GetNewsCommonDataAsync();
+        Task SaveNewsCommonDataAsync(NewsCommonData entity);
     }
 }

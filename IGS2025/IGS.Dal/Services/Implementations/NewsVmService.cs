@@ -34,8 +34,24 @@ namespace IGS.Dal.Services.Implementations
                 var categories = (await _unitOfWork.News
                     .GetNewsCategoryMappingAsync(0)) // pass 0 to get all categories
                     .ToList();
+                var commonDataSp = await _unitOfWork.News.GetNewsCommonDataAsync();
 
-                return new NewsViewModel(newsList, categories, isAdmin);
+                NewsCommonData commonDataEntity = new();
+                if (commonDataSp != null)
+                {
+                    commonDataEntity = new NewsCommonData
+                    {
+                        Id = commonDataSp.Id,
+                        InsightHeading = commonDataSp.InsightHeading,
+                        InsightSubHeading = commonDataSp.InsightSubHeading,
+                        FeaturedInsightHeading = commonDataSp.FeaturedInsightHeading,
+                        FeaturedInsightSubHeading = commonDataSp.FeaturedInsightSubHeading,
+                        FeaturedInsightDescription = commonDataSp.FeaturedInsightDescription,
+                        FeaturedInsightImage = commonDataSp.FeaturedInsightImage,
+                        FeaturedInsightPdf = commonDataSp.FeaturedInsightPdf
+                    };
+                }
+                return new NewsViewModel(newsList, categories, commonDataEntity, isAdmin);
             }
             catch (Exception ex)
             {
@@ -47,11 +63,7 @@ namespace IGS.Dal.Services.Implementations
         /// <summary>
         /// Builds NewsModel for add/edit single news item.
         /// </summary>
-        public async Task<NewsModel> GetNewsModelAsync(
-            int newsId,
-            string? categoryIds = null,
-            string? pageIds = null,
-            string? orderBy = null)
+        public async Task<NewsModel> GetNewsModelAsync(int newsId, string? categoryIds = null, string? pageIds = null, string? orderBy = null)
         {
             try
             {
@@ -77,5 +89,8 @@ namespace IGS.Dal.Services.Implementations
                 return new NewsModel();
             }
         }
+
+
+
     }
 }

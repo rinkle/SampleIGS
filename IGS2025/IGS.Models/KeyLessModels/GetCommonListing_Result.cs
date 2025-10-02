@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace IGS.Models.KeyLessModels
@@ -5,6 +6,8 @@ namespace IGS.Models.KeyLessModels
     /// <summary>
     /// DTO for results returned by stored procedure: GetCommonListing
     /// </summary>
+    /// 
+    [Keyless]
     public class GetCommonListing_Result
     {
         public int Id { get; set; }
