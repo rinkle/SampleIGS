@@ -15,6 +15,9 @@ namespace IGS.Models
         public string? FeaturedInsightDescription { get; set; }
         public string? FeaturedInsightImage { get; set; }
         public string? FeaturedInsightPdf { get; set; }
+        public string? RecentProjectsHeading { get; set; }
+        public string? RecentProjectsDescription { get; set; }
+
 
     }
 }

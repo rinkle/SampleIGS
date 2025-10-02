@@ -48,7 +48,9 @@ namespace IGS.Dal.Services.Implementations
                         FeaturedInsightSubHeading = commonDataSp.FeaturedInsightSubHeading,
                         FeaturedInsightDescription = commonDataSp.FeaturedInsightDescription,
                         FeaturedInsightImage = commonDataSp.FeaturedInsightImage,
-                        FeaturedInsightPdf = commonDataSp.FeaturedInsightPdf
+                        FeaturedInsightPdf = commonDataSp.FeaturedInsightPdf,
+                        RecentProjectsDescription = commonDataSp.RecentProjectsDescription,
+                        RecentProjectsHeading = commonDataSp.RecentProjectsHeading
                     };
                 }
                 return new NewsViewModel(newsList, categories, commonDataEntity, isAdmin);

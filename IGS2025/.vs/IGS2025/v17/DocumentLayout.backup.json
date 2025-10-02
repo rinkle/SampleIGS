@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\newsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\newsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\viewmodels\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\viewmodels\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -30,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,67 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NewsService.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsService.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\NewsService.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsService.cs",
-              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\NewsService.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAALwAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T22:49:08.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
               "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
               "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\News\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAKQAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-02T22:40:21.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NewsVmService.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
-              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAADIAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T22:36:03.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NewsViewModel.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsViewModel.cs",
-              "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\NewsViewModel.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsViewModel.cs",
-              "RelativeToolTip": "IGS.Models\\ViewModels\\NewsViewModel.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAgwBQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T22:33:05.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAH4AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T22:32:05.87Z",
+              "WhenOpened": "2025-10-02T23:14:44.274Z",
               "EditorCaption": ""
             }
           ]

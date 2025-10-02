@@ -144,7 +144,27 @@
                                                 @Html.TextAreaFor(m => m.NewsCommonData.FeaturedInsightDescription, new { @class = "form-control ckeditor", rows = 3, placeholder = "Description" })
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                                <br />
+                                                <label asp-for="NewsCommonData.RecentProjectsHeading">Recent Projects Heading</label>
+                                                <input asp-for="NewsCommonData.RecentProjectsHeading" class="form-control" placeholder="Recent Projects/Experience Growth Heading" />
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                                <br />
+                                                <br /><br />
+                                                <a href='@(baseUrl + "admin/experience/")' class="fa fa-arrow-circle-right" style="color:darkblue;font-size:20px"> Manage Projects</a>
 
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <br />
+                                                <label asp-for="NewsCommonData.RecentProjectsDescription">Recent Projects Description</label>
+                                                <textarea asp-for="NewsCommonData.RecentProjectsDescription" class="form-control" placeholder="Recent Projects Description"></textarea>
+                                            </div>
+                                        </div>
                                         <div style="float:right; padding-top:10px;">
                                             <input type="submit" class="btn btn-round btn-dark" value="Save Common Data" />
                                         </div>

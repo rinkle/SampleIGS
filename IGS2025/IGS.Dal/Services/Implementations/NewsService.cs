@@ -214,6 +214,8 @@ namespace IGS.Dal.Services.Implementations
                     existing.FeaturedInsightDescription = model.FeaturedInsightDescription;
                     existing.FeaturedInsightImage = model.FeaturedInsightImage;
                     existing.FeaturedInsightPdf = model.FeaturedInsightPdf;
+                    existing.RecentProjectsHeading = model.RecentProjectsHeading;
+                    existing.RecentProjectsDescription = model.RecentProjectsDescription;
                     _unitOfWork.NewsCommonData.Update(existing);
                 }
                 else
