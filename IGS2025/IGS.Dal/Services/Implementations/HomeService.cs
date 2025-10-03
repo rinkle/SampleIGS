@@ -61,6 +61,7 @@ namespace IGS.Dal.Services.Implementations
                 homeData.InsightPdfReport = model.Home.InsightPdfReport;
                 homeData.NewsletterHeading = model.Home.NewsletterHeading;
                 homeData.NewsletterScript = model.Home.NewsletterScript;
+                homeData.CareersUrl = model.Home.CareersUrl;
                 homeData.InvestorLogin = model.Home.InvestorLogin;
                 homeData.VimeoVideoUrl = model.Home.VimeoVideoUrl;
                 homeData.LinkedInUrl = model.Home.LinkedInUrl;

@@ -8,6 +8,9 @@ namespace IGS.Models.KeyLessModels
         public string? PageTitle { get; set; }
         public string? MetaData { get; set; }
         public string? MetaDescription { get; set; }
+        public string? OGTitle { get; set; }
+        public string? OGDescription { get; set; }
+        public string? OGImage { get; set; }
         public string? HeaderImage { get; set; }
         public string? HeaderCaption { get; set; }
         public string? Additionalinfo { get; set; }

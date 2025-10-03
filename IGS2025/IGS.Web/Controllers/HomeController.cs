@@ -1,4 +1,5 @@
 using Globalsetting;
+using IGS.Dal.Services.Implementations;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
@@ -16,20 +17,26 @@ namespace IGS.Web.Controllers
         private readonly ILoggerService _logger;
         private readonly IHomeVmService _homeVmService;
         private readonly IHomeService _homeService;
+        private readonly ICommonService _commonService;
 
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService)
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
             _homeVmService = homeVmService;
             _homeService = homeService;
+            _commonService = commonService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                HomeViewModel vm = await _homeVmService.GetHomeVmAsync(isAdmin: true);
+                ViewBag.pageName = PageName.Home;
+                ViewBag.canonical = string.Empty;
+                CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Home);
+                ViewBag.CommonService = CommonServiceModel;
+                HomeViewModel vm = await _homeVmService.GetHomeVmAsync(isAdmin: false);
                 return View(vm);
             }
             catch (Exception ex)

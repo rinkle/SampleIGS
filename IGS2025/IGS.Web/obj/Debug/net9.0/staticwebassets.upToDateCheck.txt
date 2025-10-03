@@ -481,6 +481,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-knob\package.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\duration\bubble.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-kok-IN.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\iCheck\.bower.json
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\loadMoreResults.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-nb-NO.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\hi.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt
@@ -820,6 +821,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\dist\i18n\fr.extra.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-knob\knob.jquery.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\i18n\el.extra.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\scroll.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\se-FI.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\google-code-prettify\src\lang-lua.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-2.0.4.min.css
@@ -973,6 +975,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap\js\carousel.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\src\renderer\canvas.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-es-CL.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\tableselection\styles\tableselection.css
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\script.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\favicon\site.webmanifest
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\lang\tr.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.1.0.css
@@ -1278,6 +1281,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\es
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-en-ZW.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\fo-FO.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-zh-TW.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\count.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jqvmap\grunt\qunit.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\tests\options\data-tests.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\dist\i18n\sv.js
@@ -1890,6 +1894,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\iCheck\skins\line\pink.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\font-awesome\fonts\fontawesome-webfont.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\nl-NL.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.easy-pie-chart\dist\jquery.easypiechart.min.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\loadMoreResults-init.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\data\ajax.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\gauge.js\bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\icons\slick-arrow.svg
@@ -2017,6 +2022,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\el
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\jquery-3.3.1.slim.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-mi-NZ.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\skycons\index.html
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\css\slick.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Content\bootstrap-theme.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\locale\bn.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\parsleyjs\src\vendor\inputevent.js
@@ -2183,6 +2189,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\de.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\ar-MA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-pt-BR.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\locale\es.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\slick.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\specialchar\dialogs\lang\eu.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\plugins\wsc\lang\is.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jszip\.bower.json
@@ -2685,6 +2692,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\es
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\src\i18n\tt-RU.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-da-DK.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\docs\_includes\options\compatibility.html
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\css\slick-theme.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\production\js\moment\moment.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\pnotify\dist\pnotify.animate.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-kk-KZ.js
@@ -2971,6 +2979,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\date-en
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\date-sr-Cyrl-CS.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\jquery.validate.unobtrusive.min.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\reports\lcov-report\core\time_period.js.html
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\css\style.css
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\moment\src\lib\duration\duration.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\Flot\component.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\ckeditor\LICENSE.md
@@ -3151,6 +3160,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\mk-MK.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery\src\effects\animatedSelector.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\sv-FI.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\src\js\select2\data\maximumInputLength.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\js\slick-init.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\bootstrap-progressbar\CHANGELOG.md
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\flot.orderbars\examples\js\main.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery.inputmask\dist\min\inputmask\jquery.inputmask.min.js
@@ -3251,6 +3261,9 @@ wwwroot\Content\loader-1.css
 wwwroot\Content\loader-8.css
 wwwroot\Content\Site.css
 wwwroot\css\site.css
+wwwroot\css\slick.css
+wwwroot\css\slick-theme.css
+wwwroot\css\style.css
 wwwroot\favicon.ico
 wwwroot\images\Experience\3RC.png
 wwwroot\images\Experience\80_20.png
@@ -3738,6 +3751,7 @@ wwwroot\images\Insight\Tariff_Responsive_Pricing_IGS_205e5f.pdf
 wwwroot\images\Insight\Telecomm.jpg
 wwwroot\images\Insight\Urgent-Care.jpg
 wwwroot\images\Insight\Warehouse.jpg
+wwwroot\images\landing-1.jpg
 wwwroot\images\News\Industrial-Automation.jpg
 wwwroot\images\pageHeader\team.jpg
 wwwroot\images\pageHeader\transaction-services.jpg
@@ -3793,7 +3807,14 @@ wwwroot\images\Team\Bio\Sam_Dowden.jpg
 wwwroot\images\Team\Bio\Trevor_Dodds.jpg
 wwwroot\images\Team\Bio\Zach_Casavant.jpg
 wwwroot\images\Team\Bio\Zach_Haines.jpg
+wwwroot\js\count.js
+wwwroot\js\loadMoreResults.js
+wwwroot\js\loadMoreResults-init.js
+wwwroot\js\script.js
+wwwroot\js\scroll.js
 wwwroot\js\site.js
+wwwroot\js\slick.js
+wwwroot\js\slick-init.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

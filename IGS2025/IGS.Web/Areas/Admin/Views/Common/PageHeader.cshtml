@@ -35,16 +35,6 @@
                             </div>
                         </div>
 
-                        <!-- Meta Data -->
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                                <label>Page Meta Data</label>
-                                <input asp-for="PageHeader.MetaData" class="form-control" placeholder="Page Meta Data" />
-                                <span asp-validation-for="PageHeader.MetaData" class="text-danger"></span>
-                            </div>
-
-                        </div>
-
                         <!-- Meta Description -->
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12 form-group">
@@ -55,8 +45,46 @@
 
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label>og:title</label>
+                                <input asp-for="PageHeader.OGTitle" class="form-control" placeholder="og:title" />
+                                <span asp-validation-for="PageHeader.OGTitle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label>og:description</label>
+                                <input asp-for="PageHeader.OGDescription" class="form-control" placeholder="og:description" />
+                                <span asp-validation-for="PageHeader.OGDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <label for="OGImage">ogImage:</label>
+                                <br />
+                                <input id="OGImage" type="file" onchange="processImage(this, 'imagepreview_OGImage', 'hdnImage_OGImageName', '@DbImagePath.Image', '0', '0', '');" />
+                            </div>
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                                <br />
+                                <img class="imagepreview_OGImage"
+                                     src="@(string.IsNullOrEmpty(Model.PageHeader?.OGImage) ? baseUrl + "content/images/preview.png" : baseUrl + DbImagePath.Image + Model.PageHeader.OGImage)"
+                                     alt="image"
+                                     style="width:100px; border:1px solid gray;"
+                                     onerror="imgErrorSmall(this);" asp-append-version="true" />
+
+                                <input asp-for="PageHeader.OGImage" type="hidden" class="hdnImage_OGImageName" />
+                                <span asp-validation-for="PageHeader.OGImage" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+
                         <!-- Header Image -->
-                        @if (new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14 }.Contains(Model.PageHeader.Fk_PageId ?? 0))
+                        @if (new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14 }.Contains(Model.PageHeader?.Fk_PageId ?? 0))
                         {
                             <div class="row">
                                 <div class="col-md-2 col-sm-12 col-xs-12 form-group">

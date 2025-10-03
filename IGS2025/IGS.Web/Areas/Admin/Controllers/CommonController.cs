@@ -89,6 +89,9 @@ namespace IGS.Areas.Admin.Controllers
                 pageHeader.MetaData = model.PageHeader.MetaData;
                 pageHeader.PageTitle = model.PageHeader.PageTitle;
                 pageHeader.MetaDescription = model.PageHeader.MetaDescription;
+                pageHeader.OGDescription = model.PageHeader.OGDescription;
+                pageHeader.OGTitle = model.PageHeader.OGTitle;
+                pageHeader.OGImage = model.PageHeader.OGImage;
                 pageHeader.ModifiedBy = _globalEnvironment.UserId;
                 pageHeader.ModifiedDate = DateTime.Now;
                 pageHeader.Additionalinfo = model.PageHeader.Additionalinfo;

@@ -467,9 +467,9 @@
                             </div>
                             <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <br /><br />
-                                    @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
-                                    <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
-                                </div>
+                                @Html.HiddenFor(x => x.Home.InsightPdfReport, new { @class = "hdnImageInsightPdfReport" })
+                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.Home.InsightPdfReport) ? baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                            </div>
 
                             <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label asp-for="Home.InsightImage">Right Insight Image</label>
@@ -525,6 +525,24 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="x_title">
+                    <h2>Careers Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Home.CareersUrl"></label>
+                                <input asp-for="Home.CareersUrl" class="form-control" type="url" placeholder="Careers Url" />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 @if (IsShow)
                 {

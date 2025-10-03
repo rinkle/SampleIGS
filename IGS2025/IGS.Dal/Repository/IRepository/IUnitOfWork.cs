@@ -20,6 +20,7 @@ namespace IGS.Dal.Repository.IRepository
         INewsCommonDataRepository NewsCommonData { get; }
         IContactRepository Contact { get; }
         IPrivacyPolicyRepository PrivacyPolicy { get; }
+        ICommonRepository Common { get; }
         void Save();
         Task SaveAsync();
 

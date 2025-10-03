@@ -51,6 +51,7 @@ namespace Globalsetting
     }
     public class DbImagePath
     {
+        public const string Image = "images/";
         public const string HomeImage = "images/home/";
         public const string HomeCarousel = "images/home/Carousel/";
         public const string ContactImage = "images/contact/";

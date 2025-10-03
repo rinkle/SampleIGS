@@ -96,7 +96,7 @@ builder.Services.AddScoped<IExperienceService, ExperienceService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<ITeamVmService, TeamVmService>();
 
-builder.Services.AddScoped<ITeamTitleService, TeamTitleService>();      
+builder.Services.AddScoped<ITeamTitleService, TeamTitleService>();
 builder.Services.AddScoped<ITeamTitleVmService, TeamTitleVmService>();
 
 builder.Services.AddScoped<INewsVmService, NewsVmService>();
@@ -106,6 +106,8 @@ builder.Services.AddScoped<IContactService, ContactService>();
 
 builder.Services.AddScoped<IPrivacyPolicyService, PrivacyPolicyService>();
 builder.Services.AddScoped<IPrivacyPolicyVmService, PrivacyPolicyVmService>();
+
+builder.Services.AddScoped<ICommonService, CommonService>();
 
 
 var app = builder.Build();

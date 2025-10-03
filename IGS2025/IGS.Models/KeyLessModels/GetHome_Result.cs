@@ -17,6 +17,7 @@ namespace IGS.Models.KeyLessModels
         public string? InsightPdfReport { get; set; }
         public string? NewsletterHeading { get; set; }
         public string? NewsletterScript { get; set; }
+        public string? CareersUrl { get; set; }
         public string? InvestorLogin { get; set; }
         public string? VimeoVideoUrl { get; set; }
         public string? LinkedInUrl { get; set; }
