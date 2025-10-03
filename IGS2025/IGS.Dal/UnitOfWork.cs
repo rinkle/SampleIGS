@@ -26,7 +26,7 @@ namespace IGS.Dal.Repository
         public INewsRepository News { get; private set; }
         public INewsCommonDataRepository NewsCommonData { get; private set; }
         public IContactRepository Contact { get; private set; }
-
+        public IPrivacyPolicyRepository PrivacyPolicy { get; private set; }
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -47,6 +47,7 @@ namespace IGS.Dal.Repository
             News = new NewsRepository(_db, _sql);
             NewsCommonData = new NewsCommonDataRepository(_db);
             Contact = new ContactRepository(_db, _sql);
+            PrivacyPolicy = new PrivacyPolicyRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

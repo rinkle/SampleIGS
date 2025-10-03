@@ -39,6 +39,7 @@ namespace IGS.Dal.Data
         public DbSet<NewsCategoryMapping> NewsCategoryMappings { get; set; }
         public DbSet<NewsCommonData> NewsCommonData { get; set; } = default!;
         public DbSet<Contact> Contacts { get; set; } = default!;
+        public DbSet<PrivacyPolicy> PrivacyPolicies { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -61,6 +62,7 @@ namespace IGS.Dal.Data
             builder.Entity<TeamCategory>().ToTable("TeamCategory");
             builder.Entity<TeamCategoryMapping>().ToTable("TeamCategoryMapping");
             builder.Entity<Contact>().ToTable("Contact");
+            builder.Entity<PrivacyPolicy>().ToTable("PrivacyPolicy");
 
             //news
 
@@ -106,15 +108,15 @@ namespace IGS.Dal.Data
             builder.Entity<GetTeamCategory_Result>().HasNoKey().ToView(null)
                 .Property(p => p.DisplayOrder).HasPrecision(18, 2);
             builder.Entity<getTeamTeamCategoryMapping_Result>().HasNoKey().ToView(null);
-
             builder.Entity<GetTeamTitle_Result>().HasNoKey().ToView(null);
-
             builder.Entity<GetNewsDetail_Result>().HasNoKey();
             builder.Entity<GetNewsFilterList_Result>().HasNoKey();
             builder.Entity<GetNewsCategoryMapping_Result>().HasNoKey();
             builder.Entity<GetNewsPageMapping_Result>().HasNoKey();
             builder.Entity<GetNewsCommonData_Result>().HasNoKey().ToView(null);
             builder.Entity<GetContact_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetPrivacyPolicy_Result>().HasNoKey().ToView(null)
+               .Property(p => p.DisplayOrder).HasPrecision(18, 2);
 
         }
     }

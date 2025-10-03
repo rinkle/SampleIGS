@@ -32,7 +32,6 @@ namespace Globalsetting
 
 
     }
-
     public enum PageEnum
     {
         Home = 1,
@@ -50,7 +49,6 @@ namespace Globalsetting
         TermsofUse = 13,
         PrivacyPolicy = 14
     }
-
     public class DbImagePath
     {
         public const string HomeImage = "images/home/";
@@ -69,7 +67,6 @@ namespace Globalsetting
 
 
     }
-
     public class Message
     {
         public const string SuccessMessage = "Saved successfully";
@@ -84,12 +81,29 @@ namespace Globalsetting
         public const string Internal = "Internal";
         public const string PDF = "PDF";
     }
-
-
     public enum Newstypevalue
     {
         Externallink = 1,
         Internallink = 2,
         PDF = 3
+    }
+
+    public class PageName
+    {
+        public const string Home = "Home";
+        public const string TransactionServices = "Transaction Services";
+        public const string PortfolioServices = "Portfolio Services";
+        public const string Industries = "Industries";
+        public const string Experience = "Experience";
+        public const string ExperienceDetails = "Experience Details";
+        public const string Insights = "Insights";
+        public const string InsightInfo = "Insight Info";
+        public const string Team = "Team";
+        public const string TeamBio = "Team Info";
+        public const string Careers = "Careers";
+        public const string ContactUs = "Contact Us";
+        public const string PrivacyPolicy = "Privacy Policy";
+        public const string TermsofUse = "Terms of Use";
+        public const string Error = "Error";
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IGS.Models.ViewModels.PrivacyPolicyViewModel
+@using Globalsetting
+@inject GlobalEnvironmentSetting GlobalEnvironmentSetting
+
+@{
+    ViewBag.Title = "Privacy Policy Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+<div class="row">
+    <form asp-action="SavePrivacyPolicy"
+          asp-controller="PrivacyPolicy"
+          asp-area="Admin"
+          method="post"
+          class="form-horizontal form-label-left">
+
+        @Html.AntiForgeryToken()
+
+        @if (Model.Policies?.Count > 0)
+        {
+            for (int i = 0; i < Model.Policies.Count; i++)
+            {
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>@Model.Policies[i].Title</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input asp-for="Policies[i].Id" type="hidden" />
+                        <input asp-for="Policies[i].DisplayOrder" type="hidden" />
+                        <input asp-for="Policies[i].Title" type="hidden" />
+
+
+                        <div class="form-group">
+                            <label asp-for="Policies[i].Description"></label>
+                            <textarea asp-for="Policies[i].Description" class="form-control ckeditor"></textarea>
+                        </div>
+
+                       
+                    </div>
+                </div>
+            }
+        }
+
+        <div style="text-align:right;">
+            <input type="submit" class="btn btn-dark btn-round" value="Save" />
+        </div>
+    </form>
+</div>

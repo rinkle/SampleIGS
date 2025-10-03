@@ -104,6 +104,9 @@ builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<IContactVmService, ContactVmService>();
 builder.Services.AddScoped<IContactService, ContactService>();
 
+builder.Services.AddScoped<IPrivacyPolicyService, PrivacyPolicyService>();
+builder.Services.AddScoped<IPrivacyPolicyVmService, PrivacyPolicyVmService>();
+
 
 var app = builder.Build();
 
