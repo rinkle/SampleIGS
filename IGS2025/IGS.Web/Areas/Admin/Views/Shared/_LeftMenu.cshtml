@@ -21,7 +21,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href='@(baseUrl+"admin/home/")' class="site_title"><i class="fa fa-align-justify"></i> <span>CMS Admin </span></a>
+            <a href='@(baseUrl + "admin/home/")' class="site_title"><i class="fa fa-align-justify"></i> <span>CMS Admin </span></a>
         </div>
         <div class="clearfix"></div>
 
@@ -34,8 +34,8 @@
                             <i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
-                            <li><a href='@string.Concat(baseUrl,"admin/home/")' title="Manage Home"> Home</a></li>
-                            <li><a title="Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/1")'> Page Header</a></li>
+                            <li><a href='@string.Concat(baseUrl, "admin/home/")' title="Manage Home"> Home</a></li>
+                            <li><a title="Page Header" href='@string.Concat(baseUrl, "admin/common/pageheader/1")'> Page Header</a></li>
                         </ul>
                     </li>
                     <li>
@@ -73,11 +73,11 @@
                     <li>
                         <a title="Team Management"><i class="fa fa-users"></i> Team <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a title="Team List" href='@string.Concat(baseUrl,"admin/team/")'>Team</a></li>
+                            <li><a title="Team List" href='@string.Concat(baseUrl, "admin/team/")'>Team</a></li>
                             <li style="display:none;"><a title="update team member" href='@(baseUrl + "admin/team/manageteam/" + teamid)'>update team member</a></li>
-                            <li><a title="Team Title List" href='@string.Concat(baseUrl,"admin/team/teamtitles/")'>Title List</a></li>
-                            <li style="display:none;"><a title="Team Title List" href='@(baseUrl+"admin/team/manageteamtitle/"+@TeamTitleId)'>update Title</a></li>
-                            <li><a title="Team Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/5")'>Page Header</a></li>
+                            <li><a title="Team Title List" href='@string.Concat(baseUrl, "admin/team/teamtitles/")'>Title List</a></li>
+                            <li style="display:none;"><a title="Team Title List" href='@(baseUrl + "admin/team/manageteamtitle/" + @TeamTitleId)'>update Title</a></li>
+                            <li><a title="Team Page Header" href='@string.Concat(baseUrl, "admin/common/pageheader/5")'>Page Header</a></li>
                             @*<li><a title="update team member" href='@(baseUrl+"admin/team/manageteamcategory")'>Team Category</a></li>*@
                         </ul>
                     </li>
@@ -88,7 +88,7 @@
                             <li><a href='@string.Concat(baseUrl, "admin/news/")' title="Insight listing">Insight List</a></li>
                             <li><a href='@string.Concat(baseUrl, "admin/news/managenews/0")' onclick="newnews();" title="Add new news">Add Insight </a></li>
                             <li style="display:none;"><a href='@string.Concat(baseUrl, "admin/news/managenews/" + newsid)' title="update news">Update Insight </a></li>
-                            <li><a title="News Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/8")'>Page Header</a></li>
+                            <li><a title="News Page Header" href='@string.Concat(baseUrl, "admin/common/pageheader/8")'>Page Header</a></li>
                             @*<li><a title="News  Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/11")'>News Info Page Header</a></li>*@
                         </ul>
                     </li>
@@ -97,9 +97,9 @@
                         <a title="Contact"><i class="fa fa-phone"></i> Contact <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li>
-                                <a href='@string.Concat(baseUrl,"admin/contact/")'> Contact </a>
+                                <a href='@string.Concat(baseUrl, "admin/contact/")'> Contact </a>
                             </li>
-                            <li class=""><a title="Contatct Page Header" href='@string.Concat(baseUrl,"admin/common/pageheader/10")'>Page Header</a></li>
+                            <li class=""><a title="Contatct Page Header" href='@string.Concat(baseUrl, "admin/common/pageheader/10")'>Page Header</a></li>
                         </ul>
                     </li>
                     <li>
@@ -108,9 +108,11 @@
                         </a>
                         <ul class="nav child_menu">
                             <li>
-                                <a title="Privacy Policy" href='@(baseUrl+"admin/privacypolicy/")' onclick="showLoader();">Privacy Policy</a>
+                                <a title="Privacy Policy" href='@(baseUrl + "admin/privacypolicy/")' onclick="showLoader();">Privacy Policy</a>
                             </li>
-                            <li><a title="Page Header" href='@(baseUrl +"admin/common/pageheader/12")' onclick="showLoader();"> Page Header</a></li>
+                            <li>
+                                <a title="Page Header" href='@(baseUrl + "admin/common/pageheader/12")' onclick="showLoader();"> Page Header</a>
+                            </li>
                         </ul>
                     </li>
 
