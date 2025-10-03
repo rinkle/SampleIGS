@@ -3320,6 +3320,7 @@ wwwroot\images\Experience\BVP.png
 wwwroot\images\Experience\Camco.png
 wwwroot\images\Experience\CapitolPain.png
 wwwroot\images\Experience\CaseWorks.jpg
+wwwroot\images\Experience\CaseWorks_31b7b22df17c49a6895c521459fcf46f.jpg
 wwwroot\images\Experience\CCMP.png
 wwwroot\images\Experience\CCSC.png
 wwwroot\images\Experience\Cellsite.png
@@ -3683,6 +3684,7 @@ wwwroot\images\home\Carousel\arrow-right.svg
 wwwroot\images\home\Carousel\landing-1.jpg
 wwwroot\images\home\Carousel\landing-2.jpg
 wwwroot\images\home\Carousel\landing-3.jpg
+wwwroot\images\home\Carousel\news.jpg
 wwwroot\images\home\Carousel\team-mail-dark.svg
 wwwroot\images\home\core-1.svg
 wwwroot\images\home\core-2.svg
