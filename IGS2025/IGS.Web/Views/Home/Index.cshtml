@@ -1,315 +1,280 @@
-﻿@{
-    
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.HomeViewModel
+
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
 }
 
-<div class="home">
-    <div id="homeCarousel" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="false">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="content d-flex flex-column">
-                                <h1 class="f55">Advisor on Transactions <br> and Throughout the <br> Investment Lifecycle</h1>
+@if (Model?.Home != null)
+{
+    <div class="home">
+        <div id="homeCarousel" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="false">
+            <div class="carousel-inner">
+                @if (Model?.Carousel?.Count > 0)
+                {
+                    int Counter = 1;
+                    foreach (var item in Model.Carousel)
+                    {
+                        <div class='carousel-item @(Counter == 1 ? "active" : "")'>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="content d-flex flex-column">
+                                            <h1 class="f55">@Html.Raw(item?.Heading)</h1>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="content d-flex flex-column">
-                                <h1 class="f55">Research and Analytics <br> that Drive Growth</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="content d-flex flex-column">
-                                <h1 class="f55">Deep Expertise <br> Across Industries</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        Counter = Counter + 1;
+                    }
+                    {
+                        Counter = 1;
+                    }
+                    foreach (var item in Model.Carousel)
+                    {
+                        if (Counter == 1)
+                        {
+                            <style>
+                                .home .carousel-item {
+                                    background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)), url('@(baseUrl + DbImagePath.HomeCarousel + item.UploadedData)') center no-repeat;
+                                    background-size: cover !important;
+                                }
+                            </style>
+                        }
+                        else
+                        {
+                            <style>
+                                .home .carousel-item:nth-child( @Counter ) {
+                                    background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)), url('@(baseUrl + DbImagePath.HomeCarousel + item.UploadedData)') center bottom no-repeat;
+                                }
+                            </style>
+                        }
+                        Counter = Counter + 1;
+                    }
+                }
             </div>
         </div>
     </div>
-</div>
-
-<div class="snapshot">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="content">
-                    <h5 class="num f52"><span class="count">4</span>,000+</h5>
-                    <h5 class="details f20">PROJECTS COMPLETED</h5>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="content">
-                    <h5 class="num f52"><span class="count">25</span>+</h5>
-                    <h5 class="details f20">YEARS TRACK RECORD</h5>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="content">
-                    <h5 class="num f52"><span class="count">15</span>+</h5>
-                    <h5 class="details f20">YEARS AVERAGE LEADERSHIP TENURE</h5>
+    @if (Model != null && Model.AtAGlance != null)
+    {
+        <div class="snapshot">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.AtAGlance)
+                    {
+                        <div class="col-md-4">
+                            <div class="content">
+                                @Html.Raw(item.Description)
+                                <h5 class="details f20">@item.Heading</h5>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    }
 
-<div class="partner">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="f31">Your Partner for Transactions and Growth</h3>
-                <h5 class="f18 mb-4">We advise private equity and corporate leaders on transactions and throughout the investment lifecycle. We bring nuanced solutions and high-impact strategies that inform investment decisions.</h5>
-            </div>
-        </div>
-
-        <div class="row gx-3">
-            <div class="col-sm-4 gx-3">
-                <div class="content">
-                    <h5 class="title f32">Industry Depth</h5>
-                    <p class="f22">Specialized teams that are experts in navigating the complexities across and within industries.</p>
-                </div>
-            </div>
-
-            <div class="col-sm-4 gx-3">
-                <div class="content">
-                    <h5 class="title f32">Senior Attention</h5>
-                    <p class="f22"> Experienced, senior management that is active on every project from inception to delivery.</p>
-                </div>
-            </div>
-
-            <div class="col-sm-4 gx-3">
-                <div class="content">
-                    <h5 class="title f32">Growth Focus</h5>
-                    <p class="f22">Dedicated value creation team that evaluates, designs, and executes high-impact growth strategies.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="core">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="f31">Core Areas of Focus</h3>
-                <p class="f18">We advise investors and business leaders through transactions and growth initiatives.</p>
-            </div>
-        </div>
-
-        <div class="main">
+    <div class="partner">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-1.svg" alt="icon" class="img-contain">
+                <div class="col-12">
+                    <h3 class="f31">@Model?.Home.TransactionsGrowthHeading</h3>
+                    <h5 class="f18 mb-4">@Model?.Home.TransactionsGrowthDescription</h5>
+                </div>
+            </div>
+            @if (Model?.TransactionsandGrowth != null)
+            {
+                <div class="row gx-3">
+                    @foreach (var item in Model.TransactionsandGrowth)
+                    {
+                        <div class="col-sm-4 gx-3">
+                            <div class="content">
+                                <h5 class="title f32">@item.Heading</h5>
+                                <p class="f22">@item.Description</p>
+                            </div>
                         </div>
-                        <h5 class="title f24">M&A Due Diligence</h5>
-                        <h5 class="desc">Perform buy-side commercial diligence on mission critical investment issues (addressable market, growth, competition, VoC)</h5>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="core">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="f31">@Model?.Home?.CoreAreasHeading</h3>
+                    <p class="f18">@Model?.Home?.CoreAreaDescription</p>
+                </div>
+            </div>
+            @if (Model?.CoreAreasoFocus != null)
+            {
+                <div class="main">
+                    <div class="row">
+                        @foreach (var item in Model.CoreAreasoFocus)
+                        {
+                            <div class="col-md-6 col-lg-4">
+                                <div class="content">
+                                    <div class="img-container">
+                                        <img src='@(baseUrl+DbImagePath.HomeImage+item.UploadedData)' alt="@item.Heading" title="@item.Heading" class="img-contain" asp-append-version="true">
+                                    </div>
+                                    <h5 class="title f24">@item.Heading</h5>
+                                    <h5 class="desc">@item.Description</h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            <style>
+                .core .main::before {
+                    position: absolute;
+                    top: 1.25rem;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    content: '';
+                    background: url('@(baseUrl + "images/art/core-areas-ark.png")') center top no-repeat;
+                    background-size: 100%;
+                }
+            </style>
+        </div>
+    </div>
+
+    <div class="recent-projects p-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="f31">@Model?.Home?.RecentProjectsHeading</h3>
+                    <p class="f18 pb-lg-3 mb-4">@Model?.Home?.RecentProjectsDescription.</p>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <a href='@(baseUrl + "experience")' class="view-more f16 ms-auto">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile">
+                        <div class="content">
+                            <div class="img-container">
+                                <span>IGS supported</span>
+                                <img src="./images/portfolio/BETTERRX.png" alt="BETTERRX logo" class="img-contain" />
+                            </div>
+                            <h5>in its sale to</h5>
+                            <div class="img-container">
+                                <img src="./images/portfolio/BVP.png" alt="BVP logo" class="img-contain" />
+                            </div>
+                        </div>
+                        <h6>Hospice Pharmacy Software Platform</h6>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-2.svg" alt="icon" class="img-contain">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile">
+                        <div class="content">
+                            <div class="img-container">
+                                <img src="./images/portfolio/CIVCPartners.png" alt="CIVCPartners logo" class="img-contain" />
+                            </div>
+                            <h5>invested in</h5>
+                            <div class="img-container">
+                                <img src="./images/portfolio/ELITE.png" alt="ELITE logo" class="img-contain" />
+                            </div>
                         </div>
-                        <h5 class="title f24">Growth Strategy</h5>
-                        <h5 class="desc">Accelerate organic and inorganic growth via improved competitiveness, adjacent market penetration, and new capabilities</h5>
+                        <h6>Remote Video Guarding & Real-Time Crime Prevention</h6>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-3.svg" alt="icon" class="img-contain">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile">
+                        <div class="content">
+                            <div class="img-container">
+                                <img src="./images/portfolio/LevineLeichtman.png" alt="LevineLeichtman logo" class="img-contain" />
+                            </div>
+                            <h5>acquired</h5>
+                            <div class="img-container">
+                                <img src="./images/portfolio/ShipleyDonuts.jpg" alt="ShipleyDonuts logo" class="img-contain" />
+                            </div>
                         </div>
-                        <h5 class="title f24">Revenue Optimization</h5>
-                        <h5 class="desc">Understand the behavior of customers and identify the key areas for growth acceleration</h5>
+                        <h6>Donuts, Kolaches &  Beverages</h6>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-4.svg" alt="icon" class="img-contain">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile">
+                        <div class="content">
+                            <div class="img-container">
+                                <img src="./images/portfolio/Nexa.png" alt="Nexa logo" class="img-contain" />
+                            </div>
+                            <h5>invested in</h5>
+                            <div class="img-container">
+                                <img src="./images/portfolio/FacilityGrid.png" alt="FacilityGrid logo" class="img-contain" />
+                            </div>
                         </div>
-                        <h5 class="title f24">Sell-Side Industry Study</h5>
-                        <h5 class="desc">Provide mission-critical data, analysis, and insights to help position companies for successful exits. Our sell-side industry reports support owners, management teams, and their advisors in preparing for a sale</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-5.svg" alt="icon" class="img-contain">
-                        </div>
-                        <h5 class="title f24">Go-to-Market Transformation</h5>
-                        <h5 class="desc">Generate faster conversion times, higher win rates and a more efficient sales effort</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/icons/core-6.svg" alt="icon" class="img-contain">
-                        </div>
-                        <h5 class="title f24">Pricing Strategy & Execution</h5>
-                        <h5 class="desc">Capture the differential value of your offering. Maximizing EBITDA and margins, while increasing customer lifetime value</h5>
+                        <h6>Commissioning & Operational Readiness Software</h6>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="recent-projects p-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <h3 class="f31">Recent Projects</h3>
-                <p class="f18 pb-lg-3 mb-4">We work across industry verticals to bring deep market insights that inform deal decisions.</p>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="d-flex flex-column">
-                    <a href="./experience.html" class="view-more f16 ms-auto">View All</a>
+    <div class="latest-insights">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="f31">Our Latest Insights</h3>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="tile">
-                    <div class="content">
-                        <div class="img-container">
-                            <span>IGS supported</span>
-                            <img src="./images/portfolio/BETTERRX.png" alt="BETTERRX logo" class="img-contain" />
-                        </div>
-                        <h5>in its sale to</h5>
-                        <div class="img-container">
-                            <img src="./images/portfolio/BVP.png" alt="BVP logo" class="img-contain" />
-                        </div>
+                <div class="col-lg-6">
+                    <div class="d-flex flex-column">
+                        <a href="./insights.html" class="view-more f16 ms-auto">View All</a>
                     </div>
-                    <h6>Hospice Pharmacy Software Platform</h6>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="tile">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/portfolio/CIVCPartners.png" alt="CIVCPartners logo" class="img-contain" />
-                        </div>
-                        <h5>invested in</h5>
-                        <div class="img-container">
-                            <img src="./images/portfolio/ELITE.png" alt="ELITE logo" class="img-contain" />
-                        </div>
-                    </div>
-                    <h6>Remote Video Guarding & Real-Time Crime Prevention</h6>
+                <div class="co-12">
+                    <hr>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="tile">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/portfolio/LevineLeichtman.png" alt="LevineLeichtman logo" class="img-contain" />
-                        </div>
-                        <h5>acquired</h5>
-                        <div class="img-container">
-                            <img src="./images/portfolio/ShipleyDonuts.jpg" alt="ShipleyDonuts logo" class="img-contain" />
-                        </div>
-                    </div>
-                    <h6>Donuts, Kolaches &  Beverages</h6>
+                <div class="col-lg-6">
+                    <h4 class="f31">Building a Sales Discipline: How Leading Sales Organizations Design, Deploy, and Monitor Effective Sales Teams</h4>
+
+                    <p class="f18">For any high-growth company, there is a moment of reckoning. The scrappy, instinct-driven sales approach that secured the first 10, 50, or 100 customers begins to falter. Growth stalls, forecasts become unreliable, and the cost of acquiring new revenue climbs. The common reaction is to hire more salespeople, but this often magnifies the problem rather than solving it. This is the growth paradox: the very success of early-stage, "hero-based" selling creates the complexity that prevents the company from scaling effectively.</p>
+
+                    <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank" class="view-more mt-3">Download Full Report</a>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="tile">
-                    <div class="content">
-                        <div class="img-container">
-                            <img src="./images/portfolio/Nexa.png" alt="Nexa logo" class="img-contain" />
-                        </div>
-                        <h5>invested in</h5>
-                        <div class="img-container">
-                            <img src="./images/portfolio/FacilityGrid.png" alt="FacilityGrid logo" class="img-contain" />
-                        </div>
+                <div class="col-lg-6">
+                    <div class="img-container">
+                        <img src="./images/news/Building-Sales-Discipline.png" alt="Building a Sales Discipline" class="img-cover">
                     </div>
-                    <h6>Commissioning & Operational Readiness Software</h6>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="latest-insights">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3 class="f31">Our Latest Insights</h3>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="d-flex flex-column">
-                    <a href="./insights.html" class="view-more f16 ms-auto">View All</a>
+    <div class="subscribe mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="f31">Subscribe to Our Newsletter</h3>
                 </div>
-            </div>
 
-            <div class="co-12">
-                <hr>
-            </div>
-
-            <div class="col-lg-6">
-                <h4 class="f31">Building a Sales Discipline: How Leading Sales Organizations Design, Deploy, and Monitor Effective Sales Teams</h4>
-
-                <p class="f18">For any high-growth company, there is a moment of reckoning. The scrappy, instinct-driven sales approach that secured the first 10, 50, or 100 customers begins to falter. Growth stalls, forecasts become unreliable, and the cost of acquiring new revenue climbs. The common reaction is to hire more salespeople, but this often magnifies the problem rather than solving it. This is the growth paradox: the very success of early-stage, "hero-based" selling creates the complexity that prevents the company from scaling effectively.</p>
-
-                <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank" class="view-more mt-3">Download Full Report</a>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="img-container">
-                    <img src="./images/news/Building-Sales-Discipline.png" alt="Building a Sales Discipline" class="img-cover">
+                <div class="col-lg-6">
+                    <!-- Begin Constant Contact Active Forms -->
+                    <script> var _ctct_m = "13c91cd070a593031fa47fc780d3d3c4"; </script>
+                    <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+                    <!-- End Constant Contact Active Forms -->
+                    <!-- Begin Constant Contact Inline Form Code -->
+                    <div id="subscription-form" class="ctct-inline-form" data-form-id="41d5ae86-f687-4b99-b1ab-32ae7f6ed40f"></div>
+                    <!-- End Constant Contact Inline Form Code -->
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="subscribe mt-auto">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3 class="f31">Subscribe to Our Newsletter</h3>
-            </div>
-
-            <div class="col-lg-6">
-                <!-- Begin Constant Contact Active Forms -->
-                <script> var _ctct_m = "13c91cd070a593031fa47fc780d3d3c4"; </script>
-                <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
-                <!-- End Constant Contact Active Forms -->
-                <!-- Begin Constant Contact Inline Form Code -->
-                <div id="subscription-form" class="ctct-inline-form" data-form-id="41d5ae86-f687-4b99-b1ab-32ae7f6ed40f"></div>
-                <!-- End Constant Contact Inline Form Code -->
-            </div>
-        </div>
-    </div>
-</div>
+}

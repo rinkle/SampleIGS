@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\homeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\homeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\homevmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\homevmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HomeVmService.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\HomeVmService.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\HomeVmService.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\HomeVmService.cs",
-              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\HomeVmService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAwAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:32:08.066Z",
+              "Title": "style.css",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\wwwroot\\css\\style.css",
+              "RelativeDocumentMoniker": "IGS.Web\\wwwroot\\css\\style.css",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\wwwroot\\css\\style.css",
+              "RelativeToolTip": "IGS.Web\\wwwroot\\css\\style.css",
+              "ViewState": "AgIAABoCAAAAAAAAAAAEwCACAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-03T22:37:11.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HomeService.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\HomeService.cs",
-              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\HomeService.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\HomeService.cs",
-              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\HomeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:31:45.726Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "IGS.Web\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAiwHsAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-03T22:36:33.716Z",
               "EditorCaption": ""
             }
           ]

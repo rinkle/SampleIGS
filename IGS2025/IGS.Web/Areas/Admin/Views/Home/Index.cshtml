@@ -318,6 +318,29 @@
                 <div class="row">
                     <hr />
                 </div>
+                <div class="x_title">
+                    <h2>Core Area Section <small>:</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Home.CoreAreasHeading">Core Areas Heading</label>
+                                <input asp-for="Home.CoreAreasHeading" class="form-control" placeholder="Core Areas Heading" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br />
+                                <label asp-for="Home.CoreAreaDescription">Core Areas Description</label>
+                                <textarea asp-for="Home.CoreAreaDescription" class="form-control" placeholder="Core Areas Heading"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 @if (Model.CoreAreasoFocus != null && Model.CoreAreasoFocus.Count > 0)
                 {
                     <div class="x_title">

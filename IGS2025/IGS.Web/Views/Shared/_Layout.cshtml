@@ -74,7 +74,7 @@
         <nav class="navbar navbar-expand-lg fixed-top trans">
             <div class="container">
                 <a class="navbar-brand ms-0" href="@baseUrl">
-                    <img src='@(baseUrl + "images/IGS-logo.svg")' alt="IGS logo" class="img-fluid trans" />
+                    <img src='@(baseUrl + "images/IGS-logo.svg")' alt="IGS logo" class="img-fluid trans" asp-append-version="true" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
@@ -110,13 +110,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-xl-5">
-                        <a href="./index.html" class="nav-logo">
-                            <img src="./images/IGS-logo.svg" alt="IGS logo" class="img-fluid" />
+                        <a href="@baseUrl" class="nav-logo">
+                            <img src='@(baseUrl + "images/IGS-logo.svg")' alt="IGS logo" class="img-fluid" asp-append-version="true" />
                         </a>
 
                         <nav class="nav nav-social f16">
-                            <a href="mailto:contact@igsinsights.com" class="nav-item"><img src="./images/icons/footer-mail.svg" alt="mail icon" class="img-contain"></a>
-                            <a href="https://www.linkedin.com/company/igsboston/life/igslife/" target="_blank" class="nav-item"><img src="./images/icons/footer-linkedin.svg" alt="linkedin icon" class="img-contain"></a>
+                            @if (!string.IsNullOrEmpty(common?.ContactInfo?.Email))
+                            {
+                                <a href="mailto:@common?.ContactInfo?.Email" class="nav-item"><img src='@(baseUrl + "images/icons/footer-mail.svg")' alt="mail icon" class="img-contain"></a>
+                            }
+                            @if (!string.IsNullOrEmpty(common?.ContactInfo?.LinkedInUrl))
+                            {
+                                <a href="@common?.ContactInfo?.LinkedInUrl" target="_blank" class="nav-item"><img src='@(baseUrl + "images/icons/footer-linkedin.svg")' alt="linkedin icon" class="img-contain" asp-append-version="true"></a>
+                            }
                         </nav>
                     </div>
 
@@ -125,16 +131,19 @@
 
                         <div class="d-flex flex-column flex-lg-row justify-content-between">
                             <nav class="nav flex-column f16">
-                                <a href="./transaction-services.html" class="nav-item me-lg-auto">Transaction Services</a>
-                                <a href="./portfolio-services.html" class="nav-item">Portfolio Services</a>
-                                <a href="./industries.html" class="nav-item">Industries</a>
-                                <a href="./experience.html" class="nav-item me-lg-auto">Experience</a>
+                                <a href='@(baseUrl + "transaction-services")' class="nav-item me-lg-auto">Transaction Services</a>
+                                <a href='@(baseUrl + "ortfolio-services")' class="nav-item">Portfolio Services</a>
+                                <a href='@(baseUrl + "ndustries")' class="nav-item">Industries</a>
+                                <a href='@(baseUrl + "experience")' class="nav-item me-lg-auto">Experience</a>
                             </nav>
 
                             <nav class="nav flex-column f16">
-                                <a href="./insights.html" class="nav-item">Insights</a>
-                                <a href="./team.html" class="nav-item">Team</a>
-                                <a href="https://careers.igsinsights.com/" target="_blank" class="nav-item">Careers</a>
+                                <a href='@(baseUrl + "insights")' class="nav-item">Insights</a>
+                                <a href='@(baseUrl + "team")' class="nav-item">Team</a>
+                                @if (!string.IsNullOrEmpty(common?.OtherContact?.CareersUrl))
+                                {
+                                    <a href="@common?.OtherContact.CareersUrl" target="_blank" class="nav-item">Careers</a>
+                                }
                             </nav>
                         </div>
                     </div>
@@ -144,30 +153,30 @@
                             <h5>Contact Info</h5>
 
                             <address>
-                                <a href="tel:617-371-4000">617 371 4000</a>
-                                <img src="./images/icons/footer-phone.svg" alt="phone icon" class="img-contain">
+                                @if (!string.IsNullOrEmpty(common?.ContactInfo?.Phone))
+                                {
+                                    <a href="tel:@common?.ContactInfo?.Phone">@common?.ContactInfo?.Phone</a>
+                                }
+                                <img src='@(baseUrl + "images/icons/footer-phone.svg")' alt="phone icon" class="img-contain">
                             </address>
 
                             <address>
-                                855 Boylston Street, <br>
-                                6th Floor <br>
-                                Boston, MA
-                                <img src="./images/icons/footer-location.svg" alt="location icon" class="img-contain">
+                                @common?.ContactInfo?.Street_Address1, <br>
+                                @common?.ContactInfo?.Street_Address2 <br>
+                                @common?.ContactInfo?.City, @common?.ContactInfo?.State
+                                <img src='@(baseUrl + "images/icons/footer-location.svg")' alt="location icon" class="img-contain" asp-append-version="true">
                             </address>
                         </nav>
                     </div>
 
                     <div class="col-12">
                         <p>
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
+                            © @DateTime.Now.Year
                             All Rights Reserved - Investor Group Services
                             <span class="float-md-end"><a href="https://www.privateequitysites.com" target="_blank">CleverDesign</a></span>
-                            <span class="float-md-end hide-footer-links"><a href="./privacy.html">Privacy Policy</a></span>
+                            <span class="float-md-end hide-footer-links"><a href="javascript:void(0);">Privacy Policy</a></span>
                             <span class="float-md-end dot"></span>
-                            <span class="float-md-end hide-footer-links"><a href="./terms.html">Terms & Conditions</a></span>
+                            <span class="float-md-end hide-footer-links"><a href="javascript:void(0);">Terms & Conditions</a></span>
                         </p>
                     </div>
                 </div>
@@ -181,9 +190,9 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/77ad13de6a.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/count.js" asp-append-version="true">></script>
-    <script type="text/javascript" src="./js/scroll.js" asp-append-version="true">></script>
-    <script type="text/javascript" src="./js/script.js" asp-append-version="true">></script>
+    <script type="text/javascript" src='@(baseUrl + "js/count.js")' asp-append-version="true"></script>
+    <script type="text/javascript" src='@(baseUrl + "js/scroll.js")' asp-append-version="true"></script>
+    <script type="text/javascript" src='@(baseUrl + "js/script.js")' asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!-- #endregion -->
 </body>
