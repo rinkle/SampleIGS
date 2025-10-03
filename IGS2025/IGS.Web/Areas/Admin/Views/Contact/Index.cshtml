@@ -1,0 +1,91 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.ContactViewModel
+@{
+    ViewBag.Title = "Contact Addresses Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+<div class="row">
+    <form asp-action="SaveContact"
+          asp-controller="Contact"
+          asp-area="Admin"
+          method="post"
+          enctype="multipart/form-data"
+          id="form-contact"
+          class="form-horizontal form-label-left input_mask"
+          data-parsley-validate
+          novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-12 col-xs-12">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Manage Contact </h3>
+                </div>
+            </div>
+
+            @if (Model.ContactList != null && Model.ContactList.Count > 0)
+            {
+                for (int i = 0; i < Model.ContactList.Count; i++)
+                {
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>
+                                @(string.IsNullOrEmpty(Model.ContactList[i].Organization)
+                                                        ? $"Contact"
+                                                        : Model.ContactList[i].Organization)
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                        <div class="x_content">
+                            <input asp-for="ContactList[i].Id" type="hidden" />
+
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].Street_Address1"></label>
+                                    <input asp-for="ContactList[i].Street_Address1" class="form-control" placeholder="Street Address 1" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].Street_Address2"></label>
+                                    <input asp-for="ContactList[i].Street_Address2" class="form-control" placeholder="Street Address 2" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].City"></label>
+                                    <input asp-for="ContactList[i].City" class="form-control" placeholder="City" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].State"></label>
+                                    <input asp-for="ContactList[i].State" class="form-control" placeholder="State" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].Phone"></label>
+                                    <input asp-for="ContactList[i].Phone" class="form-control" placeholder="Phone" />
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label asp-for="ContactList[i].Email"></label>
+                                    <input asp-for="ContactList[i].Email" class="form-control" type="email" placeholder="Email" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="ContactList[i].LinkedInUrl"></label>
+                                    <input asp-for="ContactList[i].LinkedInUrl" class="form-control" placeholder="LinkedIn URL" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        }
+            }
+
+            <div class="x_title" style="width:100%;float:right;">
+                <div style="float:right;padding-right:10px;">
+                    <input type="submit" class="btn btn-round btn-dark" value="Save" id="btnsave" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

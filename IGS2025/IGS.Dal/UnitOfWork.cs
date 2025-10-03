@@ -24,8 +24,9 @@ namespace IGS.Dal.Repository
         public ITeamCategoryRepository TeamCategory { get; private set; }
         public ITeamTitleRepository TeamTitle { get; private set; }
         public INewsRepository News { get; private set; }
-
         public INewsCommonDataRepository NewsCommonData { get; private set; }
+        public IContactRepository Contact { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db, ISqlHelper sql)
         {
             _db = db;
@@ -45,6 +46,7 @@ namespace IGS.Dal.Repository
             TeamTitle = new TeamTitleRepository(_db, _sql);
             News = new NewsRepository(_db, _sql);
             NewsCommonData = new NewsCommonDataRepository(_db);
+            Contact = new ContactRepository(_db, _sql);
         }
 
         public void Save() => _db.SaveChanges();

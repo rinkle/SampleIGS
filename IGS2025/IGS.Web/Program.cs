@@ -101,6 +101,8 @@ builder.Services.AddScoped<ITeamTitleVmService, TeamTitleVmService>();
 
 builder.Services.AddScoped<INewsVmService, NewsVmService>();
 builder.Services.AddScoped<INewsService, NewsService>();
+builder.Services.AddScoped<IContactVmService, ContactVmService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 
 var app = builder.Build();

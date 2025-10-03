@@ -38,7 +38,7 @@ namespace IGS.Dal.Data
         public DbSet<NewsCategory> NewsCategories { get; set; }
         public DbSet<NewsCategoryMapping> NewsCategoryMappings { get; set; }
         public DbSet<NewsCommonData> NewsCommonData { get; set; } = default!;
-
+        public DbSet<Contact> Contacts { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -60,6 +60,7 @@ namespace IGS.Dal.Data
             builder.Entity<TeamTitle>().ToTable("TeamTitle");
             builder.Entity<TeamCategory>().ToTable("TeamCategory");
             builder.Entity<TeamCategoryMapping>().ToTable("TeamCategoryMapping");
+            builder.Entity<Contact>().ToTable("Contact");
 
             //news
 
@@ -113,6 +114,7 @@ namespace IGS.Dal.Data
             builder.Entity<GetNewsCategoryMapping_Result>().HasNoKey();
             builder.Entity<GetNewsPageMapping_Result>().HasNoKey();
             builder.Entity<GetNewsCommonData_Result>().HasNoKey().ToView(null);
+            builder.Entity<GetContact_Result>().HasNoKey().ToView(null);
 
         }
     }

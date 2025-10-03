@@ -18,6 +18,7 @@ namespace IGS.Dal.Repository.IRepository
         ITeamTitleRepository TeamTitle { get; }
         INewsRepository News { get; }
         INewsCommonDataRepository NewsCommonData { get; }
+        IContactRepository Contact { get; }
         void Save();
         Task SaveAsync();
 
