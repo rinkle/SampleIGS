@@ -28,7 +28,6 @@
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Display Order</th>
                                 <th>Name</th>
                                 <th>Bio Image</th>
                                 <th>Action</th>
@@ -40,7 +39,6 @@
                                 foreach (var item in Model.TeamList.ToList())
                                 {
                                     <tr>
-                                        <td>@item.DisplayOrder</td>
                                         <td>
                                             <b style="font-size:15px;"> @item.FirstName @item.MiddleName @item.LastName </b><i> <br />@item.TeamTitleName<br /></i>
                                             <b>@item.CategoryNames</b>
