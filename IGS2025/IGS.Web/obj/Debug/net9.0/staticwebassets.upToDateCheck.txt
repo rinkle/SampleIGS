@@ -3777,6 +3777,8 @@ wwwroot\images\loader-old.gif
 wwwroot\images\News\Industrial-Automation.jpg
 wwwroot\images\pageHeader\experience.jpg
 wwwroot\images\pageHeader\industries.jpg
+wwwroot\images\pageHeader\insights.jpg
+wwwroot\images\pageHeader\insights_old_20251007035208.jpg
 wwwroot\images\pageHeader\portfolio-services.jpg
 wwwroot\images\pageHeader\team.jpg
 wwwroot\images\pageHeader\transaction-services.jpg

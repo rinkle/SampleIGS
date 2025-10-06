@@ -1,0 +1,131 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.NewsViewModel
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+@if (Model?.NewsList?.Count > 0 && Model?.NewsCommonData != null)
+{
+    <div class="explore">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="f31">@Model?.NewsCommonData?.InsightHeading</h3>
+                    <p class="f18">@Model?.NewsCommonData?.InsightSubHeading</p>
+                </div>
+            </div>
+            @if (Model?.NewsList != null && Model?.NewsList?.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div class="company-slider">
+                            @foreach (var item in Model?.NewsList)
+                            {
+                                string url = string.Empty;
+
+                                if (item.NewsType == 1)
+                                {
+                                    url = baseUrl + "insight-info/" + item.NewsUrl;
+                                }
+
+                                if (item.NewsType == 2)
+                                {
+                                    url = item?.ExternalLink;
+                                    if (!string.IsNullOrEmpty(item?.ExternalLink) && !item.ExternalLink.Contains("http"))
+                                    {
+                                        url = "http://" + item.ExternalLink;
+                                    }
+                                }
+                                if (item?.NewsType == 3)
+                                {
+                                    url = baseUrl + DbImagePath.InsightPdf + item.PdfFileName;
+                                }
+                                <div class="slider-box">
+                                    <a href="@url" @((item?.NewsType == 2 || item?.NewsType == 3) ? "target='_blank'" : "")>
+                                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url('@(baseUrl + DbImagePath.InsightImage + item?.Logo)') center no-repeat;"></div>
+                                        <h5 class="title f26">@item?.NewsHeadLine</h5>
+                                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div class="latest-insights featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="f31 mb-5">@Model?.NewsCommonData?.FeaturedInsightHeading</h3>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 class="f31">@Model?.NewsCommonData?.FeaturedInsightSubHeading</h4>
+
+                    <p class="f18">
+                        @Html.Raw(Model?.NewsCommonData?.FeaturedInsightDescription)
+                    </p>
+                    @if (!string.IsNullOrEmpty(Model?.NewsCommonData?.FeaturedInsightPdf))
+                    {
+                        <a href='@(baseUrl + DbImagePath.InsightImage + Model?.NewsCommonData?.FeaturedInsightPdf)' target="_blank" class="view-more alt mt-3">Download Full Report</a>
+                    }
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="img-container">
+                        <img src='@(baseUrl + DbImagePath.InsightImage + Model?.NewsCommonData?.FeaturedInsightImage)' alt="Building a Sales Discipline" class="img-cover" asp-append-version="true" />
+                    </div>
+                </div>
+            </div>
+
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <div class="recent-projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="f31">@Model?.NewsCommonData?.RecentProjectsHeading</h3>
+                    <p class="f18 pb-lg-3 mb-4">@Model?.NewsCommonData?.RecentProjectsDescription</p>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <a href='@(baseUrl + "experience")' class="view-more f16 ms-auto">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="experienceContainer">
+                <p>Loading recent projects...</p>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+             let pageNumber = 1;
+             const itemsPerPage = 4;
+             const pageIds = "1";
+             const categoryIds = "";
+             const orderBy = "DisplayOrder";
+            $.get("@Url.Action("LoadExperienceSection", "Common")", {  categoryIds, pageIds, orderBy,pageNumber, itemsPerPage })
+                .done(function (result) {
+                    $("#experienceContainer").html(result);
+                })
+                .fail(function () {
+                    $("#experienceContainer").html("<p>Error loading experiences.</p>");
+             });
+        });
+    </script>
+}
