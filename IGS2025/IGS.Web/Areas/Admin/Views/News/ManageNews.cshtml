@@ -41,11 +41,23 @@
                         <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                             <label for="DisplayOrder">Display Order:</label>
                             @Html.TextBoxFor(m => m.NewsInfo.DisplayOrder,
-                                                        new { @class = "form-control numericval",required="",  placeholder = "Display Order" })
+                                                        new { @class = "form-control numericval", required = "", placeholder = "Display Order" })
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                            <label for="fullname">Type:</label>
+                            <br />
+                            @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "1", new { id = "internalnews", @class = "newstype" })
+                            @Html.Label("Internal News", "Internal News")
+                            &nbsp;&nbsp;
+                            @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "2", new { id = "externalnews", @class = "newstype" })
+                            @Html.Label("External News", "External News")
+                            &nbsp;&nbsp;
+                            @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "3", new { id = "pdffileradio", @class = "newstype" })
+                            @Html.Label("PDf upload", "PDf upload")
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                             <label for="Logo">Logo:</label><br />
                             <input id="LogoImage" type="file"
                                    onchange="processImage(this, 'imagepreview_LogoImage', 'hdnImage_LogoImageName',
@@ -70,21 +82,43 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class='row @((Model.NewsInfo.NewsType.HasValue && Model.NewsInfo.NewsType.Value == 2) ? "shownewstype" : "hidenewstype")' id="extnewstypediv">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label for="Description">External URL:</label>
+                                @Html.TextBoxFor(mode => Model.NewsInfo.ExternalLink, new { @class = "form-control", placeholder = "External URL", type = "url" })
+                            </div>
+                        </div>
+
+                        <div class='row @((Model.NewsInfo.NewsType.HasValue && Model.NewsInfo.NewsType.Value == 3) ? "shownewstype" : "hidenewstype")' id="pdfnewsdiv">
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <br />
+                                <label for="PDF">Pdf :</label>
+                                <input id='@("NewsInsightPdfReport")' type="file" onchange="processPdf(this,'@("imagepreviewInsightPdfReport")','@("hdnImageInsightPdfReport")','@DbImagePath.InsightPdf');" />
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-1 form-group">
+                                <br /><br />
+                                @Html.HiddenFor(x => x.NewsInfo.PdfFileName, new { @class = "hdnImageInsightPdfReport" })
+                                <a target="_blank" class='@("imagepreviewInsightPdfReport") @(string.IsNullOrEmpty(Model.NewsInfo.PdfFileName) ? "dnone" : "")' href='@(!string.IsNullOrEmpty(Model.NewsInfo.PdfFileName) ? baseUrl + DbImagePath.InsightPdf + Model.NewsInfo.PdfFileName : "javascript:void(0);")'> <i class="fa fa-file-pdf-o"></i>View pdf</a>
+                            </div>
+                        </div>
+
+
+
+                        <div id="intnewstypediv1" class='row intnewstypediv @((Model.NewsInfo.NewsType.HasValue && Model.NewsInfo.NewsType.Value == 1) ? "shownewstype" : "hidenewstype")'>
                             <div class="col-md-12 form-group">
                                 <label for="Description"> Description:</label>
                                 @Html.TextAreaFor(m => m.NewsInfo.Description,
                                 new { @class = "form-control ckeditor1", placeholder = "Description", rows = "6" })
                         </div>
                     </div>
-                    <div class="row">
+                    <div id="intnewstypediv2" class='row intnewstypediv @((Model.NewsInfo.NewsType.HasValue && Model.NewsInfo.NewsType.Value == 1) ? "shownewstype" : "hidenewstype")'>
                         <div class="col-md-12 form-group">
                             <label for="Key Insights">Key Insights:</label>
                             @Html.TextAreaFor(m => m.NewsInfo.KeyInsight,
                                                         new { @class = "form-control ckeditor", placeholder = "Key Insights" })
                         </div>
                     </div>
-                    <div class="row">
+                    <div id="intnewstypediv3" class='row intnewstypediv @((Model.NewsInfo.NewsType.HasValue && Model.NewsInfo.NewsType.Value == 1) ? "shownewstype" : "hidenewstype")'>
                         <div class="col-md-12 form-group">
                             <label for="Bottom Text">Bottom Text:</label>
                             @Html.TextAreaFor(m => m.NewsInfo.BottomText,
@@ -151,5 +185,43 @@
                 }
             });
         }
+
+        $(function(){
+             $('.newstype').change(function () {
+                if ($(this).val() == '1') {
+                    $('.intnewstypediv').show();
+                    $('#extnewstypediv').hide();
+                    $('#pdfnewsdiv').hide();
+                }
+                if ($(this).val() == '2') {
+                    $('.intnewstypediv').hide();
+                    $('#extnewstypediv').show();
+                    $('#pdfnewsdiv').hide();
+                }
+                if ($(this).val() == '3') {
+                    $('.intnewstypediv').hide();
+                    $('#extnewstypediv').hide();
+                    $('#pdfnewsdiv').show();
+                } if ($(this).val() == '4') {
+                    $('.intnewstypediv').hide();
+                    $('#extnewstypediv').hide();
+                    $('#pdfnewsdiv').hide();
+                }
+            });
+        });
     </script>
 }
+
+<style>
+    .shownewstype {
+        display: block;
+    }
+
+    .hidenewstype {
+        display: none;
+    }
+
+    textarea {
+        min-height: 100px !important;
+    }
+</style>

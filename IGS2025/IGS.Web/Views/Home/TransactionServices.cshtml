@@ -1,0 +1,149 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting globalEnvironmentSetting
+@model IGS.Models.ViewModels.TransactionServicesViewModel
+
+@{
+    string baseUrl = globalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.TransactionService != null)
+{
+    <div class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="f31">@Model?.TransactionService?.AreasofFocusHeading</h3>
+                    <p class="f18">@Model?.TransactionService?.AreasofFocusDescription</p>
+                    @if (Model?.CoreAreasofFocus != null)
+                    {
+                        int Counter = 1;
+                        <div class="accordion" id="accordionServices">
+                            @foreach (var item in Model?.CoreAreasofFocus)
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="accordionServices-heading@(Counter)">
+                                        <button class="accordion-button collapsed f20" type="button" data-bs-toggle="collapse" data-bs-target="#accordionServices-collapse@(Counter)" aria-expanded="true" aria-controls="accordionServices-collapse@(Counter)">
+                                            @item.Heading
+                                        </button>
+                                    </h2>
+                                    <div id="accordionServices-collapse@(Counter)" class="accordion-collapse collapse" aria-labelledby="accordionServices-heading@(Counter)">
+                                        <div class="accordion-body">
+                                            @Html.Raw(item.Description)
+                                        </div>
+                                    </div>
+                                </div>
+                                Counter++;
+                            }
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="industry-expertise p-0">
+        <div class="container">
+            <div class="main">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="content d-flex flex-column h-100 justify-content-center">
+                            <h3 class="f50">@Model?.TransactionService?.IndustryExpertiseHeading</h3>
+                            <p class="f20">@Model?.TransactionService?.IndustryExpertiseSubHeading</p>
+                            <a href='@(baseUrl + "industries")' class="f18"><img src='@(baseUrl + "images/icons/arrow-right.svg")' alt="arrow right icon" class="img-contain" asp-append-version="true" /> Discover more</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        @if (!string.IsNullOrEmpty(Model?.TransactionService?.IndustryExpertiseDescription))
+                        {
+                            @Html.Raw(Model?.TransactionService?.IndustryExpertiseDescription.Replace("<ul>", "<ul class='list-unstyled f18'"))
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="f31">@Model?.TransactionService?.RecentProjectHeading</h3>
+                    <p class="f18 pb-lg-3 mb-4">@Model?.TransactionService?.RecentProjectDescription</p>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <a href='@(baseUrl+"experience")'  class="view-more f16 ms-auto">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="experienceContainer">
+                <p>Loading recent projects...</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="explore pt-0">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <h3 class="f31">Explore Our Insights</h3>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <a href="./insights.html" class="view-more f16 ms-auto">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank">
+                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Building-Sales-Discipline.png) center no-repeat;"></div>
+                        <h5 class="title f26">Building a Sales Discipline: How Leading Sales Organizations Design, Deploy, and Monitor Effective Sales Teams</h5>
+                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="./pdfs/Tariff_Responsive_Pricing_IGS.pdf" target="_blank">
+                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Tariffs.jpg) center no-repeat;"></div>
+                        <h5 class="title f26">Tariff-Responsive Pricing: Three Strategies for Navigating Uncertainties</h5>
+                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
+                    </a>
+                </div>
+
+
+
+                <div class="col-md-4">
+                    <a href="./case-industrial-automation.html">
+                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Industrial-Automation.jpg) center no-repeat;"></div>
+                        <h5 class="title f26">Pricing and Packaging Strategy for a SaaS Company Serving Manufacturers</h5>
+                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const pageIds = "2"; // adjust dynamically as needed
+
+            $.get("@Url.Action("LoadExperienceSection", "Home")", { pageIds })
+                .done(function (result) {
+                    $("#experienceContainer").html(result);
+                })
+                .fail(function () {
+                    $("#experienceContainer").html("<p>Error loading experiences.</p>");
+                });
+        });
+    </script>
+}

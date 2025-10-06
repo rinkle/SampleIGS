@@ -19,7 +19,8 @@ namespace IGS.Web.Controllers
         private readonly IHomeService _homeService;
         private readonly ICommonService _commonService;
         private readonly IExperienceVmService _experienceVmService;
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService)
+        private readonly ITransactionServicesVmService _transactionVmService;
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
@@ -27,8 +28,9 @@ namespace IGS.Web.Controllers
             _homeService = homeService;
             _commonService = commonService;
             _experienceVmService = experienceVmService;
+            _transactionVmService = transactionVmService;
         }
-
+        #region Home Page
         public async Task<IActionResult> Index()
         {
             try
@@ -47,7 +49,30 @@ namespace IGS.Web.Controllers
                 return View(null);
             }
         }
+        #endregion
 
+
+        #region Transaction Services Page
+        [Route("transaction-services")]
+        public async Task<IActionResult> TransactionServices()
+        {
+            try
+            {
+                ViewBag.pageName = PageName.TransactionServices;
+                ViewBag.canonical = "transaction-services";
+                CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.TransactionServices);
+                ViewBag.CommonService = CommonServiceModel;
+                TransactionServicesViewModel vm = await _transactionVmService.GetTransactionServicesVmAsync(isAdmin: false);
+                return View(vm);
+            }
+            catch (Exception ex)
+            {
+                int errorId = await _logger.LogErrorAsync(ex, "Error in Home/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+                return View(null);
+            }
+        }
+        #endregion
 
         [HttpGet]
         public IActionResult LoadExperienceSection(string? pageIds)

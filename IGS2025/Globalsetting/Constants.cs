@@ -62,6 +62,7 @@ namespace Globalsetting
         public const string TeamGrid = "images/Team/Grid/";
         public const string TeamBio = "images/Team/Bio/";
         public const string InsightImage = "images/Insight/";
+        public const string InsightPdf = "images/Insight/PDF/";
 
 
 

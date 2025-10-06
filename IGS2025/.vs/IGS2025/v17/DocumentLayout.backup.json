@@ -3,19 +3,12 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\shared\\components\\newslettersection\\_newslettersectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\shared\\components\\newslettersection\\_newslettersectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\viewmodels\\newsletterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\viewmodels\\newsletterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Git\\IGS-2025\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|e:\\git\\sampleigs\\igs2025\\globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|solutionrelative:globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeDocumentMoniker": "Globalsetting\\Constants.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
+              "RelativeToolTip": "Globalsetting\\Constants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T10:46:55.981Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -37,54 +43,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NewsLetterViewModel.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsLetterViewModel.cs",
-              "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\NewsLetterViewModel.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsLetterViewModel.cs",
-              "RelativeToolTip": "IGS.Models\\ViewModels\\NewsLetterViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T07:18:15.08Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAAAM8AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T07:14:06.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "index.html",
-              "DocumentMoniker": "E:\\Git\\IGS-2025\\index.html",
-              "RelativeDocumentMoniker": "..\\..\\IGS-2025\\index.html",
-              "ToolTip": "E:\\Git\\IGS-2025\\index.html",
-              "RelativeToolTip": "..\\..\\IGS-2025\\index.html",
-              "ViewState": "AgIAAF0BAAAAAAAAAAAAAHEBAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-06T07:13:43.27Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_NewsletterSectionPartial.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\NewsletterSection\\_NewsletterSectionPartial.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Shared\\Components\\NewsletterSection\\_NewsletterSectionPartial.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\NewsletterSection\\_NewsletterSectionPartial.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Shared\\Components\\NewsletterSection\\_NewsletterSectionPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Title": "ManageNews.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAqwNAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T07:13:06.41Z",
+              "WhenOpened": "2025-10-06T10:41:18.223Z",
               "EditorCaption": ""
             }
           ]

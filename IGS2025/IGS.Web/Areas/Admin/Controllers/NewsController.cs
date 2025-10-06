@@ -56,6 +56,8 @@ namespace IGS.Web.Areas.Admin.Controllers
 
             ViewBag.NewsId = newsId;
             var vm = await _newsVmService.GetNewsModelAsync(newsId);
+
+            vm.NewsInfo.NewsType = vm.NewsInfo.NewsType ?? 1;
             return View(vm);
         }
 
