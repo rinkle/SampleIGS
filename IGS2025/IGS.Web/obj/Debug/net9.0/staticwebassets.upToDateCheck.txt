@@ -3772,6 +3772,8 @@ wwwroot\images\Insight\Telecomm.jpg
 wwwroot\images\Insight\Urgent-Care.jpg
 wwwroot\images\Insight\Warehouse.jpg
 wwwroot\images\landing-1.jpg
+wwwroot\images\loader.gif
+wwwroot\images\loader-old.gif
 wwwroot\images\News\Industrial-Automation.jpg
 wwwroot\images\pageHeader\experience.jpg
 wwwroot\images\pageHeader\industries.jpg

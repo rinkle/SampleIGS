@@ -209,3 +209,62 @@ else
     <p>No experience data found.</p>
 }
 
+<script>
+    function toClassName(text) {
+      return text.trim().toLowerCase().replace(/\s+/g, '-');
+    }
+    const persons = Array.from(document.querySelectorAll('.tile'));
+    const loadMoreBtn = document.getElementById('load-more-btn'); // your load more button
+    const initialShow = 8;
+    const loadCount = 8;
+
+    let currentFilter = 'all';
+    let visibleCount = 0;
+
+    function filterPersons(filterClass) {
+      visibleCount = 0;
+
+      // First hide all person cards
+      persons.forEach(person => {
+        person.parentElement.style.display = 'none';
+      });
+
+      // Filtered persons to show (filtered by class)
+      const filtered = filterClass === 'all'
+        ? persons
+        : persons.filter(person => person.classList.contains(filterClass));
+
+      // Show only the first `initialShow` persons for now
+      filtered.forEach((person, index) => {
+        if (index < initialShow) {
+          person.parentElement.style.display = '';
+          visibleCount++;
+        }
+      });
+
+      // Show or hide the Load More button
+      if (filtered.length > visibleCount) {
+        loadMoreBtn.style.display = '';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+
+      return filtered;
+    }
+
+    let filteredPersons = filterPersons('all');
+
+    loadMoreBtn.addEventListener('click', function() {
+      let toShow = 0;
+
+      for (let i = visibleCount; i < filteredPersons.length && toShow < loadCount; i++) {
+        filteredPersons[i].parentElement.style.display = '';
+        visibleCount++;
+        toShow++;
+      }
+
+      if (visibleCount >= filteredPersons.length) {
+        loadMoreBtn.style.display = 'none';
+      }
+    });
+</script>

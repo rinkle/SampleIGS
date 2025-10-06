@@ -31,6 +31,8 @@
             </div>
 
             <div id="experienceContainer" class="row loadMore">
+
+                <img src='@(baseUrl + "images/loader.gif")' alt="loading..." style="height:200px;" asp-append-version="true">
             </div>
 
             <div class="row mt-3">
@@ -46,9 +48,12 @@
 
 @section Scripts {
     <script>
-        const pageIds = ""; // adjust dynamically as needed
+        const pageIds = "";
+        const categoryIds="";
+        const orderBy="DisplayOrder";
+
         $(document).ready(function () {
-            $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
+            $.get("@Url.Action("LoadExperienceSection", "Common")", {  categoryIds, pageIds, orderBy })
                 .done(function (result) {
                     $("#experienceContainer").html(result);
                 })
@@ -57,4 +62,6 @@
                 });
         });
     </script>
+
+   
 }
