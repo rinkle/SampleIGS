@@ -3773,6 +3773,7 @@ wwwroot\images\Insight\Urgent-Care.jpg
 wwwroot\images\Insight\Warehouse.jpg
 wwwroot\images\landing-1.jpg
 wwwroot\images\News\Industrial-Automation.jpg
+wwwroot\images\pageHeader\industries.jpg
 wwwroot\images\pageHeader\portfolio-services.jpg
 wwwroot\images\pageHeader\team.jpg
 wwwroot\images\pageHeader\transaction-services.jpg
