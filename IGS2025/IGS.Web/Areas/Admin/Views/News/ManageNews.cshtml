@@ -49,10 +49,10 @@
                             <label for="fullname">Type:</label>
                             <br />
                             @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "1", new { id = "internalnews", @class = "newstype" })
-                            @Html.Label("Internal News", "Internal News")
+                            @Html.Label("Internal", "Internal")
                             &nbsp;&nbsp;
                             @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "2", new { id = "externalnews", @class = "newstype" })
-                            @Html.Label("External News", "External News")
+                            @Html.Label("External", "External")
                             &nbsp;&nbsp;
                             @Html.RadioButtonFor(model => Model.NewsInfo.NewsType, "3", new { id = "pdffileradio", @class = "newstype" })
                             @Html.Label("PDf upload", "PDf upload")

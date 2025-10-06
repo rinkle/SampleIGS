@@ -21,8 +21,9 @@ namespace IGS.Web.Controllers
         private readonly IExperienceVmService _experienceVmService;
         private readonly ITransactionServicesVmService _transactionVmService;
         private readonly IPortfolioServicesVmService _portfolioVmService;
+        private readonly IIndustryVmService _industryVmService;
 
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService, IPortfolioServicesVmService portfolioServicesVmService)
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService, IPortfolioServicesVmService portfolioServicesVmService, IIndustryVmService industryVmService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
@@ -32,6 +33,7 @@ namespace IGS.Web.Controllers
             _experienceVmService = experienceVmService;
             _transactionVmService = transactionVmService;
             _portfolioVmService = portfolioServicesVmService;
+            _industryVmService = industryVmService;
         }
         #region Home Page
         public async Task<IActionResult> Index()
@@ -88,6 +90,28 @@ namespace IGS.Web.Controllers
                 CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.PortfolioServices);
                 ViewBag.CommonService = CommonServiceModel;
                 PortfolioServicesViewModel vm = await _portfolioVmService.GetPortfolioServicesVmAsync(isAdmin: false);
+                return View(vm);
+            }
+            catch (Exception ex)
+            {
+                int errorId = await _logger.LogErrorAsync(ex, "Error in Home/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+                return View(null);
+            }
+        }
+        #endregion
+
+        #region industries Page
+        [Route("industries")]
+        public async Task<IActionResult> Industries()
+        {
+            try
+            {
+                ViewBag.pageName = PageName.Industries;
+                ViewBag.canonical = "industries";
+                CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Industries);
+                ViewBag.CommonService = CommonServiceModel;
+                IndustryViewModel vm = await _industryVmService.GetIndustryVmAsync(isAdmin: false);
                 return View(vm);
             }
             catch (Exception ex)
