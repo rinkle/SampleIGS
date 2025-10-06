@@ -12,26 +12,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="f18">@ViewBag.HeaderAdditionalInfo </h4>
+                    <h4 class="f18">@ViewBag.HeaderAdditionalInfo</h4>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <nav class="nav nav-filter flex-column flex-sm-row justify-content-center">
-                        <a href="" class="nav-item active">All</a>
-                        <a href="" class="nav-item">Commercial & Industrial Services</a>
-                        <a href="" class="nav-item">Consumer & Retail</a>
-                        <a href="" class="nav-item">Healthcare</a>
-                        <a href="" class="nav-item">Industrials & Manufacturing</a>
-                        <a href="" class="nav-item">Professional Services</a>
-                        <a href="" class="nav-item">Technology & Software</a>
+                    <!-- ✅ Added id="categoryFilter" -->
+                    <nav id="categoryFilter" class="nav nav-filter flex-column flex-sm-row justify-content-center">
+                        <a href="javascript:void(0);" class="nav-item active" data-categoryid="">All</a>
+                        @if (Model?.IndustryCategory != null && Model.IndustryCategory.Count > 0)
+                        {
+                            foreach (var item in Model.IndustryCategory.OrderBy(x=>x.IndustryName).ToList())
+                            {
+                                <a href="javascript:void(0);" class="nav-item" data-categoryid="@item.Id">@item.IndustryName</a>
+                            }
+                        }
                     </nav>
                 </div>
             </div>
 
             <div id="experienceContainer" class="row loadMore">
-
                 <img src='@(baseUrl + "images/loader.gif")' alt="loading..." style="height:200px;" asp-append-version="true">
             </div>
 
@@ -45,19 +46,25 @@
         </div>
     </div>
 }
+
 @section Scripts {
     <script>
-        let pageNumber = 1;               
-        const itemsPerPage = 8;        
-        const pageIds = "";
-        const categoryIds = "";
+        let pageNumber = 1;
+        const itemsPerPage = 8;
+        let pageIds = "";
+        let categoryIds = ""; // will update on click
         const orderBy = "DisplayOrder";
         const $container = $("#experienceContainer");
         const $loadMoreBtn = $("#load-more-btn");
-        let totalCount = 0;               // total records in DB
+        const $categoryFilter = $("#categoryFilter");
+        let totalCount = 0;
 
-        function loadExperiences() {
-            // show loading state
+        function loadExperiences(reset = false) {
+            if (reset) {
+                pageNumber = 1;
+                $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
+            }
+
             $loadMoreBtn.prop("disabled", true).text("Loading...");
             $container.find("img[alt='loading...']").show();
 
@@ -69,35 +76,30 @@
                 itemsPerPage
             })
             .done(function (result) {
-                // hide loader
                 $container.find("img[alt='loading...']").hide();
 
-                // append new results
+                if (reset) $container.empty();
+
                 const $result = $(result);
 
-                // ✅ read TotalCount safely (only on first load)
                 if (pageNumber === 1) {
                     const totalInput = $result.filter("input[name='TotalCount']");
-                    if (totalInput.length) {
-                        totalCount = parseInt(totalInput.val()) || 0;
-                    }
+                    if (totalInput.length) totalCount = parseInt(totalInput.val()) || 0;
                 }
 
                 if ($.trim(result).length === 0) {
-                    // no more data
-                    $loadMoreBtn.hide();
+                    $loadMoreBtn.fadeOut("slow");
                     return;
                 }
 
                 $container.append(result);
                 pageNumber++;
 
-                // ✅ check if all items are loaded
                 const currentCount = $container.find(".item").length;
                 if (totalCount > 0 && currentCount >= totalCount) {
-                    $loadMoreBtn.hide();  // all data loaded
+                    $loadMoreBtn.fadeOut("slow");
                 } else {
-                    $loadMoreBtn.prop("disabled", false).text("Load More");
+                    $loadMoreBtn.prop("disabled", false).text("Load More").show();
                 }
             })
             .fail(function () {
@@ -107,17 +109,29 @@
             });
         }
 
-        // Load first page on ready
         $(document).ready(function () {
-            // clear existing content (in case of reload)
             $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
             loadExperiences();
         });
 
-        // Load more on button click
         $loadMoreBtn.on("click", function () {
             loadExperiences();
         });
+
+        // ✅ Category filter click handler
+        $categoryFilter.on("click", ".nav-item", function (e) {
+            e.preventDefault();
+
+            // Set active class
+            $categoryFilter.find(".nav-item").removeClass("active");
+            $(this).addClass("active");
+
+            // Update categoryIds
+            categoryIds = $(this).data("categoryid") || "";
+
+            // Reset load more button and list
+            $loadMoreBtn.show().text("Load More");
+            loadExperiences(true);
+        });
     </script>
 }
-

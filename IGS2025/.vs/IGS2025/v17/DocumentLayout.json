@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\experience\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\experience\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\shared\\components\\experiencesection\\_experiencesectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\shared\\components\\experiencesection\\_experiencesectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,28 +14,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_ExperienceSectionPartial.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T20:42:01.791Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -49,9 +28,9 @@
               "RelativeDocumentMoniker": "IGS.Web\\Views\\Experience\\Index.cshtml",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Experience\\Index.cshtml",
               "RelativeToolTip": "IGS.Web\\Views\\Experience\\Index.cshtml",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAiwHQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAADQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T20:39:44.763Z",
+              "WhenOpened": "2025-10-06T21:27:16.39Z",
               "EditorCaption": ""
             }
           ]

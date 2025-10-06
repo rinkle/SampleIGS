@@ -110,17 +110,19 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            const pageIds = "2";
-            const categoryIds="";
-            const orderBy="DisplayOrder";
-
-            $.get("@Url.Action("LoadExperienceSection", "Common")", {categoryIds, pageIds, orderBy })
-                    .done(function (result) {
+             let pageNumber = 1;
+             const itemsPerPage = 4;
+             const pageIds = "2";
+             const categoryIds = "";
+             const orderBy = "DisplayOrder";
+            $.get("@Url.Action("LoadExperienceSection", "Common")", {  categoryIds, pageIds, orderBy,pageNumber, itemsPerPage })
+                .done(function (result) {
                     $("#experienceContainer").html(result);
                 })
                 .fail(function () {
                     $("#experienceContainer").html("<p>Error loading experiences.</p>");
-                });
+             });
+
 
             $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds, orderBy })
                     .done(function (result) {
