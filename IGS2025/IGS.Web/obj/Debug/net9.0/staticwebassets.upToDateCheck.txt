@@ -3757,6 +3757,7 @@ wwwroot\images\Insight\Hotel.jpg
 wwwroot\images\Insight\Industrial-Automation.jpg
 wwwroot\images\Insight\Leak-pipe-repair.jpg
 wwwroot\images\Insight\MedSpa.jpg
+wwwroot\images\Insight\PDF\Tariff_Responsive_Pricing_IGS.pdf
 wwwroot\images\Insight\Physical-Therapy.jpg
 wwwroot\images\Insight\recent-projects-2.jpg
 wwwroot\images\Insight\Roofing.jpg

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\news\\managenews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\areas\\admin\\controllers\\commoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\areas\\admin\\controllers\\commoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E434216A-0BA3-4C62-ADAB-933A5F0778E0}|Globalsetting\\Globalsetting.csproj|e:\\git\\sampleigs\\igs2025\\globalsetting\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,53 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAM4BAAAAAAAAAADgv+4BAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T11:11:49.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\NewsController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAADsAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T11:05:44.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Constants.cs",
               "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
               "RelativeDocumentMoniker": "Globalsetting\\Constants.cs",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\Globalsetting\\Constants.cs",
               "RelativeToolTip": "Globalsetting\\Constants.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAD4v1UAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T10:46:55.981Z",
+              "WhenOpened": "2025-10-06T11:25:37.377Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ManageNews.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
-              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Views\\News\\ManageNews.cshtml",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAAFsAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T10:41:18.223Z",
+              "Title": "CommonController.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\CommonController.cs",
+              "RelativeDocumentMoniker": "IGS.Web\\Areas\\Admin\\Controllers\\CommonController.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Areas\\Admin\\Controllers\\CommonController.cs",
+              "RelativeToolTip": "IGS.Web\\Areas\\Admin\\Controllers\\CommonController.cs",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAAAOUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T11:20:18.025Z",
               "EditorCaption": ""
             }
           ]

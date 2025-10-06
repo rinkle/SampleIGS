@@ -224,14 +224,14 @@ namespace IGS.Areas.Admin.Controllers
         #region image upload
         [HttpPost]
         public async Task<IActionResult> UploadImages(
-    List<IFormFile> files,
-    [FromForm] string Filepath,
-    [FromForm] int? thumbWidth,
-    [FromForm] int? thumbHeight,
-    [FromForm] string ExactCropThumbPath,
-    [FromForm] string ProportionCropPath,
-    [FromForm] string ScaledCropImagePath,
-    [FromForm] decimal? ScaledFactor)
+            List<IFormFile> files,
+            [FromForm] string Filepath,
+            [FromForm] int? thumbWidth,
+            [FromForm] int? thumbHeight,
+            [FromForm] string ExactCropThumbPath,
+            [FromForm] string ProportionCropPath,
+            [FromForm] string ScaledCropImagePath,
+            [FromForm] decimal? ScaledFactor)
         {
             var results = new List<object>();
 
@@ -250,15 +250,21 @@ namespace IGS.Areas.Admin.Controllers
                     string fileName = Path.GetFileName(file.FileName);
                     string savePath = Path.Combine(originalPath, fileName);
 
-                    // If file already exists, add random suffix
+                    // If file already exists, rename the old one instead of the new one
                     if (System.IO.File.Exists(savePath))
                     {
                         string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
                         string ext = Path.GetExtension(fileName);
-                        fileName = $"{nameWithoutExt}_{Guid.NewGuid():N}{ext}";
-                        savePath = Path.Combine(originalPath, fileName);
+
+                        // Create a new name for the existing file
+                        string oldFileNewName = $"{nameWithoutExt}_old_{DateTime.Now:yyyyMMddHHmmss}{ext}";
+                        string oldFileNewPath = Path.Combine(originalPath, oldFileNewName);
+
+                        // Rename (move) the existing file
+                        System.IO.File.Move(savePath, oldFileNewPath);
                     }
 
+                    // Save the new file with the original name
                     using (var stream = new FileStream(savePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
@@ -302,6 +308,7 @@ namespace IGS.Areas.Admin.Controllers
             }
         }
         #endregion
+
 
         #region upload video 
         [HttpPost]
