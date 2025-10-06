@@ -21,13 +21,15 @@ namespace IGS.Dal.Services.Implementations
             string? industryCategoryIds = null,
             string? pageIds = null,
             string? orderBy = null,
-            bool isAdmin = false)
+            bool isAdmin = false,
+            int? pageNumber = null,
+            int? itemsPerPage = null)
         {
             try
             {
                 // Experience SP with filters
                 var experienceList = (await _unitOfWork.Experience
-                    .GetExperienceFilterListFromSpAsync(industryCategoryIds, pageIds, orderBy)).ToList();
+                    .GetExperienceFilterListFromSpAsync(industryCategoryIds, pageIds, orderBy, pageNumber, itemsPerPage)).ToList();
 
                 // ✅ Always fetch categories (SP returns IEnumerable)
                 var industryCategories = (await _unitOfWork.IndustryCategory

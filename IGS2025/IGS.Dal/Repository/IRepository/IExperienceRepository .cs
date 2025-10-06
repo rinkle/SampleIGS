@@ -8,7 +8,9 @@ namespace IGS.Dal.Repository.IRepository
         Task<IEnumerable<GetExperienceFilterList_Result>> GetExperienceFilterListFromSpAsync(
             string? industryCategoryIds = null,
             string? pageIds = null,
-            string? orderBy = null);
+            string? orderBy = null,
+            int? pageNumber = null,
+            int? itemsPerPage = null);
 
         Task<GetExperienceDetail_Result?> GetExperienceDetailByIdAsync(
             int experienceId,

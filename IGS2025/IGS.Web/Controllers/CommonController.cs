@@ -5,9 +5,9 @@ namespace IGS.Web.Controllers
     public class CommonController : Controller
     {
         [HttpGet]
-        public IActionResult LoadExperienceSection(string? categoryIds, string? pageIds,string? orderBy)
+        public IActionResult LoadExperienceSection(string? categoryIds, string? pageIds, string? orderBy,bool? isAdmin=false, int pageNumber = 1, int itemsPerPage = 8)
         {
-            return ViewComponent("ExperienceSection", new { categoryIds, pageIds, orderBy });
+            return ViewComponent("ExperienceSection", new { categoryIds, pageIds, orderBy, isAdmin, pageNumber, itemsPerPage });
         }
 
         [HttpGet]

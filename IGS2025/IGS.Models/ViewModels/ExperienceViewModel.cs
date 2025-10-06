@@ -21,18 +21,13 @@ namespace IGS.Models.ViewModels
                                    bool isAdmin = false)
         {
             // materialize + order like CoreAreasOfFocus pattern
-            ExperienceList = experienceList?
-                .OrderBy(x => x.DisplayOrder)
-                .ThenBy(x => x.ClientName)
-                .ToList()
+            ExperienceList = experienceList?.ToList()
                 ?? new List<GetExperienceFilterList_Result>();
 
             // always fetched, but hide for admins by keeping it empty
             if (!isAdmin)
             {
-                IndustryCategory = industryCategory?
-                    .OrderBy(x => x.DisplayOrder)
-                    .ToList()
+                IndustryCategory = industryCategory?.ToList()
                     ?? new List<GetIndustryCategory_Result>();
             }
         }

@@ -22,7 +22,9 @@ namespace IGS.Dal.Repository
         public async Task<IEnumerable<GetExperienceFilterList_Result>> GetExperienceFilterListFromSpAsync(
             string? industryCategoryIds = null,
             string? pageIds = null,
-            string? orderBy = null)
+            string? orderBy = null,
+            int? pageNumber = null,
+            int? itemsPerPage = null)
         {
             return await _sql.QueryAsync<GetExperienceFilterList_Result>(
                 "dbo.GetExperienceFilterList",
@@ -30,7 +32,9 @@ namespace IGS.Dal.Repository
                 {
                     prmIndustriesCategoryIds = industryCategoryIds,
                     prmPageIds = pageIds,
-                    prmOrderBy = orderBy
+                    prmOrderBy = orderBy,
+                    PageNumber = pageNumber,
+                    ItemsPerPage = itemsPerPage
                 },
                 isStoredProc: true);
         }

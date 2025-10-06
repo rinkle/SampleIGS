@@ -9,7 +9,9 @@ namespace IGS.Dal.Services.Interfaces
             string? industryCategoryIds = null,
             string? pageIds = null,
             string? orderBy = null,
-            bool isAdmin = false);
+            bool isAdmin = false,
+            int? pageNumber = null,
+            int? itemsPerPage = null);
         Task<ExperienceModel> GetExperienceModelAsync(
              int experienceId,
              string? industryCategoryIds = null,

@@ -45,23 +45,79 @@
         </div>
     </div>
 }
-
 @section Scripts {
     <script>
+        let pageNumber = 1;               
+        const itemsPerPage = 8;        
         const pageIds = "";
-        const categoryIds="";
-        const orderBy="DisplayOrder";
+        const categoryIds = "";
+        const orderBy = "DisplayOrder";
+        const $container = $("#experienceContainer");
+        const $loadMoreBtn = $("#load-more-btn");
+        let totalCount = 0;               // total records in DB
 
+        function loadExperiences() {
+            // show loading state
+            $loadMoreBtn.prop("disabled", true).text("Loading...");
+            $container.find("img[alt='loading...']").show();
+
+            $.get("@Url.Action("LoadExperienceSection", "Common")", {
+                categoryIds,
+                pageIds,
+                orderBy,
+                pageNumber,
+                itemsPerPage
+            })
+            .done(function (result) {
+                // hide loader
+                $container.find("img[alt='loading...']").hide();
+
+                // append new results
+                const $result = $(result);
+
+                // ✅ read TotalCount safely (only on first load)
+                if (pageNumber === 1) {
+                    const totalInput = $result.filter("input[name='TotalCount']");
+                    if (totalInput.length) {
+                        totalCount = parseInt(totalInput.val()) || 0;
+                    }
+                }
+
+                if ($.trim(result).length === 0) {
+                    // no more data
+                    $loadMoreBtn.hide();
+                    return;
+                }
+
+                $container.append(result);
+                pageNumber++;
+
+                // ✅ check if all items are loaded
+                const currentCount = $container.find(".item").length;
+                if (totalCount > 0 && currentCount >= totalCount) {
+                    $loadMoreBtn.hide();  // all data loaded
+                } else {
+                    $loadMoreBtn.prop("disabled", false).text("Load More");
+                }
+            })
+            .fail(function () {
+                $container.find("img[alt='loading...']").hide();
+                $container.append("<p class='text-danger'>Error loading experiences.</p>");
+                $loadMoreBtn.prop("disabled", false).text("Load More");
+            });
+        }
+
+        // Load first page on ready
         $(document).ready(function () {
-            $.get("@Url.Action("LoadExperienceSection", "Common")", {  categoryIds, pageIds, orderBy })
-                .done(function (result) {
-                    $("#experienceContainer").html(result);
-                })
-                .fail(function () {
-                    $("#experienceContainer").html("<p>Error loading experiences.</p>");
-                });
+            // clear existing content (in case of reload)
+            $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
+            loadExperiences();
+        });
+
+        // Load more on button click
+        $loadMoreBtn.on("click", function () {
+            loadExperiences();
         });
     </script>
-
-   
 }
+

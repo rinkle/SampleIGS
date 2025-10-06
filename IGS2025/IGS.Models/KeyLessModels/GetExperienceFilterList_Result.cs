@@ -41,5 +41,6 @@ namespace IGS.Models.KeyLessModels
         public int? NextId { get; set; }
         public string? NextClientName { get; set; }
         public string? NextExperienceUrl { get; set; }
+        public int? TotalCount { get; set; }
     }
 }

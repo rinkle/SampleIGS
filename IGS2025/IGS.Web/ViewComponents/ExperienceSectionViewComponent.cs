@@ -1,6 +1,5 @@
 ﻿using IGS.Dal.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace IGS.Web.ViewComponents
 {
@@ -13,18 +12,25 @@ namespace IGS.Web.ViewComponents
             _experienceVmService = experienceVmService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string? categoryIds = null, string? pageIds = null, string? orderBy = "DisplayOrder")
+        public async Task<IViewComponentResult> InvokeAsync(
+            string? categoryIds,
+            string? pageIds,
+            string? orderBy,
+            bool? isAdmin = false,
+            int pageNumber = 1,
+            int itemsPerPage = 8)
         {
-            // ✅ Use the correct service that returns ExperienceViewModel
-            var model = await _experienceVmService.GetExperienceVmAsync(
-                industryCategoryIds: categoryIds,
-                pageIds: pageIds,
-                orderBy: orderBy,
-                isAdmin: false
-            );
+            // Call your VM service with pagination
+            var vm = await _experienceVmService.GetExperienceVmAsync(
+                categoryIds,
+                pageIds,
+                orderBy,
+                isAdmin ?? false,
+                pageNumber,
+                itemsPerPage);
 
-            // Return the partial strongly typed to ExperienceViewModel
-            return View("_ExperienceSectionPartial", model);
+            // Return the partial list of experiences
+            return View("_ExperienceSectionPartial", vm);
         }
     }
 }
