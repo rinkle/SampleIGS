@@ -108,7 +108,7 @@ builder.Services.AddScoped<IPrivacyPolicyService, PrivacyPolicyService>();
 builder.Services.AddScoped<IPrivacyPolicyVmService, PrivacyPolicyVmService>();
 
 builder.Services.AddScoped<ICommonService, CommonService>();
-
+builder.Services.AddScoped<INewsLetterVmService, NewsLetterVmService>();
 
 var app = builder.Build();
 

@@ -188,7 +188,7 @@
                     <p class="f18">@Html.Raw(@Model?.Home?.InsightDescription)</p>
                     @if (!string.IsNullOrEmpty(Model?.Home?.InsightPdfReport))
                     {
-                        <a href='@(baseUrl+DbImagePath.HomeImage+Model.Home.InsightPdfReport)' target="_blank" class="view-more mt-3">Download Full Report</a>
+                        <a href='@(baseUrl + DbImagePath.HomeImage + Model.Home.InsightPdfReport)' target="_blank" class="view-more mt-3">Download Full Report</a>
                     }
 
                 </div>
@@ -203,24 +203,9 @@
     </div>
 
     <div class="subscribe mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="f31">Subscribe to Our Newsletter</h3>
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Begin Constant Contact Active Forms -->
-                    <script> var _ctct_m = "13c91cd070a593031fa47fc780d3d3c4"; </script>
-                    <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
-                    <!-- End Constant Contact Active Forms -->
-                    <!-- Begin Constant Contact Inline Form Code -->
-                    <div id="subscription-form" class="ctct-inline-form" data-form-id="41d5ae86-f687-4b99-b1ab-32ae7f6ed40f"></div>
-                    <!-- End Constant Contact Inline Form Code -->
-                </div>
-            </div>
-        </div>
+        @await Component.InvokeAsync("NewsletterSection")
     </div>
+    
 }
 
 @section Scripts {

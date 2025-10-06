@@ -1,0 +1,16 @@
+﻿@model IGS.Models.ViewModels.NewsLetterViewModel
+
+@if (Model?.NewsLetterInfo != null && (!string.IsNullOrWhiteSpace(Model?.NewsLetterInfo?.NewsletterHeading) || !string.IsNullOrWhiteSpace(Model?.NewsLetterInfo?.NewsletterScript)))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="f31">@Model?.NewsLetterInfo?.NewsletterHeading</h3>
+            </div>
+            <div class="col-lg-6">
+                @Html.Raw(Model.NewsLetterInfo.NewsletterScript)
+            </div>
+        </div>
+    </div>
+
+}
