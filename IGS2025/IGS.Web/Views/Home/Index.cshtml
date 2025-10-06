@@ -118,7 +118,7 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="content">
                                     <div class="img-container">
-                                        <img src='@(baseUrl+DbImagePath.HomeImage+item.UploadedData)' alt="@item.Heading" title="@item.Heading" class="img-contain" asp-append-version="true">
+                                        <img src='@(baseUrl + DbImagePath.HomeImage + item.UploadedData)' alt="@item.Heading" title="@item.Heading" class="img-contain" asp-append-version="true">
                                     </div>
                                     <h5 class="title f24">@item.Heading</h5>
                                     <h5 class="desc">@item.Description</h5>
@@ -159,67 +159,8 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="tile">
-                        <div class="content">
-                            <div class="img-container">
-                                <span>IGS supported</span>
-                                <img src="./images/portfolio/BETTERRX.png" alt="BETTERRX logo" class="img-contain" />
-                            </div>
-                            <h5>in its sale to</h5>
-                            <div class="img-container">
-                                <img src="./images/portfolio/BVP.png" alt="BVP logo" class="img-contain" />
-                            </div>
-                        </div>
-                        <h6>Hospice Pharmacy Software Platform</h6>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="tile">
-                        <div class="content">
-                            <div class="img-container">
-                                <img src="./images/portfolio/CIVCPartners.png" alt="CIVCPartners logo" class="img-contain" />
-                            </div>
-                            <h5>invested in</h5>
-                            <div class="img-container">
-                                <img src="./images/portfolio/ELITE.png" alt="ELITE logo" class="img-contain" />
-                            </div>
-                        </div>
-                        <h6>Remote Video Guarding & Real-Time Crime Prevention</h6>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="tile">
-                        <div class="content">
-                            <div class="img-container">
-                                <img src="./images/portfolio/LevineLeichtman.png" alt="LevineLeichtman logo" class="img-contain" />
-                            </div>
-                            <h5>acquired</h5>
-                            <div class="img-container">
-                                <img src="./images/portfolio/ShipleyDonuts.jpg" alt="ShipleyDonuts logo" class="img-contain" />
-                            </div>
-                        </div>
-                        <h6>Donuts, Kolaches &  Beverages</h6>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="tile">
-                        <div class="content">
-                            <div class="img-container">
-                                <img src="./images/portfolio/Nexa.png" alt="Nexa logo" class="img-contain" />
-                            </div>
-                            <h5>invested in</h5>
-                            <div class="img-container">
-                                <img src="./images/portfolio/FacilityGrid.png" alt="FacilityGrid logo" class="img-contain" />
-                            </div>
-                        </div>
-                        <h6>Commissioning & Operational Readiness Software</h6>
-                    </div>
-                </div>
+            <div class="row" id="experienceContainer">
+                <p>Loading recent projects...</p>
             </div>
         </div>
     </div>
@@ -228,12 +169,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3 class="f31">Our Latest Insights</h3>
+                    <h3 class="f31">@Model?.Home?.InsightTitle</h3>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="d-flex flex-column">
-                        <a href="./insights.html" class="view-more f16 ms-auto">View All</a>
+                        <a href='@(baseUrl + "insights")' class="view-more f16 ms-auto">View All</a>
                     </div>
                 </div>
 
@@ -242,16 +183,16 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h4 class="f31">Building a Sales Discipline: How Leading Sales Organizations Design, Deploy, and Monitor Effective Sales Teams</h4>
+                    <h4 class="f31">@Model?.Home?.InsightHeading</h4>
 
-                    <p class="f18">For any high-growth company, there is a moment of reckoning. The scrappy, instinct-driven sales approach that secured the first 10, 50, or 100 customers begins to falter. Growth stalls, forecasts become unreliable, and the cost of acquiring new revenue climbs. The common reaction is to hire more salespeople, but this often magnifies the problem rather than solving it. This is the growth paradox: the very success of early-stage, "hero-based" selling creates the complexity that prevents the company from scaling effectively.</p>
+                    <p class="f18">@Html.Raw(@Model?.Home?.InsightDescription)</p>
 
                     <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank" class="view-more mt-3">Download Full Report</a>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="img-container">
-                        <img src="./images/news/Building-Sales-Discipline.png" alt="Building a Sales Discipline" class="img-cover">
+                        <img src='@(baseUrl + DbImagePath.HomeImage + Model.Home.InsightImage)' alt="@Model?.Home?.InsightHeading" class="img-cover">
                     </div>
                 </div>
             </div>
@@ -277,4 +218,20 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const pageIds = "1"; // adjust dynamically as needed
+
+            $.get("@Url.Action("LoadExperienceSection", "Home")", { pageIds })
+                .done(function (result) {
+                    $("#experienceContainer").html(result);
+                })
+                .fail(function () {
+                    $("#experienceContainer").html("<p>Error loading experiences.</p>");
+                });
+        });
+    </script>
 }

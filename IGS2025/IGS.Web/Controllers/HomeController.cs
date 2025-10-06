@@ -18,14 +18,15 @@ namespace IGS.Web.Controllers
         private readonly IHomeVmService _homeVmService;
         private readonly IHomeService _homeService;
         private readonly ICommonService _commonService;
-
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService)
+        private readonly IExperienceVmService _experienceVmService;
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
             _homeVmService = homeVmService;
             _homeService = homeService;
             _commonService = commonService;
+            _experienceVmService = experienceVmService;
         }
 
         public async Task<IActionResult> Index()
@@ -47,6 +48,12 @@ namespace IGS.Web.Controllers
             }
         }
 
+
+        [HttpGet]
+        public IActionResult LoadExperienceSection(string? pageIds)
+        {
+            return ViewComponent("ExperienceSection", new { pageIds });
+        }
         public IActionResult Privacy()
         {
             return View();

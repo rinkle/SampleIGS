@@ -1,0 +1,211 @@
+﻿@model IGS.Models.ViewModels.ExperienceViewModel
+@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+@if (Model?.ExperienceList != null)
+{
+    @foreach (var item in Model.ExperienceList)
+    {
+        @if (!string.IsNullOrEmpty(item.TopLogo1) && !string.IsNullOrEmpty(item.TopLogo2) && !string.IsNullOrEmpty(item.Bottom1Logo) && !string.IsNullOrEmpty(item.Bottom2Logo))
+        {
+            <div class="col-md-6 col-lg-4 col-xl-3 item">
+                <div class="tile industrials-&-manufacturing">
+                    <div class="content">
+                        <div class="img-container">
+                            @if (!string.IsNullOrEmpty(item.SupportText))
+                            {
+                                <span>@item.SupportText</span>
+                            }
+                            <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo1)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                            @if (!string.IsNullOrEmpty(item.TopLogo1Caption))
+                            {
+                                <span>@item.TopLogo1Caption</span>
+                            }
+                            <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo2)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                        </div>
+                        @if (!string.IsNullOrEmpty(item.TopLogo2Caption))
+                        {
+                            <h5>@item.TopLogo2Caption</h5>
+                        }
+                        <div class="img-container">
+                            <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom1Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                            @if (!string.IsNullOrEmpty(item.Bottom1LogoCaption))
+                            {
+                                <span>@item.Bottom1LogoCaption</span>
+                            }
+                            <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom2Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                            @if (!string.IsNullOrEmpty(item.Bottom2LogoCation))
+                            {
+                                <span>@item.Bottom2LogoCation</span>
+                            }
+                        </div>
+                    </div>
+                    <h6>@Html.Raw(item.ClientName)</h6>
+                </div>
+            </div>
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(item.TopLogo1) && !string.IsNullOrEmpty(item.TopLogo2) && !string.IsNullOrEmpty(item.Bottom1Logo))
+            {
+                <div class="col-md-6 col-lg-4 col-xl-3 item">
+                    <div class="tile industrials-&-manufacturing">
+                        <div class="content">
+                            <div class="img-container">
+                                @if (!string.IsNullOrEmpty(item.SupportText))
+                                {
+                                    <span>@item.SupportText</span>
+                                }
+                                <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo1)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                @if (!string.IsNullOrEmpty(item.TopLogo1Caption))
+                                {
+                                    <span>@item.TopLogo1Caption</span>
+                                }
+                                <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo2)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                            </div>
+                            @if (!string.IsNullOrEmpty(item.TopLogo2Caption))
+                            {
+                                <h5>@item.TopLogo2Caption</h5>
+                            }
+                            <div class="img-container">
+                                <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom1Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                @if (!string.IsNullOrEmpty(item.Bottom1LogoCaption))
+                                {
+                                    <span>@item.Bottom1LogoCaption</span>
+                                }
+                            </div>
+                        </div>
+                        <h6>@Html.Raw(item.ClientName)</h6>
+                    </div>
+                </div>
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(item.TopLogo1) && !string.IsNullOrEmpty(item.Bottom1Logo) && !string.IsNullOrEmpty(item.Bottom2Logo))
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3 item">
+                        <div class="tile industrials-&-manufacturing">
+                            <div class="content">
+                                <div class="img-container">
+                                    @if (!string.IsNullOrEmpty(item.SupportText))
+                                    {
+                                        <span>@item.SupportText</span>
+                                    }
+                                    <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo1)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                </div>
+                                @if (!string.IsNullOrEmpty(item.TopLogo1Caption))
+                                {
+                                    <h5>@item.TopLogo1Caption</h5>
+                                }
+                                <div class="img-container">
+                                    <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom1Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                    @if (!string.IsNullOrEmpty(item.Bottom1LogoCaption))
+                                    {
+                                        <span>@item.Bottom1LogoCaption</span>
+                                    }
+                                    <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom2Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                    @if (!string.IsNullOrEmpty(item.Bottom2LogoCation))
+                                    {
+                                        <span>@item.Bottom2LogoCation</span>
+                                    }
+                                </div>
+                            </div>
+                            @if (!string.IsNullOrEmpty(item.ClientName))
+                            {
+                                <h6>@Html.Raw(item.ClientName)</h6>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.TopLogo1) && !string.IsNullOrEmpty(item.Bottom1Logo))
+                    {
+                        <div class="col-md-6 col-lg-4 col-xl-3 item">
+                            <div class="tile industrials-&-manufacturing">
+                                <div class="content">
+                                    <div class="img-container">
+                                        @if (!string.IsNullOrEmpty(item.SupportText))
+                                        {
+                                            <span>@item.SupportText</span>
+                                        }
+                                        <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo1)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(item.TopLogo1Caption))
+                                    {
+                                        <h5>@item.TopLogo1Caption</h5>
+                                    }
+                                    <div class="img-container">
+                                        <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom1Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+                                        @if (!string.IsNullOrEmpty(item.Bottom1LogoCaption))
+                                        {
+                                            <span>@item.Bottom1LogoCaption</span>
+                                        }
+                                    </div>
+                                </div>
+                                <h6>@Html.Raw(item.ClientName)</h6>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(item.TopLogo1))
+                        {
+                            <div class="col-md-6 col-lg-4 col-xl-3 item">
+                                <div class="tile industrials-&-manufacturing">
+                                    <div class="content">
+                                        <div class="img-container">
+                                            @if (!string.IsNullOrEmpty(item.SupportText))
+                                            {
+                                                <span>@item.SupportText</span>
+                                            }
+                                            <img src='@(baseUrl + DbImagePath.ExperienceImage + item.TopLogo1)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(item.TopLogo1Caption))
+                                        {
+                                            <h5>@item.TopLogo1Caption</h5>
+                                        }
+                                    </div>
+                                    <h6>@Html.Raw(item.ClientName)</h6>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(item.Bottom1Logo))
+                            {
+                                <div class="col-md-6 col-lg-4 col-xl-3 item">
+                                    <div class="tile industrials-&-manufacturing">
+                                        <div class="content">
+                                            <div class="img-container">
+                                                @if (!string.IsNullOrEmpty(item.SupportText))
+                                                {
+                                                    <span>@item.SupportText</span>
+                                                }
+                                                <img src='@(baseUrl + DbImagePath.ExperienceImage + item.Bottom1Logo)' alt="@item.ClientName" class="img-contain" asp-append-version="true" />
+
+                                            </div>
+                                            @if (!string.IsNullOrEmpty(item.Bottom1LogoCaption))
+                                            {
+                                                <h5>@item.Bottom1LogoCaption</h5>
+                                            }
+                                        </div>
+                                        <h6>@Html.Raw(item.ClientName)</h6>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+else
+{
+    <p>No experience data found.</p>
+}
+
