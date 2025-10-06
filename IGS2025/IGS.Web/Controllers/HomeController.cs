@@ -74,11 +74,6 @@ namespace IGS.Web.Controllers
         }
         #endregion
 
-        [HttpGet]
-        public IActionResult LoadExperienceSection(string? pageIds)
-        {
-            return ViewComponent("ExperienceSection", new { pageIds });
-        }
         public IActionResult Privacy()
         {
             return View();

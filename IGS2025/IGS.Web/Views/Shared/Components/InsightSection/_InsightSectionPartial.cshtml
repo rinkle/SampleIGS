@@ -1,0 +1,43 @@
+﻿@model IGS.Models.ViewModels.NewsViewModel
+@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.NewsList != null && Model.NewsList.Any())
+{
+    @foreach (var item in Model.NewsList.Take(3).ToList())
+    {
+        string url = string.Empty;
+
+        if (item.NewsType == 1)
+        {
+            url = baseUrl + "insight-info/" + item.NewsUrl;
+        }
+
+        if (item.NewsType == 2)
+        {
+            url = item?.ExternalLink;
+            if (!string.IsNullOrEmpty(item?.ExternalLink) && !item.ExternalLink.Contains("http"))
+            {
+                url = "http://" + item.ExternalLink;
+            }
+        }
+        if (item?.NewsType == 3)
+        {
+            url = baseUrl + DbImagePath.InsightPdf + item.PdfFileName;
+        }
+        <div class="col-md-4">
+            <a href="@url" @((item?.NewsType == 2 || item?.NewsType == 3) ? "target='_blank'" : "")>
+                <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url('@(baseUrl+DbImagePath.InsightImage+item?.Logo)') center no-repeat;"></div>
+                <h5 class="title f26">@Html.Raw(item?.NewsHeadLine)</h5>
+                <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
+            </a>
+        </div>
+    }
+}
+else
+{
+    <p>No insights found.</p>
+}

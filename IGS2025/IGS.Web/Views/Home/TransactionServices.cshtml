@@ -84,7 +84,6 @@
             <div class="row" id="experienceContainer">
                 <p>Loading recent projects...</p>
             </div>
-            
         </div>
     </div>
 
@@ -92,42 +91,18 @@
         <div class="container">
             <div class="row mb-4">
                 <div class="col-lg-8">
-                    <h3 class="f31">Explore Our Insights</h3>
+                    <h3 class="f31">@Model?.TransactionService?.InsightHeading</h3>
                 </div>
 
                 <div class="col-lg-4">
                     <div class="d-flex flex-column">
-                        <a href="./insights.html" class="view-more f16 ms-auto">View All</a>
+                        <a href='@(baseUrl + "insights")' class="view-more f16 ms-auto">View All</a>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank">
-                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Building-Sales-Discipline.png) center no-repeat;"></div>
-                        <h5 class="title f26">Building a Sales Discipline: How Leading Sales Organizations Design, Deploy, and Monitor Effective Sales Teams</h5>
-                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="./pdfs/Tariff_Responsive_Pricing_IGS.pdf" target="_blank">
-                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Tariffs.jpg) center no-repeat;"></div>
-                        <h5 class="title f26">Tariff-Responsive Pricing: Three Strategies for Navigating Uncertainties</h5>
-                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
-                    </a>
-                </div>
-
-
-
-                <div class="col-md-4">
-                    <a href="./case-industrial-automation.html">
-                        <div class="img-container" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #888 100%), url(./images/news/Industrial-Automation.jpg) center no-repeat;"></div>
-                        <h5 class="title f26">Pricing and Packaging Strategy for a SaaS Company Serving Manufacturers</h5>
-                        <h5 class="more f18">View More <i class="fa-solid fa-arrow-right"></i></h5>
-                    </a>
-                </div>
-
+            <div class="row" id="insightContainer">
+                <p>Loading insights...</p>
             </div>
         </div>
     </div>
@@ -135,15 +110,24 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            const pageIds = "2"; // adjust dynamically as needed
+            const pageIds = "2";
+            const categoryIds="";
 
-            $.get("@Url.Action("LoadExperienceSection", "Home")", { pageIds })
-                .done(function (result) {
+            $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
+                    .done(function (result) {
                     $("#experienceContainer").html(result);
                 })
                 .fail(function () {
                     $("#experienceContainer").html("<p>Error loading experiences.</p>");
                 });
+
+            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds })
+                    .done(function (result) {
+                    $("#insightContainer").html(result);
+                })
+                .fail(function () {
+                     $("#insightContainer").html("<p>Error loading insights.</p>");
+             });
         });
     </script>
 }

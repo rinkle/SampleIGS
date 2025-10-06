@@ -87,12 +87,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <div class="navbar-nav position-relative w-100">
-                        <a href='@(baseUrl + "transaction-services")' class="nav-link ms-lg-auto">Transaction Services</a>
-                        <a href='@(baseUrl + "portfolio-services")' class="nav-link">Portfolio Services</a>
-                        <a href='@(baseUrl + "industries")' class="nav-link">Industries</a>
-                        <a href='@(baseUrl + "experience")' class="nav-link">Experience</a>
-                        <a href='@(baseUrl + "insights")' class="nav-link">Insights</a>
-                        <a href='@(baseUrl + "team")' class="nav-link">Team</a>
+                        <a href='@(baseUrl + "transaction-services")' class='nav-link ms-lg-auto @(ViewBag.pageName == PageName.TransactionServices?"active":"")'>Transaction Services</a>
+                        <a href='@(baseUrl + "portfolio-services")' class='nav-link @(ViewBag.pageName == PageName.PortfolioServices ? "active" : "")'>Portfolio Services</a>
+                        <a href='@(baseUrl + "industries")' class='nav-link @(ViewBag.pageName == PageName.Industries ? "active" : "")'>Industries</a>
+                        <a href='@(baseUrl + "experience")' class='nav-link @(ViewBag.pageName == PageName.Experience ? "active" : "")'>Experience</a>
+                        <a href='@(baseUrl + "insights")' class='nav-link @(ViewBag.pageName == PageName.Insights ? "active" : "")'>Insights</a>
+                        <a href='@(baseUrl + "team")' class='nav-link @(ViewBag.pageName == PageName.Team ? "active" : "")'>Team</a>
                         @if (!string.IsNullOrEmpty(common?.OtherContact?.CareersUrl))
                         {
                             <a href="@common?.OtherContact.CareersUrl" target="_blank" class="nav-link">Careers</a>

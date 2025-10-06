@@ -19,7 +19,7 @@ namespace IGS.Models.ViewModels
                              bool isAdmin = false)
         { 
             NewsList = newsList?
-                .OrderBy(x => x.DisplayOrder)
+                .OrderByDescending(x => x.DisplayOrder)
                 .ThenByDescending(x => x.NewsDate)
                 .ToList()
                 ?? new List<GetNewsFilterList_Result>();
