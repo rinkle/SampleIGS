@@ -112,8 +112,9 @@
         $(document).ready(function () {
             const pageIds = "2";
             const categoryIds="";
+            const orderBy="DisplayOrder";
 
-            $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
+            $.get("@Url.Action("LoadExperienceSection", "Common")", {categoryIds, pageIds, orderBy })
                     .done(function (result) {
                     $("#experienceContainer").html(result);
                 })
@@ -121,7 +122,7 @@
                     $("#experienceContainer").html("<p>Error loading experiences.</p>");
                 });
 
-            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds })
+            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds, orderBy })
                     .done(function (result) {
                     $("#insightContainer").html(result);
                 })

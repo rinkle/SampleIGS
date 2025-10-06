@@ -46,9 +46,8 @@
 
 @section Scripts {
     <script>
+        const pageIds = ""; // adjust dynamically as needed
         $(document).ready(function () {
-            const pageIds = ""; // adjust dynamically as needed
-
             $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
                 .done(function (result) {
                     $("#experienceContainer").html(result);

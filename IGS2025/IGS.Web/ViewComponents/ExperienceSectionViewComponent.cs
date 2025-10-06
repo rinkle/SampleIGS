@@ -13,13 +13,13 @@ namespace IGS.Web.ViewComponents
             _experienceVmService = experienceVmService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string? pageIds = null)
+        public async Task<IViewComponentResult> InvokeAsync(string? categoryIds = null, string? pageIds = null, string? orderBy = "DisplayOrder")
         {
             // ✅ Use the correct service that returns ExperienceViewModel
             var model = await _experienceVmService.GetExperienceVmAsync(
-                industryCategoryIds: null,
+                industryCategoryIds: categoryIds,
                 pageIds: pageIds,
-                orderBy: "DisplayOrder",
+                orderBy: orderBy,
                 isAdmin: false
             );
 

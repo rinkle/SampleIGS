@@ -13,10 +13,7 @@ namespace IGS.Web.ViewComponents
             _newsVmService = newsVmService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(
-            string? categoryIds = null,
-            string? pageIds = null,
-            string? orderBy = "DisplayOrder")
+        public async Task<IViewComponentResult> InvokeAsync(string? categoryIds = null, string? pageIds = null, string? orderBy = "DisplayOrder")
         {
             var model = await _newsVmService.GetNewsVmAsync(
                 categoryIds: categoryIds,

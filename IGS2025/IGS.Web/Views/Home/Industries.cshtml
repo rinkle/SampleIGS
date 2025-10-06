@@ -69,7 +69,8 @@
         $(document).ready(function () {
             const pageIds = "4";
             const categoryIds="";
-            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds })
+            const orderBy="DisplayOrder";
+            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds, orderBy })
                     .done(function (result) {
                     $("#insightContainer").html(result);
                 })

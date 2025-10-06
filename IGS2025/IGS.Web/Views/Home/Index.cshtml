@@ -206,9 +206,10 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            const pageIds = "1"; // adjust dynamically as needed
-
-            $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
+            const pageIds = "1"; 
+            const categoryIds = "";
+            const orderBy="";
+            $.get("@Url.Action("LoadExperienceSection", "Common")", { categoryIds, pageIds, orderBy })
                 .done(function (result) {
                     $("#experienceContainer").html(result);
                 })

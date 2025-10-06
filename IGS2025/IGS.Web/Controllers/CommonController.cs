@@ -5,15 +5,15 @@ namespace IGS.Web.Controllers
     public class CommonController : Controller
     {
         [HttpGet]
-        public IActionResult LoadExperienceSection(string? pageIds)
+        public IActionResult LoadExperienceSection(string? categoryIds, string? pageIds,string? orderBy)
         {
-            return ViewComponent("ExperienceSection", new { pageIds });
+            return ViewComponent("ExperienceSection", new { categoryIds, pageIds, orderBy });
         }
 
         [HttpGet]
-        public IActionResult LoadInsightSection(string? categoryIds, string? pageIds)
+        public IActionResult LoadInsightSection(string? categoryIds, string? pageIds, string? orderBy)
         {
-            return ViewComponent("InsightSection", new { categoryIds, pageIds });
+            return ViewComponent("InsightSection", new { categoryIds, pageIds, orderBy });
         }
     }
 }
