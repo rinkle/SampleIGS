@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\shared\\components\\experiencesection\\_experiencesectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\keylessmodels\\getexperiencefilterlist_result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\keylessmodels\\getexperiencefilterlist_result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\viewcomponents\\experiencesectionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\viewcomponents\\experiencesectionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetExperienceFilterList_Result.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\KeyLessModels\\GetExperienceFilterList_Result.cs",
-              "RelativeDocumentMoniker": "IGS.Models\\KeyLessModels\\GetExperienceFilterList_Result.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\KeyLessModels\\GetExperienceFilterList_Result.cs",
-              "RelativeToolTip": "IGS.Models\\KeyLessModels\\GetExperienceFilterList_Result.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-05T18:16:01.418Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -51,15 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "IGS.Web\\Views\\Home\\Index.cshtml",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "IGS.Web\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAAAL4AAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-05T17:50:49.34Z",
+              "WhenOpened": "2025-10-06T05:49:33.236Z",
               "EditorCaption": ""
             },
             {
@@ -70,22 +49,9 @@
               "RelativeDocumentMoniker": "IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
               "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
               "RelativeToolTip": "IGS.Web\\Views\\Shared\\Components\\ExperienceSection\\_ExperienceSectionPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-05T17:44:46.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExperienceSectionViewComponent.cs",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\ViewComponents\\ExperienceSectionViewComponent.cs",
-              "RelativeDocumentMoniker": "IGS.Web\\ViewComponents\\ExperienceSectionViewComponent.cs",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\ViewComponents\\ExperienceSectionViewComponent.cs",
-              "RelativeToolTip": "IGS.Web\\ViewComponents\\ExperienceSectionViewComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-05T17:43:11.705Z",
               "EditorCaption": ""
             }
           ]

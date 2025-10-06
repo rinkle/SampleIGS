@@ -3706,6 +3706,7 @@ wwwroot\images\favicon\favicon.ico
 wwwroot\images\favicon\favicon-16x16.png
 wwwroot\images\favicon\favicon-32x32.png
 wwwroot\images\favicon\site.webmanifest
+wwwroot\images\home\Building-Sales-Discipline.png
 wwwroot\images\home\Carousel\arrow-right.svg
 wwwroot\images\home\Carousel\landing-1.jpg
 wwwroot\images\home\Carousel\landing-2.jpg
@@ -3718,6 +3719,7 @@ wwwroot\images\home\core-3.svg
 wwwroot\images\home\core-4.svg
 wwwroot\images\home\core-5.svg
 wwwroot\images\home\core-6.svg
+wwwroot\images\home\IGS_Building_a_Sales_Discipline.pdf
 wwwroot\images\home\recent-projects.jpg
 wwwroot\images\home\Tariff_Responsive_Pricing_IGS.pdf
 wwwroot\images\icons\arrow-right.svg

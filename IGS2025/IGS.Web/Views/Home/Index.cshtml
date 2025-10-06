@@ -186,13 +186,16 @@
                     <h4 class="f31">@Model?.Home?.InsightHeading</h4>
 
                     <p class="f18">@Html.Raw(@Model?.Home?.InsightDescription)</p>
+                    @if (!string.IsNullOrEmpty(Model?.Home?.InsightPdfReport))
+                    {
+                        <a href='@(baseUrl+DbImagePath.HomeImage+Model.Home.InsightPdfReport)' target="_blank" class="view-more mt-3">Download Full Report</a>
+                    }
 
-                    <a href="./pdfs/IGS_Building_a_Sales_Discipline.pdf" target="_blank" class="view-more mt-3">Download Full Report</a>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="img-container">
-                        <img src='@(baseUrl + DbImagePath.HomeImage + Model.Home.InsightImage)' alt="@Model?.Home?.InsightHeading" class="img-cover">
+                        <img src='@(baseUrl + DbImagePath.HomeImage + Model?.Home?.InsightImage)' alt="@Model?.Home?.InsightHeading" class="lazyload img-cover" asp-append-version="true">
                     </div>
                 </div>
             </div>
