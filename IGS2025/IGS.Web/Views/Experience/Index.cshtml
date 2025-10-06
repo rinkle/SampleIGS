@@ -1,0 +1,61 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.ExperienceViewModel
+
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.ExperienceList != null)
+{
+    <div class="projects recent-projects">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="f18">@ViewBag.HeaderAdditionalInfo </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav nav-filter flex-column flex-sm-row justify-content-center">
+                        <a href="" class="nav-item active">All</a>
+                        <a href="" class="nav-item">Commercial & Industrial Services</a>
+                        <a href="" class="nav-item">Consumer & Retail</a>
+                        <a href="" class="nav-item">Healthcare</a>
+                        <a href="" class="nav-item">Industrials & Manufacturing</a>
+                        <a href="" class="nav-item">Professional Services</a>
+                        <a href="" class="nav-item">Technology & Software</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="experienceContainer" class="row loadMore">
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <button id="load-more-btn" class="btn btn-load-more">Load More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const pageIds = ""; // adjust dynamically as needed
+
+            $.get("@Url.Action("LoadExperienceSection", "Common")", { pageIds })
+                .done(function (result) {
+                    $("#experienceContainer").html(result);
+                })
+                .fail(function () {
+                    $("#experienceContainer").html("<p>Error loading experiences.</p>");
+                });
+        });
+    </script>
+}

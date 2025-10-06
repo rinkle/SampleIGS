@@ -111,7 +111,17 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                                     <label>Header Caption</label>
-                                    <textarea asp-for="PageHeader.HeaderCaption" class="form-control" placeholder="Caption"></textarea>
+                                    <input asp-for="PageHeader.HeaderCaption" class="form-control" placeholder="Caption" />
+                                </div>
+
+                            </div>
+                        }
+                        @if (new[] { 5, -1 }.Contains(Model.PageHeader?.Fk_PageId ?? 0))
+                        {
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                    <label>Additional Information</label>
+                                    <textarea asp-for="PageHeader.Additionalinfo" class="form-control" placeholder="Additional Info"></textarea>
                                 </div>
 
                             </div>
