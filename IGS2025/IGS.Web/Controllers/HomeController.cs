@@ -20,7 +20,9 @@ namespace IGS.Web.Controllers
         private readonly ICommonService _commonService;
         private readonly IExperienceVmService _experienceVmService;
         private readonly ITransactionServicesVmService _transactionVmService;
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService)
+        private readonly IPortfolioServicesVmService _portfolioVmService;
+
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService, IPortfolioServicesVmService portfolioServicesVmService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
@@ -29,6 +31,7 @@ namespace IGS.Web.Controllers
             _commonService = commonService;
             _experienceVmService = experienceVmService;
             _transactionVmService = transactionVmService;
+            _portfolioVmService = portfolioServicesVmService;
         }
         #region Home Page
         public async Task<IActionResult> Index()
@@ -74,6 +77,27 @@ namespace IGS.Web.Controllers
         }
         #endregion
 
+        #region Portfolio Services Page
+        [Route("portfolio-services")]
+        public async Task<IActionResult> PortfolioServices()
+        {
+            try
+            {
+                ViewBag.pageName = PageName.PortfolioServices;
+                ViewBag.canonical = "portfolio-services";
+                CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.PortfolioServices);
+                ViewBag.CommonService = CommonServiceModel;
+                PortfolioServicesViewModel vm = await _portfolioVmService.GetPortfolioServicesVmAsync(isAdmin: false);
+                return View(vm);
+            }
+            catch (Exception ex)
+            {
+                int errorId = await _logger.LogErrorAsync(ex, "Error in Home/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+                return View(null);
+            }
+        }
+        #endregion
         public IActionResult Privacy()
         {
             return View();
