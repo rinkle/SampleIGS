@@ -1,5 +1,162 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting globalEnvironmentSetting
+@model IGS.Models.ViewModels.PortfolioServicesViewModel
+@using IGS.Models.KeyLessModels;
 @{
+    string baseUrl = globalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    int Counter = 1;
+}
+
+@if (Model?.PortfolioServices != null)
+{
+    <div class="focus">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="f31">@Model.PortfolioServices.CoreAreasHeading</h3>
+                    <h4 class="f18">@Model.PortfolioServices.CoreAreasDescription</h4>
+                </div>
+
+                <div class="col-12">
+                    <div class="main">
+                        @if (Model?.CoreAreasOfFocus != null && Model?.CoreAreasOfFocus.Count > 0)
+                        {
+                            Counter = 1;
+                            <nav>
+                                <div class="nav nav-tabs flex-row justify-content-between" id="nav-tab" role="tablist">
+                                    @foreach (var item in Model?.CoreAreasOfFocus)
+                                    {
+                                        if (Counter == 1)
+                                        {
+                                            <button class='nav-link @(Counter == 1 ? "active" : "")' id="nav-@Counter-tab" data-bs-toggle="tab" data-bs-target="#nav-@Counter" type="button" role="tab" aria-controls="nav-@Counter" aria-selected="true">
+                                                @item.Heading <span>@item.SubHeading</span>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="nav-link" id="nav-@Counter-tab" data-bs-toggle="tab" data-bs-target="#nav-@Counter" type="button" role="tab" aria-controls="nav-@Counter" aria-selected="false">
+                                                @item.Heading  <span>@item.SubHeading</span>
+                                            </button>
+                                        }
+                                        Counter++;
+                                    }
+                                </div>
+                            </nav>
+                        }
+                        @if (Model.CoreAreasOfFocus != null && Model.CoreAreasOfFocus.Count > 0)
+                        {
+                            Counter = 1;
+                            <div class="tab-content" id="nav-tabContent">
+                                @foreach (var item in Model.CoreAreasOfFocus)
+                                {
+                                    <div class='tab-pane fade @(Counter == 1 ? "show active" : "")' id="nav-@Counter" role="tabpanel" aria-labelledby="nav-@Counter-tab">
+                                        @if (!string.IsNullOrEmpty(item.Description))
+                                        {
+                                            @Html.Raw(item.Description.Replace("<ul>", "<ul class='list-unstyled'>"))
+                                        }
+                                    </div>
+                                    Counter++;
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="industry-expertise pt-0">
+        <div class="container">
+            <div class="main">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="content d-flex flex-column h-100 justify-content-center">
+                            <h3 class="f50">@Model?.PortfolioServices.IndustryExpertiseHeading</h3>
+                            <p class="f20">@Model?.PortfolioServices.IndustryExpertiseSubHeading</p>
+                            <a href='@(baseUrl + "industries")' class="f18"><img src="./images/icons/arrow-right.svg" alt="arrow right icon" class="img-contain" /> Discover more</a>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model?.PortfolioServices?.IndustryExpertiseDescription))
+                    {
+                        <div class="col-lg-4">
+                            @Html.Raw(Model?.PortfolioServices?.IndustryExpertiseDescription.Replace("<ul>", "<ul class='list-unstyled f18'>"))
+                        </div>
+                    }
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest-insights featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="f31 mb-5">@Model?.PortfolioServices?.FeaturedInsightHeading</h3>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 class="f31">@Model?.PortfolioServices?.FeaturedInsightSubHeading</h4>
+                    @if (!string.IsNullOrEmpty(Model?.PortfolioServices?.FeaturedInsighDescription))
+                    {
+                        @Html.Raw(Model?.PortfolioServices?.FeaturedInsighDescription.Replace("<p>", "<p class='f18'>"))
+                    }
+                    @if (!string.IsNullOrEmpty(Model?.PortfolioServices?.FeaturedInsighPdf))
+                    {
+                        <a href='@(baseUrl + DbImagePath.PortfolioServicesImage + Model?.PortfolioServices?.FeaturedInsighPdf)' target="_blank" class="view-more alt mt-3">Download Full Report</a>
+                    }
+                </div>
+                <div class="col-lg-6">
+                    @if (!string.IsNullOrEmpty(Model?.PortfolioServices?.FeaturedInsighImage))
+                    {
+                        <div class="img-container">
+                            <img src='@(baseUrl + DbImagePath.PortfolioServicesImage + Model?.PortfolioServices?.FeaturedInsighImage)' alt="port with containers" class="img-cover" asp-append-version="true" />
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <div class="explore">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <h3 class="f31">@Model?.PortfolioServices?.InsightHeading</h3>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <a href='@(baseUrl + "insights")' class="view-more f16 ms-auto">View All</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="insightContainer">
+                <p>Loading insights...</p>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const pageIds = "3";
+            const categoryIds="";
+            $.get("@Url.Action("LoadInsightSection", "Common")", { categoryIds, pageIds })
+                    .done(function (result) {
+                    $("#insightContainer").html(result);
+                })
+                .fail(function () {
+                     $("#insightContainer").html("<p>Error loading insights.</p>");
+             });
+        });
+    </script>
 }
