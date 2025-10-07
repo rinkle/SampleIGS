@@ -24,5 +24,6 @@ namespace IGS.Dal.Repository.IRepository
         Task UpdateNewsUrlAsync(int newsId);
         Task<GetNewsCommonData_Result?> GetNewsCommonDataAsync();
         Task UpdateNewsCommonDataAsync(NewsCommonData entity);
+        Task<GetNewsDetailsByUrl_Result?> GetNewsDetailsByUrlAsync(string newsUrl);
     }
 }

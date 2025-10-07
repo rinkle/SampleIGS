@@ -93,6 +93,22 @@ namespace IGS.Dal.Services.Implementations
         }
 
 
+        /// <summary>
+        /// ✅ Builds NewsByUrlModel for single news item fetched by URL (public detail view).
+        /// </summary>
+        public async Task<NewsByUrlModel> GetNewsModelByUrlAsync(string newsUrl)
+        {
+            try
+            {
+                var newsDetail = await _unitOfWork.News.GetNewsDetailsByUrlAsync(newsUrl);
 
+                return new NewsByUrlModel(newsDetail);
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogErrorAsync(ex, "Error in NewsVmService.GetNewsModelByUrlAsync");
+                return new NewsByUrlModel();
+            }
+        }
     }
 }

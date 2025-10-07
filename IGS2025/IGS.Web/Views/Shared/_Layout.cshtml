@@ -97,7 +97,7 @@
                         <a href='@(baseUrl + "portfolio-services")' class='nav-link @(ViewBag.pageName == PageName.PortfolioServices ? "active" : "")'>Portfolio Services</a>
                         <a href='@(baseUrl + "industries")' class='nav-link @(ViewBag.pageName == PageName.Industries ? "active" : "")'>Industries</a>
                         <a href='@(baseUrl + "experience")' class='nav-link @(ViewBag.pageName == PageName.Experience ? "active" : "")'>Experience</a>
-                        <a href='@(baseUrl + "insights")' class='nav-link @(ViewBag.pageName == PageName.Insights ? "active" : "")'>Insights</a>
+                        <a href='@(baseUrl + "insights")' class='nav-link @((ViewBag.pageName == PageName.Insights || ViewBag.pageName == PageName.CaseStudy) ? "active" : "")'>Insights</a>
                         <a href='@(baseUrl + "team")' class='nav-link @(ViewBag.pageName == PageName.Team ? "active" : "")'>Team</a>
                         @if (!string.IsNullOrEmpty(common?.OtherContact?.CareersUrl))
                         {
@@ -113,7 +113,7 @@
         </nav>
         <!-- #endregion -->
         <!-- #region Header -->
-        @if (ViewBag.pageName == PageName.TransactionServices || ViewBag.pageName == PageName.PortfolioServices || ViewBag.pageName == PageName.Industries || ViewBag.pageName == PageName.Experience || ViewBag.pageName == PageName.Insights)
+        @if (ViewBag.pageName == PageName.TransactionServices || ViewBag.pageName == PageName.PortfolioServices || ViewBag.pageName == PageName.Industries || ViewBag.pageName == PageName.Experience || ViewBag.pageName == PageName.Insights || ViewBag.pageName == PageName.CaseStudy)
         {
             <header>
                 <div class="container">

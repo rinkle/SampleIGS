@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.NewsByUrlModel
 @{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+@if (Model?.NewsInfo != null)
+{
+    <div class="news">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <a href='@(baseUrl + "insights")' class="back-to"><i class="fas fa-arrow-left"></i> Back to Insights</a>
+
+                    <h3 class="f31">@Html.Raw(Model?.NewsInfo?.NewsHeadLine)</h3>
+
+                    <p>@Html.Raw(Model?.NewsInfo?.Description).</p>
+
+                    @if (!string.IsNullOrEmpty(Model?.NewsInfo?.KeyInsight))
+                    {
+                        <h5 class="f20">Key Insights</h5>
+                    }
+
+                    @Html.Raw(Model?.NewsInfo?.KeyInsight)
+
+                    @if (!string.IsNullOrEmpty(Model?.NewsInfo?.BottomText))
+                    {
+                        @Html.Raw(Model?.NewsInfo?.BottomText.Replace("<h5>", "<h5 class='header f30'>").Replace("<p>", "<h5 class='header f30'>").Replace("<p>","</h5>"))
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
 }

@@ -52,20 +52,20 @@ namespace IGS.Web.Controllers
         }
 
 
-        [Route("news-article/{newsurl}")]
-        [Route("insight-info/{newsurl}")]
+        [Route("case-study/{newsurl}")]
         [HttpGet]
-        public async Task<IActionResult> InsightInfo(string newsurl)
+        public async Task<IActionResult> InsightInfo(string newsUrl)
         {
             //write a methid to get newsid
-            int newsId = 0;
-            ViewBag.newsurl = newsurl;
-            ViewBag.pageName = PageName.Insights;
-            ViewBag.canonical = "insight-article/" + newsurl;
-            CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Experience);
-            ViewBag.NewsId = newsId;
-            var vm = await _newsVmService.GetNewsModelAsync(newsId);
-            vm.NewsInfo.NewsType = vm.NewsInfo.NewsType ?? 1;
+            ViewBag.newsurl = newsUrl;
+            ViewBag.pageName = PageName.CaseStudy;
+            ViewBag.canonical = "case-study/" + newsUrl;
+            CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.CaseStudy);
+            ViewBag.CommonService = CommonServiceModel;
+            NewsByUrlModel vm = await _newsVmService.GetNewsModelByUrlAsync(newsUrl);
+            if (vm.NewsInfo == null || vm.NewsInfo.NewsId == 0)
+                return NotFound();
+
             return View(vm);
         }
     }

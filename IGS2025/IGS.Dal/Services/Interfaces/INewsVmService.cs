@@ -8,5 +8,6 @@ namespace IGS.Dal.Services.Interfaces
     {
         Task<NewsViewModel> GetNewsVmAsync(string? categoryIds = null, string? pageIds = null, string? orderBy = null, bool isAdmin = false);
         Task<NewsModel> GetNewsModelAsync(int newsId, string? categoryIds = null, string? pageIds = null, string? orderBy = null);
+        Task<NewsByUrlModel> GetNewsModelByUrlAsync(string newsUrl);
     }
 }

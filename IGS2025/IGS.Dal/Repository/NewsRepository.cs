@@ -164,5 +164,19 @@ namespace IGS.Dal.Repository
             }
             await _db.SaveChangesAsync();
         }
+
+
+        /// <summary>
+        /// ✅ Get detailed News by URL (single record, for public view).
+        /// </summary>
+        public async Task<GetNewsDetailsByUrl_Result?> GetNewsDetailsByUrlAsync(string newsUrl)
+        {
+            var result = await _sql.QueryAsync<GetNewsDetailsByUrl_Result>(
+                "dbo.GetNewsDetailsByUrl",
+                new { prmNewsUrl = newsUrl },
+                isStoredProc: true);
+
+            return result.FirstOrDefault();
+        }
     }
 }

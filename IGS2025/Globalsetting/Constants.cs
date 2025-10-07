@@ -99,7 +99,7 @@ namespace Globalsetting
         public const string Experience = "Experience";
         public const string ExperienceDetails = "Experience Details";
         public const string Insights = "Insights";
-        public const string InsightInfo = "Insight Info";
+        public const string CaseStudy = "Case Study";
         public const string Team = "Team";
         public const string TeamBio = "Team Info";
         public const string Careers = "Careers";
