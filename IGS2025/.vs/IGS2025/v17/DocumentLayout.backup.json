@@ -3,19 +3,28 @@
   "WorkspaceRootPath": "E:\\Git\\SampleIGS\\IGS2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\insights\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\insights\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\interfaces\\inewsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\interfaces\\inewsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\shared\\components\\insightsection\\_insightsectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\shared\\components\\insightsection\\_insightsectionpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|e:\\git\\sampleigs\\igs2025\\igs.dal\\services\\implementations\\newsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1436A60-24A1-4C38-87D3-921DE001E8F2}|IGS.Dal\\IGS.Dal.csproj|solutionrelative:igs.dal\\services\\implementations\\newsvmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Git\\IGS-2025\\insights.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\viewmodels\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\viewmodels\\newsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|e:\\git\\sampleigs\\igs2025\\igs.models\\viewmodels\\newsbyurlmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED69B1D-C17B-922F-23D1-E6502F34D7A5}|IGS.Models\\IGS.Models.csproj|solutionrelative:igs.models\\viewmodels\\newsbyurlmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\controllers\\insightscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\controllers\\insightscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|e:\\git\\sampleigs\\igs2025\\igs.web\\views\\insights\\insightinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C3C6C7A9-D5DD-409B-84FF-2BD5B8F71CC1}|IGS.Web\\IGS.Web.csproj|solutionrelative:igs.web\\views\\insights\\insightinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,8 +34,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewsVmService.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
+              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
+              "RelativeToolTip": "IGS.Dal\\Services\\Implementations\\NewsVmService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T05:49:21.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NewsByUrlModel.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsByUrlModel.cs",
+              "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\NewsByUrlModel.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsByUrlModel.cs",
+              "RelativeToolTip": "IGS.Models\\ViewModels\\NewsByUrlModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T05:48:37.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NewsViewModel.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsViewModel.cs",
+              "RelativeDocumentMoniker": "IGS.Models\\ViewModels\\NewsViewModel.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Models\\ViewModels\\NewsViewModel.cs",
+              "RelativeToolTip": "IGS.Models\\ViewModels\\NewsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T05:47:45.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "INewsVmService.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Interfaces\\INewsVmService.cs",
+              "RelativeDocumentMoniker": "IGS.Dal\\Services\\Interfaces\\INewsVmService.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Dal\\Services\\Interfaces\\INewsVmService.cs*",
+              "RelativeToolTip": "IGS.Dal\\Services\\Interfaces\\INewsVmService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T05:42:38.08Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -37,54 +98,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_InsightSectionPartial.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\InsightSection\\_InsightSectionPartial.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Shared\\Components\\InsightSection\\_InsightSectionPartial.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\Components\\InsightSection\\_InsightSectionPartial.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Shared\\Components\\InsightSection\\_InsightSectionPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T22:35:11.228Z",
+              "DocumentIndex": 4,
+              "Title": "InsightsController.cs",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Controllers\\InsightsController.cs",
+              "RelativeDocumentMoniker": "IGS.Web\\Controllers\\InsightsController.cs",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Controllers\\InsightsController.cs",
+              "RelativeToolTip": "IGS.Web\\Controllers\\InsightsController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAEIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T05:15:45.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "insights.html",
-              "DocumentMoniker": "E:\\Git\\IGS-2025\\insights.html",
-              "RelativeDocumentMoniker": "..\\..\\IGS-2025\\insights.html",
-              "ToolTip": "E:\\Git\\IGS-2025\\insights.html",
-              "RelativeToolTip": "..\\..\\IGS-2025\\insights.html",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAFcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-06T22:22:38.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAEYAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "InsightInfo.cshtml",
+              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Insights\\InsightInfo.cshtml",
+              "RelativeDocumentMoniker": "IGS.Web\\Views\\Insights\\InsightInfo.cshtml",
+              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Insights\\InsightInfo.cshtml",
+              "RelativeToolTip": "IGS.Web\\Views\\Insights\\InsightInfo.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T22:23:15.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Insights\\Index.cshtml",
-              "RelativeDocumentMoniker": "IGS.Web\\Views\\Insights\\Index.cshtml",
-              "ToolTip": "E:\\Git\\SampleIGS\\IGS2025\\IGS.Web\\Views\\Insights\\Index.cshtml",
-              "RelativeToolTip": "IGS.Web\\Views\\Insights\\Index.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAE8AAABwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-06T22:05:39.407Z",
+              "WhenOpened": "2025-10-07T05:15:42.966Z",
               "EditorCaption": ""
             }
           ]
