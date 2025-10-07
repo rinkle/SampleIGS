@@ -13,15 +13,25 @@ namespace IGS.Web.Controllers
     {
         private readonly string _baseUrl;
         private readonly ILoggerService _logger;
+        private readonly ICommonService _commonService;
+        private readonly ITeamVmService _teamVmService;
 
-        public TeamController(IOptions<AppSettings> options, ILoggerService logger)
+        public TeamController(IOptions<AppSettings> options, ILoggerService logger, ITeamVmService teamVmService, ICommonService commonService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
+            _teamVmService = teamVmService;
+            _commonService = commonService;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.pageName = PageName.Team;
+            ViewBag.canonical = "team";
+            CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Team);
+            ViewBag.CommonService = CommonServiceModel;
+            var vm = await _teamVmService.GetTeamVmAsync("-1", "-1", "DisplayOrder", isAdmin: false);
+            return View(vm);
         }
     }
 }

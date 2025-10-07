@@ -1,0 +1,66 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.TeamViewModel
+
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.TeamList != null && Model?.TeamCategories != null)
+{
+    <div class="team">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <nav class="nav nav-filter flex-column flex-sm-row justify-content-center">
+                        @if (Model?.TeamCategories != null && Model.TeamCategories.Any())
+                        {
+                            foreach (var cat in Model?.TeamCategories)
+                            {
+                                <a href="javascript:void(0)" class='nav-item @(cat.Id == 1 ? "active" : "")' data-categoryid="@cat.Id">@cat.Category</a>
+                            }
+                        }
+
+                        <a href="javascript:void(0)" class="nav-item">All</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row" id="teamContainer">
+                <img src='@(baseUrl + "images/loader.gif")' alt="loading..." style="height:200px;" asp-append-version="true">
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // ✅ Load all team members on page load
+            loadTeamMembers("1");
+
+            // ✅ On category click
+            $(".nav-filter .nav-item").on("click", function () {
+                $(".nav-filter .nav-item").removeClass("active");
+                $(this).addClass("active");
+
+                const categoryIds = $(this).data("categoryid") || "";
+                $("#teamContainer").html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
+
+                loadTeamMembers(categoryIds);
+            });
+
+            // ✅ AJAX loader function
+            function loadTeamMembers(categoryIds) {
+                $.get("@Url.Action("LoadTeamSection", "Common")", { categoryIds })
+                    .done(function (result) {
+                        $("#teamContainer").html(result);
+                    })
+                    .fail(function () {
+                        $("#teamContainer").html("<p>Error loading team members.</p>");
+                    });
+            }
+        });
+    </script>
+}

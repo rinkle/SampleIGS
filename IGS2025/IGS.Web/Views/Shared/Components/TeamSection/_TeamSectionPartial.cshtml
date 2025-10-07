@@ -1,0 +1,69 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.TeamViewModel
+
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.TeamList != null && Model.TeamList.Any())
+{
+    @foreach (var item in Model.TeamList)
+    {
+        var fullName = $"{item.FirstName} {item.MiddleName} {item.LastName}".Trim();
+        var profileImage = string.IsNullOrEmpty(item.BioImage)
+            ? baseUrl + "images/team/default-avatar.jpg"
+            : baseUrl + DbImagePath.TeamBio + item.BioImage;
+        var safeId = string.IsNullOrEmpty(item.TeamUrl)
+            ? $"team_{item.TeamId}"
+            : item.TeamUrl.Replace(" ", "_");
+
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="person @(item.CategoryNames?.ToLower()?.Replace(" ", "-") ?? "general")">
+                <div class="img-container"
+                     data-bs-toggle="modal"
+                     data-bs-target="#teamModal"
+                     id="@safeId">
+
+                    <img src="@profileImage"
+                         alt="@fullName"
+                         title="@fullName"
+                         class="img-contain trans" />
+
+                    <div class="overlay">
+                        <h5>
+                            Read Bio
+                            <img src="@(baseUrl + "images/icons/team-arrow-right.svg")"
+                                 alt="arrow right"
+                                 class="img-contain" />
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <h5 class="name f20">
+                        @fullName
+                        @if (!string.IsNullOrEmpty(item.Email))
+                        {
+                            <a href="mailto:@item.Email" class="float-end">
+                                <img src="@(baseUrl + "images/icons/team-mail-dark.svg")"
+                                     alt="mail icon"
+                                     class="img-contain" />
+                            </a>
+                        }
+                    </h5>
+                    @if (!string.IsNullOrEmpty(item.TeamTitleName))
+                    {
+                        <h5 class="title f20">@item.TeamTitleName</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="col-12 text-center py-5">
+        <p>No team members found.</p>
+    </div>
+}
