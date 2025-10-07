@@ -1,6 +1,7 @@
 ﻿@using Globalsetting
 @inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
 @model IGS.Models.ViewModels.TeamViewModel
+
 @{
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
     string catId = Convert.ToString(ViewBag.ActiveCategory);
@@ -8,7 +9,8 @@
 
 @if (Model?.TeamList != null && Model?.TeamCategories != null)
 {
-    <input type="hidden" class="hdnCategory" value="catId" />
+    <input type="hidden" class="hdnCategory" value="@catId" />
+
     <div class="team">
         <div class="container">
             <div class="row justify-content-center">
@@ -16,19 +18,34 @@
                     <nav class="nav nav-filter flex-column flex-sm-row justify-content-center">
                         @if (Model?.TeamCategories != null && Model.TeamCategories.Any())
                         {
-                            foreach (var cat in Model?.TeamCategories)
+                            foreach (var cat in Model.TeamCategories)
                             {
-                                <a href="javascript:void(0)" class='nav-item @(cat.Id.ToString() == catId ? "active" : "")' data-categoryid="@cat.Id">@cat.Category</a>
+                                <a href="javascript:void(0)"
+                                   class='nav-item @(cat.Id.ToString() == catId ? "active" : "")'
+                                   data-categoryid="@cat.Id">@cat.Category</a>
                             }
                         }
-
                         <a href="javascript:void(0)" class="nav-item">All</a>
                     </nav>
                 </div>
             </div>
 
             <div class="row" id="teamContainer">
-                <img src='@(baseUrl + "images/loader.gif")' alt="loading..." style="height:200px;" asp-append-version="true">
+                <img src='@(baseUrl + "images/loader.gif")'
+                     alt="loading..."
+                     style="height:200px;"
+                     asp-append-version="true" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Modal -->
+    <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content border-0 rounded-0">
+                <div class="modal-body teamBio">
+                    <p>Loading....</p>
+                </div>
             </div>
         </div>
     </div>
@@ -39,7 +56,7 @@
         $(document).ready(function () {
 
             // ✅ Load all team members on page load
-            loadTeamMembers("1");
+            loadTeamMembers($('.hdnCategory').val());
 
             // ✅ On category click
             $(".nav-filter .nav-item").on("click", function () {
@@ -54,6 +71,7 @@
 
             // ✅ AJAX loader function
             function loadTeamMembers(categoryIds) {
+                categoryIds = categoryIds || "";
                 $.get("@Url.Action("LoadTeamSection", "Common")", { categoryIds })
                     .done(function (result) {
                         $("#teamContainer").html(result);
@@ -63,5 +81,24 @@
                     });
             }
         });
+
+        // ✅ Open modal with bio content
+        function openTeamModel(teamId, bioUrl) {
+              $(".teamBio").html("<p>loading...</p>");
+            $.get("@Url.Action("LoadTeamBioSection", "Common")", {
+                teamId: teamId,
+                categoryIds: $('.hdnCategory').val(),
+                locationIds: null,
+                orderBy: "DisplayOrder"
+            })
+            .done(function (html) {
+                $(".teamBio").html(html);
+                $("#teamModal").modal("show");
+                history.pushState(null, null, "/team-info/" + encodeURIComponent(bioUrl));
+            })
+            .fail(function () {
+                $(".teamBio").html("<p>Error loading bio.</p>");
+            });
+        }
     </script>
 }

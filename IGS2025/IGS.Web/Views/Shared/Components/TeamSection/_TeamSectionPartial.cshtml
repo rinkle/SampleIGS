@@ -18,7 +18,7 @@
             ? $"team_{item.TeamId}"
             : item.TeamUrl.Replace(" ", "_");
 
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" onclick="openTeamModal('@item.TeamUrl')">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" onclick="openTeamModel('@item.TeamId','@item.TeamUrl')">
             <div class="person @(item.CategoryNames?.ToLower()?.Replace(" ", "-") ?? "general")" id="@item.TeamUrl">
                 <div class="img-container"
                      data-bs-toggle="modal"
@@ -28,14 +28,14 @@
                     <img src="@profileImage"
                          alt="@fullName"
                          title="@fullName"
-                         class="img-contain trans" />
+                         class="img-contain trans" asp-append-version="true" />
 
                     <div class="overlay">
                         <h5>
                             Read Bio
                             <img src="@(baseUrl + "images/icons/team-arrow-right.svg")"
                                  alt="arrow right"
-                                 class="img-contain" />
+                                 class="img-contain"  asp-append-version="true" />
                         </h5>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             <a href="mailto:@item.Email" class="float-end">
                                 <img src="@(baseUrl + "images/icons/team-mail-dark.svg")"
                                      alt="mail icon"
-                                     class="img-contain" />
+                                     class="img-contain" asp-append-version="true" />
                             </a>
                         }
                     </h5>

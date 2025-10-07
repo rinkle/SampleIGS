@@ -34,5 +34,16 @@ namespace IGS.Web.Controllers
             ViewBag.ActiveCategory = "1";
             return View(vm);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> TeamBioInfo([FromBody] int teamId)
+        {
+            var model = await _teamVmService.GetTeamModelAsync(teamId, null, null, "DisplayOrder");
+
+            if (model == null || model.TeamInfo == null)
+                return Content("<p>Team member not found.</p>");
+
+            return PartialView("_TeamBio", model);
+        }
     }
 }

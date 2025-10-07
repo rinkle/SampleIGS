@@ -1,0 +1,67 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
+@model IGS.Models.ViewModels.TeamBioModel
+@{
+    string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    string catId = Convert.ToString(ViewBag.ActiveCategory);
+}
+
+@if (Model?.TeamBio != null && Model?.TeamBio != null)
+{
+    <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+        <nav class="nav flex-column">
+            <button type="button" class="nav-item CloseTeamModel" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M1 1L17 17" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <path d="M17 1L0.999998 17" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+            <button type="button" class="nav-item" data-bs-target="#teamCarousel" data-bs-slide="prev" onclick="openTeamModel('@Model.TeamBio.PreviousId','@Model.TeamBio.PreviousUrl')">
+                <img src='@(baseUrl + "images/icons/modal-arrow-left.svg")' alt="arrow left" class="img-contain" asp-append-version="true">
+            </button>
+            <button type="button" class="nav-item" data-bs-target="#teamCarousel" data-bs-slide="next" onclick="openTeamModel('@Model.TeamBio.NextId','@Model.TeamBio.NextUrl')">
+                <img src='@(baseUrl + "images/icons/modal-arrow-right.svg")' alt="arrow right" class="img-contain" asp-append-version="true">
+            </button>
+        </nav>
+
+        <div class="carousel-inner">
+            <!-- Matt Umscheid -->
+            <div class="carousel-item active" id="Matt_Umscheid-car">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="img-container">
+                                <img src='@(baseUrl + DbImagePath.TeamBio + Model.TeamBio.BioImage)' alt="@Model.TeamBio.FirstName @Model.TeamBio.MiddleName @Model.TeamBio.LastName" title="@Model.TeamBio.FirstName @Model.TeamBio.MiddleName @Model.TeamBio.LastName" class="img-cover" asp-append-version="true" />
+                            </div>
+
+                            <div class="info">
+                                <h5 class="name f32">@Model.TeamBio.FirstName <br> @Model.TeamBio.LastName</h5>
+                                <h5 class="title f12">@Model.TeamBio.TeamTitleName</h5>
+                                @if (!string.IsNullOrEmpty(Model.TeamBio.Email))
+                                {
+                                    <a href="mailto:@Model.TeamBio.Email" class="email"><img src='@(baseUrl + "images/icons/team-mail.svg")' alt="mail icon" class="img-contain"></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="content">
+                            @if (!string.IsNullOrEmpty(Model.TeamBio.Description))
+                            {
+                                <h5>Bio</h5>
+                                @Html.Raw(Model.TeamBio.Description)
+                            }
+                            @if (!string.IsNullOrEmpty(Model.TeamBio.EducationDescription))
+                            {
+                                <h5>Education</h5>
+                                @Html.Raw(Model.TeamBio.EducationDescription)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

@@ -21,5 +21,12 @@ namespace IGS.Web.Controllers
         {
             return ViewComponent("TeamSection", new { categoryIds, locationIds, orderBy, isAdmin });
         }
+
+        [HttpGet]
+        public IActionResult LoadTeamBioSection(int teamId, string? categoryIds = null, string? locationIds = null, string orderBy = "DisplayOrder")
+        {
+            return ViewComponent("TeamBioSection", new { teamId, categoryIds, locationIds, orderBy });
+        }
+
     }
 }
