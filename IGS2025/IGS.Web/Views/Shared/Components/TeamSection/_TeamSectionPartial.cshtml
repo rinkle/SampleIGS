@@ -18,8 +18,8 @@
             ? $"team_{item.TeamId}"
             : item.TeamUrl.Replace(" ", "_");
 
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="person @(item.CategoryNames?.ToLower()?.Replace(" ", "-") ?? "general")">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" onclick="openTeamModal('@item.TeamUrl')">
+            <div class="person @(item.CategoryNames?.ToLower()?.Replace(" ", "-") ?? "general")" id="@item.TeamUrl">
                 <div class="img-container"
                      data-bs-toggle="modal"
                      data-bs-target="#teamModal"

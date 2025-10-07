@@ -1,13 +1,14 @@
 ﻿@using Globalsetting
 @inject Globalsetting.GlobalEnvironmentSetting GlobalEnvironmentSetting
 @model IGS.Models.ViewModels.TeamViewModel
-
 @{
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+    string catId = Convert.ToString(ViewBag.ActiveCategory);
 }
 
 @if (Model?.TeamList != null && Model?.TeamCategories != null)
 {
+    <input type="hidden" class="hdnCategory" value="catId" />
     <div class="team">
         <div class="container">
             <div class="row justify-content-center">
@@ -17,7 +18,7 @@
                         {
                             foreach (var cat in Model?.TeamCategories)
                             {
-                                <a href="javascript:void(0)" class='nav-item @(cat.Id == 1 ? "active" : "")' data-categoryid="@cat.Id">@cat.Category</a>
+                                <a href="javascript:void(0)" class='nav-item @(cat.Id.ToString() == catId ? "active" : "")' data-categoryid="@cat.Id">@cat.Category</a>
                             }
                         }
 
@@ -47,7 +48,7 @@
 
                 const categoryIds = $(this).data("categoryid") || "";
                 $("#teamContainer").html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
-
+                $('.hdnCategory').val(categoryIds);
                 loadTeamMembers(categoryIds);
             });
 

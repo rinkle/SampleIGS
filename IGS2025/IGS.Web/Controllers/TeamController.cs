@@ -31,6 +31,7 @@ namespace IGS.Web.Controllers
             CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Team);
             ViewBag.CommonService = CommonServiceModel;
             var vm = await _teamVmService.GetTeamVmAsync("-1", "-1", "DisplayOrder", isAdmin: false);
+            ViewBag.ActiveCategory = "1";
             return View(vm);
         }
     }
