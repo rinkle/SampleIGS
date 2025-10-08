@@ -274,3 +274,41 @@
     <!-- #endregion -->
 </body>
 </html>
+
+<style>
+    /* Overlay covers entire screen */
+    #ajaxLoaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark bg */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000; /* above modals and everything else */
+    }
+
+        /* Loader image */
+        #ajaxLoaderOverlay .loader-content img {
+            height: 100px;
+            width: 100px;
+            animation: spin 1.2s linear infinite;
+        }
+
+    #ajaxLoaderOverlay {
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    /* Optional subtle rotation */
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
