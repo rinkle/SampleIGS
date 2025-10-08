@@ -221,7 +221,7 @@
                 </div>
             </div>
         </footer>
-        @if (ViewBag.pageName == PageName.Team)
+        @if (ViewBag.pageName == PageName.Team || ViewBag.pageName == PageName.Experience)
         {
             <div id="ajaxLoaderOverlay" style="display:none;">
                 <div class="loader-content">
@@ -253,8 +253,7 @@
     <script type="text/javascript" src='@(baseUrl + "js/script.js")' asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!-- #endregion -->
-
-    @if(ViewBag.pageName == PageName.Team)
+    @if (ViewBag.pageName == PageName.Team || ViewBag.pageName == PageName.Experience)
     {
         <script>
             let activeRequests = 0;
@@ -286,7 +285,7 @@
 </body>
 </html>
 
-@if (ViewBag.pageName == PageName.Team)
+@if (ViewBag.pageName == PageName.Team || ViewBag.pageName == PageName.Experience)
 {
     <style>
         /* Overlay covers entire screen */

@@ -42,12 +42,8 @@
 
     <!-- Team Modal -->
     <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content border-0 rounded-0">
-                <div class="modal-body teamBio">
-                  
-                </div>
-            </div>
+        <div class="modal-dialog modal-xl teamBio">
+           
         </div>
     </div>
 
@@ -57,9 +53,6 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-
-         
-
             // ✅ Auto open team bio if passed from server
             if ('@onloadBio' != '') {
                 var url = '#' + '@onloadBio';

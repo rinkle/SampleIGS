@@ -33,7 +33,6 @@
             </div>
 
             <div id="experienceContainer" class="row loadMore">
-                <img src='@(baseUrl + "images/loader.gif")' alt="loading..." style="height:200px;" asp-append-version="true">
             </div>
 
             <div class="row mt-3">
@@ -50,7 +49,7 @@
 @section Scripts {
     <script>
         let pageNumber = 1;
-        const itemsPerPage = 108;
+        const itemsPerPage = 8;
         let pageIds = "";
         let categoryIds = ""; // will update on click
         const orderBy = "DisplayOrder";
@@ -63,11 +62,9 @@
         function loadExperiences(reset = false) {
             if (reset) {
                 pageNumber = 1;
-                $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
             }
 
             $loadMoreBtn.prop("disabled", true).text("Loading...");
-            $container.find("img[alt='loading...']").show();
 
             $.get("@Url.Action("LoadExperienceSection", "Common")", {
                 categoryIds,
@@ -77,8 +74,6 @@
                 itemsPerPage
             })
             .done(function (result) {
-                $container.find("img[alt='loading...']").hide();
-
                 if (reset) $container.empty();
 
                 const $result = $(result);
@@ -104,7 +99,6 @@
                 }
             })
             .fail(function () {
-                $container.find("img[alt='loading...']").hide();
                 $container.append("<p class='text-danger'>Error loading experiences.</p>");
                 $loadMoreBtn.prop("disabled", false).text("Load More");
             });
@@ -112,7 +106,6 @@
 
         // ✅ Initial load
         $(document).ready(function () {
-            $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
             loadExperiences();
         });
 
