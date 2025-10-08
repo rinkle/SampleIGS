@@ -1,0 +1,12 @@
+﻿@inject Globalsetting.GlobalEnvironmentSetting globalEnvironmentSetting
+@{
+    ViewData["Title"] = "Page Not Found";
+    string baseUrl = globalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+<div class="error-page text-center" style="padding:80px;">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>Sorry, the page you’re looking for doesn’t exist or may have been moved.</p>
+    <a href="@baseUrl" class="btn btn-primary mt-3">Go back to Home</a>
+</div>

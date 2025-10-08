@@ -3787,6 +3787,7 @@ wwwroot\images\pageHeader\insights_old_20251007035208.jpg
 wwwroot\images\pageHeader\portfolio-services.jpg
 wwwroot\images\pageHeader\team.jpg
 wwwroot\images\pageHeader\transaction-services.jpg
+wwwroot\images\pageHeader\transaction-services_old_20251008181101.jpg
 wwwroot\images\portfolioServices\IGS-B2B-Competitive-Pricing-Intelligence-F.pdf
 wwwroot\images\portfolioServices\recent-projects-4.jpg
 wwwroot\images\Team\Bio\Abby_West.png

@@ -152,5 +152,20 @@ namespace IGS.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
+        
+        [Route("Home/HandleError/{statusCode}")]
+        public IActionResult HandleError(int statusCode)
+        {
+            switch (statusCode)
+            {
+                case 404:
+                    return View("NotFound"); // our custom view
+                case 403:
+                    return View("Forbidden");
+                default:
+                    return View("Error");
+            }
+        }
     }
 }
