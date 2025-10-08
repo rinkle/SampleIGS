@@ -137,7 +137,7 @@
 
         <!-- #endregion -->
         @RenderBody()
-
+       
 
         <!-- #region subscribe newsletter -->
         <div class="subscribe mt-auto">
@@ -221,6 +221,11 @@
                 </div>
             </div>
         </footer>
+        <div id="ajaxLoaderOverlay" style="display:none;">
+            <div class="loader-content">
+                <img src="@(baseUrl + "images/loader.svg")" alt="Loading..." />
+            </div>
+        </div>
         <!-- #endregion -->
     </wrapper>
 
@@ -243,6 +248,29 @@
 
     <script type="text/javascript" src='@(baseUrl + "js/script.js")' asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        let activeRequests = 0;
+         let hideLoaderTimer;
+
+         // ✅ Show overlay when first AJAX starts
+         $(document).ajaxSend(function () {
+             activeRequests++;
+             clearTimeout(hideLoaderTimer);
+             if (activeRequests === 1) {
+                 $("#ajaxLoaderOverlay").stop(true, true).fadeIn(200);
+             }
+         });
+
+         // ✅ Hide overlay only after *all* AJAX complete and small delay
+         $(document).ajaxComplete(function () {
+             activeRequests = Math.max(activeRequests - 1, 0);
+             if (activeRequests === 0) {
+                 hideLoaderTimer = setTimeout(function () {
+                     $("#ajaxLoaderOverlay").stop(true, true).fadeOut(300);
+                 }, 250); // wait 250ms to avoid blink
+             }
+         });
+    </script>
     <!-- #endregion -->
 </body>
 </html>

@@ -50,7 +50,7 @@
 @section Scripts {
     <script>
         let pageNumber = 1;
-        const itemsPerPage = 8;
+        const itemsPerPage = 108;
         let pageIds = "";
         let categoryIds = ""; // will update on click
         const orderBy = "DisplayOrder";
@@ -59,6 +59,7 @@
         const $categoryFilter = $("#categoryFilter");
         let totalCount = 0;
 
+        // ✅ Main AJAX function
         function loadExperiences(reset = false) {
             if (reset) {
                 pageNumber = 1;
@@ -109,11 +110,13 @@
             });
         }
 
+        // ✅ Initial load
         $(document).ready(function () {
             $container.html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
             loadExperiences();
         });
 
+        // ✅ Load more click
         $loadMoreBtn.on("click", function () {
             loadExperiences();
         });
@@ -129,9 +132,10 @@
             // Update categoryIds
             categoryIds = $(this).data("categoryid") || "";
 
-            // Reset load more button and list
+            // Reset button and list
             $loadMoreBtn.show().text("Load More");
             loadExperiences(true);
         });
     </script>
 }
+

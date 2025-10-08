@@ -35,15 +35,18 @@ namespace IGS.Web.Controllers
             return View(vm);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> TeamBioInfo([FromBody] int teamId)
+        [HttpGet]
+        [Route("team-info/{teamUrl}")]
+        public async Task<IActionResult> TeamBioInfo(string teamUrl)
         {
-            var model = await _teamVmService.GetTeamModelAsync(teamId, null, null, "DisplayOrder");
-
-            if (model == null || model.TeamInfo == null)
-                return Content("<p>Team member not found.</p>");
-
-            return PartialView("_TeamBio", model);
+            ViewBag.pageName = PageName.Team;
+            ViewBag.canonical = "team";
+            CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.Team);
+            ViewBag.CommonService = CommonServiceModel;
+            var vm = await _teamVmService.GetTeamVmAsync("-1", "-1", "DisplayOrder", isAdmin: false);
+            ViewBag.ActiveCategory = "";
+            ViewBag.teamUrl = teamUrl;
+            return View("index",vm);
         }
     }
 }

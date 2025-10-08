@@ -1231,6 +1231,7 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\Scripts\jquery-3.3.1.slim.min.map
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\jquery-knob\bower.json
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\select2\tests\selection\stopPropagation-tests.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\es-MX.js
+E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\images\loader.svg
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\zh-SG.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\i18n\xh-ZA.js
 E:\Git\SampleIGS\IGS2025\IGS.Web\wwwroot\vendors\DateJS\build\production\i18n\es-VE.js
@@ -3773,6 +3774,7 @@ wwwroot\images\Insight\Urgent-Care.jpg
 wwwroot\images\Insight\Warehouse.jpg
 wwwroot\images\landing-1.jpg
 wwwroot\images\loader.gif
+wwwroot\images\loader.svg
 wwwroot\images\loader-old.gif
 wwwroot\images\News\Industrial-Automation.jpg
 wwwroot\images\pageHeader\case-study.jpg

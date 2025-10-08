@@ -5,6 +5,11 @@
 @{
     string baseUrl = GlobalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
     string catId = Convert.ToString(ViewBag.ActiveCategory);
+    string onloadBio = string.Empty;
+    if (!string.IsNullOrEmpty(ViewBag.teamUrl))
+    {
+        onloadBio = ViewBag.teamUrl;
+    }
 }
 
 @if (Model?.TeamList != null && Model?.TeamCategories != null)
@@ -25,16 +30,12 @@
                                    data-categoryid="@cat.Id">@cat.Category</a>
                             }
                         }
-                        <a href="javascript:void(0)" class="nav-item">All</a>
+                        <a href="javascript:void(0)" class='nav-item @(string.IsNullOrEmpty(catId) ? "active" : "")'>All</a>
                     </nav>
                 </div>
             </div>
 
             <div class="row" id="teamContainer">
-                <img src='@(baseUrl + "images/loader.gif")'
-                     alt="loading..."
-                     style="height:200px;"
-                     asp-append-version="true" />
             </div>
         </div>
     </div>
@@ -44,18 +45,28 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content border-0 rounded-0">
                 <div class="modal-body teamBio">
-                    <p>Loading....</p>
+                  
                 </div>
             </div>
         </div>
     </div>
-}
 
+   
+
+}
 @section Scripts {
     <script>
         $(document).ready(function () {
 
-            // ✅ Load all team members on page load
+         
+
+            // ✅ Auto open team bio if passed from server
+            if ('@onloadBio' != '') {
+                var url = '#' + '@onloadBio';
+                $(url).click();
+            }
+
+            // ✅ Load all team members on initial page load
             loadTeamMembers($('.hdnCategory').val());
 
             // ✅ On category click
@@ -64,27 +75,37 @@
                 $(this).addClass("active");
 
                 const categoryIds = $(this).data("categoryid") || "";
-                $("#teamContainer").html("<img src='@(baseUrl + "images/loader.gif")' alt='loading...' style='height:100px;' />");
                 $('.hdnCategory').val(categoryIds);
-                loadTeamMembers(categoryIds);
+
+                // Fade out current team section before loading new data
+                $("#teamContainer").fadeOut(250, function () {
+                    loadTeamMembers(categoryIds);
+                });
             });
 
-            // ✅ AJAX loader function
+            // ✅ AJAX function to load team members smoothly
             function loadTeamMembers(categoryIds) {
                 categoryIds = categoryIds || "";
                 $.get("@Url.Action("LoadTeamSection", "Common")", { categoryIds })
                     .done(function (result) {
-                        $("#teamContainer").html(result);
+                        $("#teamContainer").hide().html(result).fadeIn(400);
+
+                        if ('@onloadBio' != '') {
+                            var url = '#' + '@onloadBio';
+                            $(url).click();
+                        }
                     })
                     .fail(function () {
-                        $("#teamContainer").html("<p>Error loading team members.</p>");
+                        $("#teamContainer").fadeOut("slow", function () {
+                            $(this).html("<p>Error loading team members.</p>").fadeIn("slow");
+                        });
                     });
             }
         });
 
-        // ✅ Open modal with bio content
+        // ✅ Open modal with bio content (smooth fade)
         function openTeamModel(teamId, bioUrl) {
-              $(".teamBio").html("<p>loading...</p>");
+            $(".teamBio").html("<p>loading...</p>");
             $.get("@Url.Action("LoadTeamBioSection", "Common")", {
                 teamId: teamId,
                 categoryIds: $('.hdnCategory').val(),
@@ -92,7 +113,7 @@
                 orderBy: "DisplayOrder"
             })
             .done(function (html) {
-                $(".teamBio").html(html);
+                $(".teamBio").hide().html(html).fadeIn(300);
                 $("#teamModal").modal("show");
                 history.pushState(null, null, "/team-info/" + encodeURIComponent(bioUrl));
             })
@@ -102,3 +123,44 @@
         }
     </script>
 }
+
+
+
+<style>
+    /* Overlay covers entire screen */
+    #ajaxLoaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark bg */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000; /* above modals and everything else */
+    }
+
+        /* Loader image */
+        #ajaxLoaderOverlay .loader-content img {
+            height: 100px;
+            width: 100px;
+            animation: spin 1.2s linear infinite;
+        }
+
+    #ajaxLoaderOverlay {
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    /* Optional subtle rotation */
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
