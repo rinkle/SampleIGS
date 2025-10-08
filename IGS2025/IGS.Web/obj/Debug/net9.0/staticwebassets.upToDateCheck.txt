@@ -3760,8 +3760,10 @@ wwwroot\images\Insight\Industrial-Automation.jpg
 wwwroot\images\Insight\Leak-pipe-repair.jpg
 wwwroot\images\Insight\MedSpa.jpg
 wwwroot\images\Insight\PDF\IGS_Building_a_Sales_Discipline.pdf
+wwwroot\images\Insight\PDF\Portfolio_Company_Performance_F.pdf
 wwwroot\images\Insight\PDF\Tariff_Responsive_Pricing_IGS.pdf
 wwwroot\images\Insight\Physical-Therapy.jpg
+wwwroot\images\Insight\portfolio-company-performance.jpg
 wwwroot\images\Insight\recent-projects-2.jpg
 wwwroot\images\Insight\Roofing.jpg
 wwwroot\images\Insight\Sample_PDF.pdf
