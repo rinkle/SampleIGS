@@ -1,0 +1,23 @@
+﻿@using Globalsetting
+@inject Globalsetting.GlobalEnvironmentSetting globalEnvironmentSetting
+@model IGS.Models.ViewModels.PrivacyPolicyViewModel
+@using IGS.Models.KeyLessModels;
+@{
+    string baseUrl = globalEnvironmentSetting.AppSettingValue("AppSettings:baseurl");
+}
+
+@if (Model?.Policies != null)
+{
+    <div class="terms">
+        <div class="container">
+            @foreach (var item in Model.Policies)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        @Html.Raw(item.Description)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

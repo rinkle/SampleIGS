@@ -3,9 +3,11 @@ using IGS.Dal.Services.Implementations;
 using IGS.Dal.Services.Interfaces;
 using IGS.Models.ViewModels;
 using IGS.Web.Controllers;
+using IGS.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Diagnostics;
 using System.Security.Claims;
 
 
@@ -22,8 +24,9 @@ namespace IGS.Web.Controllers
         private readonly ITransactionServicesVmService _transactionVmService;
         private readonly IPortfolioServicesVmService _portfolioVmService;
         private readonly IIndustryVmService _industryVmService;
+        private readonly IPrivacyPolicyVmService _privacyPolicyVmService;
 
-        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService, IPortfolioServicesVmService portfolioServicesVmService, IIndustryVmService industryVmService)
+        public HomeController(IOptions<AppSettings> options, ILoggerService logger, IHomeVmService homeVmService, IHomeService homeService, ICommonService commonService, IExperienceVmService experienceVmService, ITransactionServicesVmService transactionVmService, IPortfolioServicesVmService portfolioServicesVmService, IIndustryVmService industryVmService, IPrivacyPolicyVmService privacyPolicyVmService)
         {
             _baseUrl = options.Value.BaseUrl;
             _logger = logger;
@@ -34,6 +37,7 @@ namespace IGS.Web.Controllers
             _transactionVmService = transactionVmService;
             _portfolioVmService = portfolioServicesVmService;
             _industryVmService = industryVmService;
+            _privacyPolicyVmService = privacyPolicyVmService;
         }
         #region Home Page
         public async Task<IActionResult> Index()
@@ -122,15 +126,31 @@ namespace IGS.Web.Controllers
             }
         }
         #endregion
-        public IActionResult Privacy()
+
+        [Route("privacy-policy")]
+        public async Task<IActionResult> PrivacyPolicy()
         {
-            return View();
+            try
+            {
+                ViewBag.pageName = PageName.PrivacyPolicy;
+                ViewBag.canonical = "privacy-policy";
+                CommonHeaderFooterModel CommonServiceModel = await _commonService.GetCommonServiceAsync(PageName.PrivacyPolicy);
+                ViewBag.CommonService = CommonServiceModel;
+                PrivacyPolicyViewModel vm = await _privacyPolicyVmService.GetPrivacyPolicyVmAsync(PageName.PrivacyPolicy, false);
+                return View(vm);
+            }
+            catch (Exception ex)
+            {
+                int errorId = await _logger.LogErrorAsync(ex, "Error in PrivacyPolicy/Index");
+                ErrorNotification($"Something went wrong. Error ID: {errorId}");
+                return View(new PrivacyPolicyViewModel());
+            }
         }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }
