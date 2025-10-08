@@ -69,11 +69,7 @@
 
                 const categoryIds = $(this).data("categoryid") || "";
                 $('.hdnCategory').val(categoryIds);
-
-                // Fade out current team section before loading new data
-                $("#teamContainer").fadeOut(250, function () {
-                    loadTeamMembers(categoryIds);
-                });
+                 loadTeamMembers(categoryIds);
             });
 
             // ✅ AJAX function to load team members smoothly
