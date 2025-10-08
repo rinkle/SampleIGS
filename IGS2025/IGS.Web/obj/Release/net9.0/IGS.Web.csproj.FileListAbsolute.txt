@@ -3616,3 +3616,4 @@ E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Release\net9.0\refint\IGS.Web.dll
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Release\net9.0\IGS.Web.pdb
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Release\net9.0\IGS.Web.genruntimeconfig.cache
 E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Release\net9.0\ref\IGS.Web.dll
+E:\Git\SampleIGS\IGS2025\IGS.Web\obj\Release\net9.0\compressed\da2a44howo-gx11lvymuz.gz
