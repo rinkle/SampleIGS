@@ -12,7 +12,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -41,18 +40,6 @@
     <ProjectReference Include="..\Globalsetting\Globalsetting.csproj" />
     <ProjectReference Include="..\IGS.Dal\IGS.Dal.csproj" />
     <ProjectReference Include="..\IGS.Models\IGS.Models.csproj" />
-  </ItemGroup>
-
-  <!-- ✅ Add this section -->
-  <PropertyGroup>
-    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Content Update="Views\**\*.cshtml">
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
