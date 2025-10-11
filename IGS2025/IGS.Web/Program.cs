@@ -13,26 +13,19 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation; // ✅ Required for AddRazorRuntimeCompilation
 using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//
 // 🔗 Connection string
-//
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-//
 // ✅ EF Core registration
-//
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString, sqlOptions => sqlOptions.CommandTimeout(180)));
 
-//
 // 🔐 Identity setup
-//
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
@@ -44,9 +37,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = new PathString("/igsadmin");
 });
 
-//
 // 🧩 Gzip + Brotli compression setup
-//
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;
@@ -69,18 +60,9 @@ builder.Services.AddResponseCompression(options =>
 builder.Services.Configure<BrotliCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
 builder.Services.Configure<GzipCompressionProviderOptions>(o => o.Level = CompressionLevel.Fastest);
 
-//
-// 🛠 Developer helpers
-//
+// 🛠 Dev helpers
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-#if DEBUG
-builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation(); // ✅ Only in Debug mode
-#else
 builder.Services.AddControllersWithViews();
-#endif
-
 builder.Services.AddSingleton<IEmailSender, NoOpEmailSender>();
 
 builder.Services.AddRazorPages(options =>
@@ -88,9 +70,7 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/igsadmin");
 });
 
-//
-// 🧰 Application-wide services
-//
+// 🧰 App services
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<GlobalEnvironmentSetting>();
 builder.Services.AddScoped<GlobalCookies>();
@@ -103,9 +83,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-//
-// 🗂 Repository + Unit of Work
-//
+// 🗂 Repositories & services
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
@@ -113,9 +91,7 @@ builder.Services.AddScoped<ISqlHelper, SqlHelper>();
 builder.Services.AddScoped<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ICommonListingService, CommonListingService>();
 
-//
-// 💼 Business Services
-//
+// 💼 Business services
 builder.Services.AddScoped<IHomeVmService, HomeVmService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<ITransactionServicesVmService, TransactionServicesVmService>();
@@ -142,15 +118,10 @@ builder.Services.AddScoped<INewsLetterVmService, NewsLetterVmService>();
 
 var app = builder.Build();
 
-//
 // 🌐 Global exception logging middleware
-//
 app.Use(async (context, next) =>
 {
-    try
-    {
-        await next();
-    }
+    try { await next(); }
     catch (Exception ex)
     {
         using var scope = app.Services.CreateScope();
@@ -160,9 +131,7 @@ app.Use(async (context, next) =>
     }
 });
 
-//
-// 🧱 Error handling
-//
+// 🧱 Exception & status code handlers
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -174,17 +143,14 @@ else
     app.UseHsts();
 }
 
-//
 // ⚙️ Middleware pipeline
-//
 app.UseHttpsRedirection();
 app.UseResponseCompression();
 
-//
-// ✅ Static file caching setup
-//
+// ✅ Static file caching with directory checks
 var webRoot = app.Environment.WebRootPath;
 
+// Helper method for conditional static file registration
 void UseCachedStaticFolder(string folderName, string requestPath, int durationDays)
 {
     var folderPath = Path.Combine(webRoot, folderName);
@@ -219,7 +185,7 @@ UseCachedStaticFolder("fonts", "/fonts", 365);
 // 📄 PDFs → 1 year
 UseCachedStaticFolder("pdf", "/pdf", 365);
 
-// 📦 Fallback default static files → 7 days
+// 📦 Default fallback → 7 days (only if folder exists)
 if (Directory.Exists(webRoot))
 {
     app.UseStaticFiles(new StaticFileOptions
